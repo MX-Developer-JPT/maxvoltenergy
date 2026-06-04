@@ -49,7 +49,7 @@ export default function WhyChooseSection() {
           {/* Left: Scroll-driven battery + active feature card */}
           <div className="relative">
             {/* Animated battery — opens on scroll down, closes on scroll up */}
-            <ClipReveal direction="left" delay={0.1}>
+            <div>
               <div className="relative h-80 md:h-[30rem] rounded-2xl overflow-hidden bg-gradient-to-b from-[#fafafa] to-[#f0f0ea] border border-black/6">
                 <div className="absolute inset-0 grid-pattern opacity-[0.15]" />
 
@@ -117,7 +117,7 @@ export default function WhyChooseSection() {
                   </motion.div>
                 </AnimatePresence>
               </div>
-            </ClipReveal>
+            </div>
 
             {/* Secondary image */}
             <ClipReveal direction="right" delay={0.3}>
