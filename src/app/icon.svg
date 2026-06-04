@@ -1,0 +1,8 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="14" fill="#0d0d0d"/>
+  <rect x="3" y="3" width="58" height="58" rx="12" fill="none" stroke="#FFD100" stroke-width="2" opacity="0.35"/>
+  <!-- M mark -->
+  <path d="M14 46 V20 L26 36 L38 20 V46" fill="none" stroke="#FFD100" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- lightning bolt accent -->
+  <path d="M44 16 L36 34 H43 L40 48 L52 28 H45 Z" fill="#FFD100"/>
+</svg>
