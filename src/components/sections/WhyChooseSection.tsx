@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { Zap, Shield, Globe, Users, FlaskConical, Award, ChevronRight } from "lucide-react";
 import { ClipReveal, FadeUp } from "@/components/ui/AnimatedText";
 
@@ -16,9 +16,18 @@ const FEATURES = [
 ];
 
 export default function WhyChooseSection() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [active, setActive] = useState(0);
+
+  // Scroll-driven battery "open" — lid lifts as the section scrolls through view
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const p = useSpring(scrollYProgress, { stiffness: 80, damping: 26, mass: 0.4 });
+  const lidY = useTransform(p, [0.15, 0.7], ["0%", "-42%"]);
+  const lidScale = useTransform(p, [0.15, 0.7], [1, 1.03]);
+  const lidRotate = useTransform(p, [0.15, 0.7], [0, -2.5]);
+  const coreOpacity = useTransform(p, [0.2, 0.5], [0, 1]);
+  const coreScaleY = useTransform(p, [0.2, 0.7], [0.2, 1]);
 
   return (
     <section ref={ref} className="section-padding relative overflow-hidden bg-white">
@@ -37,20 +46,42 @@ export default function WhyChooseSection() {
         </FadeUp>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          {/* Left: Image + active feature card */}
+          {/* Left: Scroll-driven battery + active feature card */}
           <div className="relative">
-            {/* Main image */}
+            {/* Animated battery — opens on scroll down, closes on scroll up */}
             <ClipReveal direction="left" delay={0.1}>
-              <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden">
-                <Image
-                  src="/images/category/powered-with-new-gen-technology-enj.webp"
-                  alt="MaxVolt Technology"
-                  fill
-                  className="object-cover"
-                  sizes="600px"
+              <div className="relative h-80 md:h-[30rem] rounded-2xl overflow-hidden bg-gradient-to-b from-[#fafafa] to-[#f0f0ea] border border-black/6">
+                <div className="absolute inset-0 grid-pattern opacity-[0.15]" />
+
+                {/* glowing energy core revealed between the layers */}
+                <motion.div
+                  className="absolute left-1/2 -translate-x-1/2 rounded-full blur-2xl pointer-events-none"
+                  style={{
+                    bottom: "36%", width: "62%", height: "24%",
+                    background: "radial-gradient(ellipse, rgba(255,209,0,0.6) 0%, rgba(217,119,6,0.25) 45%, transparent 70%)",
+                    opacity: coreOpacity, scaleY: coreScaleY, transformOrigin: "bottom",
+                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#08090d]/80 via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#08090d]/40 to-transparent" />
+
+                {/* battery base (bottom of image) — stays */}
+                <div className="absolute inset-0" style={{ clipPath: "inset(54% 0 0 0)" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/images/battery-pack.png" alt="MaxVolt battery pack base" className="w-full h-full object-contain" draggable={false} />
+                </div>
+
+                {/* battery lid + cells (top of image) — lifts up on scroll */}
+                <motion.div
+                  className="absolute inset-0"
+                  style={{
+                    y: lidY, scale: lidScale, rotate: lidRotate,
+                    clipPath: "inset(0 0 46% 0)",
+                    transformOrigin: "center bottom",
+                    filter: "drop-shadow(0 20px 32px rgba(0,0,0,0.2))",
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/images/battery-pack.png" alt="MaxVolt battery internals" className="w-full h-full object-contain" draggable={false} />
+                </motion.div>
 
                 {/* Floating active stat */}
                 <AnimatePresence mode="wait">
