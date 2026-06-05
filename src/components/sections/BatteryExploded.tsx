@@ -8,10 +8,10 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
  * Scroll-driven EXPLODED battery using the REAL MaxVolt part renders.
  * Save these 4 images (white studio background is fine — we use mix-blend
  * multiply so the white disappears on the white section):
- *   /images/battery/case.png   — silver MaxVolt housing (with yellow label)
- *   /images/battery/cells.png  — blue lithium cell pack
- *   /images/battery/bms.png    — green BMS controller board
- *   /images/battery/lid.png    — black top cover plate
+ *   /images/battery/case.jpg   — silver MaxVolt housing (with yellow label)
+ *   /images/battery/cells.jpg  — blue lithium cell pack
+ *   /images/battery/bms.jpg    — green BMS controller board
+ *   /images/battery/lid.jpg    — black top cover plate
  *
  * At rest the parts nest into a full pack. Scroll down →
  * lid lifts off → BMS board lifts → cell pack pulls up → housing settles.
@@ -40,23 +40,23 @@ export default function BatteryExploded() {
 
       {/* Housing / case — bottom */}
       <motion.div className="absolute inset-x-0 bottom-0 h-[46%]" style={{ y: caseY }}>
-        <Image src="/images/battery/case.png" alt="MaxVolt battery housing" fill className="object-contain" style={blend} sizes="500px" />
+        <Image src="/images/battery/case.jpg" alt="MaxVolt battery housing" fill className="object-contain" style={blend} sizes="500px" />
         <motion.span style={{ opacity: labels }} className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 whitespace-nowrap text-[11px] font-bold text-[#15171c] pr-2">
           Rugged Housing <span className="text-[#D97706]">●</span>
         </motion.span>
       </motion.div>
 
-      {/* Cell pack — middle */}
-      <motion.div className="absolute inset-x-0 top-[34%] h-[34%]" style={{ y: cellsY }}>
-        <Image src="/images/battery/cells.png" alt="MaxVolt lithium cell pack" fill className="object-contain" style={blend} sizes="500px" />
+      {/* Cell pack — lower middle (sits inside case) */}
+      <motion.div className="absolute inset-x-0 top-[42%] h-[32%]" style={{ y: cellsY }}>
+        <Image src="/images/battery/cells.jpg" alt="MaxVolt lithium cell pack" fill className="object-contain" style={blend} sizes="500px" />
         <motion.span style={{ opacity: labels }} className="absolute right-0 top-1/2 translate-x-full -translate-y-1/2 whitespace-nowrap text-[11px] font-bold text-[#15171c] pl-2">
           <span className="text-[#D97706]">●</span> Lithium Cell Pack
         </motion.span>
       </motion.div>
 
-      {/* BMS board — upper */}
-      <motion.div className="absolute inset-x-0 top-[16%] h-[26%]" style={{ y: bmsY }}>
-        <Image src="/images/battery/bms.png" alt="MaxVolt BMS controller" fill className="object-contain" style={blend} sizes="500px" />
+      {/* BMS board — upper middle (mounts under the lid) */}
+      <motion.div className="absolute inset-x-0 top-[20%] h-[26%]" style={{ y: bmsY }}>
+        <Image src="/images/battery/bms.jpg" alt="MaxVolt BMS controller" fill className="object-contain" style={blend} sizes="500px" />
         <motion.span style={{ opacity: labels }} className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 whitespace-nowrap text-[11px] font-bold text-[#15171c] pr-2">
           Smart BMS <span className="text-[#D97706]">●</span>
         </motion.span>
@@ -64,7 +64,7 @@ export default function BatteryExploded() {
 
       {/* Lid / cover — top */}
       <motion.div className="absolute inset-x-0 top-0 h-[22%]" style={{ y: lidY }}>
-        <Image src="/images/battery/lid.png" alt="MaxVolt top cover" fill className="object-contain" style={blend} sizes="500px" />
+        <Image src="/images/battery/lid.jpg" alt="MaxVolt top cover" fill className="object-contain" style={blend} sizes="500px" />
         <motion.span style={{ opacity: labels }} className="absolute right-0 top-1/2 translate-x-full -translate-y-1/2 whitespace-nowrap text-[11px] font-bold text-[#15171c] pl-2">
           <span className="text-[#D97706]">●</span> Protective Cover
         </motion.span>
