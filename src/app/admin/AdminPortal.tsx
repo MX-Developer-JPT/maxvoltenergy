@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   LogOut, Search, Download, Trash2, Mail, Phone, Inbox,
-  CheckCircle2, Clock, Circle, Loader2, RefreshCw,
+  CheckCircle2, Clock, Circle, Loader2, RefreshCw, FileText,
 } from "lucide-react";
+import BlogManager from "./BlogManager";
 
 type EnquiryStatus = "new" | "contacted" | "closed";
 interface Enquiry {
@@ -31,6 +32,7 @@ function toCSV(list: Enquiry[]): string {
 
 export default function AdminPortal() {
   const router = useRouter();
+  const [tab, setTab] = useState<"enquiries" | "blog">("enquiries");
   const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
@@ -94,25 +96,45 @@ export default function AdminPortal() {
   return (
     <div className="min-h-screen bg-[#f7f7f5] pt-24 pb-16">
       <div className="container-custom">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-2xl font-black text-[#15171c] flex items-center gap-2">
-              <Inbox size={22} className="text-[#D97706]" /> Enquiry Management
-            </h1>
-            <p className="text-[#71717a] text-sm mt-1">Secure portal · enquiries received across the website.</p>
+            <h1 className="text-2xl font-black text-[#15171c]">MaxVolt Admin Portal</h1>
+            <p className="text-[#71717a] text-sm mt-1">Secure dashboard · manage enquiries and blog content.</p>
           </div>
           <div className="flex items-center gap-3">
-            <button onClick={load} className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-black/10 text-[#52525b] hover:text-[#15171c] text-sm font-medium transition-all">
-              <RefreshCw size={14} /> Refresh
-            </button>
-            <button onClick={exportCSV} className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFA800] transition-all">
-              <Download size={14} /> Export CSV
-            </button>
+            {tab === "enquiries" && (
+              <>
+                <button onClick={load} className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-black/10 text-[#52525b] hover:text-[#15171c] text-sm font-medium transition-all">
+                  <RefreshCw size={14} /> Refresh
+                </button>
+                <button onClick={exportCSV} className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFA800] transition-all">
+                  <Download size={14} /> Export CSV
+                </button>
+              </>
+            )}
             <button onClick={logout} className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-black/10 text-[#52525b] hover:text-[#15171c] text-sm font-medium transition-all">
               <LogOut size={14} /> Sign Out
             </button>
           </div>
         </div>
+
+        {/* Tabs */}
+        <div className="flex items-center gap-2 mb-7 p-1 rounded-xl bg-white border border-black/8 w-fit">
+          {([
+            { id: "enquiries" as const, label: "Enquiries", Icon: Inbox },
+            { id: "blog" as const, label: "Blog", Icon: FileText },
+          ]).map(({ id, label, Icon }) => (
+            <button
+              key={id}
+              onClick={() => setTab(id)}
+              className={`flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-bold transition-all ${tab === id ? "bg-[#FFD100] text-black" : "text-[#71717a] hover:text-[#15171c]"}`}
+            >
+              <Icon size={15} /> {label}
+            </button>
+          ))}
+        </div>
+
+        {tab === "blog" ? <BlogManager /> : <>
 
         {/* Stat tiles */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
@@ -211,6 +233,7 @@ export default function AdminPortal() {
           Authenticated via encrypted httpOnly session cookie. Enquiries are stored server-side and
           visible to all signed-in team members in real time.
         </p>
+        </>}
       </div>
     </div>
   );
