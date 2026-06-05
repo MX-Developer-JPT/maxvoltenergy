@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       { userAgent: "*", allow: "/", disallow: ["/admin"] },
     ],
-    sitemap: "https://www.maxvoltenergy.com/sitemap.xml",
-    host: "https://www.maxvoltenergy.com",
+    sitemap: "https://max1.maxvolt-one.co.in/sitemap.xml",
+    host: "https://max1.maxvolt-one.co.in",
   };
 }

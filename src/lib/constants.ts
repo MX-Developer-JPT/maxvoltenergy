@@ -2,7 +2,7 @@ export const SITE_CONFIG = {
   name: "MaxVolt Energy Industries Limited",
   tagline: "Powering India's Electric Future",
   description: "Industry-leading lithium battery technology for EVs, solar systems, and energy storage.",
-  url: "https://www.maxvoltenergy.com",
+  url: "https://max1.maxvolt-one.co.in",
   phone: "01204291595",
   whatsapp: "+918130327183",
   email: "info@maxvoltenergy.com",
