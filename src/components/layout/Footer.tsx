@@ -170,8 +170,8 @@ export default function Footer() {
               <MapPin size={14} className="text-[#D97706]" />
             </div>
             <div>
-              <div className="text-[#52525b] text-xs font-medium mb-1 uppercase tracking-wider">Manufacturing Plant</div>
-              <div className="text-[#3f3f46] text-sm">{SITE_CONFIG.addresses.ghaziabad}</div>
+              <div className="text-[#52525b] text-xs font-medium mb-1 uppercase tracking-wider">Corporate Office</div>
+              <a href={SITE_CONFIG.maps.corporate} target="_blank" rel="noopener noreferrer" className="text-[#3f3f46] text-sm hover:text-[#D97706] transition-colors">{SITE_CONFIG.addresses.corporate}</a>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -179,8 +179,8 @@ export default function Footer() {
               <MapPin size={14} className="text-[#D97706]" />
             </div>
             <div>
-              <div className="text-[#52525b] text-xs font-medium mb-1 uppercase tracking-wider">Corporate Office</div>
-              <div className="text-[#3f3f46] text-sm">{SITE_CONFIG.addresses.delhi}</div>
+              <div className="text-[#52525b] text-xs font-medium mb-1 uppercase tracking-wider">Manufacturing Plant — Duhai, Ghaziabad</div>
+              <a href={SITE_CONFIG.maps.plant} target="_blank" rel="noopener noreferrer" className="text-[#3f3f46] text-sm hover:text-[#D97706] transition-colors">{SITE_CONFIG.addresses.plant}</a>
             </div>
           </div>
           <div className="flex flex-col gap-3">

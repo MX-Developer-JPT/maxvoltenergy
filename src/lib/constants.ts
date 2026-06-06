@@ -7,8 +7,16 @@ export const SITE_CONFIG = {
   whatsapp: "+918130327183",
   email: "info@maxvoltenergy.com",
   addresses: {
+    corporate: "E 82, Bulandshahr Road Industrial Area, Ghaziabad (UP) 201009",
+    plant: "Meerut Rd, Duhai, Basantpur Saitli, Uttar Pradesh 201206",
+    /** @deprecated use corporate */
     ghaziabad: "E 82, Bulandshahr Road Industrial Area, Ghaziabad (UP) 201009",
-    delhi: "F 108, Plot No. 1 F/F United Plaza, Community Centre, Karkardooma, New Delhi 110092",
+    /** @deprecated use plant */
+    delhi: "Meerut Rd, Duhai, Basantpur Saitli, Uttar Pradesh 201206",
+  },
+  maps: {
+    corporate: "https://maps.google.com/?q=E+82+Bulandshahr+Road+Industrial+Area+Ghaziabad+UP+201009",
+    plant: "https://maps.google.com/?q=Meerut+Rd+Duhai+Basantpur+Saitli+Uttar+Pradesh+201206",
   },
   social: {
     facebook: "https://www.facebook.com/Maxvoltbattery",

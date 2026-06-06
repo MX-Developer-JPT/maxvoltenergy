@@ -201,22 +201,34 @@ export default function ContactContent() {
               </div>
 
               {/* Addresses */}
-              <h3 className="text-[#15171c] font-bold text-lg mb-4">Our Offices</h3>
+              <h3 className="text-[#15171c] font-bold text-lg mb-4">Our Locations</h3>
               <div className="space-y-4">
-                <div className="flex items-start gap-4 p-5 rounded-xl frosted-card border border-black/6">
+                <a
+                  href={SITE_CONFIG.maps.corporate}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 p-5 rounded-xl frosted-card border border-black/6 hover:border-[#FFD100]/30 transition-all group"
+                >
                   <Building2 size={18} className="text-[#D97706] shrink-0 mt-0.5" />
                   <div>
-                    <div className="text-[#15171c] font-semibold text-sm mb-1">Manufacturing Plant</div>
-                    <div className="text-[#5f6470] text-sm">{SITE_CONFIG.addresses.ghaziabad}</div>
+                    <div className="text-[#15171c] font-semibold text-sm mb-1">Corporate Office</div>
+                    <div className="text-[#5f6470] text-sm">{SITE_CONFIG.addresses.corporate}</div>
+                    <div className="text-[#D97706] text-xs mt-1 font-medium">View on Google Maps →</div>
                   </div>
-                </div>
-                <div className="flex items-start gap-4 p-5 rounded-xl frosted-card border border-black/6">
+                </a>
+                <a
+                  href={SITE_CONFIG.maps.plant}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 p-5 rounded-xl frosted-card border border-black/6 hover:border-[#FFD100]/30 transition-all group"
+                >
                   <MapPin size={18} className="text-[#D97706] shrink-0 mt-0.5" />
                   <div>
-                    <div className="text-[#15171c] font-semibold text-sm mb-1">Corporate Office</div>
-                    <div className="text-[#5f6470] text-sm">{SITE_CONFIG.addresses.delhi}</div>
+                    <div className="text-[#15171c] font-semibold text-sm mb-1">Manufacturing Plant — Duhai, Ghaziabad</div>
+                    <div className="text-[#5f6470] text-sm">{SITE_CONFIG.addresses.plant}</div>
+                    <div className="text-[#D97706] text-xs mt-1 font-medium">View on Google Maps →</div>
                   </div>
-                </div>
+                </a>
               </div>
             </motion.div>
 

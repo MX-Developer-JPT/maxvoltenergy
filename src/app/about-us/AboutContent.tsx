@@ -8,7 +8,7 @@ import PageHero from "@/components/ui/PageHero";
 import TiltCard from "@/components/ui/TiltCard";
 import { FadeUp, ClipReveal, StaggerGroup, staggerItem } from "@/components/ui/AnimatedText";
 import { LEADERSHIP, TIMELINE, SITE_CONFIG } from "@/lib/constants";
-import { CheckCircle2, Target, Eye, Lightbulb, ArrowRight, Users, Zap } from "lucide-react";
+import { CheckCircle2, Target, Eye, Lightbulb, ArrowRight, Users, Zap, Factory, MapPin, ExternalLink, Recycle } from "lucide-react";
 
 function MissionVision() {
   const ref = useRef(null);
@@ -369,6 +369,100 @@ function CompanyOverview() {
   );
 }
 
+function ManufacturingSection() {
+  return (
+    <section className="section-padding bg-[#f7f7f5]">
+      <div className="container-custom">
+        <FadeUp className="text-center mb-12">
+          <span className="text-[#D97706] text-[11px] font-bold tracking-[0.25em] uppercase mb-3 block">Infrastructure</span>
+          <h2 className="text-3xl md:text-4xl font-black text-[#15171c]">World-Class <span className="gradient-text">Manufacturing &amp; Recycling</span></h2>
+          <p className="text-[#52525b] text-sm max-w-xl mx-auto mt-3">
+            From our expanded Duhai production facility to the upcoming ReEarth recycling plant — Maxvolt is building an end-to-end battery ecosystem.
+          </p>
+        </FadeUp>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Duhai Plant */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+            className="p-8 rounded-2xl frosted-card border border-black/6"
+          >
+            <div className="w-12 h-12 rounded-2xl bg-[#FFD100]/12 border border-[#FFD100]/25 flex items-center justify-center mb-5">
+              <Factory size={22} className="text-[#D97706]" />
+            </div>
+            <h3 className="text-[#15171c] font-bold text-xl mb-3">Duhai Manufacturing Plant</h3>
+            <p className="text-[#5f6470] text-sm leading-relaxed mb-6">
+              Our 55,000 sq ft advanced manufacturing facility in Duhai, Ghaziabad is built for the next phase of India&apos;s EV growth. The plant features AIS 156-compliant testing bays, automated cell-to-pack assembly lines, a dedicated R&amp;D lab, and stringent quality inspection systems — enabling a 3× increase in production capacity vs. our earlier facility, supporting 15,000+ battery packs per month.
+            </p>
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              {[
+                { v: "55,000 sq ft", l: "Plant Area" },
+                { v: "15,000+/mo", l: "Pack Capacity" },
+                { v: "3×", l: "Capacity vs. Previous" },
+                { v: "AIS 156", l: "Certified Testing" },
+              ].map((s) => (
+                <div key={s.l} className="p-3 rounded-xl bg-[#FFD100]/5 border border-[#FFD100]/10 text-center">
+                  <div className="text-sm font-black gradient-text">{s.v}</div>
+                  <div className="text-[#71717a] text-[10px] mt-0.5 uppercase tracking-wide">{s.l}</div>
+                </div>
+              ))}
+            </div>
+            <a
+              href={SITE_CONFIG.maps.plant}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[#D97706] text-xs font-semibold hover:underline"
+            >
+              <MapPin size={12} /> {SITE_CONFIG.addresses.plant} <ExternalLink size={10} />
+            </a>
+          </motion.div>
+
+          {/* ReEarth */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, delay: 0.12 }}
+            className="p-8 rounded-2xl frosted-card border border-black/6"
+          >
+            <div className="w-12 h-12 rounded-2xl bg-[#4ade80]/12 border border-[#4ade80]/25 flex items-center justify-center mb-5">
+              <Recycle size={22} className="text-[#16a34a]" />
+            </div>
+            <h3 className="text-[#15171c] font-bold text-xl mb-3">Maxvolt ReEarth — Battery Recycling</h3>
+            <p className="text-[#5f6470] text-sm leading-relaxed mb-6">
+              ReEarth is Maxvolt&apos;s dedicated battery recycling subsidiary. Its upcoming Aligarh, UP plant will handle 7,800 MT/year of spent lithium-ion batteries — recovering critical materials such as lithium, cobalt, nickel, and manganese through advanced hydrometallurgical and pyrometallurgical processes, and returning them to India&apos;s battery supply chain. Phase 1 launches January 2026.
+            </p>
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              {[
+                { v: "7,800 MT/yr", l: "Recycling Capacity" },
+                { v: "Li·Co·Ni·Mn", l: "Materials Recovered" },
+                { v: "LFP·NMC·NCA·LCO", l: "Chemistries" },
+                { v: "Jan 2026", l: "Phase 1 Launch" },
+              ].map((s) => (
+                <div key={s.l} className="p-3 rounded-xl bg-[#4ade80]/5 border border-[#4ade80]/10 text-center">
+                  <div className="text-sm font-black text-[#16a34a]">{s.v}</div>
+                  <div className="text-[#71717a] text-[10px] mt-0.5 uppercase tracking-wide">{s.l}</div>
+                </div>
+              ))}
+            </div>
+            <a
+              href="https://maxvoltreearth.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[#16a34a] text-xs font-semibold hover:underline"
+            >
+              Visit maxvoltreearth.com <ExternalLink size={10} />
+            </a>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function AboutContent() {
   return (
     <>
@@ -380,6 +474,7 @@ export default function AboutContent() {
       <MissionVision />
       <AboutStory />
       <CompanyOverview />
+      <ManufacturingSection />
       <LeadershipSection />
       <KeyStrengths />
     </>
