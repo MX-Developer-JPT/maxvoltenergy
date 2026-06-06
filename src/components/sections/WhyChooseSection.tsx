@@ -28,24 +28,24 @@ export default function WhyChooseSection() {
       <div className="container-custom relative z-10">
         {/* Header */}
         <FadeUp className="text-center mb-16">
-          <span className="text-[#D97706] text-[11px] font-bold tracking-[0.25em] uppercase mb-4 block">Why MaxVolt</span>
+          <span className="text-[#D97706] text-[11px] font-bold tracking-[0.25em] uppercase mb-4 block">Why Maxvolt</span>
           <h2 className="text-4xl md:text-5xl font-black text-[#15171c] mb-4">
             Built for the <span className="gradient-text">EV Revolution</span>
           </h2>
           <p className="text-[#5f6470] text-sm max-w-lg mx-auto">
-            Six core strengths that make MaxVolt the preferred partner for electric mobility across India.
+            Six core strengths that make Maxvolt the preferred partner for electric mobility across India.
           </p>
         </FadeUp>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Left: Scroll-driven battery + active feature card */}
           <div className="relative lg:sticky lg:top-28">
-            {/* Scroll-driven exploded battery (real MaxVolt parts) */}
+            {/* Scroll-driven exploded battery (real Maxvolt parts) */}
             <div className="relative h-[30rem] md:h-[36rem] mx-auto max-w-md">
               <BatteryExploded />
             </div>
             <p className="text-center text-[#a1a1aa] text-[11px] font-medium tracking-wide -mt-2">
-              ↑ Scroll to explore the MaxVolt pack — cover, BMS, cells &amp; housing
+              ↑ Scroll to explore the Maxvolt pack — cover, BMS, cells &amp; housing
             </p>
 
             {/* Secondary image */}
@@ -53,7 +53,7 @@ export default function WhyChooseSection() {
               <div className="relative h-40 rounded-2xl overflow-hidden mt-6">
                 <Image
                   src="/images/category/why-choose-us-wrn.webp"
-                  alt="Why Choose MaxVolt"
+                  alt="Why Choose Maxvolt"
                   fill
                   className="object-cover"
                   sizes="600px"

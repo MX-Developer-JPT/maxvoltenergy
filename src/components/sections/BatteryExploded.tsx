@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
 
 /**
- * Scroll-driven EXPLODED battery using the real MaxVolt part renders.
+ * Scroll-driven EXPLODED battery using the real Maxvolt part renders.
  * White studio backgrounds are knocked out with mix-blend multiply on the white
  * section. Parts nest at rest and separate (lid → BMS → cells → housing) on scroll.
  */

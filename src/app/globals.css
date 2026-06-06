@@ -69,29 +69,83 @@ body {
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern", "liga", "calt";
   overflow-x: hidden;
 }
 
+/* Premium display typography */
+h1, h2, h3 { letter-spacing: -0.025em; }
+h1 { font-feature-settings: "kern", "ss01"; }
+
 ::selection {
-  background-color: rgba(232,152,0,0.2);
+  background-color: rgba(232,152,0,0.22);
   color: #15171c;
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 9px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #efefea;
+  background: #f4f4f0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(217,119,6,0.5);
-  border-radius: 3px;
+  background: linear-gradient(180deg, #FFD100, #D97706);
+  border-radius: 99px;
+  border: 2px solid #f4f4f0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(217,119,6,0.7);
+  background: linear-gradient(180deg, #FFA800, #C2410C);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Premium utilities ── */
+/* Sheen sweep for primary buttons (add class .btn-sheen) */
+.btn-sheen { position: relative; overflow: hidden; }
+.btn-sheen::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.55) 50%, transparent 70%);
+  transform: translateX(-130%);
+  transition: transform .7s cubic-bezier(.22,1,.36,1);
+  pointer-events: none;
+}
+.btn-sheen:hover::after { transform: translateX(130%); }
+
+/* Animated brand gradient text */
+.gradient-text-anim {
+  background: linear-gradient(110deg, #E89800, #D97706, #C2410C, #D97706, #E89800);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShine 6s linear infinite;
+}
+@keyframes textShine { to { background-position: 200% center; } }
+
+/* Premium section divider */
+.divider-glow {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(217,119,6,0.35), transparent);
+}
+
+/* Subtle premium ring on focus for a11y */
+:focus-visible {
+  outline: 2px solid rgba(217,119,6,0.6);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Glass morphism */
@@ -110,17 +164,39 @@ body {
 }
 
 .frosted-card {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0,0,0,0.04);
+  background: linear-gradient(180deg, #ffffff 0%, #fcfcfb 100%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 1rem;
+  box-shadow:
+    0 1px 2px rgba(16, 18, 23, 0.04),
+    0 8px 24px -8px rgba(16, 18, 23, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: box-shadow .4s cubic-bezier(.22,1,.36,1), transform .4s cubic-bezier(.22,1,.36,1), border-color .3s ease;
+}
+.frosted-card:hover {
+  box-shadow:
+    0 2px 4px rgba(16, 18, 23, 0.05),
+    0 20px 48px -12px rgba(16, 18, 23, 0.18),
+    0 0 0 1px rgba(217,119,6,0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-/* Gradient text — darker ambers for contrast on white */
+/* Premium elevation tokens */
+.elev-1 { box-shadow: 0 1px 2px rgba(16,18,23,.05), 0 4px 12px -4px rgba(16,18,23,.08); }
+.elev-2 { box-shadow: 0 2px 4px rgba(16,18,23,.05), 0 12px 32px -8px rgba(16,18,23,.14); }
+.elev-3 { box-shadow: 0 4px 8px rgba(16,18,23,.06), 0 28px 60px -12px rgba(16,18,23,.22); }
+
+/* Gradient text — living amber gradient for a premium feel */
 .gradient-text {
-  background: linear-gradient(135deg, #E89800 0%, #D97706 50%, #C2410C 100%);
+  background: linear-gradient(110deg, #E89800, #D97706, #C2410C, #D97706, #E89800);
+  background-size: 220% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: textShine 7s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text { animation: none; }
 }
 
 .gradient-text-white {

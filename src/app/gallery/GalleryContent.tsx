@@ -8,11 +8,11 @@ import { X, ZoomIn } from "lucide-react";
 
 const GALLERY_ITEMS = [
   // Facility / operations
-  { src: "/images/gallery/-zxk.webp", alt: "MaxVolt Facility", category: "Facility" },
-  { src: "/images/gallery/-xgo.webp", alt: "MaxVolt Operations", category: "Facility" },
-  { src: "/images/gallery/-crj.webp", alt: "MaxVolt Team", category: "Team" },
-  { src: "/images/gallery/-pve.webp", alt: "MaxVolt Manufacturing", category: "Manufacturing" },
-  { src: "/images/gallery/-okz.webp", alt: "MaxVolt Workplace", category: "Facility" },
+  { src: "/images/gallery/-zxk.webp", alt: "Maxvolt Facility", category: "Facility" },
+  { src: "/images/gallery/-xgo.webp", alt: "Maxvolt Operations", category: "Facility" },
+  { src: "/images/gallery/-crj.webp", alt: "Maxvolt Team", category: "Team" },
+  { src: "/images/gallery/-pve.webp", alt: "Maxvolt Manufacturing", category: "Manufacturing" },
+  { src: "/images/gallery/-okz.webp", alt: "Maxvolt Workplace", category: "Facility" },
   // Products
   { src: "/images/product/e-rickshaw-lithium-battery-ohn.webp", alt: "E-Rickshaw Battery", category: "Products" },
   { src: "/images/product/e-scooter-bike-lithium-battery-mpu.webp", alt: "E-Scooter Battery", category: "Products" },
@@ -34,8 +34,8 @@ const GALLERY_ITEMS = [
   { src: "/images/our-team/mukesh-gupta-cva.webp", alt: "Mukesh Gupta - CMO", category: "Team" },
   // Category visuals
   { src: "/images/category/powered-with-new-gen-technology-enj.webp", alt: "New Gen Technology", category: "Technology" },
-  { src: "/images/category/why-choose-us-wrn.webp", alt: "Why Choose MaxVolt", category: "Technology" },
-  { src: "/images/category/about-us-eej.webp", alt: "About MaxVolt", category: "Facility" },
+  { src: "/images/category/why-choose-us-wrn.webp", alt: "Why Choose Maxvolt", category: "Technology" },
+  { src: "/images/category/about-us-eej.webp", alt: "About Maxvolt", category: "Facility" },
 ];
 
 const CATEGORIES = ["All", ...Array.from(new Set(GALLERY_ITEMS.map(g => g.category)))];
@@ -50,7 +50,7 @@ export default function GalleryContent() {
     <>
       <PageHero
         badge="Gallery"
-        title={<>Inside <span className="gradient-text">MaxVolt</span></>}
+        title={<>Inside <span className="gradient-text">Maxvolt</span></>}
         description="A window into our manufacturing facility, products, team, and the culture powering India's lithium battery revolution."
       />
 

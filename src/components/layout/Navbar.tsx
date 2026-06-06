@@ -49,7 +49,7 @@ export default function Navbar() {
               <div className="absolute inset-0 rounded-lg bg-[#FFD100] opacity-0 blur-xl group-hover:opacity-20 transition-opacity duration-500" />
               <Image
                 src="/images/logo.webp"
-                alt="MaxVolt Energy"
+                alt="Maxvolt Energy"
                 width={160}
                 height={48}
                 className="h-10 w-auto object-contain relative z-10"

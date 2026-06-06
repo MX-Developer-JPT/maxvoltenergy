@@ -9,9 +9,9 @@ const CSR_PILLARS = [
   {
     Icon: Leaf,
     title: "Environmental Responsibility",
-    description: "MaxVolt integrates sustainability at every level — from eco-friendly manufacturing processes to our dedicated MaxVolt ReEarth recycling subsidiary for responsible battery end-of-life management.",
+    description: "Maxvolt integrates sustainability at every level — from eco-friendly manufacturing processes to our dedicated Maxvolt ReEarth recycling subsidiary for responsible battery end-of-life management.",
     color: "#FFD100",
-    initiatives: ["Lithium battery recycling program (MaxVolt ReEarth)", "Eco-Series product line with lower environmental footprint", "Reduced carbon emissions through EV battery adoption", "Sustainable material sourcing"],
+    initiatives: ["Lithium battery recycling program (Maxvolt ReEarth)", "Eco-Series product line with lower environmental footprint", "Reduced carbon emissions through EV battery adoption", "Sustainable material sourcing"],
   },
   {
     Icon: Users,
@@ -30,9 +30,9 @@ const CSR_PILLARS = [
   {
     Icon: Recycle,
     title: "Battery Recycling",
-    description: "Through our subsidiary MaxVolt ReEarth, we conduct R&D on lithium-ion battery recycling technologies — ensuring responsible end-of-life management for the batteries we manufacture.",
+    description: "Through our subsidiary Maxvolt ReEarth, we conduct R&D on lithium-ion battery recycling technologies — ensuring responsible end-of-life management for the batteries we manufacture.",
     color: "#7c3aed",
-    initiatives: ["MaxVolt ReEarth recycling subsidiary", "Research on lithium-ion recycling technologies", "Responsible disposal programs", "Extended producer responsibility compliance"],
+    initiatives: ["Maxvolt ReEarth recycling subsidiary", "Research on lithium-ion recycling technologies", "Responsible disposal programs", "Extended producer responsibility compliance"],
   },
 ];
 
@@ -42,7 +42,7 @@ export default function CSRContent() {
       <PageHero
         badge="Corporate Social Responsibility"
         title={<>Growing With <span className="gradient-text">Purpose</span></>}
-        description="At MaxVolt Energy, we believe that business growth must go hand-in-hand with environmental stewardship and community development. Our CSR initiatives reflect our commitment to a sustainable electric future."
+        description="At Maxvolt Energy, we believe that business growth must go hand-in-hand with environmental stewardship and community development. Our CSR initiatives reflect our commitment to a sustainable electric future."
       >
         <Link href="/investors" className="inline-flex items-center gap-2 text-[#71717a] hover:text-[#15171c] text-sm transition-colors">
           <ArrowLeft size={13} />
@@ -91,7 +91,7 @@ export default function CSRContent() {
                 <Recycle size={28} className="text-[#D97706]" />
               </div>
               <div className="flex-1">
-                <h3 className="text-[#15171c] font-bold text-2xl mb-2">MaxVolt ReEarth</h3>
+                <h3 className="text-[#15171c] font-bold text-2xl mb-2">Maxvolt ReEarth</h3>
                 <p className="text-[#52525b] text-sm leading-relaxed">
                   Our dedicated subsidiary conducting research into lithium-ion battery recycling technologies —
                   ensuring that batteries we manufacture today are responsibly managed at end of life.

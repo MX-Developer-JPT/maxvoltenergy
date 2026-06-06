@@ -51,7 +51,7 @@ export default function LoginForm() {
           <Lock size={22} className="text-[#D97706]" />
         </div>
         <h1 className="text-xl font-black text-[#15171c] text-center mb-1">Secure Portal</h1>
-        <p className="text-[#71717a] text-sm text-center mb-6">MaxVolt enquiry management — authorized access only</p>
+        <p className="text-[#71717a] text-sm text-center mb-6">Maxvolt enquiry management — authorized access only</p>
 
         <form onSubmit={submit} className="space-y-3">
           <div className="relative">

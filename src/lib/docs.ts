@@ -29,7 +29,7 @@ export const DOC_FILES: Record<string, string> = {
   "Corrigendum Expenditure Statement Final": "/docs/corrigendum-exp-statement-final-zle.pdf",
   "Board Meeting Intimation (12 May 2026)": "/docs/bmintimation12052026-wqt.pdf",
   "Board Meeting Intimation Revised (12 May 2026)": "/docs/bm-intimation12052026revised-lhj.pdf",
-  "MaxVolt Outcome of Board Meeting": "/docs/maxvoltoutcome-hqo.pdf",
+  "Maxvolt Outcome of Board Meeting": "/docs/maxvoltoutcome-hqo.pdf",
 
   // ── Shareholding Pattern ──
   "List of Shareholders as on 31-03-2024": "/docs/list-of-shareholders-as-on-31-03-2024-yak.pdf",
@@ -37,9 +37,9 @@ export const DOC_FILES: Record<string, string> = {
   "List of Shareholders as on 31.03.2022": "/docs/list-of-shareholder-as-on-31-03-2022-lay.pdf",
 
   // ── Annual Reports / Financials ──
-  "MaxVolt Annual Report FY 2023-24": "/docs/annual-report-2023-24-ium.pdf",
-  "MaxVolt Annual Report FY 2022-23": "/docs/annual-report-2022-23-zhq.pdf",
-  "MaxVolt Annual Report FY 2021-22": "/docs/annual-report-2021-22-kyd.pdf",
+  "Maxvolt Annual Report FY 2023-24": "/docs/annual-report-2023-24-ium.pdf",
+  "Maxvolt Annual Report FY 2022-23": "/docs/annual-report-2022-23-zhq.pdf",
+  "Maxvolt Annual Report FY 2021-22": "/docs/annual-report-2021-22-kyd.pdf",
   "Financials 2024-25": "/docs/financials-2024-25-hvs.pdf",
   "Re-Audited Financials 2023-24": "/docs/re-audited-financials-2023-24-hep.pdf",
   "LR Half Yearly Financials 30.09.2025": "/docs/lr-half-yearly-financials-30-09-2025-grz.pdf",

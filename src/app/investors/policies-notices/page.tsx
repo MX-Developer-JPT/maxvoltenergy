@@ -5,8 +5,8 @@ import { FileText, ArrowLeft, Shield } from "lucide-react";
 import DownloadButton from "@/components/ui/DownloadButton";
 
 export const metadata: Metadata = {
-  title: "Policies & Notices | MaxVolt Energy Investors",
-  description: "MaxVolt Energy policies, statutory notices, and financial reports.",
+  title: "Policies & Notices | Maxvolt Energy Investors",
+  description: "Maxvolt Energy policies, statutory notices, and financial reports.",
 };
 
 const POLICY_DOCS = [
@@ -32,7 +32,7 @@ export default function PoliciesNoticesPage() {
       <PageHero
         badge="Policies & Notices"
         title={<>Governance <span className="gradient-text">Documents</span></>}
-        description="MaxVolt Energy's corporate policies, statutory notices, and governance documents ensuring transparency and regulatory compliance."
+        description="Maxvolt Energy's corporate policies, statutory notices, and governance documents ensuring transparency and regulatory compliance."
       >
         <Link href="/investors" className="inline-flex items-center gap-2 text-[#71717a] hover:text-[#15171c] text-sm transition-colors">
           <ArrowLeft size={13} />

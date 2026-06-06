@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/ui/ProductPageTemplate";
 
 export const metadata: Metadata = {
-  title: "Lithium Battery Energy Storage Solutions | MaxVolt Energy",
-  description: "MaxVolt Lithium Battery Energy Storage – residential, commercial & grid-scale. High density, scalable, 95%+ round-trip efficiency. India's experienced ESS provider.",
+  title: "Lithium Battery Energy Storage Solutions | Maxvolt Energy",
+  description: "Maxvolt Lithium Battery Energy Storage – residential, commercial & grid-scale. High density, scalable, 95%+ round-trip efficiency. India's experienced ESS provider.",
 };
 
 const productData = {
@@ -18,7 +18,7 @@ const productData = {
     "/images/product/51-2v-100ah-inverter-battery-oqh.webp",
   ],
   description: "Scalable lithium energy storage for residential, commercial, and grid applications.",
-  longDescription: "MaxVolt's Lithium Battery Energy Storage Solutions represent the next frontier in energy independence. Featuring high energy density, millisecond response times, and >95% round-trip efficiency, our ESS products seamlessly integrate with solar panels, wind turbines, and grid infrastructure to provide reliable, clean energy storage at any scale.",
+  longDescription: "Maxvolt's Lithium Battery Energy Storage Solutions represent the next frontier in energy independence. Featuring high energy density, millisecond response times, and >95% round-trip efficiency, our ESS products seamlessly integrate with solar panels, wind turbines, and grid infrastructure to provide reliable, clean energy storage at any scale.",
   features: [
     "High energy density enabling large power storage in compact packages",
     "Rapid response times — discharge or store within milliseconds",

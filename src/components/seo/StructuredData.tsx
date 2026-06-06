@@ -9,7 +9,7 @@ export default function StructuredData() {
       {
         "@type": "Organization",
         "@id": `${SITE_CONFIG.url}/#organization`,
-        name: "MaxVolt Energy Industries Limited",
+        name: "Maxvolt Energy Industries Limited",
         url: SITE_CONFIG.url,
         logo: `${SITE_CONFIG.url}/images/logo.webp`,
         description: SITE_CONFIG.description,
@@ -34,7 +34,7 @@ export default function StructuredData() {
       {
         "@type": "LocalBusiness",
         "@id": `${SITE_CONFIG.url}/#localbusiness`,
-        name: "MaxVolt Energy Industries Limited",
+        name: "Maxvolt Energy Industries Limited",
         image: `${SITE_CONFIG.url}/images/logo.webp`,
         url: SITE_CONFIG.url,
         telephone: "+91-120-4291595",
@@ -54,7 +54,7 @@ export default function StructuredData() {
         "@type": "WebSite",
         "@id": `${SITE_CONFIG.url}/#website`,
         url: SITE_CONFIG.url,
-        name: "MaxVolt Energy",
+        name: "Maxvolt Energy",
         publisher: { "@id": `${SITE_CONFIG.url}/#organization` },
       },
     ],

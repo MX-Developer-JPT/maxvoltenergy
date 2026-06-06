@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/ui/ProductPageTemplate";
 
 export const metadata: Metadata = {
-  title: "Customized Battery Solution | MaxVolt Energy",
-  description: "MaxVolt Custom Lithium Battery Packs – tailor-made for medical devices, industrial equipment, specialty EVs & consumer electronics. Competitive pricing.",
+  title: "Customized Battery Solution | Maxvolt Energy",
+  description: "Maxvolt Custom Lithium Battery Packs – tailor-made for medical devices, industrial equipment, specialty EVs & consumer electronics. Competitive pricing.",
 };
 
 const productData = {
@@ -13,7 +13,7 @@ const productData = {
   color: "#ec4899",
   image: "/images/product/customized-battery-solution-jkz.webp",
   description: "Tailor-made battery packs for medical devices, industrial, and specialized applications.",
-  longDescription: "Every project has unique power requirements — and MaxVolt's Customized Battery Solutions team delivers exactly that. From medical devices requiring precise voltage stability to industrial robots demanding peak discharge rates, we design and manufacture bespoke lithium battery packs with advanced BMS, smart charging, and the highest safety standards. Power your world, exactly the way you want it.",
+  longDescription: "Every project has unique power requirements — and Maxvolt's Customized Battery Solutions team delivers exactly that. From medical devices requiring precise voltage stability to industrial robots demanding peak discharge rates, we design and manufacture bespoke lithium battery packs with advanced BMS, smart charging, and the highest safety standards. Power your world, exactly the way you want it.",
   features: [
     "Fully tailor-made design to exact voltage, capacity, and form factor specifications",
     "High-capacity lithium-ion cells with industry-leading energy density",

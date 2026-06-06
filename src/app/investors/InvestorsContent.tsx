@@ -23,7 +23,7 @@ const INVESTOR_SECTIONS = [
   {
     Icon: Users,
     title: "Management",
-    description: "Meet the Board of Directors and Key Managerial Personnel driving MaxVolt's strategic vision.",
+    description: "Meet the Board of Directors and Key Managerial Personnel driving Maxvolt's strategic vision.",
     href: "/investors/management",
     color: "#FFA800",
     items: ["Board of Directors", "Key Managerial Personnel", "Executive Profiles", "Committee Compositions"],
@@ -94,7 +94,7 @@ export default function InvestorsContent() {
       <PageHero
         badge="Investor Relations"
         title={<>Transparent Growth.<br /><span className="gradient-text">Investor Confidence.</span></>}
-        description="MaxVolt Energy Industries Limited is listed on NSE SME Emerge. Access earnings calls, annual reports, corporate governance documents, and regulatory filings for informed investment decisions."
+        description="Maxvolt Energy Industries Limited is listed on NSE SME Emerge. Access earnings calls, annual reports, corporate governance documents, and regulatory filings for informed investment decisions."
       />
 
       {/* Key highlights */}
@@ -133,7 +133,7 @@ export default function InvestorsContent() {
                   Listed on NSE SME Emerge Platform
                 </h2>
                 <p className="text-[#52525b] text-sm leading-relaxed max-w-2xl">
-                  MaxVolt Energy Industries Limited successfully listed on the NSE SME Emerge platform in 2025.
+                  Maxvolt Energy Industries Limited successfully listed on the NSE SME Emerge platform in 2025.
                   The IPO strengthened our financial base, expanded manufacturing capacity, advanced R&D capabilities,
                   and extended our market reach — all under strict regulatory compliance and full transparency.
                 </p>

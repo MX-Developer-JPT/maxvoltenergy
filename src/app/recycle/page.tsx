@@ -3,8 +3,8 @@ import PageHero from "@/components/ui/PageHero";
 import { Recycle, Leaf, ArrowRight, ExternalLink, FlaskConical } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Recycle | MaxVolt ReEarth Battery Recycling",
-  description: "MaxVolt ReEarth – lithium battery recycling program. Responsible end-of-life management for EV and energy storage batteries.",
+  title: "Recycle | Maxvolt ReEarth Battery Recycling",
+  description: "Maxvolt ReEarth – lithium battery recycling program. Responsible end-of-life management for EV and energy storage batteries.",
 };
 
 export default function RecyclePage() {
@@ -12,8 +12,8 @@ export default function RecyclePage() {
     <>
       <PageHero
         badge="Battery Recycling"
-        title={<>Closing the Loop with <span className="gradient-text">MaxVolt ReEarth</span></>}
-        description="MaxVolt ReEarth is our dedicated subsidiary researching and implementing sustainable lithium-ion battery recycling technologies — ensuring every battery we make has a responsible end of life."
+        title={<>Closing the Loop with <span className="gradient-text">Maxvolt ReEarth</span></>}
+        description="Maxvolt ReEarth is our dedicated subsidiary researching and implementing sustainable lithium-ion battery recycling technologies — ensuring every battery we make has a responsible end of life."
       />
 
       <section className="section-padding bg-[#f7f7f5]">
@@ -29,11 +29,11 @@ export default function RecyclePage() {
                 pollution, and loss of valuable critical minerals.
               </p>
               <p className="text-[#52525b] text-sm leading-relaxed mb-6">
-                MaxVolt ReEarth is our commitment to a circular battery economy — recovering lithium, cobalt, nickel,
+                Maxvolt ReEarth is our commitment to a circular battery economy — recovering lithium, cobalt, nickel,
                 and other valuable materials while preventing environmental harm.
               </p>
               <a href="https://maxvoltreearth.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFD100]/90 transition-all">
-                Visit MaxVolt ReEarth
+                Visit Maxvolt ReEarth
                 <ExternalLink size={14} />
               </a>
             </div>
@@ -58,9 +58,9 @@ export default function RecyclePage() {
 
           <div className="p-8 rounded-2xl border border-[#FFD100]/10 bg-[#FFD100]/4 text-center">
             <Recycle size={36} className="text-[#D97706] mx-auto mb-4" />
-            <h3 className="text-[#15171c] font-bold text-xl mb-3">Recycle Your MaxVolt Battery</h3>
+            <h3 className="text-[#15171c] font-bold text-xl mb-3">Recycle Your Maxvolt Battery</h3>
             <p className="text-[#5f6470] text-sm mb-6 max-w-md mx-auto">
-              Contact us to locate your nearest MaxVolt authorized battery collection point or to arrange
+              Contact us to locate your nearest Maxvolt authorized battery collection point or to arrange
               pickup for end-of-life batteries.
             </p>
             <a href="/contact-us" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFD100]/90 transition-all">

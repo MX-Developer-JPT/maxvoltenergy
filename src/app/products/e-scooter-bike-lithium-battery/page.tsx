@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/ui/ProductPageTemplate";
 
 export const metadata: Metadata = {
-  title: "E-Scooter & Bike Lithium Battery | MaxVolt Energy",
-  description: "MaxVolt E-Scooter/Bike Lithium Battery – 48V to 74V, 24Ah to 40Ah. High energy density, quick charge, advanced BMS. India's trusted EV battery supplier.",
+  title: "E-Scooter & Bike Lithium Battery | Maxvolt Energy",
+  description: "Maxvolt E-Scooter/Bike Lithium Battery – 48V to 74V, 24Ah to 40Ah. High energy density, quick charge, advanced BMS. India's trusted EV battery supplier.",
 };
 
 const productData = {
@@ -18,7 +18,7 @@ const productData = {
     "/images/product/e-scooter-battery-74v-40ah-qrg.webp",
   ],
   description: "Compact, powerful batteries engineered for modern electric two-wheelers.",
-  longDescription: "MaxVolt's E-Scooter/Bike Lithium Battery range delivers the perfect balance of power, weight, and safety for electric two-wheelers. With a comprehensive lineup from 48V to 74V, our batteries integrate seamlessly with all major scooter and bike platforms — delivering extended range, quick charging, and an intelligent BMS that protects your investment.",
+  longDescription: "Maxvolt's E-Scooter/Bike Lithium Battery range delivers the perfect balance of power, weight, and safety for electric two-wheelers. With a comprehensive lineup from 48V to 74V, our batteries integrate seamlessly with all major scooter and bike platforms — delivering extended range, quick charging, and an intelligent BMS that protects your investment.",
   features: [
     "Compact, lightweight construction integrating seamlessly with vehicle design",
     "High-energy density for improved vehicle performance and extended range",

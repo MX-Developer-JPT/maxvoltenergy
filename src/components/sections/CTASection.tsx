@@ -30,7 +30,7 @@ export default function CTASection() {
         <motion.div style={{ y: bgY }} className="absolute inset-[-10%]">
           <Image
             src="/images/banner/banner-ygm.webp"
-            alt="MaxVolt CTA"
+            alt="Maxvolt CTA"
             fill
             className="object-cover object-center"
             sizes="100vw"

@@ -48,7 +48,7 @@ export default function EarningsContent() {
       <PageHero
         badge="Earnings Call"
         title={<>Financial Progress.<br /><span className="gradient-text">Operational Growth.</span></>}
-        description="Our earnings calls provide a clear view of MaxVolt Energy's financial performance, production output, demand across electric mobility and energy storage sectors, R&D progress, and market conditions."
+        description="Our earnings calls provide a clear view of Maxvolt Energy's financial performance, production output, demand across electric mobility and energy storage sectors, R&D progress, and market conditions."
       >
         <Link href="/investors" className="inline-flex items-center gap-2 text-[#71717a] hover:text-[#15171c] text-sm transition-colors">
           <ArrowLeft size={13} />

@@ -12,7 +12,7 @@ interface BlogPost {
   createdAt: number; updatedAt: number;
 }
 
-const EMPTY = { title: "", category: "News", excerpt: "", content: "", author: "MaxVolt Energy", coverImage: "", published: true };
+const EMPTY = { title: "", category: "News", excerpt: "", content: "", author: "Maxvolt Energy", coverImage: "", published: true };
 const CATEGORIES = ["News", "EV Industry", "Technology", "Product Guide", "Sustainability", "Safety & Compliance", "Solar Energy"];
 
 export default function BlogManager() {
@@ -25,10 +25,16 @@ export default function BlogManager() {
 
   const load = async () => {
     setLoading(true);
-    const res = await fetch("/api/blog");
-    const data = await res.json();
-    setPosts(data.posts || []);
-    setLoading(false);
+    try {
+      const res = await fetch("/api/blog", { cache: "no-store" });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      const data = await res.json();
+      setPosts(data.posts || []);
+    } catch {
+      setPosts([]);
+    } finally {
+      setLoading(false);
+    }
   };
   useEffect(() => { load(); }, []);
 
@@ -123,14 +129,14 @@ export default function BlogManager() {
             <motion.form
               initial={{ scale: 0.96, y: 16 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.96, y: 16 }}
               onClick={(e) => e.stopPropagation()} onSubmit={save}
-              className="bg-white rounded-2xl p-6 max-w-2xl w-full my-8 shadow-2xl"
+              className="bg-white rounded-2xl p-6 max-w-2xl w-full my-8 shadow-2xl max-h-[90vh] flex flex-col"
             >
-              <div className="flex items-center justify-between mb-5">
+              <div className="flex items-center justify-between mb-5 shrink-0">
                 <h3 className="text-lg font-black text-[#15171c]">{editing ? "Edit Post" : "New Post"}</h3>
                 <button type="button" onClick={() => setShowForm(false)} className="text-[#a1a1aa] hover:text-[#15171c]"><X size={18} /></button>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-3 overflow-y-auto flex-1 pr-1 -mr-1">
                 <Field label="Title *">
                   <input required value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className={inputCls} placeholder="Article headline" />
                 </Field>
@@ -159,7 +165,7 @@ export default function BlogManager() {
                 </label>
               </div>
 
-              <div className="flex items-center justify-end gap-3 mt-6">
+              <div className="flex items-center justify-end gap-3 mt-6 shrink-0 border-t border-black/5 pt-4">
                 <button type="button" onClick={() => setShowForm(false)} className="px-5 py-2.5 rounded-xl border border-black/10 text-[#52525b] text-sm font-medium">Cancel</button>
                 <button type="submit" disabled={saving} className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFA800] disabled:opacity-60">
                   {saving ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}

@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "", "/about-us", "/about-us/certificates", "/products", "/solutions",
     "/battery-calculator", "/find-dealer", "/our-presence", "/contact-us",
-    "/support", "/media", "/blog", "/gallery", "/career", "/recycle",
+    "/support", "/media", "/blog", "/faq", "/gallery", "/career", "/recycle",
     "/investors", "/investors/earnings-call", "/investors/management",
     "/investors/corporate-governance", "/investors/corporate-announcement",
     "/investors/shareholding-pattern", "/investors/annual-reports",

@@ -3,8 +3,8 @@ import PageHero from "@/components/ui/PageHero";
 import { Briefcase, MapPin, ArrowRight, Zap, Users, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Careers | MaxVolt Energy Industries Limited",
-  description: "Join MaxVolt Energy – India's fastest-growing lithium battery manufacturer. 170+ team members. Openings in engineering, sales, manufacturing, and R&D.",
+  title: "Careers | Maxvolt Energy Industries Limited",
+  description: "Join Maxvolt Energy – India's fastest-growing lithium battery manufacturer. 170+ team members. Openings in engineering, sales, manufacturing, and R&D.",
 };
 
 const OPENINGS = [
@@ -22,10 +22,10 @@ export default function CareerPage() {
       <PageHero
         badge="Join Our Team"
         title={<>Power the <span className="gradient-text">EV Revolution</span></>}
-        description="MaxVolt Energy is a 170+ member team on a mission to build India's best lithium batteries. We're always looking for talented engineers, sales leaders, and operations experts."
+        description="Maxvolt Energy is a 170+ member team on a mission to build India's best lithium batteries. We're always looking for talented engineers, sales leaders, and operations experts."
       />
 
-      {/* Why MaxVolt */}
+      {/* Why Maxvolt */}
       <section className="py-16 bg-[#f7f7f5] border-b border-black/6">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

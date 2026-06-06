@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | MaxVolt Energy Industries Limited",
-  description: "MaxVolt Energy's privacy policy covering data collection, use, and protection practices.",
+  title: "Privacy Policy | Maxvolt Energy Industries Limited",
+  description: "Maxvolt Energy's privacy policy covering data collection, use, and protection practices.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -12,7 +12,7 @@ export default function PrivacyPolicyPage() {
       <PageHero
         badge="Legal"
         title={<>Privacy <span className="gradient-text">Policy</span></>}
-        description="MaxVolt Energy Industries Limited is committed to protecting your privacy. This policy explains how we collect, use, and safeguard your information."
+        description="Maxvolt Energy Industries Limited is committed to protecting your privacy. This policy explains how we collect, use, and safeguard your information."
       />
       <section className="section-padding bg-[#f7f7f5]">
         <div className="container-custom max-w-3xl">
@@ -28,7 +28,7 @@ export default function PrivacyPolicyPage() {
               },
               {
                 title: "Information Sharing",
-                content: "MaxVolt Energy does not sell, trade, or rent your personal information to third parties. We may share information with trusted service partners who assist in operating our website and business, subject to confidentiality agreements.",
+                content: "Maxvolt Energy does not sell, trade, or rent your personal information to third parties. We may share information with trusted service partners who assist in operating our website and business, subject to confidentiality agreements.",
               },
               {
                 title: "Data Security",
@@ -49,7 +49,7 @@ export default function PrivacyPolicyPage() {
               </div>
             ))}
             <p className="text-[#71717a] text-xs pt-4 border-t border-black/6">
-              Last updated: June 2025 · MaxVolt Energy Industries Limited
+              Last updated: June 2025 · Maxvolt Energy Industries Limited
             </p>
           </div>
         </div>

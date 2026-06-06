@@ -11,8 +11,8 @@ import BlogPreviewSection from "@/components/sections/BlogPreviewSection";
 import CTASection from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
-  title: "MaxVolt Energy Industries Limited | Lithium Battery Manufacturer India",
-  description: "MaxVolt Energy – India's leading lithium battery manufacturer. AIS 156 certified batteries for e-rickshaws, e-scooters, solar storage & EVs. Listed on NSE SME Emerge.",
+  title: "Maxvolt Energy Industries Limited | Lithium Battery Manufacturer India",
+  description: "Maxvolt Energy – India's leading lithium battery manufacturer. AIS 156 certified batteries for e-rickshaws, e-scooters, solar storage & EVs. Listed on NSE SME Emerge.",
 };
 
 export default function HomePage() {

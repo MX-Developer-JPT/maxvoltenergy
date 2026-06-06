@@ -9,23 +9,23 @@ import { ArrowRight, Calendar } from "lucide-react";
 const POSTS = [
   {
     title: "Rising Fuel Prices Accelerate India's EV Shift",
-    excerpt: "West Asia tensions and rising petroleum costs are fast-tracking India's transition to electric vehicles — positioning MaxVolt at the forefront.",
+    excerpt: "West Asia tensions and rising petroleum costs are fast-tracking India's transition to electric vehicles — positioning Maxvolt at the forefront.",
     image: "/images/blog/rising-fuel-prices-and-west-asia-tensions-accelerate-ev-shift-strengthening-demand-for-maxvolt-solu-ael.webp",
     date: "June 2025",
     category: "EV Industry",
     color: "#FFD100",
   },
   {
-    title: "MaxVolt ReEarth: Lithium Battery Recycling Research Published Internationally",
-    excerpt: "MaxVolt ReEarth's breakthrough research on advanced lithium-ion battery recycling technologies gains international recognition.",
+    title: "Maxvolt ReEarth: Lithium Battery Recycling Research Published Internationally",
+    excerpt: "Maxvolt ReEarth's breakthrough research on advanced lithium-ion battery recycling technologies gains international recognition.",
     image: "/images/blog/maxvolt-reearth-publishes-study-on-advanced-lithium-ion-battery-recycling-technologies-nnx.webp",
     date: "May 2025",
     category: "Sustainability",
     color: "#FFA800",
   },
   {
-    title: "EV Adoption Strengthening Demand for MaxVolt Solutions",
-    excerpt: "India's expanding EV ecosystem is driving unprecedented demand for domestic lithium battery manufacturers like MaxVolt Energy.",
+    title: "EV Adoption Strengthening Demand for Maxvolt Solutions",
+    excerpt: "India's expanding EV ecosystem is driving unprecedented demand for domestic lithium battery manufacturers like Maxvolt Energy.",
     image: "/images/blog/fuel-price-hikes-and-west-asia-tensions-accelerate-ev-adoption-boosting-demand-for-maxvolt-energy-s-xmk.webp",
     date: "April 2025",
     category: "Market",

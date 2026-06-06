@@ -39,7 +39,7 @@ export default function GovernanceContent() {
       <PageHero
         badge="Corporate Governance"
         title={<>Governance Beyond<br /><span className="gradient-text">Compliance</span></>}
-        description="MaxVolt Energy's corporate governance framework ensures integrity, accountability, and ethical conduct at every level. We believe governance should satisfy the spirit of regulations — not merely their technical requirements."
+        description="Maxvolt Energy's corporate governance framework ensures integrity, accountability, and ethical conduct at every level. We believe governance should satisfy the spirit of regulations — not merely their technical requirements."
       >
         <Link href="/investors" className="inline-flex items-center gap-2 text-[#71717a] hover:text-[#15171c] text-sm transition-colors">
           <ArrowLeft size={13} />

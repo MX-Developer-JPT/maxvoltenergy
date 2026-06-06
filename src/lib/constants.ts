@@ -1,5 +1,5 @@
 export const SITE_CONFIG = {
-  name: "MaxVolt Energy Industries Limited",
+  name: "Maxvolt Energy Industries Limited",
   tagline: "Powering India's Electric Future",
   description: "Industry-leading lithium battery technology for EVs, solar systems, and energy storage.",
   url: "https://max1.maxvolt-one.co.in",
@@ -376,13 +376,13 @@ export const TESTIMONIALS = [
   {
     name: "Rent Energies",
     role: "E-Rickshaw Fleet Operator",
-    content: "The MaxVolt e-rickshaw battery has transformed our fleet operations. Quick charging means our vehicles spend more time on the road and less time at the charging station.",
+    content: "The Maxvolt e-rickshaw battery has transformed our fleet operations. Quick charging means our vehicles spend more time on the road and less time at the charging station.",
     rating: 5,
   },
   {
     name: "Aakash Gupta",
     role: "E-Vehicle Dealer",
-    content: "Purchased dual batteries for our dealership and the reliability has been outstanding. Our customers keep coming back for MaxVolt products.",
+    content: "Purchased dual batteries for our dealership and the reliability has been outstanding. Our customers keep coming back for Maxvolt products.",
     rating: 5,
   },
   {
@@ -394,7 +394,7 @@ export const TESTIMONIALS = [
   {
     name: "Javed",
     role: "E-Bike Rider",
-    content: "Excellent battery backup and charging speed. MaxVolt has set a new standard for EV batteries in India.",
+    content: "Excellent battery backup and charging speed. Maxvolt has set a new standard for EV batteries in India.",
     rating: 5,
   },
 ];

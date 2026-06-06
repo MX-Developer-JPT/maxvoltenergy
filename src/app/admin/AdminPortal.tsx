@@ -40,11 +40,17 @@ export default function AdminPortal() {
 
   const load = async () => {
     setLoading(true);
-    const res = await fetch("/api/enquiries");
-    if (res.status === 401) { router.replace("/admin/login"); return; }
-    const data = await res.json();
-    setEnquiries(data.enquiries || []);
-    setLoading(false);
+    try {
+      const res = await fetch("/api/enquiries", { cache: "no-store" });
+      if (res.status === 401) { router.replace("/admin/login"); return; }
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      const data = await res.json();
+      setEnquiries(data.enquiries || []);
+    } catch {
+      setEnquiries([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => { load(); /* eslint-disable-next-line */ }, []);
@@ -98,7 +104,7 @@ export default function AdminPortal() {
       <div className="container-custom">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-2xl font-black text-[#15171c]">MaxVolt Admin Portal</h1>
+            <h1 className="text-2xl font-black text-[#15171c]">Maxvolt Admin Portal</h1>
             <p className="text-[#71717a] text-sm mt-1">Secure dashboard · manage enquiries and blog content.</p>
           </div>
           <div className="flex items-center gap-3">

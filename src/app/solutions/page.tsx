@@ -4,8 +4,8 @@ import Link from "next/link";
 import { Zap, Sun, Lightbulb, Cpu, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Solutions | MaxVolt Energy",
-  description: "MaxVolt Energy solutions for electric vehicles, portable lighting, solar storage, and consumer electronics.",
+  title: "Solutions | Maxvolt Energy",
+  description: "Maxvolt Energy solutions for electric vehicles, portable lighting, solar storage, and consumer electronics.",
 };
 
 const SOLUTIONS = [
@@ -49,7 +49,7 @@ export default function SolutionsPage() {
       <PageHero
         badge="Solutions"
         title={<>Powering Every <span className="gradient-text">Application</span></>}
-        description="From electric rickshaws to solar homes and consumer devices — MaxVolt Energy delivers lithium battery solutions across four key application domains."
+        description="From electric rickshaws to solar homes and consumer devices — Maxvolt Energy delivers lithium battery solutions across four key application domains."
       />
 
       <section className="section-padding bg-[#f7f7f5]">

@@ -47,7 +47,7 @@ export default function PresenceContent() {
       <PageHero
         badge="Our Presence"
         title={<>Pan India <span className="gradient-text">Network</span></>}
-        description="MaxVolt Energy operates across 22+ states and 150+ cities — with retail dealers, authorized service centers, and OEM partners spanning the entire Indian subcontinent."
+        description="Maxvolt Energy operates across 22+ states and 150+ cities — with retail dealers, authorized service centers, and OEM partners spanning the entire Indian subcontinent."
       />
 
       {/* Stats */}
@@ -160,7 +160,7 @@ export default function PresenceContent() {
           </h2>
           <p className="text-[#5f6470] text-sm mb-8 max-w-md mx-auto">
             We&apos;re actively seeking dealers and distributors in cities across India.
-            Join MaxVolt&apos;s growing network and power the EV revolution in your region.
+            Join Maxvolt&apos;s growing network and power the EV revolution in your region.
           </p>
           <a
             href="/contact-us#dealer"

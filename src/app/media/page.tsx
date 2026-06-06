@@ -3,8 +3,8 @@ import PageHero from "@/components/ui/PageHero";
 import { Newspaper, ExternalLink, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Media Coverage | MaxVolt Energy",
-  description: "MaxVolt Energy in the news – press releases, media coverage, and company announcements.",
+  title: "Media Coverage | Maxvolt Energy",
+  description: "Maxvolt Energy in the news – press releases, media coverage, and company announcements.",
 };
 
 const PRESS_ITEMS = [
@@ -12,28 +12,28 @@ const PRESS_ITEMS = [
     title: "Rising fuel prices and West Asia tensions accelerating EV adoption in India",
     source: "Energy News",
     date: "2025",
-    summary: "MaxVolt Energy positioned to benefit as rising fuel costs drive accelerated transition to electric vehicles across India.",
+    summary: "Maxvolt Energy positioned to benefit as rising fuel costs drive accelerated transition to electric vehicles across India.",
     color: "#FFD100",
   },
   {
-    title: "MaxVolt ReEarth research on lithium-ion battery recycling technologies",
+    title: "Maxvolt ReEarth research on lithium-ion battery recycling technologies",
     source: "CleanTech India",
     date: "2025",
-    summary: "MaxVolt's subsidiary ReEarth conducts groundbreaking research into sustainable lithium battery recycling, addressing end-of-life battery management.",
+    summary: "Maxvolt's subsidiary ReEarth conducts groundbreaking research into sustainable lithium battery recycling, addressing end-of-life battery management.",
     color: "#FFA800",
   },
   {
     title: "EV shift strengthening demand for Indian lithium battery manufacturers",
     source: "Economic Coverage",
     date: "2025",
-    summary: "India's push for domestic EV manufacturing is driving significant demand for homegrown lithium battery companies like MaxVolt Energy.",
+    summary: "India's push for domestic EV manufacturing is driving significant demand for homegrown lithium battery companies like Maxvolt Energy.",
     color: "#FF8C00",
   },
   {
-    title: "MaxVolt Energy lists on NSE SME Emerge Platform",
+    title: "Maxvolt Energy lists on NSE SME Emerge Platform",
     source: "NSE India / Business News",
     date: "2025",
-    summary: "MaxVolt Energy Industries Limited successfully completes IPO and lists on the NSE SME Emerge platform, achieving ₹100+ Crore revenue milestone.",
+    summary: "Maxvolt Energy Industries Limited successfully completes IPO and lists on the NSE SME Emerge platform, achieving ₹100+ Crore revenue milestone.",
     color: "#7c3aed",
   },
 ];
@@ -43,8 +43,8 @@ export default function MediaPage() {
     <>
       <PageHero
         badge="Media Coverage"
-        title={<>MaxVolt in the <span className="gradient-text">News</span></>}
-        description="Press coverage, company announcements, and industry news featuring MaxVolt Energy Industries Limited."
+        title={<>Maxvolt in the <span className="gradient-text">News</span></>}
+        description="Press coverage, company announcements, and industry news featuring Maxvolt Energy Industries Limited."
       />
 
       <section className="section-padding bg-[#f7f7f5]">

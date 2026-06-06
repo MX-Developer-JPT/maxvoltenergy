@@ -5,8 +5,8 @@ import Image from "next/image";
 import { Shield, CheckCircle2, ArrowLeft, Award } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Certificates | MaxVolt Energy",
-  description: "MaxVolt Energy certifications and quality standards – AIS 156, ISO, and TAC certificates for lithium battery manufacturing.",
+  title: "Certificates | Maxvolt Energy",
+  description: "Maxvolt Energy certifications and quality standards – AIS 156, ISO, and TAC certificates for lithium battery manufacturing.",
 };
 
 const CERTIFICATIONS = [
@@ -59,7 +59,7 @@ const CERTIFICATIONS = [
     name: "ISO Manufacturing Quality Standards",
     issuer: "International Organization for Standardization",
     description: "Quality management systems ensuring consistent production processes, multi-stage testing, and manufacturing excellence.",
-    products: "All MaxVolt Products",
+    products: "All Maxvolt Products",
     color: "#7c3aed",
     year: "Ongoing",
   },
@@ -71,7 +71,7 @@ export default function CertificatesPage() {
       <PageHero
         badge="Certifications"
         title={<>Safety You Can <span className="gradient-text">Trust</span></>}
-        description="MaxVolt Energy's batteries are certified to the highest Indian and international safety standards. Every battery undergoes multi-stage testing before leaving our Ghaziabad facility."
+        description="Maxvolt Energy's batteries are certified to the highest Indian and international safety standards. Every battery undergoes multi-stage testing before leaving our Ghaziabad facility."
       >
         <Link href="/about-us" className="inline-flex items-center gap-2 text-[#71717a] hover:text-[#15171c] text-sm transition-colors">
           <ArrowLeft size={13} />
@@ -118,7 +118,7 @@ export default function CertificatesPage() {
               <div>
                 <h3 className="text-[#15171c] font-bold mb-2">Our Quality Commitment</h3>
                 <p className="text-[#52525b] text-sm leading-relaxed">
-                  Every MaxVolt battery undergoes multi-stage testing including charge/discharge cycling,
+                  Every Maxvolt battery undergoes multi-stage testing including charge/discharge cycling,
                   thermal stress testing, vibration testing, and BMS validation before leaving our facility.
                   Our manufacturing processes comply with international quality standards to ensure every
                   battery delivered to customers meets our zero-compromise safety policy.

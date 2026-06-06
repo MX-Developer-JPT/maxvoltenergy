@@ -41,6 +41,7 @@ const FOOTER_LINKS = {
   "Support": [
     { label: "Contact Us", href: "/contact-us" },
     { label: "Support", href: "/support" },
+    { label: "FAQ", href: "/faq" },
     { label: "Media Coverage", href: "/media" },
     { label: "Sitemap", href: "/sitemap" },
     { label: "Privacy Policy", href: "/privacy-policy" },
@@ -93,7 +94,7 @@ export default function Footer() {
                 <div className="absolute inset-0 rounded-lg bg-[#FFD100] opacity-0 blur-xl group-hover:opacity-15 transition-opacity duration-500" />
                 <Image
                   src="/images/logo.webp"
-                  alt="MaxVolt Energy"
+                  alt="Maxvolt Energy"
                   width={160}
                   height={48}
                   className="h-10 w-auto object-contain relative z-10"
@@ -199,12 +200,12 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#71717a]">
-          <p>© {new Date().getFullYear()} MaxVolt Energy Industries Limited. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} Maxvolt Energy Industries Limited. All Rights Reserved.</p>
           <div className="flex items-center gap-4">
             <Link href="/privacy-policy" className="hover:text-[#52525b] transition-colors">Privacy Policy</Link>
             <Link href="/terms-and-conditions" className="hover:text-[#52525b] transition-colors">Terms & Conditions</Link>
             <a href="https://maxvoltreearth.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-[#D97706] transition-colors">
-              MaxVolt ReEarth <ExternalLink size={10} />
+              Maxvolt ReEarth <ExternalLink size={10} />
             </a>
           </div>
         </div>

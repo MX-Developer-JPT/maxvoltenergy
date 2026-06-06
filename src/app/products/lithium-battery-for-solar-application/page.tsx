@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/ui/ProductPageTemplate";
 
 export const metadata: Metadata = {
-  title: "Lithium Battery for Solar Application | MaxVolt Energy",
-  description: "MaxVolt Solar Lithium Battery – optimized for solar energy storage. Fast absorption, 3000+ cycle life, mobile app monitoring. India's premier solar battery manufacturer.",
+  title: "Lithium Battery for Solar Application | Maxvolt Energy",
+  description: "Maxvolt Solar Lithium Battery – optimized for solar energy storage. Fast absorption, 3000+ cycle life, mobile app monitoring. India's premier solar battery manufacturer.",
 };
 
 const productData = {
@@ -13,7 +13,7 @@ const productData = {
   color: "#f97316",
   image: "/images/product/lithium-battery-for-solar-application-zhs.webp",
   description: "Optimized for solar energy storage with fast absorption and long cycle life.",
-  longDescription: "MaxVolt's Solar Lithium Battery is purpose-engineered to work in harmony with photovoltaic systems. With exceptional fast-charge acceptance for rapidly absorbing solar surpluses, a 3,000+ cycle lifespan, and a user-friendly mobile monitoring app, our solar batteries help homeowners and businesses achieve true energy independence.",
+  longDescription: "Maxvolt's Solar Lithium Battery is purpose-engineered to work in harmony with photovoltaic systems. With exceptional fast-charge acceptance for rapidly absorbing solar surpluses, a 3,000+ cycle lifespan, and a user-friendly mobile monitoring app, our solar batteries help homeowners and businesses achieve true energy independence.",
   features: [
     "Exceptional energy density for efficient compact storage of solar electricity",
     "Fast-charging capabilities to quickly absorb excess solar energy during peak hours",

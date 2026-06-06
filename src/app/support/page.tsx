@@ -5,8 +5,8 @@ import { Phone, Mail, MessageCircle, MapPin, Wrench, Clock, Shield, ArrowRight }
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Support | MaxVolt Energy",
-  description: "MaxVolt Energy technical support, warranty, and service center information.",
+  title: "Support | Maxvolt Energy",
+  description: "Maxvolt Energy technical support, warranty, and service center information.",
 };
 
 export default function SupportPage() {
@@ -15,7 +15,7 @@ export default function SupportPage() {
       <PageHero
         badge="Customer Support"
         title={<>We&apos;re Here <span className="gradient-text">to Help</span></>}
-        description="MaxVolt's dedicated support team is available to assist with technical queries, warranty claims, battery troubleshooting, and service center locator."
+        description="Maxvolt's dedicated support team is available to assist with technical queries, warranty claims, battery troubleshooting, and service center locator."
       />
 
       <section className="section-padding bg-[#f7f7f5]">
@@ -39,10 +39,10 @@ export default function SupportPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { Icon: Wrench, title: "Technical Support", description: "Battery performance issues, BMS configuration, charging problems, and technical troubleshooting for all MaxVolt products.", color: "#7c3aed" },
-              { Icon: Shield, title: "Warranty Claims", description: "All MaxVolt batteries come with a manufacturer's warranty. Contact us with your model number and purchase date to initiate a claim.", color: "#f97316" },
-              { Icon: MapPin, title: "Service Center Locator", description: "Find the nearest MaxVolt authorized service center in your city. We have 6+ service centers across India.", color: "#ec4899" },
-              { Icon: Clock, title: "Replacement & Spares", description: "Genuine MaxVolt spare parts and replacement cells available through authorized dealers and service centers.", color: "#FFD100" },
+              { Icon: Wrench, title: "Technical Support", description: "Battery performance issues, BMS configuration, charging problems, and technical troubleshooting for all Maxvolt products.", color: "#7c3aed" },
+              { Icon: Shield, title: "Warranty Claims", description: "All Maxvolt batteries come with a manufacturer's warranty. Contact us with your model number and purchase date to initiate a claim.", color: "#f97316" },
+              { Icon: MapPin, title: "Service Center Locator", description: "Find the nearest Maxvolt authorized service center in your city. We have 6+ service centers across India.", color: "#ec4899" },
+              { Icon: Clock, title: "Replacement & Spares", description: "Genuine Maxvolt spare parts and replacement cells available through authorized dealers and service centers.", color: "#FFD100" },
             ].map(({ Icon, title, description, color }) => (
               <div key={title} className="flex gap-5 p-6 rounded-2xl frosted-card border border-black/6">
                 <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: `${color}12`, border: `1px solid ${color}25` }}>

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/ui/ProductPageTemplate";
 
 export const metadata: Metadata = {
-  title: "E-Rickshaw Lithium Battery | MaxVolt Energy",
-  description: "MaxVolt E-Rickshaw Lithium Battery – 51V 86Ah & 100Ah models. Fast charging, AIS 156 certified, advanced BMS. Solving battery drain for e-rickshaw drivers across India.",
+  title: "E-Rickshaw Lithium Battery | Maxvolt Energy",
+  description: "Maxvolt E-Rickshaw Lithium Battery – 51V 86Ah & 100Ah models. Fast charging, AIS 156 certified, advanced BMS. Solving battery drain for e-rickshaw drivers across India.",
 };
 
 const productData = {
@@ -18,7 +18,7 @@ const productData = {
     "/images/product/51-2v-200ah-e-rickshaw-battery-fjv.webp",
   ],
   description: "Fast-charging, high-capacity batteries solving the battery drain issue for e-rickshaw drivers.",
-  longDescription: "MaxVolt's E-Rickshaw Lithium Battery is purpose-built to solve the #1 challenge for e-rickshaw operators — battery drain. With advanced LiFePO4 chemistry, fast recharge capability, and an intelligent BMS, our batteries help drivers maximize their daily earnings with longer range and quicker turnaround at charging stations.",
+  longDescription: "Maxvolt's E-Rickshaw Lithium Battery is purpose-built to solve the #1 challenge for e-rickshaw operators — battery drain. With advanced LiFePO4 chemistry, fast recharge capability, and an intelligent BMS, our batteries help drivers maximize their daily earnings with longer range and quicker turnaround at charging stations.",
   features: [
     "Fast charging capability enabling quick return to service",
     "Compact, lightweight metal case design preserving passenger area",

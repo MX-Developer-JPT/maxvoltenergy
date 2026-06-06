@@ -82,7 +82,7 @@ function AboutStory() {
               <span className="gradient-text">₹100+ Crore Listed Company</span>
             </h2>
             <p className="text-[#52525b] text-base leading-relaxed mb-6">
-              MaxVolt Energy Industries Limited was established in 2019 with a simple but powerful vision —
+              Maxvolt Energy Industries Limited was established in 2019 with a simple but powerful vision —
               to manufacture world-class lithium battery packs in India for India&apos;s electric future.
             </p>
             <p className="text-[#52525b] text-base leading-relaxed mb-6">
@@ -129,7 +129,7 @@ function AboutStory() {
             <div className="relative h-52 rounded-2xl overflow-hidden mb-4 border border-black/6">
               <Image
                 src="/images/category/about-us-eej.webp"
-                alt="MaxVolt Energy Facility"
+                alt="Maxvolt Energy Facility"
                 fill
                 className="object-cover object-center"
                 sizes="600px"
@@ -185,7 +185,7 @@ function LeadershipSection() {
             Leadership <span className="gradient-text">Team</span>
           </h2>
           <p className="text-[#5f6470] max-w-lg mx-auto text-sm">
-            Seasoned professionals driving MaxVolt&apos;s mission to power India&apos;s electric revolution.
+            Seasoned professionals driving Maxvolt&apos;s mission to power India&apos;s electric revolution.
           </p>
         </motion.div>
 
@@ -263,7 +263,7 @@ function KeyStrengths() {
     "Pan-India presence across 22+ states",
     "6+ OEM partnerships with leading EV manufacturers",
     "Listed on NSE SME Emerge platform",
-    "MaxVolt ReEarth recycling subsidiary for sustainable operations",
+    "Maxvolt ReEarth recycling subsidiary for sustainable operations",
   ];
 
   return (
@@ -330,9 +330,9 @@ export default function AboutContent() {
   return (
     <>
       <PageHero
-        badge="About MaxVolt Energy"
+        badge="About Maxvolt Energy"
         title={<>India&apos;s Premier <span className="gradient-text">Lithium Battery</span> Manufacturer</>}
-        description="Founded in 2019, MaxVolt Energy Industries Limited has grown from a 15-battery-per-day startup to a NSE-listed company with ₹100+ Crore revenue and 170+ team members powering India's electric revolution."
+        description="Founded in 2019, Maxvolt Energy Industries Limited has grown from a 15-battery-per-day startup to a NSE-listed company with ₹100+ Crore revenue and 170+ team members powering India's electric revolution."
       />
       <MissionVision />
       <AboutStory />

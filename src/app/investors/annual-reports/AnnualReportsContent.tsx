@@ -9,21 +9,21 @@ import DownloadButton from "@/components/ui/DownloadButton";
 const REPORTS = [
   {
     year: "FY 2023-24",
-    title: "MaxVolt Annual Report FY 2023-24",
+    title: "Maxvolt Annual Report FY 2023-24",
     description: "Report covering AIS 156 certification achievement and production scale-up to 2,200-2,500 units/month",
     highlights: ["AIS 156 Certified", "Eco-Series Launch", "58+ Dealers", "Production Scale-Up"],
     color: "#D97706",
   },
   {
     year: "FY 2022-23",
-    title: "MaxVolt Annual Report FY 2022-23",
+    title: "Maxvolt Annual Report FY 2022-23",
     description: "Report covering R&D center establishment and production doubling to 50 batteries/day",
     highlights: ["R&D Center Established", "32 Retail Dealers", "4 OEM Partners", "Production Doubled"],
     color: "#D97706",
   },
   {
     year: "FY 2021-22",
-    title: "MaxVolt Annual Report FY 2021-22",
+    title: "Maxvolt Annual Report FY 2021-22",
     description: "Report covering early growth, distributor expansion, and service network build-out",
     highlights: ["22 Distributors", "7 Service Centers", "4 OEM Suppliers", "Capacity Growth"],
     color: "#D97706",
@@ -46,7 +46,7 @@ export default function AnnualReportsContent() {
       <PageHero
         badge="Annual Reports"
         title={<>Full <span className="gradient-text">Financial Transparency</span></>}
-        description="MaxVolt Energy's annual reports provide comprehensive coverage of financial performance, operational achievements, R&D progress, and strategic outlook for shareholders and stakeholders."
+        description="Maxvolt Energy's annual reports provide comprehensive coverage of financial performance, operational achievements, R&D progress, and strategic outlook for shareholders and stakeholders."
       >
         <Link href="/investors" className="inline-flex items-center gap-2 text-[#71717a] hover:text-[#15171c] text-sm transition-colors">
           <ArrowLeft size={13} />

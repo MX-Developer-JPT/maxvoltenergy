@@ -21,7 +21,7 @@ const ANNOUNCEMENTS = [
   { name: "Corrigendum Expenditure Statement Final", type: "PDF", category: "Financial" },
   { name: "Board Meeting Intimation (12 May 2026)", type: "PDF", category: "Board Meeting" },
   { name: "Board Meeting Intimation Revised (12 May 2026)", type: "PDF", category: "Board Meeting" },
-  { name: "MaxVolt Outcome of Board Meeting", type: "PDF", category: "Board Meeting" },
+  { name: "Maxvolt Outcome of Board Meeting", type: "PDF", category: "Board Meeting" },
 ];
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -42,7 +42,7 @@ export default function AnnouncementsContent() {
       <PageHero
         badge="Corporate Announcements"
         title={<>Regulatory <span className="gradient-text">Disclosures</span></>}
-        description="MaxVolt Energy releases official corporate announcements only when information is clear, verified, and relevant to customers, partners, and investors — in full compliance with NSE SME Emerge regulations."
+        description="Maxvolt Energy releases official corporate announcements only when information is clear, verified, and relevant to customers, partners, and investors — in full compliance with NSE SME Emerge regulations."
       >
         <Link href="/investors" className="inline-flex items-center gap-2 text-[#71717a] hover:text-[#15171c] text-sm transition-colors">
           <ArrowLeft size={13} />

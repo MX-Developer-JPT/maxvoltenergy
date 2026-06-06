@@ -42,7 +42,7 @@ export default function ShareholdingContent() {
       <PageHero
         badge="Shareholding Pattern"
         title={<>Ownership <span className="gradient-text">Transparency</span></>}
-        description="MaxVolt Energy's shareholding structure includes promoter holdings, institutional investors, and public shareholders — with regular updates ensuring full transparency for all stakeholders."
+        description="Maxvolt Energy's shareholding structure includes promoter holdings, institutional investors, and public shareholders — with regular updates ensuring full transparency for all stakeholders."
       >
         <Link href="/investors" className="inline-flex items-center gap-2 text-[#71717a] hover:text-[#15171c] text-sm transition-colors">
           <ArrowLeft size={13} />

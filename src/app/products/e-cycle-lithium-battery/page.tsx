@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/ui/ProductPageTemplate";
 
 export const metadata: Metadata = {
-  title: "E-Cycle Lithium Battery | MaxVolt Energy",
-  description: "MaxVolt E-Cycle Lithium Battery – 36V 7.5Ah to 15Ah. Lightweight, fast charging, AIS 156 compliant. India's trusted e-bicycle battery supplier.",
+  title: "E-Cycle Lithium Battery | Maxvolt Energy",
+  description: "Maxvolt E-Cycle Lithium Battery – 36V 7.5Ah to 15Ah. Lightweight, fast charging, AIS 156 compliant. India's trusted e-bicycle battery supplier.",
 };
 
 const productData = {
@@ -13,7 +13,7 @@ const productData = {
   color: "#FFD100",
   image: "/images/product/e-cycle-lithium-battery-txc.webp",
   description: "High-capacity, long-lasting performance that keeps you cruising for extended distances.",
-  longDescription: "MaxVolt's E-Cycle Lithium Battery delivers high-capacity, long-lasting performance purpose-built for electric bicycles. Lightweight and compact, our batteries integrate seamlessly with all major e-cycle brands — delivering zero-to-full charge in minutes and providing extended range for recreational and commute riding alike.",
+  longDescription: "Maxvolt's E-Cycle Lithium Battery delivers high-capacity, long-lasting performance purpose-built for electric bicycles. Lightweight and compact, our batteries integrate seamlessly with all major e-cycle brands — delivering zero-to-full charge in minutes and providing extended range for recreational and commute riding alike.",
   features: [
     "High-capacity design for extended riding distances",
     "Compact and lightweight for easy installation and maintenance",

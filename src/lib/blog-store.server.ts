@@ -15,12 +15,29 @@ export interface BlogPost {
   updatedAt: number;
 }
 
-const DATA_DIR = path.join(process.cwd(), "data");
-const FILE = path.join(DATA_DIR, "blog.json");
+import os from "os";
+
+// Resolve a writable location. On serverless/read-only hosts the project dir
+// may not be writable, so fall back to the OS temp dir.
+function resolveFile(): string {
+  const primaryDir = path.join(process.cwd(), "data");
+  try {
+    if (!fs.existsSync(primaryDir)) fs.mkdirSync(primaryDir, { recursive: true });
+    fs.accessSync(primaryDir, fs.constants.W_OK);
+    return path.join(primaryDir, "blog.json");
+  } catch {
+    const tmpDir = path.join(os.tmpdir(), "maxvolt-data");
+    try { if (!fs.existsSync(tmpDir)) fs.mkdirSync(tmpDir, { recursive: true }); } catch {}
+    return path.join(tmpDir, "blog.json");
+  }
+}
+
+const FILE = resolveFile();
 
 function ensure() {
-  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
-  if (!fs.existsSync(FILE)) fs.writeFileSync(FILE, "[]", "utf-8");
+  if (!fs.existsSync(FILE)) {
+    try { fs.writeFileSync(FILE, "[]", "utf-8"); } catch {}
+  }
 }
 
 export function readAll(): BlogPost[] {
@@ -38,7 +55,7 @@ export function getBySlug(slug: string): BlogPost | undefined {
 
 function writeAll(list: BlogPost[]) {
   ensure();
-  fs.writeFileSync(FILE, JSON.stringify(list, null, 2), "utf-8");
+  try { fs.writeFileSync(FILE, JSON.stringify(list, null, 2), "utf-8"); } catch {}
 }
 
 function slugify(s: string) {
@@ -57,7 +74,7 @@ export function create(data: Partial<BlogPost>): BlogPost {
     excerpt: data.excerpt || "",
     content: data.content || "",
     category: data.category || "News",
-    author: data.author || "MaxVolt Energy",
+    author: data.author || "Maxvolt Energy",
     coverImage: data.coverImage || "",
     published: data.published ?? true,
     createdAt: now,

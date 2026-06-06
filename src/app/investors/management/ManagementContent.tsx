@@ -23,7 +23,7 @@ export default function ManagementContent() {
       <PageHero
         badge="Management"
         title={<>Board of <span className="gradient-text">Directors</span></>}
-        description="MaxVolt Energy's Board comprises experienced professionals overseeing lithium battery systems development, operations, and strategic expansion into electric mobility, energy storage, and medical applications."
+        description="Maxvolt Energy's Board comprises experienced professionals overseeing lithium battery systems development, operations, and strategic expansion into electric mobility, energy storage, and medical applications."
       >
         <Link href="/investors" className="inline-flex items-center gap-2 text-[#71717a] hover:text-[#15171c] text-sm transition-colors">
           <ArrowLeft size={13} />

@@ -26,7 +26,7 @@ export default function FloatingWhatsApp() {
                 <MessageCircle size={18} className="text-[#25D366]" />
               </div>
               <div>
-                <div className="text-[#15171c] font-bold text-sm">MaxVolt Energy</div>
+                <div className="text-[#15171c] font-bold text-sm">Maxvolt Energy</div>
                 <div className="text-[#5f6470] text-xs">Typically replies in minutes</div>
               </div>
               <button onClick={() => setOpen(false)} className="ml-auto text-[#71717a] hover:text-[#15171c] transition-colors">
@@ -37,7 +37,7 @@ export default function FloatingWhatsApp() {
               👋 Hi! How can we help you today? Ask about products, pricing, dealer partnerships, or technical support.
             </p>
             <a
-              href={`https://wa.me/${SITE_CONFIG.whatsapp.replace("+", "")}?text=Hi MaxVolt, I'd like to know more about your batteries.`}
+              href={`https://wa.me/${SITE_CONFIG.whatsapp.replace("+", "")}?text=Hi Maxvolt, I'd like to know more about your batteries.`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-[#25D366] text-[#15171c] text-sm font-bold hover:bg-[#25D366]/90 transition-all"

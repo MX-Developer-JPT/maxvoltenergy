@@ -245,12 +245,12 @@ export default function ContactContent() {
               Become a Dealer or Distributor
             </h2>
             <p className="text-[#5f6470] text-sm leading-relaxed mb-8">
-              Join MaxVolt&apos;s rapidly growing dealer network across India. We offer competitive margins,
+              Join Maxvolt&apos;s rapidly growing dealer network across India. We offer competitive margins,
               technical training, marketing support, and dedicated account management.
               Currently expanding in all major cities.
             </p>
             <a
-              href={`https://wa.me/${SITE_CONFIG.whatsapp.replace("+", "")}?text=Hi, I'm interested in becoming a MaxVolt dealer`}
+              href={`https://wa.me/${SITE_CONFIG.whatsapp.replace("+", "")}?text=Hi, I'm interested in becoming a Maxvolt dealer`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#FFD100] text-black font-bold hover:bg-[#FFD100]/90 hover:shadow-[0_0_30px_rgba(255,209,0,0.4)] transition-all"
