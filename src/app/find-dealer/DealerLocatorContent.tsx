@@ -254,7 +254,7 @@ export default function DealerLocatorContent() {
         <div className="container-custom text-center">
           <h2 className="text-3xl font-black text-[#15171c] mb-3">Want to become a <span className="gradient-text">Maxvolt Dealer?</span></h2>
           <p className="text-[#52525b] text-sm max-w-md mx-auto mb-7">Join 58+ partners. Competitive margins, technical training, and marketing support across India.</p>
-          <a href="/contact-us#dealer" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFA800] transition-all">
+          <a href="/become-a-dealer" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFA800] transition-all">
             Apply for Dealership
           </a>
         </div>

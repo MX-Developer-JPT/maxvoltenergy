@@ -16,7 +16,7 @@ export const dynamic = "force-dynamic";
 const FALLBACK = [
   { title: "Rising Fuel Prices Are Accelerating India's EV Transition", excerpt: "With West Asia tensions driving petroleum prices higher, India's EV adoption is accelerating faster than projected.", category: "EV Industry", date: "June 2025" },
   { title: "AIS 156: What India's Battery Safety Standard Means for EV Buyers", excerpt: "The AIS 156 certification is India's most rigorous battery safety standard. We break down what it means.", category: "Safety & Compliance", date: "May 2025" },
-  { title: "Graphene Batteries: The Technology Powering Maxvolt's Eco-Series", excerpt: "Graphene-enhanced anodes charge 50% faster than conventional lithium. The science behind our Eco-Series.", category: "Technology", date: "April 2025" },
+  { title: "Custom Lithium Battery Packs: Powering Medical, IoT & Industrial Devices", excerpt: "From ultrasound machines to CCTV and router UPS — how Maxvolt engineers application-specific lithium packs.", category: "Technology", date: "April 2025" },
   { title: "E-Rickshaw Battery Guide: How to Choose the Right Lithium Battery", excerpt: "Switching from lead-acid to lithium? Voltage, capacity, BMS requirements, and total cost of ownership.", category: "Product Guide", date: "March 2025" },
   { title: "Solar Battery Storage: Maximizing Your Solar System ROI", excerpt: "A lithium solar battery dramatically increases the return on your solar investment.", category: "Solar Energy", date: "February 2025" },
   { title: "Maxvolt ReEarth: Building a Circular Economy for EV Batteries", excerpt: "Maxvolt ReEarth is pioneering lithium battery recycling to close the loop on sustainable mobility.", category: "Sustainability", date: "January 2025" },

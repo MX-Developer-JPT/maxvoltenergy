@@ -8,11 +8,11 @@ import { ClipReveal, FadeUp } from "@/components/ui/AnimatedText";
 import BatteryExploded from "@/components/sections/BatteryExploded";
 
 const FEATURES = [
-  { Icon: Zap, title: "Advanced Technology", description: "Continuous innovation delivering higher efficiency, faster charging, and smarter performance through LiFePO4 and graphene cell technology.", color: "#FFD100", stat: "50%", statLabel: "Faster Charging" },
+  { Icon: Zap, title: "Advanced Technology", description: "Continuous innovation delivering higher efficiency, faster charging, and smarter performance through LiFePO4, NMC and Li-Ion cell technology.", color: "#FFD100", stat: "50%", statLabel: "Faster Charging" },
   { Icon: Shield, title: "Unmatched Quality", description: "Multi-stage testing at every production milestone ensures durability, safety, and consistent performance.", color: "#FFA800", stat: "AIS 156", statLabel: "Certified" },
   { Icon: Globe, title: "Global Standards", description: "AIS 156 certified and compliant with international quality benchmarks — trusted for domestic and export markets.", color: "#FF8C00", stat: "100%", statLabel: "Compliant" },
   { Icon: Users, title: "Trusted Partnerships", description: "Strategic collaborations with 6+ OEM partners and 58+ retail dealers built on reliability and shared growth.", color: "#7c3aed", stat: "58+", statLabel: "Dealers" },
-  { Icon: FlaskConical, title: "In-House R&D", description: "Dedicated research center driving next-generation battery chemistry including our graphene Eco-Series lineup.", color: "#f97316", stat: "Eco", statLabel: "Series" },
+  { Icon: FlaskConical, title: "In-House R&D", description: "Dedicated research center driving next-generation battery chemistry and application-specific custom packs.", color: "#f97316", stat: "R&D", statLabel: "In-House" },
   { Icon: Award, title: "NSE Listed", description: "Listed on NSE SME Emerge with full regulatory compliance, transparent governance, and investor-grade reporting.", color: "#ec4899", stat: "NSE", statLabel: "Emerge" },
 ];
 

@@ -17,7 +17,6 @@ const GALLERY_ITEMS = [
   { src: "/images/product/e-rickshaw-lithium-battery-ohn.webp", alt: "E-Rickshaw Battery", category: "Products" },
   { src: "/images/product/e-scooter-bike-lithium-battery-mpu.webp", alt: "E-Scooter Battery", category: "Products" },
   { src: "/images/product/e-cycle-lithium-battery-txc.webp", alt: "E-Cycle Battery", category: "Products" },
-  { src: "/images/product/graphene-battery-fnx.webp", alt: "Graphene Battery", category: "Products" },
   { src: "/images/product/lithium-battery-energy-storage-solutions-tjf.webp", alt: "Energy Storage", category: "Products" },
   { src: "/images/product/lithium-battery-for-solar-application-zhs.webp", alt: "Solar Battery", category: "Products" },
   { src: "/images/product/customized-battery-solution-jkz.webp", alt: "Custom Battery", category: "Products" },

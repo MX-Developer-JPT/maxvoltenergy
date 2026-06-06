@@ -14,7 +14,7 @@ const SOLUTIONS = [
     title: "Electric Vehicles",
     href: "/solutions/electric-vehicles",
     description: "Complete lithium battery solutions for e-cycles, e-scooters, e-bikes, and e-rickshaws. AIS 156 certified and engineered for Indian road conditions.",
-    products: ["E-Cycle Batteries", "E-Scooter Batteries", "E-Rickshaw Batteries", "Graphene Eco-Series"],
+    products: ["E-Cycle Batteries", "E-Scooter Batteries", "E-Rickshaw Batteries", "Customized Packs"],
     color: "#FFD100",
   },
   {

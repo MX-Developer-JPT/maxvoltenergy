@@ -44,13 +44,13 @@ export const NAV_ITEMS = [
     label: "Products",
     href: "/products",
     children: [
+      { label: "Product Portfolio", href: "/portfolio" },
       { label: "E-Cycle Batteries", href: "/products/e-cycle-lithium-battery" },
       { label: "E-Scooter / Bike Batteries", href: "/products/e-scooter-bike-lithium-battery" },
       { label: "E-Rickshaw Batteries", href: "/products/e-rickshaw-lithium-battery" },
       { label: "Energy Storage Systems", href: "/products/lithium-battery-energy-storage-solutions" },
       { label: "Solar Batteries", href: "/products/lithium-battery-for-solar-application" },
       { label: "Customized Solutions", href: "/products/customized-battery-solution" },
-      { label: "Graphene Batteries", href: "/products/graphene-battery" },
     ],
   },
   {
@@ -82,7 +82,7 @@ export const NAV_ITEMS = [
       { label: "Contact Us", href: "/contact-us" },
       { label: "Support", href: "/support" },
       { label: "Find a Dealer", href: "/find-dealer" },
-      { label: "Dealer Inquiry", href: "/contact-us#dealer" },
+      { label: "Become a Dealer", href: "/become-a-dealer" },
     ],
   },
 ];
@@ -116,7 +116,7 @@ export const PRODUCTS = [
     specs: [
       { label: "Voltage Range", value: "48V – 74V" },
       { label: "Capacity Range", value: "24Ah – 40Ah" },
-      { label: "Cell Chemistry", value: "NMC / LiFePO4" },
+      { label: "Cell Chemistry", value: "NMC / Li-Ion" },
       { label: "Pack Type", value: "PVC / Box" },
     ],
   },
@@ -132,7 +132,7 @@ export const PRODUCTS = [
     specs: [
       { label: "Voltage", value: "51V" },
       { label: "Capacity", value: "86Ah – 100Ah" },
-      { label: "Cell Chemistry", value: "LiFePO4" },
+      { label: "Cell Chemistry", value: "LiFePO4 / LFP" },
       { label: "Pack Type", value: "Metal Case" },
     ],
   },
@@ -182,22 +182,6 @@ export const PRODUCTS = [
       { label: "Voltage", value: "Custom Range" },
       { label: "BMS", value: "Advanced Smart BMS" },
       { label: "Pricing", value: "Competitive" },
-    ],
-  },
-  {
-    id: "graphene-battery",
-    name: "Graphene Battery",
-    shortName: "Graphene",
-    description: "Next-generation graphene-enhanced batteries charging up to 50% faster than conventional lithium.",
-    image: "/images/product/graphene-battery-fnx.webp",
-    href: "/products/graphene-battery",
-    category: "Advanced Technology",
-    color: "#FFD100",
-    specs: [
-      { label: "Charge Speed", value: "50% Faster" },
-      { label: "Technology", value: "Graphene Enhanced" },
-      { label: "Applications", value: "E-Scooter / E-Bike" },
-      { label: "BMS", value: "Intelligent BMS" },
     ],
   },
 ];

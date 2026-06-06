@@ -259,7 +259,7 @@ function KeyStrengths() {
     "Advanced lithium battery technology with continuous innovation",
     "Multi-stage quality testing and rigorous production controls",
     "AIS 156 government safety certification",
-    "In-house R&D center driving next-gen graphene battery development",
+    "In-house R&D center driving next-gen lithium battery development",
     "Pan-India presence across 22+ states",
     "6+ OEM partnerships with leading EV manufacturers",
     "Listed on NSE SME Emerge platform",

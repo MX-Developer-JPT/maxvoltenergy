@@ -27,7 +27,7 @@ const FOOTER_LINKS = {
     { label: "Energy Storage", href: "/products/lithium-battery-energy-storage-solutions" },
     { label: "Solar Batteries", href: "/products/lithium-battery-for-solar-application" },
     { label: "Customized Solutions", href: "/products/customized-battery-solution" },
-    { label: "Graphene Battery", href: "/products/graphene-battery" },
+    { label: "Product Portfolio", href: "/portfolio" },
   ],
   "Investors": [
     { label: "Earnings Call", href: "/investors/earnings-call" },

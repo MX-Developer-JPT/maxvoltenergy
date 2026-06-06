@@ -42,14 +42,14 @@ const PRODUCTS = [
     sub: "Grid-ready lithium energy storage for homes, businesses, and renewable integration.",
   },
   {
-    label: "Graphene",
-    tag: "Next-Gen · Eco-Series",
-    image: "/images/product/graphene-battery-fnx.webp",
-    spec: "50% Faster Charge",
+    label: "Custom",
+    tag: "Application-Specific",
+    image: "/images/product/customized-battery-solution-jkz.webp",
+    spec: "Any Voltage · Any Form",
     color: "#D97706",
-    head1: "The Future is",
-    head2: "Graphene Powered",
-    sub: "Our Eco-Series graphene cells charge up to 50% faster than conventional lithium.",
+    head1: "Custom Packs for",
+    head2: "Any Application",
+    sub: "Tailor-made lithium packs for medical devices, power banks, CCTV, router backup UPS, power tools, flashlights, toys and more.",
   },
 ];
 
@@ -95,7 +95,7 @@ function ProductShowcase({ active, setActive }: { active: number; setActive: (i:
     <div className="relative w-full h-full flex items-center justify-center">
       {/* Rotating glow rings */}
       <motion.div
-        className="absolute w-[420px] h-[420px] rounded-full"
+        className="absolute w-[500px] h-[500px] rounded-full"
         style={{ border: "1px solid rgba(255,209,0,0.12)" }}
         animate={{ rotate: 360 }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
@@ -104,7 +104,7 @@ function ProductShowcase({ active, setActive }: { active: number; setActive: (i:
           style={{ boxShadow: "0 0 10px #FFD100" }} />
       </motion.div>
       <motion.div
-        className="absolute w-[320px] h-[320px] rounded-full"
+        className="absolute w-[390px] h-[390px] rounded-full"
         style={{ border: "1px solid rgba(255,209,0,0.08)" }}
         animate={{ rotate: -360 }}
         transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
@@ -137,14 +137,14 @@ function ProductShowcase({ active, setActive }: { active: number; setActive: (i:
           <motion.div
             animate={{ y: [-8, 8, -8] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="relative w-64 h-64 md:w-80 md:h-80"
+            className="relative w-72 h-72 md:w-[26rem] md:h-[26rem]"
           >
             <Image
               src={product.image}
               alt={product.label}
               fill
               className="object-contain drop-shadow-2xl"
-              sizes="320px"
+              sizes="420px"
               priority
             />
             {/* Shadow/reflection */}
@@ -391,7 +391,7 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="relative h-[520px] md:h-[600px] flex items-center justify-center"
+            className="relative h-[560px] md:h-[660px] flex items-center justify-center"
           >
             <ProductShowcase active={active} setActive={setActive} />
           </motion.div>

@@ -9,8 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   const staticRoutes = [
-    "", "/about-us", "/about-us/certificates", "/products", "/solutions",
-    "/battery-calculator", "/find-dealer", "/our-presence", "/contact-us",
+    "", "/about-us", "/about-us/certificates", "/products", "/portfolio", "/solutions",
+    "/battery-calculator", "/find-dealer", "/become-a-dealer", "/our-presence", "/contact-us",
     "/support", "/media", "/blog", "/faq", "/gallery", "/career", "/recycle",
     "/investors", "/investors/earnings-call", "/investors/management",
     "/investors/corporate-governance", "/investors/corporate-announcement",

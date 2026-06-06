@@ -3,6 +3,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import FeaturedProductsShowcase from "@/components/sections/FeaturedProductsShowcase";
 import StatsSection from "@/components/sections/StatsSection";
 import ProductsSection from "@/components/sections/ProductsSection";
+import CustomBatterySection from "@/components/sections/CustomBatterySection";
 import WhyChooseSection from "@/components/sections/WhyChooseSection";
 import BrandsSection from "@/components/sections/BrandsSection";
 import TimelineSection from "@/components/sections/TimelineSection";
@@ -22,6 +23,7 @@ export default function HomePage() {
       <FeaturedProductsShowcase />
       <StatsSection />
       <ProductsSection />
+      <CustomBatterySection />
       <WhyChooseSection />
       <BrandsSection />
       <TimelineSection />

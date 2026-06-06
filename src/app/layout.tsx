@@ -50,7 +50,6 @@ export const metadata: Metadata = {
     "battery energy storage system",
     "LiFePO4 battery",
     "lithium ion battery",
-    "graphene battery",
     "battery recycling India",
     "lithium battery recycling",
     "rare earth elements recovery",

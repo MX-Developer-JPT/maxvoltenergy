@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle2, Download, MessageCircle, Battery, Zap, Shield, ArrowLeft } from "lucide-react";
 import { PRODUCTS, SITE_CONFIG } from "@/lib/constants";
 import { downloadCatalogue } from "@/lib/download";
@@ -35,6 +35,48 @@ interface ProductPageTemplateProps {
     applications?: string[];
     certifications?: string[];
   };
+}
+
+// Rotating key-feature headlines that come and go near the product image.
+function FeatureHeadlines({ features, color }: { features: string[]; color: string }) {
+  const items = features.slice(0, 3);
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    if (items.length === 0) return;
+    const t = setInterval(() => setIdx((i) => (i + 1) % items.length), 2600);
+    return () => clearInterval(t);
+  }, [items.length]);
+  if (items.length === 0) return null;
+
+  // Three anchor positions around the image
+  const positions = [
+    "top-2 -left-4 md:-left-10",
+    "top-1/2 -right-4 md:-right-12 -translate-y-1/2",
+    "bottom-4 -left-2 md:-left-8",
+  ];
+
+  return (
+    <div className="pointer-events-none absolute inset-0 z-20">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={idx}
+          initial={{ opacity: 0, y: 14, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -14, scale: 0.9 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className={`absolute ${positions[idx % positions.length]} max-w-[12rem]`}
+        >
+          <div
+            className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/90 backdrop-blur-md shadow-lg"
+            style={{ border: `1px solid ${color}35` }}
+          >
+            <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: color, boxShadow: `0 0 8px ${color}` }} />
+            <span className="text-[#15171c] text-xs font-bold leading-tight">{items[idx]}</span>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
 }
 
 export default function ProductPageTemplate({ product }: ProductPageTemplateProps) {
@@ -118,7 +160,9 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
               transition={{ duration: 0.7, delay: 0.2 }}
               className="flex items-center justify-center"
             >
-              <div className="relative w-80 h-80">
+              <div className="relative w-[22rem] h-[22rem] md:w-96 md:h-96">
+                {/* Animated key-feature headlines near the image */}
+                <FeatureHeadlines features={product.features} color={product.color} />
                 {/* Rotating rings */}
                 <motion.div
                   className="absolute inset-0 rounded-full"
@@ -144,14 +188,14 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
                     <motion.div
                       animate={{ y: [-6, 6, -6] }}
                       transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                      className="relative w-36 h-36"
+                      className="relative w-44 h-44 md:w-52 md:h-52"
                     >
                       <Image
                         src={product.image}
                         alt={product.name}
                         fill
                         className="object-contain drop-shadow-2xl"
-                        sizes="144px"
+                        sizes="208px"
                       />
                       {/* Glow under image */}
                       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-4 rounded-full blur-xl opacity-60" style={{ backgroundColor: product.color }} />
