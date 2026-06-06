@@ -51,6 +51,7 @@ export const metadata: Metadata = {
   creator: "MaxVolt Energy Industries Limited",
   publisher: "MaxVolt Energy Industries Limited",
   formatDetection: { email: true, address: true, telephone: true },
+  manifest: "/site.webmanifest",
   metadataBase: new URL("https://max1.maxvolt-one.co.in"),
   openGraph: {
     type: "website",
