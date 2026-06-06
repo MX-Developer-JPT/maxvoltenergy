@@ -6,7 +6,7 @@ import { LOCATIONS } from "@/lib/locations";
 
 export const dynamic = "force-static";
 
-const BASE = "https://max1.maxvolt-one.co.in";
+const BASE = "https://site.maxvolt-one.co.in";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

@@ -68,11 +68,11 @@ export const metadata: Metadata = {
   publisher: "Maxvolt Energy Industries Limited",
   formatDetection: { email: true, address: true, telephone: true },
   manifest: "/site.webmanifest",
-  metadataBase: new URL("https://max1.maxvolt-one.co.in"),
+  metadataBase: new URL("https://site.maxvolt-one.co.in"),
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://max1.maxvolt-one.co.in",
+    url: "https://site.maxvolt-one.co.in",
     title: "Maxvolt Energy Industries Limited",
     description: "Powering India's Electric Future with industry-leading lithium battery technology.",
     siteName: "Maxvolt Energy",

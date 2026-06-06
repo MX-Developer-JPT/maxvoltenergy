@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 
-const BASE = "https://max1.maxvolt-one.co.in";
+const BASE = "https://site.maxvolt-one.co.in";
 
 // Private / non-indexable paths
 const DISALLOW = ["/admin", "/admin/login", "/api/"];
