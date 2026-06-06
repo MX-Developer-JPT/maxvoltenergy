@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { NAV_ITEMS } from "@/lib/constants";
 import { SHOP_CATEGORIES, skusByCategory } from "@/lib/shop";
+import { pressSorted } from "@/lib/press";
 
 export const metadata: Metadata = {
   title: "Sitemap | Maxvolt Energy",
@@ -22,6 +23,7 @@ const EXTRA = [
   { label: "Gallery", href: "/gallery" },
   { label: "Career", href: "/career" },
   { label: "Recycle (ReEarth)", href: "/recycle" },
+  { label: "Press Releases", href: "/press-release" },
   { label: "Media Coverage", href: "/media" },
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms & Conditions", href: "/terms-and-conditions" },
@@ -66,6 +68,13 @@ export default function SitemapPage() {
               ]}
             />
           ))}
+          <Group
+            title="Press Releases"
+            links={[
+              { label: "All Press Releases", href: "/press-release" },
+              ...pressSorted().map((p) => ({ label: p.title, href: `/press-release/${p.slug}` })),
+            ]}
+          />
         </div>
       </section>
     </>

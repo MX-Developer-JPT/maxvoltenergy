@@ -43,6 +43,7 @@ const FOOTER_LINKS = {
     { label: "Contact Us", href: "/contact-us" },
     { label: "Support", href: "/support" },
     { label: "FAQ", href: "/faq" },
+    { label: "Press Releases", href: "/press-release" },
     { label: "Media Coverage", href: "/media" },
     { label: "Sitemap", href: "/sitemap-page" },
     { label: "Privacy Policy", href: "/privacy-policy" },

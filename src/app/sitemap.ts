@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { PRODUCTS } from "@/lib/constants";
 import { SHOP_CATEGORIES, SKUS } from "@/lib/shop";
+import { PRESS_RELEASES } from "@/lib/press";
+import { LOCATIONS } from "@/lib/locations";
 
 export const dynamic = "force-static";
 
@@ -12,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "", "/about-us", "/about-us/certificates", "/products", "/portfolio", "/solutions",
     "/battery-calculator", "/find-dealer", "/become-a-dealer", "/our-presence", "/contact-us",
-    "/support", "/media", "/blog", "/faq", "/gallery", "/career", "/recycle",
+    "/support", "/media", "/press-release", "/blog", "/faq", "/gallery", "/career", "/recycle",
     "/solutions/electric-vehicles", "/solutions/solar-storage",
     "/solutions/portable-lighting", "/solutions/consumer-electronics",
     "/investors", "/investors/earnings-call", "/investors/management",
@@ -43,5 +45,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...SKUS.map((s) => ({ url: `${BASE}/shop/${s.category}/${s.slug}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.6 })),
   ];
 
-  return [...staticRoutes, ...productRoutes, ...shopRoutes];
+  const pressRoutes = PRESS_RELEASES.map((p) => ({
+    url: `${BASE}/press-release/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  const locationRoutes = LOCATIONS.map((l) => ({
+    url: `${BASE}/${l.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.5,
+  }));
+
+  return [...staticRoutes, ...productRoutes, ...shopRoutes, ...pressRoutes, ...locationRoutes];
 }

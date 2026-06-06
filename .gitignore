@@ -43,3 +43,7 @@ next-env.d.ts
 # Runtime data store & secrets
 /data
 .env.local
+
+# Local reference material (PPTX decks)
+ref/
+.scan/

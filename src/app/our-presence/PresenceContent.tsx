@@ -1,9 +1,11 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import PageHero from "@/components/ui/PageHero";
-import { INDIA_CITIES, INDIA_STATES } from "@/lib/constants";
+import { INDIA_CITIES } from "@/lib/constants";
+import { CITY_LOCATIONS, STATE_LOCATIONS } from "@/lib/locations";
 import { MapPin, Users, Wrench, Building2, ArrowRight } from "lucide-react";
 
 const REGIONS = [
@@ -135,17 +137,38 @@ export default function PresenceContent() {
           <div>
             <h3 className="text-xl font-bold text-[#15171c] mb-5">All States We Serve</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-              {INDIA_STATES.map((state, i) => (
+              {STATE_LOCATIONS.map((state, i) => (
                 <motion.div
-                  key={state}
+                  key={state.slug}
                   initial={{ opacity: 0 }}
                   animate={inView ? { opacity: 1 } : {}}
                   transition={{ delay: 0.4 + i * 0.02 }}
-                  className="flex items-center gap-2 p-3 rounded-lg bg-black/[0.02] border border-black/5 hover:border-[#FFD100]/15 hover:bg-[#FFD100]/3 transition-all"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#FFD100]/50 shrink-0" />
-                  <span className="text-[#52525b] text-xs">{state}</span>
+                  <Link
+                    href={`/${state.slug}`}
+                    className="flex items-center gap-2 p-3 rounded-lg bg-black/[0.02] border border-black/5 hover:border-[#FFD100]/25 hover:bg-[#FFD100]/5 transition-all group"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#FFD100]/50 shrink-0 group-hover:bg-[#FFD100]" />
+                    <span className="text-[#52525b] text-xs group-hover:text-[#D97706]">{state.name}</span>
+                  </Link>
                 </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* All cities directory */}
+          <div className="mt-12">
+            <h3 className="text-xl font-bold text-[#15171c] mb-2">Cities We Serve</h3>
+            <p className="text-[#5f6470] text-sm mb-5">Find Maxvolt lithium batteries, dealers and service support in your city.</p>
+            <div className="flex flex-wrap gap-2">
+              {CITY_LOCATIONS.map((city) => (
+                <Link
+                  key={city.slug}
+                  href={`/${city.slug}`}
+                  className="px-3 py-1.5 rounded-lg text-xs text-[#52525b] border border-black/6 bg-black/[0.02] hover:border-[#FFD100]/25 hover:text-[#D97706] hover:bg-[#FFD100]/5 transition-all"
+                >
+                  {city.name}
+                </Link>
               ))}
             </div>
           </div>

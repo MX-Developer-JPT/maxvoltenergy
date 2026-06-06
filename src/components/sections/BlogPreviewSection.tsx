@@ -5,33 +5,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight, Calendar } from "lucide-react";
+import { pressSorted } from "@/lib/press";
 
-const POSTS = [
-  {
-    title: "Rising Fuel Prices Accelerate India's EV Shift",
-    excerpt: "West Asia tensions and rising petroleum costs are fast-tracking India's transition to electric vehicles — positioning Maxvolt at the forefront.",
-    image: "/images/blog/rising-fuel-prices-and-west-asia-tensions-accelerate-ev-shift-strengthening-demand-for-maxvolt-solu-ael.webp",
-    date: "June 2025",
-    category: "EV Industry",
-    color: "#FFD100",
-  },
-  {
-    title: "Maxvolt ReEarth: Lithium Battery Recycling Research Published Internationally",
-    excerpt: "Maxvolt ReEarth's breakthrough research on advanced lithium-ion battery recycling technologies gains international recognition.",
-    image: "/images/blog/maxvolt-reearth-publishes-study-on-advanced-lithium-ion-battery-recycling-technologies-nnx.webp",
-    date: "May 2025",
-    category: "Sustainability",
-    color: "#FFA800",
-  },
-  {
-    title: "EV Adoption Strengthening Demand for Maxvolt Solutions",
-    excerpt: "India's expanding EV ecosystem is driving unprecedented demand for domestic lithium battery manufacturers like Maxvolt Energy.",
-    image: "/images/blog/fuel-price-hikes-and-west-asia-tensions-accelerate-ev-adoption-boosting-demand-for-maxvolt-energy-s-xmk.webp",
-    date: "April 2025",
-    category: "Market",
-    color: "#FF8C00",
-  },
-];
+const CAT_COLOR: Record<string, string> = {
+  "Company News": "#FFD100",
+  "Product & Technology": "#FFA800",
+  Sustainability: "#16a34a",
+  "Industry & Policy": "#7c3aed",
+  Financial: "#FF8C00",
+  CSR: "#ec4899",
+};
+
+const POSTS = pressSorted()
+  .slice(0, 3)
+  .map((p) => ({
+    title: p.title,
+    excerpt: p.excerpt,
+    image: p.image,
+    href: `/press-release/${p.slug}`,
+    date: new Date(p.date).toLocaleDateString("en-IN", { month: "long", year: "numeric" }),
+    category: p.category,
+    color: CAT_COLOR[p.category] || "#FFD100",
+  }));
 
 export default function BlogPreviewSection() {
   const ref = useRef(null);
@@ -49,25 +44,25 @@ export default function BlogPreviewSection() {
           className="flex items-end justify-between mb-12 gap-6"
         >
           <div>
-            <span className="text-[#D97706] text-xs font-semibold tracking-[0.2em] uppercase mb-3 block">Latest News</span>
+            <span className="text-[#D97706] text-xs font-semibold tracking-[0.2em] uppercase mb-3 block">Newsroom</span>
             <h2 className="text-4xl font-bold text-[#15171c]">
-              Insights & <span className="gradient-text">Updates</span>
+              Latest <span className="gradient-text">Press & Updates</span>
             </h2>
           </div>
-          <Link href="/blog" className="hidden md:flex items-center gap-2 text-[#D97706] text-sm font-semibold hover:gap-3 transition-all">
-            All Articles <ArrowRight size={14} />
+          <Link href="/press-release" className="hidden md:flex items-center gap-2 text-[#D97706] text-sm font-semibold hover:gap-3 transition-all">
+            Visit Newsroom <ArrowRight size={14} />
           </Link>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {POSTS.map(({ title, excerpt, image, date, category, color }, i) => (
+          {POSTS.map(({ title, excerpt, image, href, date, category, color }, i) => (
             <motion.div
               key={title}
               initial={{ opacity: 0, y: 36 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Link href="/blog" className="group block h-full">
+              <Link href={href} className="group block h-full">
                 <div className="h-full rounded-2xl bg-white border border-black/6 hover:border-black/8 overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden">
@@ -113,8 +108,8 @@ export default function BlogPreviewSection() {
         </div>
 
         <div className="mt-6 text-center md:hidden">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-[#D97706] text-sm font-semibold">
-            All Articles <ArrowRight size={14} />
+          <Link href="/press-release" className="inline-flex items-center gap-2 text-[#D97706] text-sm font-semibold">
+            Visit Newsroom <ArrowRight size={14} />
           </Link>
         </div>
       </div>

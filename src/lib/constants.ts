@@ -35,6 +35,7 @@ export const NAV_ITEMS = [
       { label: "Company Journey", href: "/about-us#journey" },
       { label: "Leadership Team", href: "/about-us#team" },
       { label: "Certificates", href: "/about-us/certificates" },
+      { label: "Press Releases", href: "/press-release" },
       { label: "Media Coverage", href: "/media" },
     ],
   },
