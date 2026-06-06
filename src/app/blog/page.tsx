@@ -4,23 +4,14 @@ import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import { ArrowRight } from "lucide-react";
 import { readPublished } from "@/lib/blog-store.server";
+import { SEED_POSTS } from "@/lib/blog-seed";
 
 export const metadata: Metadata = {
   title: "Blog | Maxvolt Energy",
-  description: "Latest news, insights, and updates from Maxvolt Energy on EV batteries, solar storage, and India's electric future.",
+  description: "Latest news, insights, and updates from Maxvolt Energy on EV batteries, solar storage, recycling, and India's electric future.",
 };
 
 export const dynamic = "force-dynamic";
-
-// Fallback curated posts shown when no admin posts exist yet.
-const FALLBACK = [
-  { title: "Rising Fuel Prices Are Accelerating India's EV Transition", excerpt: "With West Asia tensions driving petroleum prices higher, India's EV adoption is accelerating faster than projected.", category: "EV Industry", date: "June 2025" },
-  { title: "AIS 156: What India's Battery Safety Standard Means for EV Buyers", excerpt: "The AIS 156 certification is India's most rigorous battery safety standard. We break down what it means.", category: "Safety & Compliance", date: "May 2025" },
-  { title: "Custom Lithium Battery Packs: Powering Medical, IoT & Industrial Devices", excerpt: "From ultrasound machines to CCTV and router UPS — how Maxvolt engineers application-specific lithium packs.", category: "Technology", date: "April 2025" },
-  { title: "E-Rickshaw Battery Guide: How to Choose the Right Lithium Battery", excerpt: "Switching from lead-acid to lithium? Voltage, capacity, BMS requirements, and total cost of ownership.", category: "Product Guide", date: "March 2025" },
-  { title: "Solar Battery Storage: Maximizing Your Solar System ROI", excerpt: "A lithium solar battery dramatically increases the return on your solar investment.", category: "Solar Energy", date: "February 2025" },
-  { title: "Maxvolt ReEarth: Building a Circular Economy for EV Batteries", excerpt: "Maxvolt ReEarth is pioneering lithium battery recycling to close the loop on sustainable mobility.", category: "Sustainability", date: "January 2025" },
-];
 
 function readTime(content: string) {
   const words = (content || "").trim().split(/\s+/).filter(Boolean).length;
@@ -28,7 +19,11 @@ function readTime(content: string) {
 }
 
 export default function BlogPage() {
-  const posts = readPublished();
+  // Merge admin-published posts with curated seed articles (dedupe by slug).
+  const published = readPublished();
+  const seen = new Set(published.map((p) => p.slug));
+  const posts = [...published, ...SEED_POSTS.filter((p) => !seen.has(p.slug))]
+    .sort((a, b) => b.createdAt - a.createdAt);
   const featured = posts[0];
   const rest = posts.slice(1);
 
@@ -42,19 +37,7 @@ export default function BlogPage() {
 
       <section className="section-padding bg-white">
         <div className="container-custom">
-          {posts.length === 0 ? (
-            /* Curated fallback (no admin posts yet) */
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {FALLBACK.map((p) => (
-                <div key={p.title} className="group p-6 rounded-2xl frosted-card border border-black/6 hover:-translate-y-1 transition-all">
-                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase px-2.5 py-1 rounded-full border border-[#D97706]/30 text-[#D97706] bg-[#FFD100]/8">{p.category}</span>
-                  <h3 className="text-[#15171c] font-bold text-base leading-tight mt-4 mb-3">{p.title}</h3>
-                  <p className="text-[#5f6470] text-sm leading-relaxed line-clamp-3 mb-4">{p.excerpt}</p>
-                  <span className="text-[#8a8a93] text-xs">{p.date}</span>
-                </div>
-              ))}
-            </div>
-          ) : (
+          {(
             <>
               {/* Featured */}
               {featured && (

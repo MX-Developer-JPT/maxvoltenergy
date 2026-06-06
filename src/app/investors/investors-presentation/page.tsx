@@ -1,0 +1,24 @@
+import type { Metadata } from "next";
+import InvestorDocPage from "@/components/ui/InvestorDocPage";
+
+export const metadata: Metadata = {
+  title: "Investors Presentation | Maxvolt Energy",
+  description: "Maxvolt Energy investor presentations covering business overview, financial performance and growth strategy.",
+};
+
+const DOCS = [
+  "Investors Presentation FY 25",
+  "Investors Presentation H1 FY 26",
+];
+
+export default function InvestorsPresentationPage() {
+  return (
+    <InvestorDocPage
+      badge="Investors Presentation"
+      title={<>Investor <span className="gradient-text">Presentations</span></>}
+      description="Periodic investor presentations detailing Maxvolt Energy's business overview, production capacity, financial performance and growth roadmap."
+      docs={DOCS}
+      note="Presentations may contain forward-looking statements subject to risks and uncertainties."
+    />
+  );
+}

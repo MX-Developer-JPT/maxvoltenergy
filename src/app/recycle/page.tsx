@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import { Recycle, Leaf, ArrowRight, ExternalLink, FlaskConical } from "lucide-react";
 
@@ -53,6 +54,33 @@ export default function RecyclePage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* ReEarth recycling ecosystem (from company overview) */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-[#15171c] mb-3 text-center">The Maxvolt ReEarth <span className="gradient-text">Recycling Ecosystem</span></h2>
+            <p className="text-[#52525b] text-sm text-center max-w-2xl mx-auto mb-8">
+              A dedicated subsidiary establishing one of India&apos;s first lithium-ion battery recycling plants in Aligarh,
+              Uttar Pradesh — recovering critical materials and returning them to new production. Recover. Reprocess. Reuse.
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              {[
+                { v: "7,800 MT/yr", l: "Recycling Capacity" },
+                { v: "Li · Co · Ni · Mn", l: "Materials Recovered" },
+                { v: "LFP·NMC·NCA·LCO", l: "Chemistries Supported" },
+                { v: "Jan 2026", l: "Phase 1 Launch" },
+              ].map((s) => (
+                <div key={s.l} className="text-center p-4 rounded-2xl frosted-card border border-black/6">
+                  <div className="text-lg md:text-xl font-black gradient-text">{s.v}</div>
+                  <div className="text-[#71717a] text-[11px] mt-1 uppercase tracking-wide">{s.l}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="relative w-full rounded-2xl overflow-hidden border border-black/8" style={{ aspectRatio: "1200/500" }}>
+              <Image src="/images/overview/reearth-recycling.png" alt="Maxvolt ReEarth recycling ecosystem" fill className="object-contain" sizes="100vw" />
             </div>
           </div>
 

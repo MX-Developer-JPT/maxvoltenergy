@@ -17,6 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/investors/corporate-governance", "/investors/corporate-announcement",
     "/investors/shareholding-pattern", "/investors/annual-reports",
     "/investors/csr", "/investors/policies-notices",
+    "/investors/initial-public-offering", "/investors/investors-presentation",
+    "/investors/financial", "/investors/notices", "/investors/material-contract",
+    "/investors/material-document", "/investors/investors-contact",
     "/privacy-policy", "/terms-and-conditions",
   ].map((path) => ({
     url: `${BASE}${path}`,

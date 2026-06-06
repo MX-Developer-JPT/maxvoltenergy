@@ -4,12 +4,13 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { getBySlug } from "@/lib/blog-store.server";
+import { seedBySlug } from "@/lib/blog-seed";
 
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBySlug(slug);
+  const post = getBySlug(slug) || seedBySlug(slug);
   if (!post) return { title: "Post Not Found | Maxvolt Energy" };
   return {
     title: `${post.title} | Maxvolt Energy Blog`,
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = getBySlug(slug);
+  const post = getBySlug(slug) || seedBySlug(slug);
   if (!post || !post.published) notFound();
 
   const paragraphs = post.content.split(/\n{2,}/).filter(Boolean);

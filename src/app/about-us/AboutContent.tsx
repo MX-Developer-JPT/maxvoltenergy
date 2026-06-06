@@ -326,6 +326,49 @@ function KeyStrengths() {
   );
 }
 
+function CompanyOverview() {
+  const STATS = [
+    { v: "2", l: "Manufacturing Plants" },
+    { v: "2.2 GWh", l: "Annual Capacity" },
+    { v: "950+", l: "Dealers" },
+    { v: "107", l: "OEM Partners" },
+    { v: "15,000+", l: "Batteries / Month" },
+    { v: "1100+", l: "Pincodes Served" },
+    { v: "350+", l: "Employees" },
+    { v: "10", l: "Warehouses" },
+  ];
+  return (
+    <section className="section-padding bg-white">
+      <div className="container-custom">
+        <FadeUp className="text-center mb-12">
+          <span className="text-[#D97706] text-[11px] font-bold tracking-[0.25em] uppercase mb-3 block">Company Overview</span>
+          <h2 className="text-3xl md:text-4xl font-black text-[#15171c]">Nationwide Scale, <span className="gradient-text">Industry Leadership</span></h2>
+        </FadeUp>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          {STATS.map((s) => (
+            <div key={s.l} className="text-center p-5 rounded-2xl frosted-card border border-black/6">
+              <div className="text-2xl md:text-3xl font-black gradient-text">{s.v}</div>
+              <div className="text-[#71717a] text-[11px] mt-1 uppercase tracking-wide">{s.l}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {[
+            { src: "/images/overview/capacity-growth.png", alt: "Maxvolt record-breaking production capacity growth" },
+            { src: "/images/overview/pan-india-presence.png", alt: "Maxvolt pan-India presence and distribution network" },
+          ].map((img) => (
+            <div key={img.src} className="relative w-full rounded-2xl overflow-hidden border border-black/8" style={{ aspectRatio: "1200/500" }}>
+              <Image src={img.src} alt={img.alt} fill className="object-contain" sizes="(max-width:1024px) 100vw, 600px" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function AboutContent() {
   return (
     <>
@@ -336,6 +379,7 @@ export default function AboutContent() {
       />
       <MissionVision />
       <AboutStory />
+      <CompanyOverview />
       <LeadershipSection />
       <KeyStrengths />
     </>
