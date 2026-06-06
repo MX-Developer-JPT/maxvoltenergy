@@ -45,6 +45,7 @@ export const NAV_ITEMS = [
     href: "/products",
     children: [
       { label: "Product Portfolio", href: "/portfolio" },
+      { label: "Shop All Batteries", href: "/shop" },
       { label: "E-Cycle Batteries", href: "/products/e-cycle-lithium-battery" },
       { label: "E-Scooter / Bike Batteries", href: "/products/e-scooter-bike-lithium-battery" },
       { label: "E-Rickshaw Batteries", href: "/products/e-rickshaw-lithium-battery" },

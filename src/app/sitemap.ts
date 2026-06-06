@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { PRODUCTS } from "@/lib/constants";
+import { SHOP_CATEGORIES, SKUS } from "@/lib/shop";
 
 export const dynamic = "force-static";
 
@@ -31,5 +32,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...productRoutes];
+  const shopRoutes = [
+    { url: `${BASE}/shop`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 },
+    ...SHOP_CATEGORIES.map((c) => ({ url: `${BASE}/shop/${c.key}`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.7 })),
+    ...SKUS.map((s) => ({ url: `${BASE}/shop/${s.category}/${s.slug}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.6 })),
+  ];
+
+  return [...staticRoutes, ...productRoutes, ...shopRoutes];
 }

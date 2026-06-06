@@ -28,6 +28,7 @@ const FOOTER_LINKS = {
     { label: "Solar Batteries", href: "/products/lithium-battery-for-solar-application" },
     { label: "Customized Solutions", href: "/products/customized-battery-solution" },
     { label: "Product Portfolio", href: "/portfolio" },
+    { label: "Shop All Batteries", href: "/shop" },
   ],
   "Investors": [
     { label: "Earnings Call", href: "/investors/earnings-call" },
