@@ -39,44 +39,18 @@ export default function WhyChooseSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Left: Scroll-driven battery + active feature card */}
-          <div className="relative">
-            {/* Scroll-driven exploded battery (pure CSS/SVG, no background) */}
-            <div className="relative h-[34rem]">
+          <div className="relative lg:sticky lg:top-28">
+            {/* Scroll-driven exploded battery (real MaxVolt parts) */}
+            <div className="relative h-[30rem] md:h-[36rem] mx-auto max-w-md">
               <BatteryExploded />
-
-              {/* Floating active stat */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={active}
-                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute bottom-0 left-0 right-0"
-                >
-                  <div className="frosted-card p-4 rounded-xl border" style={{ borderColor: `${FEATURES[active].color}30` }}>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center"
-                        style={{ background: `${FEATURES[active].color}15`, border: `1px solid ${FEATURES[active].color}30` }}>
-                        {(() => { const Icon = FEATURES[active].Icon; return <Icon size={18} style={{ color: FEATURES[active].color }} />; })()}
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-[#15171c] font-bold text-sm">{FEATURES[active].title}</div>
-                        <div className="text-[#5f6470] text-xs mt-0.5 line-clamp-1">{FEATURES[active].description}</div>
-                      </div>
-                      <div className="text-right">
-                        <div className="font-black text-lg leading-none" style={{ color: FEATURES[active].color }}>{FEATURES[active].stat}</div>
-                        <div className="text-[#71717a] text-[9px]">{FEATURES[active].statLabel}</div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
             </div>
+            <p className="text-center text-[#a1a1aa] text-[11px] font-medium tracking-wide -mt-2">
+              ↑ Scroll to explore the MaxVolt pack — cover, BMS, cells &amp; housing
+            </p>
 
             {/* Secondary image */}
             <ClipReveal direction="right" delay={0.3}>
-              <div className="relative h-40 rounded-2xl overflow-hidden mt-4">
+              <div className="relative h-40 rounded-2xl overflow-hidden mt-6">
                 <Image
                   src="/images/category/why-choose-us-wrn.webp"
                   alt="Why Choose MaxVolt"
