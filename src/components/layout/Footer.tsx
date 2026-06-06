@@ -44,7 +44,7 @@ const FOOTER_LINKS = {
     { label: "Support", href: "/support" },
     { label: "FAQ", href: "/faq" },
     { label: "Media Coverage", href: "/media" },
-    { label: "Sitemap", href: "/sitemap" },
+    { label: "Sitemap", href: "/sitemap-page" },
     { label: "Privacy Policy", href: "/privacy-policy" },
     { label: "Terms & Conditions", href: "/terms-and-conditions" },
   ],

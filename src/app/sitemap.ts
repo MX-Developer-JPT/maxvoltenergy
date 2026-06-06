@@ -13,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "", "/about-us", "/about-us/certificates", "/products", "/portfolio", "/solutions",
     "/battery-calculator", "/find-dealer", "/become-a-dealer", "/our-presence", "/contact-us",
     "/support", "/media", "/blog", "/faq", "/gallery", "/career", "/recycle",
+    "/solutions/electric-vehicles", "/solutions/solar-storage",
+    "/solutions/portable-lighting", "/solutions/consumer-electronics",
     "/investors", "/investors/earnings-call", "/investors/management",
     "/investors/corporate-governance", "/investors/corporate-announcement",
     "/investors/shareholding-pattern", "/investors/annual-reports",
