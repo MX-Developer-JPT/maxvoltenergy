@@ -6,7 +6,7 @@ import { Recycle, Leaf, ArrowRight, ExternalLink, FlaskConical, Factory, MapPin,
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Recycle | Maxvolt ReEarth Battery Recycling",
+  title: "Recycle",
   description: "Maxvolt ReEarth – lithium battery recycling program. Responsible end-of-life management for EV and energy storage batteries.",
 };
 

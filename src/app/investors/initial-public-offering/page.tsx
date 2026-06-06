@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import InvestorDocPage from "@/components/ui/InvestorDocPage";
 
 export const metadata: Metadata = {
-  title: "Initial Public Offering | Maxvolt Energy Investors",
+  title: "Initial Public Offering",
   description: "Maxvolt Energy Industries Limited IPO documents — Draft Red Herring Prospectus, Red Herring Prospectus, Abridged Prospectus and final Prospectus. Listed on NSE SME Emerge.",
 };
 

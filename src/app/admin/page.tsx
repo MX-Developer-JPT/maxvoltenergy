@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import AdminPortal from "./AdminPortal";
 
 export const metadata: Metadata = {
-  title: "Enquiry Portal | Maxvolt Energy",
+  title: "Enquiry Portal",
   description: "Internal enquiry management portal.",
   robots: { index: false, follow: false },
 };

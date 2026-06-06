@@ -11,9 +11,9 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = getBySlug(slug) || seedBySlug(slug);
-  if (!post) return { title: "Post Not Found | Maxvolt Energy" };
+  if (!post) return { title: "Post Not Found" };
   return {
-    title: `${post.title} | Maxvolt Energy Blog`,
+    title: `${post.title}`,
     description: post.excerpt || post.title,
     openGraph: { title: post.title, description: post.excerpt, images: post.coverImage ? [post.coverImage] : [] },
   };

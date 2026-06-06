@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | Maxvolt Energy Industries Limited",
+  title: "Terms & Conditions",
   description: "Maxvolt Energy terms and conditions for use of our website and products.",
 };
 

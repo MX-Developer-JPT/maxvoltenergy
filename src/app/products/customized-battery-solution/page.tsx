@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/ui/ProductPageTemplate";
 
 export const metadata: Metadata = {
-  title: "Customized Battery Solution | Maxvolt Energy",
+  title: "Customized Battery Solution",
   description: "Maxvolt Custom Lithium Battery Packs – tailor-made for medical devices, industrial equipment, specialty EVs & consumer electronics. Competitive pricing.",
 };
 

@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { SHOP_CATEGORIES, skusByCategory } from "@/lib/shop";
 
 export const metadata: Metadata = {
-  title: "Shop Lithium Batteries | Maxvolt Energy",
+  title: "Shop Lithium Batteries",
   description:
     "Browse Maxvolt's full lithium battery catalogue — e-scooter, e-rickshaw, inverter, solar storage and medical device batteries across every voltage and capacity.",
   keywords: [

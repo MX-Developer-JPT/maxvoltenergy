@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Become a Dealer / OEM Partner | Maxvolt Energy",
+  title: "Become a Dealer / OEM Partner",
   description:
     "Partner with Maxvolt Energy — 950+ dealers, 107 OEM partners, 2.2 GWh capacity. Dedicated OEM management, technical support, co-branded marketing and after-sales service backing.",
   keywords: [

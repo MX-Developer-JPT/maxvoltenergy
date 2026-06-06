@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/ui/ProductPageTemplate";
 
 export const metadata: Metadata = {
-  title: "E-Cycle Lithium Battery | Maxvolt Energy",
+  title: "E-Cycle Lithium Battery",
   description: "Maxvolt E-Cycle Lithium Battery – 36V 7.5Ah to 15Ah. Lightweight, fast charging, AIS 156 compliant. India's trusted e-bicycle battery supplier.",
 };
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import InvestorDocPage from "@/components/ui/InvestorDocPage";
 
 export const metadata: Metadata = {
-  title: "Notices | Maxvolt Energy Investors",
+  title: "Notices",
   description: "Maxvolt Energy shareholder and statutory notices — board meeting intimations, EGM proceedings, trading window closures and newspaper publications.",
 };
 

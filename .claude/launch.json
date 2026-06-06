@@ -5,7 +5,15 @@
       "name": "maxvolt-dev",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
-      "port": 3000
+      "port": 3100,
+      "autoPort": true
+    },
+    {
+      "name": "maxvolt-preview",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3210,
+      "autoPort": true
     }
   ]
 }

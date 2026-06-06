@@ -5,7 +5,7 @@ import { Phone, Mail, MessageCircle, MapPin, Wrench, Clock, Shield, ArrowRight }
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Support | Maxvolt Energy",
+  title: "Support",
   description: "Maxvolt Energy technical support, warranty, and service center information.",
 };
 

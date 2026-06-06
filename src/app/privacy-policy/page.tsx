@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Maxvolt Energy Industries Limited",
+  title: "Privacy Policy",
   description: "Maxvolt Energy's privacy policy covering data collection, use, and protection practices.",
 };
 

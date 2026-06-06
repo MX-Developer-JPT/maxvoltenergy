@@ -5,7 +5,7 @@ import { ArrowLeft, MapPin, Mail, Phone, Building2, UserCheck } from "lucide-rea
 import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Investors Contact | Maxvolt Energy",
+  title: "Investors Contact",
   description: "Contact details for Maxvolt Energy Industries Limited investor relations, compliance officer and registered office.",
 };
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/ui/ProductPageTemplate";
 
 export const metadata: Metadata = {
-  title: "E-Scooter & Bike Lithium Battery | Maxvolt Energy",
+  title: "E-Scooter & Bike Lithium Battery",
   description: "Maxvolt E-Scooter/Bike Lithium Battery – 48V to 74V, 24Ah to 40Ah. High energy density, quick charge, advanced BMS. India's trusted EV battery supplier.",
 };
 

@@ -6,7 +6,7 @@ import { SHOP_CATEGORIES, skusByCategory } from "@/lib/shop";
 import { pressSorted } from "@/lib/press";
 
 export const metadata: Metadata = {
-  title: "Sitemap | Maxvolt Energy",
+  title: "Sitemap",
   description: "Complete sitemap of Maxvolt Energy — browse every page including products, shop, solutions, investors, blog and more.",
 };
 

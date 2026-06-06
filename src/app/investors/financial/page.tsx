@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import InvestorDocPage from "@/components/ui/InvestorDocPage";
 
 export const metadata: Metadata = {
-  title: "Financials | Maxvolt Energy Investors",
+  title: "Financials",
   description: "Maxvolt Energy financial statements and filings — audited and half-yearly financials, AOC and MGT statutory filings.",
 };
 

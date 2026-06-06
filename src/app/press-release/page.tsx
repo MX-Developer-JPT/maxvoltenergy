@@ -3,7 +3,7 @@ import PressListContent from "./PressListContent";
 import { pressSorted } from "@/lib/press";
 
 export const metadata: Metadata = {
-  title: "Press Releases & Newsroom | Maxvolt Energy",
+  title: "Press Releases & Newsroom",
   description:
     "Latest press releases, company news and announcements from Maxvolt Energy Industries Limited — covering investments, product launches, ReEarth recycling, financial milestones and India's EV and energy-storage industry.",
   keywords: [

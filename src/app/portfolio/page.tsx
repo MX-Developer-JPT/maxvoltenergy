@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PortfolioContent from "./PortfolioContent";
 
 export const metadata: Metadata = {
-  title: "Product Portfolio | Maxvolt Energy Lithium Batteries",
+  title: "Product Portfolio",
   description:
     "Explore Maxvolt Energy's complete product portfolio — e-cycle, e-scooter, e-rickshaw, energy storage, solar and fully customized lithium battery packs with detailed specifications, chemistries and applications.",
   keywords: [

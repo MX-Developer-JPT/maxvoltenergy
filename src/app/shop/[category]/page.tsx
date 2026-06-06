@@ -13,9 +13,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {
   const { category } = await params;
   const c = getCategory(category);
-  if (!c) return { title: "Shop | Maxvolt Energy" };
+  if (!c) return { title: "Shop" };
   return {
-    title: `${c.name} | Maxvolt Energy`,
+    title: `${c.name}`,
     description: c.blurb,
     keywords: [c.name, `${c.name} price`, c.chemistry, c.application, "Maxvolt Energy"],
   };

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/ui/ProductPageTemplate";
 
 export const metadata: Metadata = {
-  title: "E-Rickshaw Lithium Battery | Maxvolt Energy",
+  title: "E-Rickshaw Lithium Battery",
   description: "Maxvolt E-Rickshaw Lithium Battery – 51V 86Ah & 100Ah models. Fast charging, AIS 156 certified, advanced BMS. Solving battery drain for e-rickshaw drivers across India.",
 };
 

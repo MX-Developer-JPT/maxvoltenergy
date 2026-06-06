@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import AnnualReportsContent from "./AnnualReportsContent";
 
 export const metadata: Metadata = {
-  title: "Annual Reports | Maxvolt Energy Investors",
+  title: "Annual Reports",
   description: "Maxvolt Energy annual reports covering financial performance, operations, and strategic outlook.",
 };
 

@@ -15,9 +15,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ solution: string }> }): Promise<Metadata> {
   const { solution } = await params;
   const s = getSolution(solution);
-  if (!s) return { title: "Solutions | Maxvolt Energy" };
+  if (!s) return { title: "Solutions" };
   return {
-    title: `${s.title} Battery Solutions | Maxvolt Energy`,
+    title: `${s.title} Battery Solutions`,
     description: s.description,
     keywords: [s.title, ...s.applications, "Maxvolt Energy lithium battery"],
   };

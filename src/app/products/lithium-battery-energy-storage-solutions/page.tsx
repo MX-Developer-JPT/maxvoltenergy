@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/ui/ProductPageTemplate";
 
 export const metadata: Metadata = {
-  title: "Lithium Battery Energy Storage Solutions | Maxvolt Energy",
+  title: "Lithium Battery Energy Storage Solutions",
   description: "Maxvolt Lithium Battery Energy Storage – residential, commercial & grid-scale. High density, scalable, 95%+ round-trip efficiency. India's experienced ESS provider.",
 };
 

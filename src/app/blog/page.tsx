@@ -7,7 +7,7 @@ import { readPublished } from "@/lib/blog-store.server";
 import { SEED_POSTS } from "@/lib/blog-seed";
 
 export const metadata: Metadata = {
-  title: "Blog | Maxvolt Energy",
+  title: "Blog",
   description: "Latest news, insights, and updates from Maxvolt Energy on EV batteries, solar storage, recycling, and India's electric future.",
 };
 

@@ -3,7 +3,7 @@ import PageHero from "@/components/ui/PageHero";
 import FaqContent, { FaqGroup } from "./FaqContent";
 
 export const metadata: Metadata = {
-  title: "FAQ | Maxvolt Energy",
+  title: "FAQ",
   description:
     "Frequently asked questions about Maxvolt Energy lithium batteries for EVs, e-rickshaws, solar and inverters — chemistry, AIS 156 safety, warranty, BMS, recycling and dealer support.",
   keywords: [

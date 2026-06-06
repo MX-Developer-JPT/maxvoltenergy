@@ -3,7 +3,7 @@ import PageHero from "@/components/ui/PageHero";
 import { Newspaper, ExternalLink, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Media Coverage | Maxvolt Energy",
+  title: "Media Coverage",
   description: "Maxvolt Energy in the news – press coverage and citations from leading business and financial news channels covering the NSE SME listing and lithium battery business.",
 };
 

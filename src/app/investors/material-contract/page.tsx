@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import InvestorDocPage from "@/components/ui/InvestorDocPage";
 
 export const metadata: Metadata = {
-  title: "Material Contracts | Maxvolt Energy Investors",
+  title: "Material Contracts",
   description: "Material contracts and agreements disclosed by Maxvolt Energy Industries Limited under SEBI regulations.",
 };
 

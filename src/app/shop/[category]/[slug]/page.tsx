@@ -14,9 +14,9 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const { category, slug } = await params;
   const sku = getSku(category, slug);
   const c = getCategory(category);
-  if (!sku || !c) return { title: "Product | Maxvolt Energy" };
+  if (!sku || !c) return { title: "Product" };
   return {
-    title: `${sku.name} | Maxvolt Energy`,
+    title: `${sku.name}`,
     description: `${sku.name} — ${sku.voltage} ${sku.capacity} ${c.chemistry} lithium battery by Maxvolt Energy. AIS 156 certified, smart BMS protected. ${c.application}.`,
     keywords: [sku.name, `${sku.voltage} ${sku.capacity} battery`, c.name, c.chemistry, "Maxvolt Energy"],
   };

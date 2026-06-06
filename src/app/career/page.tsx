@@ -3,7 +3,7 @@ import PageHero from "@/components/ui/PageHero";
 import { Briefcase, MapPin, ArrowRight, Zap, Users, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Careers | Maxvolt Energy Industries Limited",
+  title: "Careers",
   description: "Join Maxvolt Energy – India's fastest-growing lithium battery manufacturer. 170+ team members. Openings in engineering, sales, manufacturing, and R&D.",
 };
 

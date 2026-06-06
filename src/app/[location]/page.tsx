@@ -40,8 +40,8 @@ export async function generateMetadata({ params }: { params: Promise<{ location:
   if (!loc) return { title: "Maxvolt Energy" };
   const title =
     loc.type === "segment" && loc.slug !== "india"
-      ? `Lithium Battery Supplier for ${loc.name} | Maxvolt Energy`
-      : `Lithium Ion Battery Manufacturer & Supplier ${phrase(loc)} | Maxvolt Energy`;
+      ? `Lithium Battery Supplier for ${loc.name}`
+      : `Lithium Ion Battery Manufacturer & Supplier ${phrase(loc)}`;
   return {
     title,
     description: lead(loc),

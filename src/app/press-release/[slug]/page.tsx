@@ -13,9 +13,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const pr = pressBySlug(slug);
-  if (!pr) return { title: "Press Release Not Found | Maxvolt Energy" };
+  if (!pr) return { title: "Press Release Not Found" };
   return {
-    title: `${pr.title} | Maxvolt Energy Newsroom`,
+    title: `${pr.title}`,
     description: pr.excerpt,
     keywords: ["Maxvolt Energy", "press release", pr.category, "lithium battery India"],
     alternates: { canonical: `/press-release/${pr.slug}` },

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/ui/ProductPageTemplate";
 
 export const metadata: Metadata = {
-  title: "Lithium Battery for Solar Application | Maxvolt Energy",
+  title: "Lithium Battery for Solar Application",
   description: "Maxvolt Solar Lithium Battery – optimized for solar energy storage. Fast absorption, 3000+ cycle life, mobile app monitoring. India's premier solar battery manufacturer.",
 };
 

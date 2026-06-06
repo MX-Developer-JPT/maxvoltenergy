@@ -5,7 +5,7 @@ import { FileText, ArrowLeft, Shield } from "lucide-react";
 import DownloadButton from "@/components/ui/DownloadButton";
 
 export const metadata: Metadata = {
-  title: "Policies & Notices | Maxvolt Energy Investors",
+  title: "Policies & Notices",
   description: "Maxvolt Energy policies, statutory notices, and financial reports.",
 };
 

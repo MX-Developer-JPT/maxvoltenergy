@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Zap, Sun, Lightbulb, Cpu, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Solutions | Maxvolt Energy",
+  title: "Solutions",
   description: "Maxvolt Energy solutions for electric vehicles, portable lighting, solar storage, and consumer electronics.",
 };
 
