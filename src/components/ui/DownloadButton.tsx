@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Download, Check, Loader2 } from "lucide-react";
 import { downloadDocument } from "@/lib/download";
-import { docUrl } from "@/lib/docs";
 
 export default function DownloadButton({
   title,
@@ -23,7 +22,7 @@ export default function DownloadButton({
     e.stopPropagation();
     setState("loading");
     try {
-      await downloadDocument(title, url ?? docUrl(title));
+      await downloadDocument(title, url);
       setState("done");
       setTimeout(() => setState("idle"), 2000);
     } catch {

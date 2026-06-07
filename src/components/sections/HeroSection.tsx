@@ -257,7 +257,7 @@ export default function HeroSection() {
             {/* Headline — changes with active product */}
             <div className="mb-1.5 min-h-[2.2em]">
               <AnimatePresence mode="wait">
-                <motion.div key={active}>
+                <motion.h1 key={active} className="my-0">
                   <div className="flex flex-wrap gap-x-5 overflow-hidden">
                     {words1.map((w, i) => (
                       <div key={i} className="overflow-hidden">
@@ -288,7 +288,7 @@ export default function HeroSection() {
                       </div>
                     ))}
                   </div>
-                </motion.div>
+                </motion.h1>
               </AnimatePresence>
             </div>
 

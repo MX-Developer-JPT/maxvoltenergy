@@ -80,27 +80,29 @@ export default function PageHero({ badge, title, description, className, childre
         )}
 
         {/* Title — word-by-word stagger */}
-        <div className="text-4xl md:text-5xl lg:text-6xl font-black text-[#15171c] leading-tight tracking-tight mb-5">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#15171c] leading-tight tracking-tight mb-5">
           {typeof title === "string" ? (
-            <div className="overflow-hidden">
-              <motion.div
+            <span className="block overflow-hidden">
+              <motion.span
+                className="block"
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               >
                 {title}
-              </motion.div>
-            </div>
+              </motion.span>
+            </span>
           ) : (
-            <motion.div
+            <motion.span
+              className="block"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
               {title}
-            </motion.div>
+            </motion.span>
           )}
-        </div>
+        </h1>
 
         {description && (
           <motion.p
