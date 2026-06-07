@@ -79,7 +79,7 @@ function AboutStory() {
             <span className="text-[#D97706] text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">Our Story</span>
             <h2 className="text-4xl md:text-5xl font-bold text-[#15171c] mb-6 leading-tight">
               From a 15-Battery Lab to{" "}
-              <span className="gradient-text">₹100+ Crore Listed Company</span>
+              <span className="gradient-text">₹297+ Crore Listed Company</span>
             </h2>
             <p className="text-[#52525b] text-base leading-relaxed mb-6">
               Maxvolt Energy Industries Limited was established in 2019 with a simple but powerful vision —
@@ -91,9 +91,9 @@ function AboutStory() {
               retail dealers across the country.
             </p>
             <p className="text-[#52525b] text-base leading-relaxed mb-8">
-              In 2025, we achieved a landmark milestone — listing on the NSE SME Emerge platform with
-              revenue exceeding ₹100 Crore, a 170-member team, and monthly production capacity of
-              6,000+ battery packs.
+              In 2025, we achieved a landmark milestone — listing on the NSE SME Emerge platform — and
+              have since scaled to revenue exceeding ₹297 Crore, a 350-member team, and monthly
+              production capacity of 15,000+ battery packs.
             </p>
 
             <div className="grid grid-cols-2 gap-4 mb-8">
@@ -139,10 +139,10 @@ function AboutStory() {
             {/* Achievement cards */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { value: "₹100+ Cr", label: "Revenue FY25", color: "#FFD100" },
-                { value: "6,000+", label: "Units/Month", color: "#FFA800" },
-                { value: "58+", label: "Dealer Network", color: "#FF8C00" },
-                { value: "170+", label: "Team Members", color: "#7c3aed" },
+                { value: "₹297+ Cr", label: "Revenue", color: "#FFD100" },
+                { value: "15,000+", label: "Units/Month", color: "#FFA800" },
+                { value: "950+", label: "Dealer Network", color: "#FF8C00" },
+                { value: "350+", label: "Team Members", color: "#7c3aed" },
               ].map(({ value, label, color }) => (
                 <div
                   key={label}
@@ -261,7 +261,7 @@ function KeyStrengths() {
     "AIS 156 government safety certification",
     "In-house R&D center driving next-gen lithium battery development",
     "Pan-India presence across 22+ states",
-    "6+ OEM partnerships with leading EV manufacturers",
+    "107 OEM partnerships with leading EV manufacturers",
     "Listed on NSE SME Emerge platform",
     "Maxvolt ReEarth recycling subsidiary for sustainable operations",
   ];
@@ -469,7 +469,7 @@ export default function AboutContent() {
       <PageHero
         badge="About Maxvolt Energy"
         title={<>India&apos;s Premier <span className="gradient-text">Lithium Battery</span> Manufacturer</>}
-        description="Founded in 2019, Maxvolt Energy Industries Limited has grown from a 15-battery-per-day startup to a NSE-listed company with ₹100+ Crore revenue and 170+ team members powering India's electric revolution."
+        description="Founded in 2019, Maxvolt Energy Industries Limited has grown from a 15-battery-per-day startup to a NSE-listed company with ₹297+ Crore revenue and 350+ team members powering India's electric revolution."
       />
       <MissionVision />
       <AboutStory />

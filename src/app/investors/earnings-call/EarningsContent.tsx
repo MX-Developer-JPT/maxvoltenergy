@@ -58,8 +58,8 @@ export default function EarningsContent() {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
-              { label: "Revenue FY25", value: "₹100+ Cr", sub: "Annual Revenue Milestone", color: "#FFD100" },
-              { label: "Monthly Capacity", value: "6,000+", sub: "Battery Packs / Month", color: "#FFA800" },
+              { label: "Revenue", value: "₹297+ Cr", sub: "Annual Revenue Milestone", color: "#FFD100" },
+              { label: "Monthly Capacity", value: "15,000+", sub: "Battery Packs / Month", color: "#FFA800" },
               { label: "Growth", value: "NSE Listed", sub: "SME Emerge Platform", color: "#FF8C00" },
             ].map(({ label, value, sub, color }) => (
               <div key={label} className="p-6 rounded-2xl frosted-card border border-black/6 text-center">

@@ -59,8 +59,8 @@ export default function PresenceContent() {
             {[
               { value: "22+", label: "States", Icon: MapPin, color: "#FFD100" },
               { value: "150+", label: "Cities", Icon: Building2, color: "#FFA800" },
-              { value: "58+", label: "Retail Dealers", Icon: Users, color: "#FF8C00" },
-              { value: "6+", label: "Service Centers", Icon: Wrench, color: "#7c3aed" },
+              { value: "950+", label: "Retail Dealers", Icon: Users, color: "#FF8C00" },
+              { value: "9", label: "Service Centers", Icon: Wrench, color: "#7c3aed" },
             ].map(({ value, label, Icon, color }) => (
               <div key={label} className="flex items-center gap-3 p-5 rounded-xl frosted-card border border-black/6 text-center">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: `${color}12`, border: `1px solid ${color}20` }}>

@@ -80,9 +80,9 @@ const INVESTOR_SECTIONS = [
 
 const KEY_HIGHLIGHTS = [
   { label: "NSE SME Emerge", value: "Listed", sub: "Stock Exchange Listing", color: "#FFD100" },
-  { label: "Revenue FY25", value: "₹100+ Cr", sub: "Annual Revenue", color: "#FFA800" },
-  { label: "Team Size", value: "170+", sub: "Skilled Professionals", color: "#FF8C00" },
-  { label: "Monthly Capacity", value: "6,000+", sub: "Battery Packs", color: "#7c3aed" },
+  { label: "Revenue", value: "₹297+ Cr", sub: "Annual Revenue", color: "#FFA800" },
+  { label: "Team Size", value: "350+", sub: "Skilled Professionals", color: "#FF8C00" },
+  { label: "Monthly Capacity", value: "15,000+", sub: "Battery Packs", color: "#7c3aed" },
 ];
 
 export default function InvestorsContent() {

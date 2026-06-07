@@ -18,7 +18,7 @@ const CSR_PILLARS = [
     title: "Community Development",
     description: "We believe growth must benefit the communities around us — creating employment, supporting skill development, and contributing to the socioeconomic development of the Ghaziabad region.",
     color: "#FFA800",
-    initiatives: ["170+ local employment opportunities", "Skill development in lithium battery technology", "Support for EV mechanics and service technicians", "Community infrastructure support"],
+    initiatives: ["350+ local employment opportunities", "Skill development in lithium battery technology", "Support for EV mechanics and service technicians", "Community infrastructure support"],
   },
   {
     Icon: Zap,

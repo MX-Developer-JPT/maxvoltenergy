@@ -4,7 +4,7 @@ import { Briefcase, MapPin, ArrowRight, Zap, Users, TrendingUp } from "lucide-re
 
 export const metadata: Metadata = {
   title: "Careers",
-  description: "Join Maxvolt Energy – India's fastest-growing lithium battery manufacturer. 170+ team members. Openings in engineering, sales, manufacturing, and R&D.",
+  description: "Join Maxvolt Energy – India's fastest-growing lithium battery manufacturer. 350+ team members. Openings in engineering, sales, manufacturing, and R&D.",
 };
 
 const OPENINGS = [
@@ -22,7 +22,7 @@ export default function CareerPage() {
       <PageHero
         badge="Join Our Team"
         title={<>Power the <span className="gradient-text">EV Revolution</span></>}
-        description="Maxvolt Energy is a 170+ member team on a mission to build India's best lithium batteries. We're always looking for talented engineers, sales leaders, and operations experts."
+        description="Maxvolt Energy is a 350+ member team on a mission to build India's best lithium batteries. We're always looking for talented engineers, sales leaders, and operations experts."
       />
 
       {/* Why Maxvolt */}
@@ -30,8 +30,8 @@ export default function CareerPage() {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { Icon: Zap, title: "Fast Growth", sub: "From 15 batteries/day in 2019 to 6,000+/month in 2025 — NSE listed.", color: "#FFD100" },
-              { Icon: Users, title: "Great Culture", sub: "A collaborative team of 170+ engineers, technicians, and sales professionals.", color: "#FFA800" },
+              { Icon: Zap, title: "Fast Growth", sub: "From 15 batteries/day in 2019 to 15,000+/month today — NSE listed.", color: "#FFD100" },
+              { Icon: Users, title: "Great Culture", sub: "A collaborative team of 350+ engineers, technicians, and sales professionals.", color: "#FFA800" },
               { Icon: TrendingUp, title: "Industry Impact", sub: "Every battery we build helps India reduce carbon emissions.", color: "#FF8C00" },
             ].map(({ Icon, title, sub, color }) => (
               <div key={title} className="flex gap-4 p-6 rounded-2xl frosted-card border border-black/6">

@@ -207,11 +207,11 @@ export const PRODUCTS = [
 ];
 
 export const STATS = [
-  { value: "100+", label: "Crore Revenue", suffix: "₹" },
-  { value: "6000+", label: "Monthly Production", suffix: "" },
-  { value: "58+", label: "Retail Dealers", suffix: "" },
-  { value: "6+", label: "OEM Partnerships", suffix: "" },
-  { value: "170+", label: "Team Members", suffix: "" },
+  { value: "297+", label: "Crore Revenue", suffix: "₹" },
+  { value: "15,000+", label: "Monthly Production", suffix: "" },
+  { value: "950+", label: "Retail Dealers", suffix: "" },
+  { value: "107", label: "OEM Partnerships", suffix: "" },
+  { value: "350+", label: "Team Members", suffix: "" },
   { value: "2019", label: "Founded", suffix: "" },
 ];
 

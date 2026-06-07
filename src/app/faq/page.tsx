@@ -42,7 +42,7 @@ const GROUPS: FaqGroup[] = [
     category: "Buying, Warranty & Support",
     items: [
       { q: "What warranty do Maxvolt batteries carry?", a: "Maxvolt batteries are covered by a manufacturer warranty that varies by product line. Please contact our team or your nearest authorized dealer for the exact warranty terms for your chosen model." },
-      { q: "How do I find a Maxvolt dealer near me?", a: "Use our Find a Dealer page to locate authorized Maxvolt dealers by state and city across our pan-India network of 58+ dealers in 22+ states." },
+      { q: "How do I find a Maxvolt dealer near me?", a: "Use our Find a Dealer page to locate authorized Maxvolt dealers by state and city across our pan-India network of 950+ dealers in 22+ states." },
       { q: "How can I become a dealer or OEM partner?", a: "Reach out through our Contact page selecting the dealer or OEM enquiry type. Our partnerships team will get in touch to discuss onboarding, pricing and support." },
     ],
   },

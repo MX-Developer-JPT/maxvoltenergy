@@ -74,7 +74,7 @@ export default function DealerLocatorContent() {
       <PageHero
         badge="Dealer Locator"
         title={<>Find a Maxvolt <span className="gradient-text">Dealer Near You</span></>}
-        description="58+ authorized dealers, distributors, and service centers across 22+ states. Search by city or state to find your nearest Maxvolt Energy point of sale and support."
+        description="950+ authorized dealers, distributors, and service centers across 22+ states. Search by city or state to find your nearest Maxvolt Energy point of sale and support."
       />
 
       <section className="section-padding bg-[#f7f7f5]">
@@ -253,7 +253,7 @@ export default function DealerLocatorContent() {
       <section className="py-16 bg-white border-t border-black/6">
         <div className="container-custom text-center">
           <h2 className="text-3xl font-black text-[#15171c] mb-3">Want to become a <span className="gradient-text">Maxvolt Dealer?</span></h2>
-          <p className="text-[#52525b] text-sm max-w-md mx-auto mb-7">Join 58+ partners. Competitive margins, technical training, and marketing support across India.</p>
+          <p className="text-[#52525b] text-sm max-w-md mx-auto mb-7">Join 950+ partners. Competitive margins, technical training, and marketing support across India.</p>
           <a href="/become-a-dealer" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFA800] transition-all">
             Apply for Dealership
           </a>

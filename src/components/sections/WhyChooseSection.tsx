@@ -11,7 +11,7 @@ const FEATURES = [
   { Icon: Zap, title: "Advanced Technology", description: "Continuous innovation delivering higher efficiency, faster charging, and smarter performance through LiFePO4, NMC and Li-Ion cell technology.", color: "#FFD100", stat: "50%", statLabel: "Faster Charging" },
   { Icon: Shield, title: "Unmatched Quality", description: "Multi-stage testing at every production milestone ensures durability, safety, and consistent performance.", color: "#FFA800", stat: "AIS 156", statLabel: "Certified" },
   { Icon: Globe, title: "Global Standards", description: "AIS 156 certified and compliant with international quality benchmarks — trusted for domestic and export markets.", color: "#FF8C00", stat: "100%", statLabel: "Compliant" },
-  { Icon: Users, title: "Trusted Partnerships", description: "Strategic collaborations with 6+ OEM partners and 58+ retail dealers built on reliability and shared growth.", color: "#7c3aed", stat: "58+", statLabel: "Dealers" },
+  { Icon: Users, title: "Trusted Partnerships", description: "Strategic collaborations with 107 OEM partners and 950+ retail dealers built on reliability and shared growth.", color: "#7c3aed", stat: "950+", statLabel: "Dealers" },
   { Icon: FlaskConical, title: "In-House R&D", description: "Dedicated research center driving next-generation battery chemistry and application-specific custom packs.", color: "#f97316", stat: "R&D", statLabel: "In-House" },
   { Icon: Award, title: "NSE Listed", description: "Listed on NSE SME Emerge with full regulatory compliance, transparent governance, and investor-grade reporting.", color: "#ec4899", stat: "NSE", statLabel: "Emerge" },
 ];
@@ -61,7 +61,7 @@ export default function WhyChooseSection() {
                 <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/30 to-transparent" />
                 <div className="absolute inset-0 flex items-center px-6">
                   <div>
-                    <div className="text-white font-bold text-lg mb-1">Trusted by 58+ Dealers</div>
+                    <div className="text-white font-bold text-lg mb-1">Trusted by 950+ Dealers</div>
                     <div className="text-white/80 text-sm">Pan India presence across 22+ states</div>
                   </div>
                 </div>
