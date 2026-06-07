@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 import PageHero from "@/components/ui/PageHero";
 import { FileText, ArrowLeft, Newspaper } from "lucide-react";
 import DownloadButton from "@/components/ui/DownloadButton";
+import { investorDocs } from "@/lib/investor-docs";
+
+const DOC_FILES = investorDocs("corporate-announcement");
 
 const ANNOUNCEMENTS = [
   { name: "Outcome of Board Meeting", type: "PDF", category: "Board Meeting" },
@@ -116,7 +119,7 @@ export default function AnnouncementsContent() {
                     {category}
                   </span>
 
-                  <DownloadButton title={name} />
+                  <DownloadButton title={name} url={DOC_FILES[index]?.file} />
                 </motion.div>
               );
             })}

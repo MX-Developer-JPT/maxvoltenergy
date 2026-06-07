@@ -3,6 +3,9 @@ import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
 import { FileText, ArrowLeft, Shield } from "lucide-react";
 import DownloadButton from "@/components/ui/DownloadButton";
+import { investorDocs } from "@/lib/investor-docs";
+
+const POLICY_FILES = investorDocs("policies-notices");
 
 export const metadata: Metadata = {
   title: "Policies & Notices",
@@ -43,7 +46,7 @@ export default function PoliciesNoticesPage() {
       <section className="section-padding bg-[#f7f7f5]">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {POLICY_DOCS.map(({ name, category, color }) => (
+            {POLICY_DOCS.map(({ name, category, color }, index) => (
               <div key={name} className="group flex items-center gap-4 p-5 rounded-xl frosted-card border border-black/6 hover:border-black/8 transition-all cursor-pointer">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: `${color}10`, border: `1px solid ${color}20` }}>
                   <Shield size={15} style={{ color }} />
@@ -52,7 +55,7 @@ export default function PoliciesNoticesPage() {
                   <div className="text-[#15171c] text-sm font-medium">{name}</div>
                   <div className="text-[#8a8a93] text-xs">{category}</div>
                 </div>
-                <DownloadButton title={name} />
+                <DownloadButton title={name} url={POLICY_FILES[index]?.file} />
               </div>
             ))}
           </div>

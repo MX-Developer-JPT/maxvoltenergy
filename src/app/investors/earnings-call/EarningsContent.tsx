@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
-import { FileText, Mic, ArrowLeft, Play, Calendar } from "lucide-react";
+import { FileText, ArrowLeft } from "lucide-react";
 import DownloadButton from "@/components/ui/DownloadButton";
 
 const EARNINGS_DOCUMENTS = [
@@ -13,9 +13,8 @@ const EARNINGS_DOCUMENTS = [
     year: "2025",
     color: "#FFD100",
     documents: [
-      { name: "Investors Presentation FY 25", type: "PDF", icon: FileText },
-      { name: "Earnings Call Audio FY 2025", type: "MP3", icon: Mic },
-      { name: "Earnings Call Transcript H2 FY25", type: "PDF", icon: FileText },
+      { name: "Investors Presentation FY 25", type: "PDF", file: "/assets/docs/policy/investors-presentation-fy-25-oai.pdf" },
+      { name: "Earnings Call Transcript H2 FY25", type: "PDF", file: "/assets/docs/policy/earnings-call-transcript-h2-fy25-ruy.pdf" },
     ],
   },
   {
@@ -23,18 +22,16 @@ const EARNINGS_DOCUMENTS = [
     year: "H1 2026",
     color: "#FFA800",
     documents: [
-      { name: "Investors Presentation H1 FY 26", type: "PDF", icon: FileText },
-      { name: "Earnings Call Transcript H1 FY26", type: "PDF", icon: FileText },
-      { name: "Earnings Call Audio H1 FY26", type: "MP3", icon: Mic },
+      { name: "Investors Presentation H1 FY 26", type: "PDF", file: "/assets/docs/policy/investors-presentation-h1-fy-26-czv.pdf" },
+      { name: "Earnings Call Transcript H1 FY26", type: "PDF", file: "/assets/docs/policy/earnings-call-transcript-h1-fy26-hwv.pdf" },
     ],
   },
   {
-    period: "FY 2026 (Full Year)",
-    year: "FY 2026",
+    period: "FY 2026 (H2)",
+    year: "H2 2026",
     color: "#FF8C00",
     documents: [
-      { name: "Earnings Call Audio FY26", type: "MP3", icon: Mic },
-      { name: "Earning Call Transcript H2 FY26", type: "PDF", icon: FileText },
+      { name: "Earnings Call Transcript H2 FY26", type: "PDF", file: "/assets/docs/policy/earning-call-transcript-h2-fy26-pgf.pdf" },
     ],
   },
 ];
@@ -108,7 +105,7 @@ export default function EarningsContent() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {documents.map(({ name, type, icon: Icon }, docIndex) => (
+                  {documents.map(({ name, type, file }, docIndex) => (
                     <motion.div
                       key={name}
                       initial={{ opacity: 0, y: 15 }}
@@ -120,17 +117,13 @@ export default function EarningsContent() {
                         className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
                         style={{ backgroundColor: `${color}12`, border: `1px solid ${color}25` }}
                       >
-                        {type === "MP3" ? (
-                          <Play size={16} style={{ color }} />
-                        ) : (
-                          <FileText size={16} style={{ color }} />
-                        )}
+                        <FileText size={16} style={{ color }} />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-[#15171c] text-sm font-semibold truncate">{name}</div>
                         <div className="text-[#71717a] text-xs mt-0.5">{type} Document</div>
                       </div>
-                      <DownloadButton title={name} />
+                      <DownloadButton title={name} url={file} />
                     </motion.div>
                   ))}
                 </div>

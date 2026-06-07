@@ -3,16 +3,23 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import PageHero from "@/components/ui/PageHero";
-import { FileText, ArrowLeft } from "lucide-react";
+import { FileText, ArrowLeft, Download } from "lucide-react";
 import DownloadButton from "@/components/ui/DownloadButton";
+
+type DocItem = string | { label: string; file?: string; type?: string };
 
 interface Props {
   badge: string;
   title: React.ReactNode;
   description: string;
-  docs: string[];
+  docs: DocItem[];
   note?: string;
   intro?: React.ReactNode;
+}
+
+function normalizeDoc(d: DocItem) {
+  if (typeof d === "string") return { label: d, file: undefined as string | undefined, type: "PDF" };
+  return { label: d.label, file: d.file, type: d.type || "PDF" };
 }
 
 export default function InvestorDocPage({ badge, title, description, docs, note, intro }: Props) {
@@ -30,25 +37,41 @@ export default function InvestorDocPage({ badge, title, description, docs, note,
 
           {docs.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {docs.map((name, i) => (
-                <motion.div
-                  key={name}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: Math.min(i * 0.04, 0.3) }}
-                  className="group flex items-center gap-4 p-4 rounded-xl frosted-card hover:border-[#D97706]/20 transition-all"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[#FFD100]/12 border border-[#D97706]/20 flex items-center justify-center shrink-0">
-                    <FileText size={15} className="text-[#D97706]" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-[#15171c] text-sm font-medium">{name}</div>
-                    <div className="text-[#8a8a93] text-xs">PDF Document</div>
-                  </div>
-                  <DownloadButton title={name} />
-                </motion.div>
-              ))}
+              {docs.map((d, i) => {
+                const doc = normalizeDoc(d);
+                return (
+                  <motion.div
+                    key={doc.label + i}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: Math.min(i * 0.04, 0.3) }}
+                    className="group flex items-center gap-4 p-4 rounded-xl frosted-card hover:border-[#D97706]/20 transition-all"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-[#FFD100]/12 border border-[#D97706]/20 flex items-center justify-center shrink-0">
+                      <FileText size={15} className="text-[#D97706]" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-[#15171c] text-sm font-medium">{doc.label}</div>
+                      <div className="text-[#8a8a93] text-xs">{doc.type} Document</div>
+                    </div>
+                    {doc.file ? (
+                      <a
+                        href={doc.file}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        download
+                        aria-label={`Download ${doc.label}`}
+                        className="shrink-0 text-[#a1a1aa] hover:text-[#D97706] transition-colors"
+                      >
+                        <Download size={15} />
+                      </a>
+                    ) : (
+                      <DownloadButton title={doc.label} />
+                    )}
+                  </motion.div>
+                );
+              })}
             </div>
           )}
 

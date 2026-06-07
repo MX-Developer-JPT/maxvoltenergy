@@ -1,21 +1,13 @@
 import type { Metadata } from "next";
 import InvestorDocPage from "@/components/ui/InvestorDocPage";
+import { investorDocs } from "@/lib/investor-docs";
 
 export const metadata: Metadata = {
   title: "Notices",
   description: "Maxvolt Energy shareholder and statutory notices — board meeting intimations, EGM proceedings, trading window closures and newspaper publications.",
 };
 
-const DOCS = [
-  "Board Meeting Intimation (12 May 2026)",
-  "Board Meeting Intimation Revised (12 May 2026)",
-  "Trading Window Closure",
-  "EGM Proceedings",
-  "Voting Results and Scrutinizers Report",
-  "Copy of Newspaper Publication",
-  "Copy of Newspaper (Dec 2025)",
-  "Final Notice Newspaper",
-];
+const DOCS = investorDocs("notices");
 
 export default function NoticesPage() {
   return (

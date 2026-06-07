@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 import PageHero from "@/components/ui/PageHero";
 import { FileText, BarChart3, ArrowLeft } from "lucide-react";
 import DownloadButton from "@/components/ui/DownloadButton";
+import { investorDocs } from "@/lib/investor-docs";
+
+const SH_FILES = investorDocs("shareholding-pattern");
 
 const DOCUMENTS = [
   {
@@ -106,7 +109,7 @@ export default function ShareholdingContent() {
                   <p className="text-[#5f6470] text-sm mb-1">{description}</p>
                   <span className="text-[#8a8a93] text-xs">Filed: {date} · {type} Format</span>
                 </div>
-                <DownloadButton title={name} variant="button" />
+                <DownloadButton title={name} url={SH_FILES[index]?.file} variant="button" />
               </motion.div>
             ))}
           </div>

@@ -8,11 +8,20 @@ import DownloadButton from "@/components/ui/DownloadButton";
 
 const REPORTS = [
   {
+    year: "FY 2024-25",
+    title: "Maxvolt Annual Report FY 2024-25",
+    description: "Latest annual report covering the NSE SME Emerge listing, ₹100+ Crore revenue milestone and capacity expansion",
+    highlights: ["NSE SME Listed", "₹100+ Cr Revenue", "15,000+ Packs/Month", "Pan-India Network"],
+    color: "#D97706",
+    file: "/assets/docs/policy/annual-report-fy2024-25-nnd.pdf",
+  },
+  {
     year: "FY 2023-24",
     title: "Maxvolt Annual Report FY 2023-24",
     description: "Report covering AIS 156 certification achievement and production scale-up to 2,200-2,500 units/month",
     highlights: ["AIS 156 Certified", "Eco-Series Launch", "58+ Dealers", "Production Scale-Up"],
     color: "#D97706",
+    file: "/assets/docs/policy/annual-report-2023-24-ium.pdf",
   },
   {
     year: "FY 2022-23",
@@ -20,6 +29,7 @@ const REPORTS = [
     description: "Report covering R&D center establishment and production doubling to 50 batteries/day",
     highlights: ["R&D Center Established", "32 Retail Dealers", "4 OEM Partners", "Production Doubled"],
     color: "#D97706",
+    file: "/assets/docs/policy/annual-report-2022-23-zhq.pdf",
   },
   {
     year: "FY 2021-22",
@@ -27,17 +37,19 @@ const REPORTS = [
     description: "Report covering early growth, distributor expansion, and service network build-out",
     highlights: ["22 Distributors", "7 Service Centers", "4 OEM Suppliers", "Capacity Growth"],
     color: "#D97706",
+    file: "/assets/docs/policy/annual-report-2021-22-kyd.pdf",
   },
 ];
 
-const FINANCIALS = [
-  "Financials 2024-25",
-  "Re-Audited Financials 2023-24",
-  "LR Half Yearly Financials 30.09.2025",
-  "AOC F.Y. 2023-24",
-  "AOC 2 F.Y. 22-23",
-  "AOC 2 F.Y. 21-22",
-  "MGT-9 F.Y. 21-22",
+const FINANCIALS: { label: string; file: string }[] = [
+  { label: "Financials 2024-25", file: "/assets/docs/policy/financials-2024-25-hvs.pdf" },
+  { label: "Re-Audited Financials 2023-24", file: "/assets/docs/policy/re-audited-financials-2023-24-hep.pdf" },
+  { label: "LR Half Yearly Financials 30-09-2025", file: "/assets/docs/policy/lr-half-yearly-financials-30-09-2025-grz.pdf" },
+  { label: "AOC FY 2023-24", file: "/assets/docs/policy/aoc-f-y-2023-24-zcf.pdf" },
+  { label: "AOC 2 FY 2022-23", file: "/assets/docs/policy/aoc-2-f-y-22-23-hah.pdf" },
+  { label: "AOC 2 FY 2021-22", file: "/assets/docs/policy/aoc-2-f-y-21-22-yov.pdf" },
+  { label: "MGT-9 FY 2021-22", file: "/assets/docs/policy/mgt-9-f-y-21-22-gjr.pdf" },
+  { label: "Proceedings of AGM & Scrutinizer Report FY 2024-25", file: "/assets/docs/policy/proceeding-of-agm-and-scrutinize-fy2024-25-xbk.pdf" },
 ];
 
 export default function AnnualReportsContent() {
@@ -57,7 +69,7 @@ export default function AnnualReportsContent() {
       <section className="section-padding bg-[#f7f7f5]">
         <div className="container-custom">
           <div className="space-y-6">
-            {REPORTS.map(({ year, title, description, highlights, color }, index) => (
+            {REPORTS.map(({ year, title, description, highlights, color, file }, index) => (
               <motion.div
                 key={year}
                 initial={{ opacity: 0, y: 25 }}
@@ -85,7 +97,7 @@ export default function AnnualReportsContent() {
                       ))}
                     </div>
                   </div>
-                  <DownloadButton title={title} className="shrink-0" variant="button" />
+                  <DownloadButton title={title} url={file} className="shrink-0" variant="button" />
                 </div>
               </motion.div>
             ))}
@@ -94,16 +106,16 @@ export default function AnnualReportsContent() {
           {/* Financial statements */}
           <h2 className="text-2xl font-bold text-[#15171c] mt-14 mb-6">Financial Statements & Filings</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {FINANCIALS.map((name) => (
-              <div key={name} className="group flex items-center gap-4 p-4 rounded-xl frosted-card hover:border-[#D97706]/20 transition-all">
+            {FINANCIALS.map(({ label, file }) => (
+              <div key={label} className="group flex items-center gap-4 p-4 rounded-xl frosted-card hover:border-[#D97706]/20 transition-all">
                 <div className="w-10 h-10 rounded-xl bg-[#FFD100]/12 border border-[#D97706]/20 flex items-center justify-center shrink-0">
                   <FileText size={15} className="text-[#D97706]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[#15171c] text-sm font-medium truncate">{name}</div>
+                  <div className="text-[#15171c] text-sm font-medium truncate">{label}</div>
                   <div className="text-[#8a8a93] text-xs">PDF Document</div>
                 </div>
-                <DownloadButton title={name} />
+                <DownloadButton title={label} url={file} />
               </div>
             ))}
           </div>
