@@ -14,6 +14,11 @@ const productData = {
   image: "/images/product/customized-battery-solution-jkz.webp",
   description: "Tailor-made battery packs for medical devices, industrial, and specialized applications.",
   longDescription: "Every project has unique power requirements — and Maxvolt's Customized Battery Solutions team delivers exactly that. From medical devices requiring precise voltage stability to industrial robots demanding peak discharge rates, we design and manufacture bespoke lithium battery packs with advanced BMS, smart charging, and the highest safety standards. Power your world, exactly the way you want it.",
+  overview: [
+    "Looking for the best customized battery solution? Maxvolt Energy designs assistance that powers your world exactly the way you want it. Whether you are a tech innovator, a manufacturer, or an individual customer who needs dependable batteries, our tailor-made solutions are built to empower you.",
+    "As one of India's most experienced customized battery solution providers, we deliver packs built precisely to your requirements. Every project is unique, and so are its power needs — which is why our team of experts works closely with you to determine exact specifications. We use high-capacity lithium-ion cells, an advanced battery-management system and smart charging, built with sustainability in mind from material selection through energy-efficient charging. Safety and reliability are our top priorities, with multiple safety mechanisms protecting against overcharging, overheating and short circuits.",
+    "As a leading battery-solution provider, we offer solutions that meet your requirements at reasonable pricing, keeping your budget under control. Versatility defines our products: from portable electronics to electric vehicles and renewable-energy systems, our customized batteries serve applications across numerous industries. Whatever your power need, Maxvolt has a solution.",
+  ],
   features: [
     "Fully tailor-made design to exact voltage, capacity, and form factor specifications",
     "High-capacity lithium-ion cells with industry-leading energy density",

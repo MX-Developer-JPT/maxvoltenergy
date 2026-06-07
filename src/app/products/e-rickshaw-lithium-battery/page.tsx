@@ -19,6 +19,11 @@ const productData = {
   ],
   description: "Fast-charging, high-capacity batteries solving the battery drain issue for e-rickshaw drivers.",
   longDescription: "Maxvolt's E-Rickshaw Lithium Battery is purpose-built to solve the #1 challenge for e-rickshaw operators — battery drain. With advanced LiFePO4 chemistry, fast recharge capability, and an intelligent BMS, our batteries help drivers maximize their daily earnings with longer range and quicker turnaround at charging stations.",
+  overview: [
+    "E-rickshaws have become the lifeline of short-distance travel — affordable, easy to own and ideal for urban and rural transport. But their biggest pain point has always been battery drain, a daily headache for drivers. As one of India's most trusted lithium battery manufacturers, Maxvolt has developed a range of e-rickshaw lithium batteries that not only resolve the drain issue but also deliver fast-charging accessibility so drivers can top up in no time.",
+    "We manufacture a wide range of e-rickshaw lithium batteries at affordable prices, designed to keep your e-rickshaw running longer on a single charge — maximising passenger comfort and minimising downtime for recharging. As a leading e-rickshaw lithium battery supplier, we build our packs compact and lightweight so they integrate seamlessly without compromising passenger space or cargo capacity. An advanced battery-management system constantly monitors temperature and voltage to protect against overcharging and overheating.",
+    "As a leading e-rickshaw lithium battery exporter, our packs are compatible with a wide range of e-rickshaw models — a flexible choice for drivers with different makes and configurations. A clean, green alternative to conventional lead-acid batteries, they contribute to a greener planet by cutting harmful emissions. With high energy density, you cover more kilometres per charge while conserving power and lowering running costs — and rugged construction ensures dependable output across diverse road and weather conditions.",
+  ],
   features: [
     "Fast charging capability enabling quick return to service",
     "Compact, lightweight metal case design preserving passenger area",

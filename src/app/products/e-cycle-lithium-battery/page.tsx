@@ -14,6 +14,11 @@ const productData = {
   image: "/images/product/e-cycle-lithium-battery-txc.webp",
   description: "High-capacity, long-lasting performance that keeps you cruising for extended distances.",
   longDescription: "Maxvolt's E-Cycle Lithium Battery delivers high-capacity, long-lasting performance purpose-built for electric bicycles. Lightweight and compact, our batteries integrate seamlessly with all major e-cycle brands — delivering zero-to-full charge in minutes and providing extended range for recreational and commute riding alike.",
+  overview: [
+    "Introducing the future of cycling — a high-performance lithium battery for e-bikes. Whether you are a seasoned e-bike rider or new to electric cycling, our lithium battery takes your rides to the next level with high-capacity, long-lasting performance that keeps you cruising for extended distances. Say goodbye to range anxiety: our battery gives you plenty of power to explore your favourite routes. Engineered to be compact and lightweight, it is easy to install and maintain without compromising your bike's balance and agility.",
+    "As one of India's trusted electric-cycle battery suppliers, our lithium batteries are designed to fit a wide range of e-bike models — the perfect choice for riders across different brands and styles. Forget long charging hours: our fast-charging packs go from zero to full in a fraction of the time, while continuously monitoring temperature and voltage to protect against overcharging and overheating for a longer battery lifespan.",
+    "Known across the industry as a leading e-cycle battery manufacturer and exporter, our batteries are available throughout the country — backed by service centres nationwide for quick support wherever you ride. Eco-friendly by design, they help reduce your carbon footprint, making them a clean and green choice for every customer.",
+  ],
   features: [
     "High-capacity design for extended riding distances",
     "Compact and lightweight for easy installation and maintenance",

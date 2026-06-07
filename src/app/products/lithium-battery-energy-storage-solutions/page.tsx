@@ -19,6 +19,11 @@ const productData = {
   ],
   description: "Scalable lithium energy storage for residential, commercial, and grid applications.",
   longDescription: "Maxvolt's Lithium Battery Energy Storage Solutions represent the next frontier in energy independence. Featuring high energy density, millisecond response times, and >95% round-trip efficiency, our ESS products seamlessly integrate with solar panels, wind turbines, and grid infrastructure to provide reliable, clean energy storage at any scale.",
+  overview: [
+    "Maxvolt Energy offers cutting-edge technology designed to transform the way we store and manage electrical energy. Our solutions leverage advanced lithium-ion technology to store excess energy when it is plentiful and release it when it is needed — a crucial part of the modern energy landscape. Whether you are a homeowner, business owner or utility provider, our energy storage solutions deliver a flexible, sustainable approach to power management, packing large amounts of energy into a compact, lightweight system.",
+    "As an experienced provider of lithium battery energy storage solutions, our systems are highly scalable, letting you expand capacity as your needs grow. They provide rapid response times — discharging or storing energy within milliseconds — making them ideal for grid stabilisation and backup power. High round-trip efficiency means minimal energy loss during charging and discharging, saving you money over the long term.",
+    "Recognised among the foremost energy-storage solution providers in India, our lithium-ion batteries offer a longer lifespan than competing technologies, reducing the need for frequent replacement. They integrate seamlessly with solar panels, wind turbines and other renewable sources, allowing you to maximise your clean-energy generation across residential, commercial and grid applications.",
+  ],
   features: [
     "High energy density enabling large power storage in compact packages",
     "Rapid response times — discharge or store within milliseconds",

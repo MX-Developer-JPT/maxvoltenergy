@@ -14,6 +14,11 @@ const productData = {
   image: "/images/product/lithium-battery-for-solar-application-zhs.webp",
   description: "Optimized for solar energy storage with fast absorption and long cycle life.",
   longDescription: "Maxvolt's Solar Lithium Battery is purpose-engineered to work in harmony with photovoltaic systems. With exceptional fast-charge acceptance for rapidly absorbing solar surpluses, a 3,000+ cycle lifespan, and a user-friendly mobile monitoring app, our solar batteries help homeowners and businesses achieve true energy independence.",
+  overview: [
+    "Solar applications are the next big thing in renewable power consumption. While solar is one of the best energy sources, generating reliable electricity from it depends on using the right batteries. Maxvolt solves this with lithium batteries for solar applications offered at affordable pricing and a long product shelf life.",
+    "As one of the best lithium battery manufacturers for solar applications, we are known for an eco-friendly range that delivers hassle-free quick charging and many years of service. Our advanced solar batteries are specifically designed to complement and optimise your solar-panel system, ensuring reliable, clean and eco-friendly energy. Their exceptional energy density stores ample solar-generated electricity in a compact, efficient package.",
+    "Considered among the most experienced suppliers of lithium batteries for solar products, our packs offer a long cycle life with minimal degradation over time for outstanding durability and reliability. Fast-charge capability captures excess solar energy efficiently — making the most of every ray of sunshine. As a leading lithium battery exporter for solar panels, our products use advanced safety features, emit no harmful fumes, and let you monitor energy usage and battery status remotely through a user-friendly app with real-time data and control.",
+  ],
   features: [
     "Exceptional energy density for efficient compact storage of solar electricity",
     "Fast-charging capabilities to quickly absorb excess solar energy during peak hours",

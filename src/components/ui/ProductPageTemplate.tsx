@@ -24,6 +24,7 @@ interface ProductPageTemplateProps {
     name: string;
     description: string;
     longDescription: string;
+    overview?: string[];
     color: string;
     category: string;
     image?: string;
@@ -224,6 +225,22 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
           </div>
         </div>
       </section>
+
+      {/* Overview */}
+      {product.overview && product.overview.length > 0 && (
+        <section className="section-padding bg-white pt-0">
+          <div className="container-custom max-w-4xl">
+            <h2 className="text-3xl font-bold text-[#15171c] mb-6">
+              Overview
+            </h2>
+            <div className="space-y-4">
+              {product.overview.map((p, i) => (
+                <p key={i} className="text-[#52525b] text-base leading-relaxed">{p}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Features & Benefits */}
       <section ref={ref} className="section-padding bg-[#f7f7f5]">

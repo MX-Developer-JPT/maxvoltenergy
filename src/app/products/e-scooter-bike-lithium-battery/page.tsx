@@ -19,6 +19,11 @@ const productData = {
   ],
   description: "Compact, powerful batteries engineered for modern electric two-wheelers.",
   longDescription: "Maxvolt's E-Scooter/Bike Lithium Battery range delivers the perfect balance of power, weight, and safety for electric two-wheelers. With a comprehensive lineup from 48V to 74V, our batteries integrate seamlessly with all major scooter and bike platforms — delivering extended range, quick charging, and an intelligent BMS that protects your investment.",
+  overview: [
+    "Introducing the best power source for your e-scooter and bike. As leading electric-bike battery manufacturers, our range of lithium batteries is engineered for performance, reliability and convenience — unlocking the full potential of your vehicle. Say goodbye to frequent recharges and hello to far destinations and endless adventures. Meticulously crafted to be compact and lightweight, our packs integrate seamlessly with your vehicle's design without compromising on performance.",
+    "We are known across the industry as a trusted e-scooter/bike lithium battery supplier, and safety and reliability are our top priorities. An advanced battery-management system continuously monitors temperature and voltage, safeguarding against overcharging and overheating to ensure long battery life. Quick-charging capability means you spend less time waiting and more time enjoying the ride.",
+    "As a leading e-scooter/bike lithium battery exporter, our packs are designed to fit a wide range of models — a versatile choice for riders across different brands and types of electric vehicles. A clean and green alternative to traditional batteries, they reduce your carbon footprint while the high energy density boosts vehicle performance, letting you travel farther on a single charge while conserving energy.",
+  ],
   features: [
     "Compact, lightweight construction integrating seamlessly with vehicle design",
     "High-energy density for improved vehicle performance and extended range",
