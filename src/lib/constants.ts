@@ -6,6 +6,9 @@ export const SITE_CONFIG = {
   phone: "01204291595",
   whatsapp: "+918130327183",
   email: "info@maxvoltenergy.com",
+  supportEmail: "customersupport@maxvoltenergy.com",
+  supportPhone: "+91-9560718827",
+  careersEmail: "maxvolt.india@gmail.com",
   addresses: {
     corporate: "E 82, Bulandshahr Road Industrial Area, Ghaziabad (UP) 201009",
     plant: "Meerut Rd, Duhai, Basantpur Saitli, Uttar Pradesh 201206",
@@ -398,6 +401,19 @@ export const TESTIMONIALS = [
     content: "Excellent battery backup and charging speed. Maxvolt has set a new standard for EV batteries in India.",
     rating: 5,
   },
+];
+
+// Authorized service centers — replicated from maxvoltenergy.com/customer-support
+export const SERVICE_CENTERS = [
+  { state: "Uttar Pradesh", city: "Noida" },
+  { state: "Uttar Pradesh", city: "Ghaziabad" },
+  { state: "Uttar Pradesh", city: "Bulandshahr" },
+  { state: "Uttar Pradesh", city: "Lucknow" },
+  { state: "NCT of Delhi", city: "New Ashok Nagar" },
+  { state: "NCT of Delhi", city: "Vasundhara Enclave" },
+  { state: "Bihar", city: "Patna" },
+  { state: "Gujarat", city: "Ahmedabad" },
+  { state: "Madhya Pradesh", city: "Indore" },
 ];
 
 export const INDIA_STATES = [
