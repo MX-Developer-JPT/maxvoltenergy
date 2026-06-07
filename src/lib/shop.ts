@@ -6,7 +6,8 @@ export interface ShopCategory {
   name: string;
   blurb: string;
   chemistry: string;
-  image: string;        // reused category image from /public/images/product
+  image: string;        // product cutout used on category/SKU cards
+  banner: string;       // wide category hero image (from original site)
   color: string;
   application: string;
 }
@@ -27,6 +28,7 @@ export const SHOP_CATEGORIES: ShopCategory[] = [
     blurb: "High-density lithium packs for electric scooters and bikes — lightweight, fast-charging and built for Indian roads.",
     chemistry: "NMC / Li-Ion",
     image: "/images/product/e-scooter-bike-lithium-battery-mpu.webp",
+    banner: "/images/category/electric-scooter-battery-urv.webp",
     color: "#FFA800",
     application: "Two-wheelers",
   },
@@ -36,6 +38,7 @@ export const SHOP_CATEGORIES: ShopCategory[] = [
     blurb: "Rugged, high-capacity LiFePO4 packs that end battery drain and maximize every e-rickshaw driver's daily earnings.",
     chemistry: "LiFePO4 / LFP",
     image: "/images/product/e-rickshaw-lithium-battery-ohn.webp",
+    banner: "/images/category/e-rickshaw-battery-qwv.webp",
     color: "#FF8C00",
     application: "Three-wheelers",
   },
@@ -45,6 +48,7 @@ export const SHOP_CATEGORIES: ShopCategory[] = [
     blurb: "Reliable lithium inverter batteries for home and commercial backup — long life, maintenance-free, deep cycling.",
     chemistry: "LiFePO4",
     image: "/images/product/lithium-battery-energy-storage-solutions-tjf.webp",
+    banner: "/images/category/inverter-battery-agm.webp",
     color: "#7c3aed",
     application: "Home / Commercial backup",
   },
@@ -54,6 +58,7 @@ export const SHOP_CATEGORIES: ShopCategory[] = [
     blurb: "Scalable lithium storage optimized for solar — high round-trip efficiency, 3,000+ cycles and app monitoring.",
     chemistry: "LiFePO4",
     image: "/images/product/lithium-battery-for-solar-application-zhs.webp",
+    banner: "/images/category/solar-battery-storage-system-ers.webp",
     color: "#f97316",
     application: "Solar energy storage",
   },
@@ -63,6 +68,7 @@ export const SHOP_CATEGORIES: ShopCategory[] = [
     blurb: "Precision lithium packs for medical and industrial equipment — ultrasound, ECG, BP monitors and more.",
     chemistry: "Li-Ion / LiFePO4",
     image: "/images/product/customized-battery-solution-jkz.webp",
+    banner: "/images/category/medical-device-battery-sdh.webp",
     color: "#ec4899",
     application: "Medical & industrial",
   },

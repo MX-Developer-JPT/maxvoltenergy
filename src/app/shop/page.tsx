@@ -22,6 +22,7 @@ export default function ShopPage() {
         badge="E-Shop"
         title={<>Shop the Full <span className="gradient-text">Maxvolt Range</span></>}
         description="Explore every Maxvolt lithium battery by category — from two-wheelers and e-rickshaws to inverters, solar storage and medical devices."
+        image="/images/category/products-ygb.webp"
       />
       <section className="section-padding bg-white">
         <div className="container-custom">

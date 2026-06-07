@@ -29,7 +29,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
 
   return (
     <>
-      <PageHero badge="E-Shop" title={<>{c.name}</>} description={c.blurb}>
+      <PageHero badge="E-Shop" title={<>{c.name}</>} description={c.blurb} image={c.banner}>
         <Link href="/shop" className="inline-flex items-center gap-2 text-[#71717a] hover:text-[#15171c] text-sm transition-colors">
           <ArrowLeft size={13} /> All Categories
         </Link>
