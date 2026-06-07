@@ -23,7 +23,7 @@ export const SOLUTIONS: Solution[] = [
     benefits: ["AIS 156 certified safety", "Fast charging support", "Smart BMS protection", "Long cycle life"],
     applications: ["E-scooters & e-bikes", "E-rickshaws & e-autos", "E-cycles", "Two/three-wheeler OEMs"],
     color: "#FFD100",
-    image: "/images/product/e-rickshaw-lithium-battery-ohn.webp",
+    image: "/images/category/electric-vehicle-fxl.webp",
   },
   {
     slug: "solar-storage",
@@ -36,7 +36,7 @@ export const SOLUTIONS: Solution[] = [
     benefits: [">95% round-trip efficiency", "3,000+ cycles", "App-enabled monitoring", "Scalable 48V–120V"],
     applications: ["Rooftop solar storage", "Off-grid solar", "Commercial backup", "Solar + inverter hybrid"],
     color: "#f97316",
-    image: "/images/product/lithium-battery-for-solar-application-zhs.webp",
+    image: "/images/category/solar-energy-storage-ewr.webp",
   },
   {
     slug: "portable-lighting",
@@ -49,7 +49,7 @@ export const SOLUTIONS: Solution[] = [
     benefits: ["Long runtime", "Lightweight design", "Fast recharge", "Maintenance-free"],
     applications: ["Solar lanterns", "Emergency lights", "Street & outdoor lighting", "Portable power units"],
     color: "#FFA800",
-    image: "/images/product/customized-battery-solution-jkz.webp",
+    image: "/images/category/portable-lighting-bna.webp",
   },
   {
     slug: "consumer-electronics",
@@ -62,7 +62,7 @@ export const SOLUTIONS: Solution[] = [
     benefits: ["Custom form factors", "Advanced smart BMS", "Stable, clean power", "Rapid prototyping"],
     applications: ["Power banks", "Router backup UPS", "CCTV & surveillance", "IoT & smart-home devices"],
     color: "#FF8C00",
-    image: "/images/product/customized-battery-solution-jkz.webp",
+    image: "/images/category/consumer-electronics-ish.webp",
   },
 ];
 

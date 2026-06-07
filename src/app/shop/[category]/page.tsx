@@ -4,7 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/ui/PageHero";
 import { ArrowRight, ArrowLeft } from "lucide-react";
-import { SHOP_CATEGORIES, getCategory, skusByCategory } from "@/lib/shop";
+import { SHOP_CATEGORIES, getCategory, skusByCategory, skuImage } from "@/lib/shop";
 
 export function generateStaticParams() {
   return SHOP_CATEGORIES.map((c) => ({ category: c.key }));
@@ -45,7 +45,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                 className="group rounded-2xl bg-white border border-black/6 overflow-hidden hover:-translate-y-1 hover:border-[#FFD100]/30 transition-all"
               >
                 <div className="relative h-40 bg-[#f7f7f5]">
-                  <Image src={c.image} alt={s.name} fill className="object-contain p-5" sizes="350px" />
+                  <Image src={skuImage(s)} alt={s.name} fill className="object-contain p-5" sizes="350px" />
                 </div>
                 <div className="p-5">
                   <h2 className="text-[#15171c] font-bold text-sm mb-2 leading-snug">{s.name}</h2>

@@ -142,3 +142,65 @@ export function skusByCategory(key: string) {
 export function getSku(category: string, slug: string) {
   return SKUS.find((s) => s.category === category && s.slug === slug);
 }
+
+// Per-SKU product images replicated 1:1 from maxvoltenergy.com.
+export const SKU_IMAGES: Record<string, string> = {
+  "12-8v-100ah-inverter-battery-12-8v": "/images/product/12-8v-100ah-inverter-battery-xgc.webp",
+  "12-8v-150ah-inverter-battery": "/images/product/12-8v-150ah-inverter-battery-jou.webp",
+  "12-8v-200ah-inverter-battery": "/images/product/12-8v-200ah-inverter-battery-amo.webp",
+  "12-8v-300ah-inverter-battery": "/images/product/12-8v-300ah-inverter-battery-sjm.webp",
+  "120v-100ah-solar-battery-storage-system": "/images/product/120v-100ah-solar-battery-storage-system-prw.webp",
+  "120v-200ah-solar-battery-storage-system": "/images/product/120v-200ah-solar-battery-storage-system-qbr.webp",
+  "120v-300ah-solar-battery-storage-system": "/images/product/120v-300ah-solar-battery-storage-system-utw.webp",
+  "120v-400ah-solar-battery-storage-system": "/images/product/120v-400ah-solar-battery-storage-system-tcr.webp",
+  "120v-500ah-solar-battery-storage-system": "/images/product/120v-500ah-solar-battery-storage-system-zjt.webp",
+  "12v-12ah-medical-device-battery": "/images/product/12v-12ah-medical-device-battery-rpg.webp",
+  "12v-18ah-medical-device-battery": "/images/product/12v-18ah-medical-device-battery-xcm.webp",
+  "12v-24ah-medical-device-battery": "/images/product/12v-24ah-medical-device-battery-ofm.webp",
+  "12v-30ah-medical-device-battery": "/images/product/12v-30ah-medical-device-battery-uxl.webp",
+  "12v-60ah-medical-device-battery": "/images/product/12v-60ah-medical-device-battery-yrg.webp",
+  "12v-80ah-medical-device-battery": "/images/product/12v-80ah-medical-device-battery-tyh.webp",
+  "24v-12ah-medical-device-battery": "/images/product/24v-12ah-medical-device-battery-tvu.webp",
+  "24v-18ah-medical-device-battery": "/images/product/24v-18ah-medical-device-battery-bzy.webp",
+  "24v-24ah-medical-device-battery": "/images/product/24v-24ah-medical-device-battery-gej.webp",
+  "24v-30ah-medical-device-battery": "/images/product/24v-30ah-medical-device-battery-ccy.webp",
+  "24v-60ah-medical-device-battery": "/images/product/24v-60ah-medical-device-battery-ngh.webp",
+  "25-6v-100ah-inverter-battery": "/images/product/25-6v-100ah-inverter-battery-xiy.webp",
+  "25-6v-200ah-inverter-battery": "/images/product/25-6v-200ah-inverter-battery-ckm.webp",
+  "25-6v150ah-inverter-battery": "/images/product/25-6v150ah-inverter-battery-mou.webp",
+  "48v-100ah-inverter-battery": "/images/product/48v-100ah-inverter-battery-bcg.webp",
+  "48v-100ah-solar-battery-storage-system": "/images/product/48v-100ah-solar-battery-storage-system-faj.webp",
+  "48v-150ah-inverter-battery": "/images/product/48v-150ah-inverter-battery-gkr.webp",
+  "48v-200ah-solar-battery-storage-system": "/images/product/48v-200ah-solar-battery-storage-system-zyt.webp",
+  "48v-300ah-solar-battery-storage-system": "/images/product/48v-300ah-solar-battery-storage-system-twx.webp",
+  "51-2v-100ah-inverter-battery": "/images/product/51-2v-100ah-inverter-battery-jln.webp",
+  "51-2v-150ah-inverter-battery": "/images/product/51-2v-150ah-inverter-battery-clv.webp",
+  "51-2v-e-rickshaw-battery": "/images/product/51-2v-e-rickshaw-battery-wbv.webp",
+  "96v-100ah-solar-battery-storage-system": "/images/product/96v-100ah-solar-battery-storage-system-wkk.webp",
+  "96v-200ah-solar-battery-storage-system": "/images/product/96v-200ah-solar-battery-storage-system-ine.webp",
+  "96v-300ah-solar-battery-storage-system": "/images/product/96v-300ah-solar-battery-storage-system-esg.webp",
+  "96v-400ah-solar-battery-storage-system": "/images/product/96v-400ah-solar-battery-storage-system-xaf.webp",
+  "96v-500ah-solar-battery-storage-system": "/images/product/96v-500ah-solar-battery-storage-system-wct.webp",
+  "e-rickshaw-battery-200ah": "/images/product/e-rickshaw-battery-200ah-rxs.webp",
+  "e-rickshaw-battery-51-2v": "/images/product/e-rickshaw-battery-51-2v-ged.webp",
+  "e-scooter-battery-48v": "/images/product/e-scooter-battery-48v-25ah-rug.webp",
+  "e-scooter-battery-48v-25ah": "/images/product/e-scooter-battery-48v-25ah-rug.webp",
+  "e-scooter-battery-48v-29ah": "/images/product/e-scooter-battery-48v-29ah-caj.webp",
+  "e-scooter-battery-60v-25ah": "/images/product/e-scooter-battery-60v-25ah-bfq.webp",
+  "e-scooter-battery-60v-29ah": "/images/product/e-scooter-battery-60v-29ah-pau.webp",
+  "e-scooter-battery-60v-34ah": "/images/product/e-scooter-battery-60v-34ah-owp.webp",
+  "e-scooter-battery-63v-18-kg": "/images/product/e-scooter-battery-63v-18-kg-idi.webp",
+  "e-scooter-battery-63v-29ah": "/images/product/e-scooter-battery-63v-29ah-hkv.webp",
+  "e-scooter-battery-63v-34ah": "/images/product/e-scooter-battery-63v-34ah-olk.webp",
+  "e-scooter-battery-63v-40ah": "/images/product/e-scooter-battery-63v-40ah-euj.webp",
+  "e-scooter-battery-74v-25ah": "/images/product/e-scooter-battery-74v-25ah-guy.webp",
+  "e-scooter-battery-74v-29ah": "/images/product/e-scooter-battery-74v-29ah-bbb.webp",
+  "e-scooter-battery-74v-29ah-19-5-kg": "/images/product/e-scooter-battery-74v-29ah-19-5-kg-ukn.webp",
+  "e-scooter-battery-74v-34ah": "/images/product/e-scooter-battery-74v-34ah-lyb.webp",
+  "e-scooter-battery-74v-40ah": "/images/product/e-scooter-battery-74v-40ah-qrg.webp",
+};
+
+/** Returns the SKU-specific image, falling back to the category image. */
+export function skuImage(sku: Sku): string {
+  return SKU_IMAGES[sku.slug] || getCategory(sku.category)?.image || "/images/product/e-scooter-bike-lithium-battery-mpu.webp";
+}

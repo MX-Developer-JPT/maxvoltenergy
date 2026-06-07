@@ -46,4 +46,4 @@ next-env.d.ts
 
 # Local reference material (PPTX decks)
 ref/
-.scan/
+.scan*/

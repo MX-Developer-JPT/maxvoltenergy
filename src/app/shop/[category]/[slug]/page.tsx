@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, MessageCircle, CheckCircle2, ShieldCheck } from "lucide-react";
-import { SKUS, getCategory, getSku, skusByCategory } from "@/lib/shop";
+import { SKUS, getCategory, getSku, skusByCategory, skuImage } from "@/lib/shop";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export function generateStaticParams() {
@@ -43,7 +43,7 @@ export default async function SkuPage({ params }: { params: Promise<{ category: 
     brand: { "@type": "Brand", name: "Maxvolt Energy" },
     category: c.name,
     description: `${sku.name} — ${sku.voltage} ${sku.capacity} ${c.chemistry} lithium battery by Maxvolt Energy.`,
-    image: c.image,
+    image: skuImage(sku),
   };
 
   return (
@@ -60,7 +60,7 @@ export default async function SkuPage({ params }: { params: Promise<{ category: 
             <div className="relative h-80 rounded-3xl bg-[#f7f7f5] flex items-center justify-center"
               style={{ background: `radial-gradient(circle at 50% 40%, ${c.color}12 0%, transparent 70%)` }}>
               <div className="relative w-60 h-60">
-                <Image src={c.image} alt={sku.name} fill className="object-contain drop-shadow-2xl" sizes="320px" priority />
+                <Image src={skuImage(sku)} alt={sku.name} fill className="object-contain drop-shadow-2xl" sizes="320px" priority />
               </div>
             </div>
 
@@ -118,7 +118,7 @@ export default async function SkuPage({ params }: { params: Promise<{ category: 
               {related.map((s) => (
                 <Link key={s.slug} href={`/shop/${c.key}/${s.slug}`} className="group rounded-2xl bg-white border border-black/6 p-5 hover:-translate-y-1 hover:border-[#FFD100]/30 transition-all">
                   <div className="relative h-28 mb-3">
-                    <Image src={c.image} alt={s.name} fill className="object-contain" sizes="200px" />
+                    <Image src={skuImage(s)} alt={s.name} fill className="object-contain" sizes="200px" />
                   </div>
                   <h3 className="text-[#15171c] font-bold text-sm group-hover:text-[#D97706] transition-colors">{s.name}</h3>
                   <div className="text-[#71717a] text-xs mt-1">{s.voltage} · {s.capacity}</div>
