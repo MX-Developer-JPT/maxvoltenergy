@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CheckCircle2, Zap, Sun, Lightbulb, Cpu, Phone, MessageCircle } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import FaqAccordion from "@/components/ui/FaqAccordion";
+import Reveal, { RevealStagger, RevealItem } from "@/components/ui/Reveal";
 import { SOLUTIONS, getSolution } from "@/lib/solutions";
 import { SITE_CONFIG } from "@/lib/constants";
 
@@ -88,7 +89,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ solut
             </div>
           </div>
 
-          <div className="relative h-80 rounded-3xl overflow-hidden border border-black/6" style={{ background: `radial-gradient(circle at 50% 40%, ${s.color}12 0%, transparent 70%)` }}>
+          <div className="img-zoom relative h-80 rounded-3xl overflow-hidden border border-black/6" style={{ background: `radial-gradient(circle at 50% 40%, ${s.color}12 0%, transparent 70%)` }}>
             <Image src={s.image} alt={s.title} fill className="object-cover" sizes="(max-width:1024px) 100vw, 600px" />
           </div>
         </div>
@@ -98,12 +99,12 @@ export default async function SolutionPage({ params }: { params: Promise<{ solut
       <section className="section-padding bg-[#f7f7f5] pt-0">
         <div className="container-custom max-w-4xl">
           {s.sections.map((sec) => (
-            <div key={sec.heading} className="mb-10 last:mb-0">
+            <Reveal key={sec.heading} className="mb-10 last:mb-0">
               <h2 className="text-2xl md:text-3xl font-black text-[#15171c] mb-4">{sec.heading}</h2>
               {sec.body.map((p, i) => (
                 <p key={i} className="text-[#52525b] text-base leading-relaxed mb-3">{p}</p>
               ))}
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -112,28 +113,28 @@ export default async function SolutionPage({ params }: { params: Promise<{ solut
       <section className="section-padding bg-white pt-0">
         <div className="container-custom">
           <h2 className="text-2xl md:text-3xl font-black text-[#15171c] mb-8">{s.typesHeading}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <RevealStagger className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {s.types.map((t, i) => (
-              <div key={t.name} className="p-6 rounded-2xl frosted-card border border-black/6">
+              <RevealItem key={t.name} className="card-rise p-6 rounded-2xl frosted-card border border-black/6">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-black" style={{ backgroundColor: `${s.color}14`, color: s.color }}>{String(i + 1).padStart(2, "0")}</div>
                   <h3 className="text-[#15171c] font-bold text-base">{t.name}</h3>
                 </div>
                 <p className="text-[#5f6470] text-sm leading-relaxed">{t.desc}</p>
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 
       {/* Future */}
       <section className="section-padding bg-[#f7f7f5] pt-0">
-        <div className="container-custom max-w-4xl">
+        <Reveal className="container-custom max-w-4xl">
           <h2 className="text-2xl md:text-3xl font-black text-[#15171c] mb-4">{s.future.heading}</h2>
           {s.future.body.map((p, i) => (
             <p key={i} className="text-[#52525b] text-base leading-relaxed mb-3">{p}</p>
           ))}
-        </div>
+        </Reveal>
       </section>
 
       {/* Applications */}

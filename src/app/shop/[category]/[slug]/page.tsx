@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, MessageCircle, CheckCircle2, ShieldCheck, Factor
 import { SKUS, getCategory, getSku, skusByCategory, skuImage, type Sku, type ShopCategory } from "@/lib/shop";
 import { SITE_CONFIG } from "@/lib/constants";
 import FaqAccordion from "@/components/ui/FaqAccordion";
+import Reveal, { RevealStagger, RevealItem } from "@/components/ui/Reveal";
 
 function skuFaqs(sku: Sku, c: ShopCategory) {
   return [
@@ -84,7 +85,7 @@ export default async function SkuPage({ params }: { params: Promise<{ category: 
           </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-80 rounded-3xl bg-[#f7f7f5] flex items-center justify-center"
+            <div className="img-zoom relative h-80 rounded-3xl bg-[#f7f7f5] flex items-center justify-center"
               style={{ background: `radial-gradient(circle at 50% 40%, ${c.color}12 0%, transparent 70%)` }}>
               <div className="relative w-60 h-60">
                 <Image src={skuImage(sku)} alt={sku.name} fill className="object-contain drop-shadow-2xl" sizes="320px" priority />
@@ -139,7 +140,7 @@ export default async function SkuPage({ params }: { params: Promise<{ category: 
 
       {/* Overview */}
       <section className="section-padding bg-[#f7f7f5] pt-16">
-        <div className="container-custom max-w-4xl">
+        <Reveal className="container-custom max-w-4xl">
           <h2 className="text-2xl md:text-3xl font-black text-[#15171c] mb-5">
             {sku.name} — {c.chemistry} Lithium Battery
           </h2>
@@ -154,26 +155,28 @@ export default async function SkuPage({ params }: { params: Promise<{ category: 
             performance-validated, built to withstand Indian road and climate conditions with strong cell balancing and
             reliable thermal control.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* Why choose */}
       <section className="section-padding bg-white pt-0">
         <div className="container-custom">
-          <h2 className="text-2xl md:text-3xl font-black text-[#15171c] mb-8">
-            Why Choose Maxvolt for the {sku.name}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <Reveal>
+            <h2 className="text-2xl md:text-3xl font-black text-[#15171c] mb-8">
+              Why Choose Maxvolt for the {sku.name}
+            </h2>
+          </Reveal>
+          <RevealStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {WHY_CHOOSE.map(({ Icon, t, d }) => (
-              <div key={t} className="p-6 rounded-2xl frosted-card border border-black/6">
+              <RevealItem key={t} className="card-rise p-6 rounded-2xl frosted-card border border-black/6">
                 <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${c.color}14`, border: `1px solid ${c.color}25` }}>
                   <Icon size={20} style={{ color: c.color }} />
                 </div>
                 <h3 className="text-[#15171c] font-bold text-sm mb-2">{t}</h3>
                 <p className="text-[#5f6470] text-xs leading-relaxed">{d}</p>
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 
@@ -209,8 +212,8 @@ export default async function SkuPage({ params }: { params: Promise<{ category: 
             <h2 className="text-2xl font-black text-[#15171c] mb-6">More {c.name} models</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               {related.map((s) => (
-                <Link key={s.slug} href={`/shop/${c.key}/${s.slug}`} className="group rounded-2xl bg-white border border-black/6 p-5 hover:-translate-y-1 hover:border-[#FFD100]/30 transition-all">
-                  <div className="relative h-28 mb-3">
+                <Link key={s.slug} href={`/shop/${c.key}/${s.slug}`} className="group card-rise rounded-2xl bg-white border border-black/6 p-5 hover:border-[#FFD100]/30">
+                  <div className="img-zoom relative h-28 mb-3">
                     <Image src={skuImage(s)} alt={s.name} fill className="object-contain" sizes="200px" />
                   </div>
                   <h3 className="text-[#15171c] font-bold text-sm group-hover:text-[#D97706] transition-colors">{s.name}</h3>

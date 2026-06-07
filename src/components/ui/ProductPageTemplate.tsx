@@ -7,6 +7,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle2, Download, MessageCircle, Battery, Zap, Shield, ArrowLeft } from "lucide-react";
 import { PRODUCTS, SITE_CONFIG } from "@/lib/constants";
 import { downloadCatalogue } from "@/lib/download";
+import Reveal from "@/components/ui/Reveal";
 
 interface SpecRow {
   label: string;
@@ -229,7 +230,7 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
       {/* Overview */}
       {product.overview && product.overview.length > 0 && (
         <section className="section-padding bg-white pt-0">
-          <div className="container-custom max-w-4xl">
+          <Reveal className="container-custom max-w-4xl">
             <h2 className="text-3xl font-bold text-[#15171c] mb-6">
               Overview
             </h2>
@@ -238,7 +239,7 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
                 <p key={i} className="text-[#52525b] text-base leading-relaxed">{p}</p>
               ))}
             </div>
-          </div>
+          </Reveal>
         </section>
       )}
 

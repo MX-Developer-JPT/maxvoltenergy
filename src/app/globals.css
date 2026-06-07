@@ -465,3 +465,26 @@ h1 { font-feature-settings: "kern", "ss01"; }
   background: #FFD100;
   box-shadow: 0 0 8px rgba(255,209,0,0.6);
 }
+
+/* ── Image & card motion polish (scoped; safe with framer-motion) ── */
+.img-zoom { overflow: hidden; }
+.img-zoom img {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.img-zoom:hover img { transform: scale(1.06); }
+
+/* Subtle lift for cards/tiles on hover */
+.card-rise {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease, border-color 0.3s ease;
+}
+.card-rise:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -14px rgba(0, 0, 0, 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img-zoom:hover img,
+  .card-rise:hover { transform: none !important; }
+}
