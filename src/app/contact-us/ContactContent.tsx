@@ -246,6 +246,30 @@ export default function ContactContent() {
         </div>
       </section>
 
+      {/* Embedded map */}
+      <section className="pb-16 bg-[#f7f7f5]">
+        <div className="container-custom">
+          <h2 className="text-2xl font-bold text-[#15171c] mb-2">Find Us on the Map</h2>
+          <p className="text-[#5f6470] text-sm mb-6">Corporate office — {SITE_CONFIG.addresses.corporate}</p>
+          <div className="rounded-2xl overflow-hidden border border-black/8 shadow-sm">
+            <iframe
+              title="Maxvolt Energy — Corporate Office Location"
+              src="https://maps.google.com/maps?q=E%2082%20Bulandshahr%20Road%20Industrial%20Area%20Ghaziabad%20201009&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="420"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+          <div className="mt-3 flex flex-wrap gap-4 text-sm">
+            <a href={SITE_CONFIG.maps.corporate} target="_blank" rel="noopener noreferrer" className="text-[#D97706] font-semibold hover:underline">Open Corporate Office in Google Maps →</a>
+            <a href={SITE_CONFIG.maps.plant} target="_blank" rel="noopener noreferrer" className="text-[#D97706] font-semibold hover:underline">Open Duhai Plant in Google Maps →</a>
+          </div>
+        </div>
+      </section>
+
       {/* Dealer inquiry section */}
       <section id="dealer" className="py-16 bg-white">
         <div className="container-custom">

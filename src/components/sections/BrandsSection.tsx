@@ -4,35 +4,29 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 
-// All brand partner images
+// All 44 brand partner / OEM logos (full set from maxvoltenergy.com)
 const BRANDS = [
-  "/images/brand/client-pwd.webp",
-  "/images/brand/client-eav.webp",
-  "/images/brand/-ols.webp",
-  "/images/brand/-enx.webp",
-  "/images/brand/-auo.webp",
-  "/images/brand/-doh.webp",
-  "/images/brand/-zsc.webp",
-  "/images/brand/-ojz.webp",
-  "/images/brand/-nyl.webp",
-  "/images/brand/-yvg.webp",
-  "/images/brand/-ami.webp",
-  "/images/brand/-bfs.webp",
-  "/images/brand/-axl.webp",
-  "/images/brand/-rxh.webp",
-  "/images/brand/-exa.webp",
-  "/images/brand/-xhe.webp",
-  "/images/brand/-oei.webp",
-  "/images/brand/-myc.webp",
-  "/images/brand/-kfv.webp",
-  "/images/brand/-ocj.webp",
-  "/images/brand/-ckk.webp",
-  "/images/brand/-ghi.webp",
+  "/images/brand/client-pwd.webp", "/images/brand/client-eav.webp",
+  "/images/brand/-ami.webp", "/images/brand/-apy.webp", "/images/brand/-arz.webp",
+  "/images/brand/-auo.webp", "/images/brand/-aur.webp", "/images/brand/-axl.webp",
+  "/images/brand/-bfs.webp", "/images/brand/-ckk.webp", "/images/brand/-doh.webp",
+  "/images/brand/-dps.webp", "/images/brand/-enx.webp", "/images/brand/-exa.webp",
+  "/images/brand/-ftk.webp", "/images/brand/-ghi.webp", "/images/brand/-hpz.webp",
+  "/images/brand/-icu.webp", "/images/brand/-iwc.webp", "/images/brand/-jfb.webp",
+  "/images/brand/-kcp.webp", "/images/brand/-kfv.webp", "/images/brand/-kin.webp",
+  "/images/brand/-kuz.webp", "/images/brand/-myc.webp", "/images/brand/-nmq.webp",
+  "/images/brand/-nyl.webp", "/images/brand/-ocj.webp", "/images/brand/-oei.webp",
+  "/images/brand/-ojz.webp", "/images/brand/-ols.webp", "/images/brand/-qtv.webp",
+  "/images/brand/-rxh.webp", "/images/brand/-seo.webp", "/images/brand/-swi.webp",
+  "/images/brand/-uqw.webp", "/images/brand/-vrh.webp", "/images/brand/-wgv.webp",
+  "/images/brand/-xhe.webp", "/images/brand/-yjw.webp", "/images/brand/-ylh.webp",
+  "/images/brand/-yvg.webp", "/images/brand/-zou.webp", "/images/brand/-zsc.webp",
 ];
 
-// Duplicate for seamless loop
-const ROW1 = [...BRANDS.slice(0, 11), ...BRANDS.slice(0, 11)];
-const ROW2 = [...BRANDS.slice(11), ...BRANDS.slice(11)];
+// Split into two marquee rows; duplicate each for a seamless loop
+const HALF = Math.ceil(BRANDS.length / 2);
+const ROW1 = [...BRANDS.slice(0, HALF), ...BRANDS.slice(0, HALF)];
+const ROW2 = [...BRANDS.slice(HALF), ...BRANDS.slice(HALF)];
 
 export default function BrandsSection() {
   const ref = useRef(null);
