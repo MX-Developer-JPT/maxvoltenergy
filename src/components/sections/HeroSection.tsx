@@ -60,16 +60,20 @@ const STATS = [
   { value: "NSE", label: "Listed" },
 ];
 
-// Floating particles
+// Floating particles — deterministic (seeded) so SSR and client match (no hydration mismatch)
 function Particles() {
+  const rand = (i: number, n: number) => {
+    const x = Math.sin((i + 1) * 12.9898 + n * 78.233) * 43758.5453;
+    return x - Math.floor(x);
+  };
   const particles = Array.from({ length: 35 }, (_, i) => ({
     id: i,
-    x: Math.random() * 100, y: Math.random() * 100,
-    size: Math.random() * 2 + 0.5,
-    dur: Math.random() * 10 + 5,
-    delay: Math.random() * 5,
-    tx: (Math.random() - 0.5) * 70,
-    ty: (Math.random() - 0.5) * 70,
+    x: rand(i, 1) * 100, y: rand(i, 2) * 100,
+    size: rand(i, 3) * 2 + 0.5,
+    dur: rand(i, 4) * 10 + 5,
+    delay: rand(i, 5) * 5,
+    tx: (rand(i, 6) - 0.5) * 70,
+    ty: (rand(i, 7) - 0.5) * 70,
   }));
 
   return (
@@ -258,9 +262,9 @@ export default function HeroSection() {
             <div className="mb-1.5 min-h-[2.2em]">
               <AnimatePresence mode="wait">
                 <motion.h1 key={active} className="my-0">
-                  <div className="flex flex-wrap gap-x-5 overflow-hidden">
+                  <span className="flex flex-wrap gap-x-5 overflow-hidden">
                     {words1.map((w, i) => (
-                      <div key={i} className="overflow-hidden">
+                      <span key={i} className="block overflow-hidden">
                         <motion.span
                           className="block text-5xl md:text-6xl xl:text-[5.25rem] font-black text-[#15171c] leading-[1.03] tracking-tight"
                           initial={{ y: "110%" }}
@@ -270,12 +274,12 @@ export default function HeroSection() {
                         >
                           {w}
                         </motion.span>
-                      </div>
+                      </span>
                     ))}
-                  </div>
-                  <div className="flex flex-wrap gap-x-5 overflow-hidden">
+                  </span>
+                  <span className="flex flex-wrap gap-x-5 overflow-hidden">
                     {words2.map((w, i) => (
-                      <div key={i} className="overflow-hidden">
+                      <span key={i} className="block overflow-hidden">
                         <motion.span
                           className="block text-5xl md:text-6xl xl:text-[5.25rem] font-black leading-[1.03] tracking-tight gradient-text"
                           initial={{ y: "110%" }}
@@ -285,9 +289,9 @@ export default function HeroSection() {
                         >
                           {w}
                         </motion.span>
-                      </div>
+                      </span>
                     ))}
-                  </div>
+                  </span>
                 </motion.h1>
               </AnimatePresence>
             </div>

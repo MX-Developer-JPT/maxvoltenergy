@@ -317,7 +317,7 @@ export const LEADERSHIP = [
     education: "Company Secretary, ICSI Associate Member",
     experience: "5+ years in secretarial compliance",
     focus: "Corporate secretarial compliance and governance",
-    image: "/images/our-team/preet-kumar.webp",
+    image: "",
   },
   {
     name: "Kavita Dixit",
@@ -327,7 +327,7 @@ export const LEADERSHIP = [
     education: "Bachelor of Commerce, Gorakhpur University | CA, ICAI Fellow",
     experience: "6+ years in accounts, taxation, compliance",
     focus: "Financial oversight and regulatory compliance",
-    image: "/images/our-team/kavita-dixit.webp",
+    image: "",
   },
   {
     name: "Ajay Kumar",
@@ -337,7 +337,7 @@ export const LEADERSHIP = [
     education: "BCom & MCom, University of Delhi | CA",
     experience: "6+ years in audit, taxation, accounting",
     focus: "Audit committee oversight and financial governance",
-    image: "/images/our-team/ajay-kumar.webp",
+    image: "",
   },
 ];
 

@@ -20,10 +20,14 @@ export default function PageHero({ badge, title, description, className, childre
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  // Particle dots for background
+  // Particle dots — deterministic (seeded) so server and client render identically (no hydration mismatch)
+  const rand = (i: number, n: number) => {
+    const x = Math.sin((i + 1) * 12.9898 + n * 78.233) * 43758.5453;
+    return x - Math.floor(x);
+  };
   const dots = Array.from({ length: 20 }, (_, i) => ({
-    id: i, x: Math.random() * 100, y: Math.random() * 100,
-    size: Math.random() * 2 + 0.5, dur: Math.random() * 6 + 4, delay: Math.random() * 3,
+    id: i, x: rand(i, 1) * 100, y: rand(i, 2) * 100,
+    size: rand(i, 3) * 2 + 0.5, dur: rand(i, 4) * 6 + 4, delay: rand(i, 5) * 3,
   }));
 
   return (
