@@ -24,36 +24,47 @@ function MissionVision() {
               Icon: Target,
               label: "Our Mission",
               color: "#FFD100",
+              img: "/images/category/electric-vehicle-fxl.webp",
               text: "To deliver strong, reliable, and safe lithium battery packs that meet global standards while supporting electric vehicles, energy storage, and medical device sectors. We prioritize efficiency, advancement, and long-term reliability.",
             },
             {
               Icon: Eye,
               label: "Our Vision",
               color: "#FFA800",
+              img: "/images/category/solar-energy-storage-ewr.webp",
               text: "To advance clean and dependable energy globally by developing lithium battery systems that reduce carbon emissions, power modern transportation, and integrate renewable energy with the grid.",
             },
             {
               Icon: Lightbulb,
               label: "Our Approach",
               color: "#FF8C00",
+              img: "/images/category/products-ygb.webp",
               text: "We follow a five-step consultative strategy: understanding unique needs, guiding appropriate product selection, ensuring cost-effectiveness, enhancing productivity, and driving business profitability.",
             },
-          ].map(({ Icon, label, color, text }, i) => (
+          ].map(({ Icon, label, color, img, text }, i) => (
             <motion.div
               key={label}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="group p-8 rounded-2xl frosted-card border border-black/6 hover:border-black/8 transition-all hover:-translate-y-1"
+              whileHover={{ y: -8 }}
+              className="group relative overflow-hidden p-8 rounded-2xl frosted-card border border-black/6 hover:border-[#FFD100]/30 transition-colors"
             >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
-                style={{ backgroundColor: `${color}12`, border: `1px solid ${color}25` }}
-              >
-                <Icon size={22} style={{ color }} />
+              {/* Hover image reveal */}
+              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <Image src={img} alt="" fill className="object-cover scale-110 group-hover:scale-100 transition-transform duration-700" sizes="400px" />
+                <div className="absolute inset-0 bg-white/82" />
               </div>
-              <h3 className="text-[#15171c] font-bold text-xl mb-4">{label}</h3>
-              <p className="text-[#52525b] text-sm leading-relaxed">{text}</p>
+              <div className="relative z-10">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110 group-hover:rotate-3"
+                  style={{ backgroundColor: `${color}12`, border: `1px solid ${color}25` }}
+                >
+                  <Icon size={22} style={{ color }} />
+                </div>
+                <h3 className="text-[#15171c] font-bold text-xl mb-4">{label}</h3>
+                <p className="text-[#52525b] text-sm leading-relaxed">{text}</p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -463,6 +474,67 @@ function ManufacturingSection() {
   );
 }
 
+function JourneySection() {
+  return (
+    <section id="journey" className="section-padding bg-white relative overflow-hidden">
+      <div className="absolute inset-0 grid-pattern opacity-15" />
+      <div className="container-custom relative z-10">
+        <FadeUp className="text-center mb-4">
+          <span className="text-[#D97706] text-[11px] font-bold tracking-[0.25em] uppercase mb-3 block">Our Journey</span>
+          <h2 className="text-3xl md:text-4xl font-black text-[#15171c]">From 15 Batteries a Day to a <span className="gradient-text">600× Scale-Up</span></h2>
+        </FadeUp>
+
+        {/* 600x growth highlight */}
+        <FadeUp delay={0.1} className="max-w-3xl mx-auto mb-14">
+          <div className="flex items-center justify-center gap-4 md:gap-8 p-6 rounded-2xl frosted-card border border-[#FFD100]/20">
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-black text-[#15171c]">2019</div>
+              <div className="text-[#71717a] text-[11px] uppercase tracking-wide mt-1">15 batteries / day</div>
+            </div>
+            <div className="flex-1 flex flex-col items-center">
+              <div className="text-3xl md:text-5xl font-black gradient-text leading-none">600×</div>
+              <div className="relative w-full h-1 mt-2 rounded-full bg-gradient-to-r from-[#FFD100] to-[#FF8C00]" />
+              <div className="text-[#71717a] text-[11px] uppercase tracking-wide mt-2">Scale-up in 7 years</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-black gradient-text">2026</div>
+              <div className="text-[#71717a] text-[11px] uppercase tracking-wide mt-1">25,000 packs / month</div>
+            </div>
+          </div>
+        </FadeUp>
+
+        {/* Timeline */}
+        <div className="relative max-w-4xl mx-auto">
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#FFD100]/40 via-black/8 to-transparent md:-translate-x-1/2" />
+          <div className="space-y-8">
+            {TIMELINE.map((t, i) => (
+              <motion.div
+                key={t.year}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className={`relative pl-12 md:pl-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:ml-auto md:pl-12"}`}
+              >
+                <span className={`absolute top-1.5 left-2.5 md:left-auto w-3 h-3 rounded-full bg-[#FFD100] ring-4 ring-[#FFD100]/15 ${i % 2 === 0 ? "md:-right-1.5" : "md:-left-1.5"}`} />
+                <div className="p-5 rounded-2xl frosted-card border border-black/6 hover:border-[#FFD100]/25 transition-colors card-rise">
+                  <div className="inline-block px-2.5 py-0.5 rounded-lg text-xs font-black mb-2 bg-[#FFD100]/12 text-[#7a5b00]">{t.year}</div>
+                  <h3 className="text-[#15171c] font-bold text-base mb-2">{t.title}</h3>
+                  <ul className={`space-y-1 ${i % 2 === 0 ? "md:ml-auto" : ""}`}>
+                    {t.events.map((e) => (
+                      <li key={e} className="text-[#5f6470] text-xs leading-relaxed">{e}</li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function AboutContent() {
   return (
     <>
@@ -473,6 +545,7 @@ export default function AboutContent() {
       />
       <MissionVision />
       <AboutStory />
+      <JourneySection />
       <CompanyOverview />
       <ManufacturingSection />
       <LeadershipSection />

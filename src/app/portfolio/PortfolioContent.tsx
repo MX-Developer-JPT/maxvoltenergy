@@ -66,7 +66,7 @@ function ProductBlock({ product, index }: { product: (typeof PRODUCTS)[number]; 
         {/* Image */}
         <div className="relative">
           <div
-            className="relative h-72 md:h-80 rounded-3xl overflow-hidden flex items-center justify-center"
+            className="img-zoom relative h-72 md:h-80 rounded-3xl overflow-hidden flex items-center justify-center"
             style={{ background: `radial-gradient(circle at 50% 40%, ${product.color}14 0%, transparent 70%)` }}
           >
             <div className="relative w-56 h-56 md:w-64 md:h-64">
