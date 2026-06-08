@@ -1,23 +1,16 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import PageHero from "@/components/ui/PageHero";
-import {
-  MapPin, Phone, Search, Navigation, Wrench, Store, Factory, Building2,
-  X, MessageCircle, Mail, ChevronDown,
-} from "lucide-react";
+import { MapPin, Phone, Search, Store, MessageCircle, Mail, ChevronDown, RotateCcw } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
-import { DEALERS, STATE_CENTROIDS, type Dealer } from "@/lib/dealers";
+import { DEALERS, STATE_REGION, type Dealer } from "@/lib/dealers";
+import { INDIA_VIEWBOX, INDIA_STATES } from "@/lib/india-map";
 
 const REGIONS = ["All", "North", "Central", "East", "West", "South"] as const;
-const TYPES = ["All", "Dealer", "Distributor", "OEM", "End User"] as const;
 const STATES = ["All", ...Array.from(new Set(DEALERS.map((d) => d.state))).sort()];
-
-const TYPE_ICON: Record<string, typeof Store> = {
-  Dealer: Store, Distributor: Building2, OEM: Factory, "End User": Wrench,
-};
 
 // Application range available across the network (asset images).
 const RANGE = [
@@ -27,14 +20,6 @@ const RANGE = [
   { src: "/asset/solar-panel-with-battery.webp", label: "Solar Storage", href: "/products/lithium-battery-for-solar-application" },
 ];
 
-// Project lat/lng to a 0-100 box over India's bounds
-function project(lat: number, lng: number) {
-  const minLat = 8, maxLat = 35, minLng = 68, maxLng = 92;
-  const x = ((lng - minLng) / (maxLng - minLng)) * 100;
-  const y = (1 - (lat - minLat) / (maxLat - minLat)) * 100;
-  return { x, y };
-}
-
 function telHref(phone: string) {
   const m = phone.match(/\d[\d\s-]{6,}\d/);
   const digits = (m ? m[0] : phone).replace(/\D/g, "");
@@ -43,63 +28,73 @@ function telHref(phone: string) {
 }
 function isEmail(e: string) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 
+// choropleth colour: cream → amber by density
+function lerpColor(a: number[], b: number[], t: number) {
+  const c = a.map((v, i) => Math.round(v + (b[i] - v) * t));
+  return `rgb(${c[0]},${c[1]},${c[2]})`;
+}
+
 const PAGE = 24;
 
 export default function DealerLocatorContent() {
   const [region, setRegion] = useState<(typeof REGIONS)[number]>("All");
   const [stateFilter, setStateFilter] = useState<string>("All");
-  const [typeFilter, setTypeFilter] = useState<(typeof TYPES)[number]>("All");
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(PAGE);
-  const [active, setActive] = useState<Dealer | null>(null);
+  const [hover, setHover] = useState<{ name: string; count: number; x: number; y: number } | null>(null);
+  const mapWrap = useRef<HTMLDivElement>(null);
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase().trim();
     return DEALERS.filter((d) => {
       const matchRegion = region === "All" || d.region === region;
       const matchState = stateFilter === "All" || d.state === stateFilter;
-      const matchType = typeFilter === "All" || d.type === typeFilter;
       const matchQuery = !q ||
         d.city.toLowerCase().includes(q) || d.state.toLowerCase().includes(q) ||
         d.name.toLowerCase().includes(q) || d.pincode.includes(q) ||
         d.address.toLowerCase().includes(q);
-      return matchRegion && matchState && matchType && matchQuery;
+      return matchRegion && matchState && matchQuery;
     });
-  }, [region, stateFilter, typeFilter, query]);
+  }, [region, stateFilter, query]);
 
-  useEffect(() => { setVisible(PAGE); }, [region, stateFilter, typeFilter, query]);
+  useEffect(() => { setVisible(PAGE); }, [region, stateFilter, query]);
 
-  // Aggregate dealer counts per state for the network map.
-  const stateAgg = useMemo(() => {
-    const counts: Record<string, number> = {};
-    filtered.forEach((d) => { counts[d.state] = (counts[d.state] || 0) + 1; });
-    return Object.keys(STATE_CENTROIDS).map((state) => ({
-      state,
-      count: counts[state] || 0,
-      ...STATE_CENTROIDS[state],
-    }));
-  }, [filtered]);
+  const countByState = useMemo(() => {
+    const m: Record<string, number> = {};
+    DEALERS.forEach((d) => { m[d.state] = (m[d.state] || 0) + 1; });
+    return m;
+  }, []);
+  const maxCount = useMemo(() => Math.max(1, ...Object.values(countByState)), [countByState]);
 
   const totalCities = useMemo(() => new Set(DEALERS.map((d) => d.city)).size, []);
+  const totalPincodes = useMemo(() => new Set(DEALERS.map((d) => d.pincode).filter(Boolean)).size, []);
   const totalStates = STATES.length - 1;
-  const maxCount = Math.max(1, ...stateAgg.map((s) => s.count));
 
   const stats = [
-    { value: `${DEALERS.length}`, label: "Network Partners" },
+    { value: `${DEALERS.length}`, label: "Authorized Dealers" },
     { value: `${totalStates}`, label: "States Covered" },
     { value: `${totalCities}`, label: "Cities & Towns" },
-    { value: `${DEALERS.filter((d) => d.type === "OEM").length}`, label: "OEM Partners" },
+    { value: `${totalPincodes}`, label: "Pincodes Served" },
   ];
 
-  const clearAll = () => { setStateFilter("All"); setTypeFilter("All"); setRegion("All"); setQuery(""); };
-  const anyFilter = stateFilter !== "All" || typeFilter !== "All" || region !== "All" || query;
+  const clearAll = () => { setStateFilter("All"); setRegion("All"); setQuery(""); };
+  const anyFilter = stateFilter !== "All" || region !== "All" || query;
+
+  const stateActive = (name: string) =>
+    (stateFilter === "All" || stateFilter === name) && (region === "All" || STATE_REGION[name] === region);
+
+  const onStateClick = (name: string) => {
+    if (!countByState[name]) return;
+    setRegion("All");
+    setStateFilter((s) => (s === name ? "All" : name));
+  };
 
   return (
     <>
       <PageHero
         badge="Dealer Locator"
         title={<>Find a Maxvolt <span className="gradient-text">Dealer Near You</span></>}
-        description="Our growing network of dealers, distributors and OEM partners spans 20 states across India. Search by city, state or pincode to find your nearest Maxvolt Energy point of sale and support."
+        description="Our growing network of authorized dealers spans 20 states across India. Explore the interactive map or search by city, state or pincode to find your nearest Maxvolt Energy point of sale and support."
       />
 
       {/* Stats */}
@@ -135,7 +130,7 @@ export default function DealerLocatorContent() {
               {REGIONS.map((r) => (
                 <button
                   key={r}
-                  onClick={() => setRegion(r)}
+                  onClick={() => { setRegion(r); setStateFilter("All"); }}
                   className="px-4 py-2 rounded-xl text-sm font-medium transition-all"
                   style={region === r
                     ? { background: "#FFD100", color: "#000" }
@@ -147,72 +142,90 @@ export default function DealerLocatorContent() {
             </div>
           </div>
 
-          {/* State + type dropdowns */}
+          {/* State dropdown */}
           <div className="flex flex-col sm:flex-row gap-3 mb-8">
             <div className="flex-1">
               <label className="block text-[#71717a] text-[11px] font-bold uppercase tracking-wide mb-1.5">State</label>
-              <select value={stateFilter} onChange={(e) => setStateFilter(e.target.value)}
+              <select value={stateFilter} onChange={(e) => { setStateFilter(e.target.value); setRegion("All"); }}
                 className="w-full px-4 py-3 rounded-xl bg-white border border-black/8 text-[#15171c] text-sm focus:outline-none focus:border-[#D97706]/50">
-                {STATES.map((s) => <option key={s} value={s}>{s === "All" ? "All States" : s}</option>)}
-              </select>
-            </div>
-            <div className="flex-1">
-              <label className="block text-[#71717a] text-[11px] font-bold uppercase tracking-wide mb-1.5">Partner Type</label>
-              <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value as (typeof TYPES)[number])}
-                className="w-full px-4 py-3 rounded-xl bg-white border border-black/8 text-[#15171c] text-sm focus:outline-none focus:border-[#D97706]/50">
-                {TYPES.map((t) => <option key={t} value={t}>{t === "All" ? "All Types" : t}</option>)}
+                {STATES.map((s) => <option key={s} value={s}>{s === "All" ? "All States" : `${s} (${countByState[s] || 0})`}</option>)}
               </select>
             </div>
             {anyFilter && (
               <div className="flex items-end">
                 <button onClick={clearAll}
-                  className="px-4 py-3 rounded-xl border border-black/8 text-[#52525b] text-sm font-medium hover:text-[#15171c] hover:border-[#D97706]/30 transition-all whitespace-nowrap">
-                  Clear Filters
+                  className="px-4 py-3 rounded-xl border border-black/8 text-[#52525b] text-sm font-medium hover:text-[#15171c] hover:border-[#D97706]/30 transition-all whitespace-nowrap flex items-center gap-2">
+                  <RotateCcw size={13} /> Clear Filters
                 </button>
               </div>
             )}
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-            {/* Map */}
+            {/* Interactive India map */}
             <div className="lg:col-span-2 order-2 lg:order-1">
-              <div className="sticky top-24 rounded-2xl frosted-card p-5 overflow-hidden">
-                <div className="text-[#15171c] font-bold text-sm mb-4 flex items-center gap-2">
-                  <Navigation size={14} className="text-[#D97706]" /> Network Map by State
+              <div className="sticky top-24 rounded-2xl frosted-card p-5">
+                <div className="text-[#15171c] font-bold text-sm mb-3 flex items-center gap-2">
+                  <MapPin size={14} className="text-[#D97706]" /> Interactive Network Map
                 </div>
-                <div className="relative w-full rounded-xl bg-[#f0f0ea] border border-black/6 overflow-hidden" style={{ aspectRatio: "3/4" }}>
-                  <div className="absolute inset-0 dot-pattern opacity-40" />
-                  {stateAgg.map((s) => {
-                    const { x, y } = project(s.lat, s.lng);
-                    const emphasized = (stateFilter === "All" || stateFilter === s.state) && s.count > 0;
-                    const size = 10 + Math.sqrt(s.count) * 3.4;
-                    return (
-                      <button
-                        key={s.state}
-                        onClick={() => { setStateFilter(s.state); setRegion("All"); }}
-                        className="absolute -translate-x-1/2 -translate-y-1/2 group"
-                        style={{ left: `${x}%`, top: `${y}%`, zIndex: emphasized ? 10 : 1 }}
-                        aria-label={`${s.state}: ${s.count} partners`}
-                        title={`${s.state} — ${s.count} partner${s.count === 1 ? "" : "s"}`}
-                      >
-                        <span className="block rounded-full transition-all" style={{
-                          width: s.count ? size : 6,
-                          height: s.count ? size : 6,
-                          background: emphasized ? "#D97706" : s.count ? "rgba(217,119,6,0.35)" : "rgba(0,0,0,0.15)",
-                          boxShadow: emphasized ? "0 0 0 4px rgba(255,209,0,0.25)" : "none",
-                        }} />
-                        {s.count > 0 && (
-                          <span className="absolute left-1/2 -translate-x-1/2 -bottom-4 text-[8px] font-bold text-[#15171c] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                            {s.count}
-                          </span>
-                        )}
-                      </button>
-                    );
-                  })}
+
+                <div ref={mapWrap} className="relative w-full"
+                  onMouseLeave={() => setHover(null)}>
+                  <svg viewBox={INDIA_VIEWBOX} className="w-full h-auto" style={{ maxHeight: "70vh" }} role="img" aria-label="Map of India showing Maxvolt dealer density by state">
+                    {INDIA_STATES.map((s) => {
+                      const count = countByState[s.name] || 0;
+                      const active = stateActive(s.name);
+                      const isSel = stateFilter === s.name;
+                      const t = count ? Math.sqrt(count) / Math.sqrt(maxCount) : 0;
+                      const base = count ? lerpColor([253, 236, 206], [217, 119, 6], t) : "#e7e7e0";
+                      return (
+                        <path
+                          key={s.name}
+                          d={s.d}
+                          fill={base}
+                          stroke={isSel ? "#15171c" : "#ffffff"}
+                          strokeWidth={isSel ? 2.4 : 0.8}
+                          style={{
+                            cursor: count ? "pointer" : "default",
+                            opacity: active ? 1 : 0.32,
+                            transition: "opacity .2s, fill .2s",
+                          }}
+                          onMouseEnter={(e) => {
+                            const r = mapWrap.current?.getBoundingClientRect();
+                            const b = (e.target as SVGPathElement).getBoundingClientRect();
+                            if (r) setHover({ name: s.name, count, x: b.x - r.x + b.width / 2, y: b.y - r.y });
+                          }}
+                          onClick={() => onStateClick(s.name)}
+                        />
+                      );
+                    })}
+                  </svg>
+
+                  {/* Tooltip */}
+                  {hover && (
+                    <div className="pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-full"
+                      style={{ left: hover.x, top: hover.y - 6 }}>
+                      <div className="px-3 py-1.5 rounded-lg bg-[#15171c] text-white text-xs font-semibold whitespace-nowrap shadow-lg">
+                        {hover.name}
+                        <span className="text-[#FFD100]"> · {hover.count} dealer{hover.count === 1 ? "" : "s"}</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <p className="text-[#71717a] text-[11px] mt-3 leading-relaxed">
-                  Bubble size reflects partner density. Tap a state to filter. Showing{" "}
-                  <span className="text-[#D97706] font-bold">{filtered.length}</span> of {DEALERS.length} partners.
+
+                {/* Legend */}
+                <div className="flex items-center justify-between mt-3 gap-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] text-[#a1a1aa]">Fewer</span>
+                    <div className="h-2 w-24 rounded-full" style={{ background: "linear-gradient(90deg, rgb(253,236,206), rgb(217,119,6))" }} />
+                    <span className="text-[10px] text-[#a1a1aa]">More</span>
+                  </div>
+                  <span className="text-[#71717a] text-[11px]">
+                    <span className="text-[#D97706] font-bold">{filtered.length}</span> of {DEALERS.length}
+                  </span>
+                </div>
+                <p className="text-[#71717a] text-[11px] mt-2 leading-relaxed">
+                  Tap a highlighted state to filter the list. Shade reflects dealer density.
                 </p>
               </div>
             </div>
@@ -221,7 +234,6 @@ export default function DealerLocatorContent() {
             <div className="lg:col-span-3 order-1 lg:order-2">
               <div className="space-y-3">
                 {filtered.slice(0, visible).map((d, i) => {
-                  const Icon = TYPE_ICON[d.type] || Store;
                   const tel = telHref(d.phone);
                   return (
                     <motion.div
@@ -233,12 +245,12 @@ export default function DealerLocatorContent() {
                     >
                       <div className="flex items-start gap-4">
                         <div className="w-11 h-11 rounded-xl bg-[#FFD100]/15 border border-[#D97706]/20 flex items-center justify-center shrink-0">
-                          <Icon size={16} className="text-[#D97706]" />
+                          <Store size={16} className="text-[#D97706]" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 flex-wrap mb-1">
                             <h3 className="text-[#15171c] font-bold text-sm">{d.name}</h3>
-                            <span className="text-[9px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full bg-black/[0.04] text-[#71717a] border border-black/6">{d.type}</span>
+                            <span className="text-[9px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full bg-black/[0.04] text-[#71717a] border border-black/6">Authorized Dealer</span>
                           </div>
                           <div className="flex items-start gap-1.5 text-[#52525b] text-xs mb-2">
                             <MapPin size={11} className="text-[#a1a1aa] shrink-0 mt-0.5" /> <span className="leading-relaxed">{d.address}</span>
@@ -254,13 +266,6 @@ export default function DealerLocatorContent() {
                                 <Mail size={11} /> Email
                               </a>
                             )}
-                            <a
-                              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${d.name} ${d.city} ${d.state} ${d.pincode}`)}`}
-                              target="_blank" rel="noopener noreferrer"
-                              className="flex items-center gap-1.5 text-[#52525b] text-xs font-medium hover:text-[#15171c]"
-                            >
-                              <Navigation size={11} /> Directions
-                            </a>
                           </div>
                         </div>
                         <span className="text-[#a1a1aa] text-[11px] shrink-0 text-right">{d.city}<br /><span className="text-[#c4c4cc]">{d.pincode}</span></span>
@@ -283,7 +288,7 @@ export default function DealerLocatorContent() {
               {filtered.length === 0 && (
                 <div className="p-10 rounded-2xl frosted-card text-center">
                   <MapPin size={28} className="text-[#a1a1aa] mx-auto mb-3" />
-                  <h3 className="text-[#15171c] font-bold mb-1">No partner found in this area</h3>
+                  <h3 className="text-[#15171c] font-bold mb-1">No dealer found in this area</h3>
                   <p className="text-[#71717a] text-sm mb-5">We&apos;re expanding fast. Contact us and we&apos;ll connect you with the nearest dealer or set up a new one.</p>
                   <a
                     href={`https://wa.me/${SITE_CONFIG.whatsapp.replace("+", "")}?text=Hi, I'm looking for a Maxvolt dealer near ${query || "my city"}.`}
@@ -305,7 +310,7 @@ export default function DealerLocatorContent() {
           <div className="text-center mb-10">
             <span className="text-[#D97706] text-[11px] font-bold tracking-[0.25em] uppercase mb-3 block">Available Across Our Network</span>
             <h2 className="text-3xl md:text-4xl font-black text-[#15171c]">The Full Maxvolt <span className="gradient-text">Range</span></h2>
-            <p className="text-[#5f6470] text-sm max-w-xl mx-auto mt-3">Every authorized partner stocks and services Maxvolt&apos;s AIS 156-certified lithium battery line-up.</p>
+            <p className="text-[#5f6470] text-sm max-w-xl mx-auto mt-3">Every authorized dealer stocks and services Maxvolt&apos;s AIS 156-certified lithium battery line-up.</p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {RANGE.map((r, i) => (
@@ -334,34 +339,12 @@ export default function DealerLocatorContent() {
       <section className="py-16 bg-[#f7f7f5] border-t border-black/6">
         <div className="container-custom text-center">
           <h2 className="text-3xl font-black text-[#15171c] mb-3">Want to become a <span className="gradient-text">Maxvolt Dealer?</span></h2>
-          <p className="text-[#52525b] text-sm max-w-md mx-auto mb-7">Join our growing partner network. Competitive margins, technical training, and marketing support across India.</p>
+          <p className="text-[#52525b] text-sm max-w-md mx-auto mb-7">Join our growing dealer network. Competitive margins, technical training, and marketing support across India.</p>
           <a href="/become-a-dealer" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFA800] transition-all">
             Apply for Dealership
           </a>
         </div>
       </section>
-
-      {/* Active dealer modal (mobile) */}
-      <AnimatePresence>
-        {active && (
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            onClick={() => setActive(null)}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 lg:hidden"
-          >
-            <motion.div
-              initial={{ scale: 0.9, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.9, y: 20 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-2xl p-6 max-w-sm w-full relative"
-            >
-              <button onClick={() => setActive(null)} className="absolute top-4 right-4 text-[#a1a1aa]"><X size={18} /></button>
-              <h3 className="text-[#15171c] font-bold mb-1 pr-6">{active.name}</h3>
-              <p className="text-[#52525b] text-sm mb-3">{active.address}</p>
-              <a href={`tel:${telHref(active.phone)}`} className="flex items-center gap-2 text-[#D97706] font-semibold text-sm"><Phone size={13} /> {active.phone}</a>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }
