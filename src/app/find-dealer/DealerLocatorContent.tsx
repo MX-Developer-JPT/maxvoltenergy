@@ -1,47 +1,31 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import PageHero from "@/components/ui/PageHero";
-import { MapPin, Phone, Search, Navigation, Wrench, Store, X, MessageCircle } from "lucide-react";
+import {
+  MapPin, Phone, Search, Navigation, Wrench, Store, Factory, Building2,
+  X, MessageCircle, Mail, ChevronDown,
+} from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
+import { DEALERS, STATE_CENTROIDS, type Dealer } from "@/lib/dealers";
 
-type Dealer = {
-  name: string; city: string; state: string; region: "North" | "South" | "East" | "West";
-  address: string; phone: string; type: "Dealer" | "Service Center" | "Distributor";
-  lat: number; lng: number;
+const REGIONS = ["All", "North", "Central", "East", "West", "South"] as const;
+const TYPES = ["All", "Dealer", "Distributor", "OEM", "End User"] as const;
+const STATES = ["All", ...Array.from(new Set(DEALERS.map((d) => d.state))).sort()];
+
+const TYPE_ICON: Record<string, typeof Store> = {
+  Dealer: Store, Distributor: Building2, OEM: Factory, "End User": Wrench,
 };
 
-// Curated Maxvolt dealer/service network across India (approximate city coordinates)
-const DEALERS: Dealer[] = [
-  { name: "Maxvolt Flagship Store", city: "Ghaziabad", state: "Uttar Pradesh", region: "North", address: "E 82, Bulandshahr Road Industrial Area, Ghaziabad 201009", phone: "01204291595", type: "Distributor", lat: 28.67, lng: 77.45 },
-  { name: "Maxvolt Energy Delhi", city: "New Delhi", state: "Delhi", region: "North", address: "F 108, United Plaza, Community Centre, Karkardooma, New Delhi 110092", phone: "01204291595", type: "Dealer", lat: 28.65, lng: 77.29 },
-  { name: "PowerCell EV Hub", city: "Noida", state: "Uttar Pradesh", region: "North", address: "Sector 63, Noida", phone: "+918130327183", type: "Dealer", lat: 28.62, lng: 77.38 },
-  { name: "Lucknow Lithium Centre", city: "Lucknow", state: "Uttar Pradesh", region: "North", address: "Gomti Nagar, Lucknow", phone: "+918130327183", type: "Dealer", lat: 26.85, lng: 80.95 },
-  { name: "Chandigarh EV Power", city: "Chandigarh", state: "Chandigarh", region: "North", address: "Industrial Area Phase 1, Chandigarh", phone: "+918130327183", type: "Service Center", lat: 30.73, lng: 76.78 },
-  { name: "Jaipur Energy Works", city: "Jaipur", state: "Rajasthan", region: "West", address: "Malviya Nagar, Jaipur", phone: "+918130327183", type: "Dealer", lat: 26.91, lng: 75.79 },
-  { name: "Amritsar Battery Mart", city: "Amritsar", state: "Punjab", region: "North", address: "GT Road, Amritsar", phone: "+918130327183", type: "Dealer", lat: 31.63, lng: 74.87 },
-  { name: "Maxvolt Mumbai West", city: "Mumbai", state: "Maharashtra", region: "West", address: "Andheri East, Mumbai", phone: "+918130327183", type: "Dealer", lat: 19.12, lng: 72.86 },
-  { name: "Pune EV Solutions", city: "Pune", state: "Maharashtra", region: "West", address: "Hinjewadi, Pune", phone: "+918130327183", type: "Dealer", lat: 18.59, lng: 73.74 },
-  { name: "Ahmedabad Power Centre", city: "Ahmedabad", state: "Gujarat", region: "West", address: "SG Highway, Ahmedabad", phone: "+918130327183", type: "Service Center", lat: 23.03, lng: 72.58 },
-  { name: "Surat Lithium Store", city: "Surat", state: "Gujarat", region: "West", address: "Ring Road, Surat", phone: "+918130327183", type: "Dealer", lat: 21.17, lng: 72.83 },
-  { name: "Indore Battery World", city: "Indore", state: "Madhya Pradesh", region: "West", address: "Vijay Nagar, Indore", phone: "+918130327183", type: "Dealer", lat: 22.72, lng: 75.86 },
-  { name: "Maxvolt Bangalore", city: "Bangalore", state: "Karnataka", region: "South", address: "Whitefield, Bengaluru", phone: "+918130327183", type: "Service Center", lat: 12.97, lng: 77.59 },
-  { name: "Chennai EV Mart", city: "Chennai", state: "Tamil Nadu", region: "South", address: "Guindy, Chennai", phone: "+918130327183", type: "Dealer", lat: 13.08, lng: 80.27 },
-  { name: "Maxvolt Hyderabad (First OEM)", city: "Hyderabad", state: "Telangana", region: "South", address: "Gachibowli, Hyderabad", phone: "+918130327183", type: "Distributor", lat: 17.39, lng: 78.49 },
-  { name: "Coimbatore Power Hub", city: "Coimbatore", state: "Tamil Nadu", region: "South", address: "Peelamedu, Coimbatore", phone: "+918130327183", type: "Dealer", lat: 11.02, lng: 76.96 },
-  { name: "Kochi Energy Store", city: "Kochi", state: "Kerala", region: "South", address: "Edappally, Kochi", phone: "+918130327183", type: "Dealer", lat: 9.93, lng: 76.27 },
-  { name: "Vijayawada Battery Centre", city: "Vijayawada", state: "Andhra Pradesh", region: "South", address: "Benz Circle, Vijayawada", phone: "+918130327183", type: "Service Center", lat: 16.51, lng: 80.65 },
-  { name: "Maxvolt Kolkata", city: "Kolkata", state: "West Bengal", region: "East", address: "Salt Lake, Kolkata", phone: "+918130327183", type: "Dealer", lat: 22.57, lng: 88.36 },
-  { name: "Patna EV Power", city: "Patna", state: "Bihar", region: "East", address: "Boring Road, Patna", phone: "+918130327183", type: "Dealer", lat: 25.59, lng: 85.13 },
-  { name: "Ranchi Lithium Mart", city: "Ranchi", state: "Jharkhand", region: "East", address: "Lalpur, Ranchi", phone: "+918130327183", type: "Dealer", lat: 23.34, lng: 85.31 },
-  { name: "Guwahati Energy Hub", city: "Guwahati", state: "Assam", region: "East", address: "GS Road, Guwahati", phone: "+918130327183", type: "Service Center", lat: 26.14, lng: 91.74 },
-  { name: "Bhubaneswar Power Store", city: "Bhubaneswar", state: "Odisha", region: "East", address: "Saheed Nagar, Bhubaneswar", phone: "+918130327183", type: "Dealer", lat: 20.30, lng: 85.82 },
+// Application range available across the network (asset images).
+const RANGE = [
+  { src: "/asset/rickshaw-with-battery.webp", label: "E-Rickshaw Batteries", href: "/products/e-rickshaw-lithium-battery" },
+  { src: "/asset/scooter-with-battery.webp", label: "E-Scooter / Bike Batteries", href: "/products/e-scooter-bike-lithium-battery" },
+  { src: "/asset/inverter-with-battery.webp", label: "Inverter & Backup", href: "/products/lithium-battery-energy-storage-solutions" },
+  { src: "/asset/solar-panel-with-battery.webp", label: "Solar Storage", href: "/products/lithium-battery-for-solar-application" },
 ];
-
-const REGIONS = ["All", "North", "South", "East", "West"] as const;
-const TYPES = ["All", "Dealer", "Service Center", "Distributor"] as const;
-const STATES = ["All", ...Array.from(new Set(DEALERS.map((d) => d.state))).sort()];
 
 // Project lat/lng to a 0-100 box over India's bounds
 function project(lat: number, lng: number) {
@@ -51,43 +35,99 @@ function project(lat: number, lng: number) {
   return { x, y };
 }
 
+function telHref(phone: string) {
+  const m = phone.match(/\d[\d\s-]{6,}\d/);
+  const digits = (m ? m[0] : phone).replace(/\D/g, "");
+  if (!digits) return "";
+  return digits.length === 10 ? `+91${digits}` : `+${digits.replace(/^0+/, "")}`;
+}
+function isEmail(e: string) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+const PAGE = 24;
+
 export default function DealerLocatorContent() {
   const [region, setRegion] = useState<(typeof REGIONS)[number]>("All");
   const [stateFilter, setStateFilter] = useState<string>("All");
   const [typeFilter, setTypeFilter] = useState<(typeof TYPES)[number]>("All");
   const [query, setQuery] = useState("");
+  const [visible, setVisible] = useState(PAGE);
   const [active, setActive] = useState<Dealer | null>(null);
 
   const filtered = useMemo(() => {
+    const q = query.toLowerCase().trim();
     return DEALERS.filter((d) => {
       const matchRegion = region === "All" || d.region === region;
       const matchState = stateFilter === "All" || d.state === stateFilter;
       const matchType = typeFilter === "All" || d.type === typeFilter;
-      const q = query.toLowerCase().trim();
-      const matchQuery = !q || d.city.toLowerCase().includes(q) || d.state.toLowerCase().includes(q) || d.name.toLowerCase().includes(q);
+      const matchQuery = !q ||
+        d.city.toLowerCase().includes(q) || d.state.toLowerCase().includes(q) ||
+        d.name.toLowerCase().includes(q) || d.pincode.includes(q) ||
+        d.address.toLowerCase().includes(q);
       return matchRegion && matchState && matchType && matchQuery;
     });
   }, [region, stateFilter, typeFilter, query]);
+
+  useEffect(() => { setVisible(PAGE); }, [region, stateFilter, typeFilter, query]);
+
+  // Aggregate dealer counts per state for the network map.
+  const stateAgg = useMemo(() => {
+    const counts: Record<string, number> = {};
+    filtered.forEach((d) => { counts[d.state] = (counts[d.state] || 0) + 1; });
+    return Object.keys(STATE_CENTROIDS).map((state) => ({
+      state,
+      count: counts[state] || 0,
+      ...STATE_CENTROIDS[state],
+    }));
+  }, [filtered]);
+
+  const totalCities = useMemo(() => new Set(DEALERS.map((d) => d.city)).size, []);
+  const totalStates = STATES.length - 1;
+  const maxCount = Math.max(1, ...stateAgg.map((s) => s.count));
+
+  const stats = [
+    { value: `${DEALERS.length}`, label: "Network Partners" },
+    { value: `${totalStates}`, label: "States Covered" },
+    { value: `${totalCities}`, label: "Cities & Towns" },
+    { value: `${DEALERS.filter((d) => d.type === "OEM").length}`, label: "OEM Partners" },
+  ];
+
+  const clearAll = () => { setStateFilter("All"); setTypeFilter("All"); setRegion("All"); setQuery(""); };
+  const anyFilter = stateFilter !== "All" || typeFilter !== "All" || region !== "All" || query;
 
   return (
     <>
       <PageHero
         badge="Dealer Locator"
         title={<>Find a Maxvolt <span className="gradient-text">Dealer Near You</span></>}
-        description="950+ authorized dealers, distributors, and service centers across 22+ states. Search by city or state to find your nearest Maxvolt Energy point of sale and support."
+        description="Our growing network of dealers, distributors and OEM partners spans 20 states across India. Search by city, state or pincode to find your nearest Maxvolt Energy point of sale and support."
       />
+
+      {/* Stats */}
+      <section className="py-10 bg-[#0b0b0d] relative overflow-hidden">
+        <div className="absolute inset-0 grid-pattern opacity-[0.07]" />
+        <div className="container-custom relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {stats.map((s) => (
+              <div key={s.label} className="text-center p-4 rounded-2xl bg-white/[0.03] border border-white/8">
+                <div className="text-3xl font-black gradient-text tabular-nums">{s.value}</div>
+                <div className="text-white/55 text-[11px] mt-1 uppercase tracking-wide">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="section-padding bg-[#f7f7f5]">
         <div className="container-custom">
-          {/* Search + filters */}
-          <div className="flex flex-col md:flex-row gap-4 mb-8">
+          {/* Search + region filters */}
+          <div className="flex flex-col md:flex-row gap-4 mb-5">
             <div className="relative flex-1">
               <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#a1a1aa]" />
               <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search by city or state (e.g. Mumbai, Karnataka)…"
+                placeholder="Search by city, state, pincode or dealer name…"
                 className="w-full pl-11 pr-4 py-3.5 rounded-xl bg-white border border-black/8 text-[#15171c] text-sm placeholder:text-[#a1a1aa] focus:outline-none focus:border-[#D97706]/50 transition-colors"
               />
             </div>
@@ -107,34 +147,26 @@ export default function DealerLocatorContent() {
             </div>
           </div>
 
-          {/* Location-based dropdown filters */}
+          {/* State + type dropdowns */}
           <div className="flex flex-col sm:flex-row gap-3 mb-8">
             <div className="flex-1">
               <label className="block text-[#71717a] text-[11px] font-bold uppercase tracking-wide mb-1.5">State</label>
-              <select
-                value={stateFilter}
-                onChange={(e) => setStateFilter(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-white border border-black/8 text-[#15171c] text-sm focus:outline-none focus:border-[#D97706]/50"
-              >
+              <select value={stateFilter} onChange={(e) => setStateFilter(e.target.value)}
+                className="w-full px-4 py-3 rounded-xl bg-white border border-black/8 text-[#15171c] text-sm focus:outline-none focus:border-[#D97706]/50">
                 {STATES.map((s) => <option key={s} value={s}>{s === "All" ? "All States" : s}</option>)}
               </select>
             </div>
             <div className="flex-1">
-              <label className="block text-[#71717a] text-[11px] font-bold uppercase tracking-wide mb-1.5">Location Type</label>
-              <select
-                value={typeFilter}
-                onChange={(e) => setTypeFilter(e.target.value as (typeof TYPES)[number])}
-                className="w-full px-4 py-3 rounded-xl bg-white border border-black/8 text-[#15171c] text-sm focus:outline-none focus:border-[#D97706]/50"
-              >
+              <label className="block text-[#71717a] text-[11px] font-bold uppercase tracking-wide mb-1.5">Partner Type</label>
+              <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value as (typeof TYPES)[number])}
+                className="w-full px-4 py-3 rounded-xl bg-white border border-black/8 text-[#15171c] text-sm focus:outline-none focus:border-[#D97706]/50">
                 {TYPES.map((t) => <option key={t} value={t}>{t === "All" ? "All Types" : t}</option>)}
               </select>
             </div>
-            {(stateFilter !== "All" || typeFilter !== "All" || region !== "All" || query) && (
+            {anyFilter && (
               <div className="flex items-end">
-                <button
-                  onClick={() => { setStateFilter("All"); setTypeFilter("All"); setRegion("All"); setQuery(""); }}
-                  className="px-4 py-3 rounded-xl border border-black/8 text-[#52525b] text-sm font-medium hover:text-[#15171c] hover:border-[#D97706]/30 transition-all whitespace-nowrap"
-                >
+                <button onClick={clearAll}
+                  className="px-4 py-3 rounded-xl border border-black/8 text-[#52525b] text-sm font-medium hover:text-[#15171c] hover:border-[#D97706]/30 transition-all whitespace-nowrap">
                   Clear Filters
                 </button>
               </div>
@@ -146,94 +178,112 @@ export default function DealerLocatorContent() {
             <div className="lg:col-span-2 order-2 lg:order-1">
               <div className="sticky top-24 rounded-2xl frosted-card p-5 overflow-hidden">
                 <div className="text-[#15171c] font-bold text-sm mb-4 flex items-center gap-2">
-                  <Navigation size={14} className="text-[#D97706]" /> Network Map
+                  <Navigation size={14} className="text-[#D97706]" /> Network Map by State
                 </div>
                 <div className="relative w-full rounded-xl bg-[#f0f0ea] border border-black/6 overflow-hidden" style={{ aspectRatio: "3/4" }}>
-                  {/* dot grid backdrop */}
                   <div className="absolute inset-0 dot-pattern opacity-40" />
-                  {DEALERS.map((d, i) => {
-                    const { x, y } = project(d.lat, d.lng);
-                    const visible = filtered.includes(d);
+                  {stateAgg.map((s) => {
+                    const { x, y } = project(s.lat, s.lng);
+                    const emphasized = (stateFilter === "All" || stateFilter === s.state) && s.count > 0;
+                    const size = 10 + Math.sqrt(s.count) * 3.4;
                     return (
                       <button
-                        key={i}
-                        onClick={() => setActive(d)}
+                        key={s.state}
+                        onClick={() => { setStateFilter(s.state); setRegion("All"); }}
                         className="absolute -translate-x-1/2 -translate-y-1/2 group"
-                        style={{ left: `${x}%`, top: `${y}%` }}
-                        aria-label={d.name}
+                        style={{ left: `${x}%`, top: `${y}%`, zIndex: emphasized ? 10 : 1 }}
+                        aria-label={`${s.state}: ${s.count} partners`}
+                        title={`${s.state} — ${s.count} partner${s.count === 1 ? "" : "s"}`}
                       >
-                        <motion.span
-                          className="block rounded-full"
-                          animate={{
-                            scale: active === d ? [1, 1.4, 1] : 1,
-                          }}
-                          transition={{ duration: 1, repeat: active === d ? Infinity : 0 }}
-                          style={{
-                            width: visible ? 11 : 6,
-                            height: visible ? 11 : 6,
-                            background: visible ? "#D97706" : "rgba(0,0,0,0.2)",
-                            boxShadow: visible ? "0 0 0 4px rgba(255,209,0,0.25)" : "none",
-                          }}
-                        />
+                        <span className="block rounded-full transition-all" style={{
+                          width: s.count ? size : 6,
+                          height: s.count ? size : 6,
+                          background: emphasized ? "#D97706" : s.count ? "rgba(217,119,6,0.35)" : "rgba(0,0,0,0.15)",
+                          boxShadow: emphasized ? "0 0 0 4px rgba(255,209,0,0.25)" : "none",
+                        }} />
+                        {s.count > 0 && (
+                          <span className="absolute left-1/2 -translate-x-1/2 -bottom-4 text-[8px] font-bold text-[#15171c] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                            {s.count}
+                          </span>
+                        )}
                       </button>
                     );
                   })}
                 </div>
                 <p className="text-[#71717a] text-[11px] mt-3 leading-relaxed">
-                  Tap a marker to view dealer details. Showing <span className="text-[#D97706] font-bold">{filtered.length}</span> of {DEALERS.length} locations.
+                  Bubble size reflects partner density. Tap a state to filter. Showing{" "}
+                  <span className="text-[#D97706] font-bold">{filtered.length}</span> of {DEALERS.length} partners.
                 </p>
               </div>
             </div>
 
             {/* List */}
-            <div className="lg:col-span-3 order-1 lg:order-2 space-y-3">
-              <AnimatePresence mode="popLayout">
-                {filtered.map((d, i) => (
-                  <motion.div
-                    layout
-                    key={d.name}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.97 }}
-                    transition={{ duration: 0.35, delay: Math.min(i * 0.03, 0.3) }}
-                    onMouseEnter={() => setActive(d)}
-                    className="p-5 rounded-2xl frosted-card hover:border-[#D97706]/25 transition-all"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="w-11 h-11 rounded-xl bg-[#FFD100]/15 border border-[#D97706]/20 flex items-center justify-center shrink-0">
-                        {d.type === "Service Center" ? <Wrench size={16} className="text-[#D97706]" /> : <Store size={16} className="text-[#D97706]" />}
+            <div className="lg:col-span-3 order-1 lg:order-2">
+              <div className="space-y-3">
+                {filtered.slice(0, visible).map((d, i) => {
+                  const Icon = TYPE_ICON[d.type] || Store;
+                  const tel = telHref(d.phone);
+                  return (
+                    <motion.div
+                      key={`${d.name}-${d.city}-${i}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.25, delay: Math.min((i % PAGE) * 0.015, 0.25) }}
+                      className="p-5 rounded-2xl frosted-card hover:border-[#D97706]/25 transition-all"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="w-11 h-11 rounded-xl bg-[#FFD100]/15 border border-[#D97706]/20 flex items-center justify-center shrink-0">
+                          <Icon size={16} className="text-[#D97706]" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap mb-1">
+                            <h3 className="text-[#15171c] font-bold text-sm">{d.name}</h3>
+                            <span className="text-[9px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full bg-black/[0.04] text-[#71717a] border border-black/6">{d.type}</span>
+                          </div>
+                          <div className="flex items-start gap-1.5 text-[#52525b] text-xs mb-2">
+                            <MapPin size={11} className="text-[#a1a1aa] shrink-0 mt-0.5" /> <span className="leading-relaxed">{d.address}</span>
+                          </div>
+                          <div className="flex items-center gap-4 flex-wrap">
+                            {tel && (
+                              <a href={`tel:${tel}`} className="flex items-center gap-1.5 text-[#D97706] text-xs font-semibold hover:underline">
+                                <Phone size={11} /> {d.phone}
+                              </a>
+                            )}
+                            {isEmail(d.email) && (
+                              <a href={`mailto:${d.email}`} className="flex items-center gap-1.5 text-[#52525b] text-xs font-medium hover:text-[#15171c]">
+                                <Mail size={11} /> Email
+                              </a>
+                            )}
+                            <a
+                              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${d.name} ${d.city} ${d.state} ${d.pincode}`)}`}
+                              target="_blank" rel="noopener noreferrer"
+                              className="flex items-center gap-1.5 text-[#52525b] text-xs font-medium hover:text-[#15171c]"
+                            >
+                              <Navigation size={11} /> Directions
+                            </a>
+                          </div>
+                        </div>
+                        <span className="text-[#a1a1aa] text-[11px] shrink-0 text-right">{d.city}<br /><span className="text-[#c4c4cc]">{d.pincode}</span></span>
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 flex-wrap mb-1">
-                          <h3 className="text-[#15171c] font-bold text-sm">{d.name}</h3>
-                          <span className="text-[9px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full bg-black/[0.04] text-[#71717a] border border-black/6">{d.type}</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 text-[#52525b] text-xs mb-2">
-                          <MapPin size={11} className="text-[#a1a1aa]" /> {d.address}
-                        </div>
-                        <div className="flex items-center gap-4">
-                          <a href={`tel:${d.phone}`} className="flex items-center gap-1.5 text-[#D97706] text-xs font-semibold hover:underline">
-                            <Phone size={11} /> {d.phone}
-                          </a>
-                          <a
-                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.name + " " + d.city)}`}
-                            target="_blank" rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 text-[#52525b] text-xs font-medium hover:text-[#15171c]"
-                          >
-                            <Navigation size={11} /> Directions
-                          </a>
-                        </div>
-                      </div>
-                      <span className="text-[#a1a1aa] text-[11px] shrink-0">{d.city}, {d.state}</span>
-                    </div>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              {/* Load more */}
+              {visible < filtered.length && (
+                <div className="text-center mt-6">
+                  <button onClick={() => setVisible((v) => v + PAGE)}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white border border-black/10 text-[#15171c] text-sm font-bold hover:border-[#D97706]/40 transition-all">
+                    Load More <span className="text-[#71717a] font-medium">({filtered.length - visible} more)</span> <ChevronDown size={15} />
+                  </button>
+                </div>
+              )}
 
               {filtered.length === 0 && (
                 <div className="p-10 rounded-2xl frosted-card text-center">
                   <MapPin size={28} className="text-[#a1a1aa] mx-auto mb-3" />
-                  <h3 className="text-[#15171c] font-bold mb-1">No dealer found in this area</h3>
+                  <h3 className="text-[#15171c] font-bold mb-1">No partner found in this area</h3>
                   <p className="text-[#71717a] text-sm mb-5">We&apos;re expanding fast. Contact us and we&apos;ll connect you with the nearest dealer or set up a new one.</p>
                   <a
                     href={`https://wa.me/${SITE_CONFIG.whatsapp.replace("+", "")}?text=Hi, I'm looking for a Maxvolt dealer near ${query || "my city"}.`}
@@ -249,18 +299,49 @@ export default function DealerLocatorContent() {
         </div>
       </section>
 
+      {/* Product range available across the network */}
+      <section className="section-padding bg-white border-t border-black/6">
+        <div className="container-custom">
+          <div className="text-center mb-10">
+            <span className="text-[#D97706] text-[11px] font-bold tracking-[0.25em] uppercase mb-3 block">Available Across Our Network</span>
+            <h2 className="text-3xl md:text-4xl font-black text-[#15171c]">The Full Maxvolt <span className="gradient-text">Range</span></h2>
+            <p className="text-[#5f6470] text-sm max-w-xl mx-auto mt-3">Every authorized partner stocks and services Maxvolt&apos;s AIS 156-certified lithium battery line-up.</p>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+            {RANGE.map((r, i) => (
+              <motion.a
+                key={r.label}
+                href={r.href}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="group block rounded-2xl frosted-card border border-black/6 hover:border-[#D97706]/30 hover:-translate-y-1 transition-all overflow-hidden"
+              >
+                <div className="relative h-44 flex items-center justify-center overflow-hidden" style={{ background: "radial-gradient(circle at 50% 40%, rgba(255,209,0,0.12) 0%, transparent 70%)" }}>
+                  <Image src={r.src} alt={r.label} width={300} height={220} className="object-contain h-36 w-auto group-hover:scale-105 transition-transform duration-500 drop-shadow-xl" />
+                </div>
+                <div className="p-4 text-center">
+                  <h3 className="text-[#15171c] font-bold text-sm group-hover:text-[#D97706] transition-colors">{r.label}</h3>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Become a dealer CTA */}
-      <section className="py-16 bg-white border-t border-black/6">
+      <section className="py-16 bg-[#f7f7f5] border-t border-black/6">
         <div className="container-custom text-center">
           <h2 className="text-3xl font-black text-[#15171c] mb-3">Want to become a <span className="gradient-text">Maxvolt Dealer?</span></h2>
-          <p className="text-[#52525b] text-sm max-w-md mx-auto mb-7">Join 950+ partners. Competitive margins, technical training, and marketing support across India.</p>
+          <p className="text-[#52525b] text-sm max-w-md mx-auto mb-7">Join our growing partner network. Competitive margins, technical training, and marketing support across India.</p>
           <a href="/become-a-dealer" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFA800] transition-all">
             Apply for Dealership
           </a>
         </div>
       </section>
 
-      {/* Active dealer modal */}
+      {/* Active dealer modal (mobile) */}
       <AnimatePresence>
         {active && (
           <motion.div
@@ -276,7 +357,7 @@ export default function DealerLocatorContent() {
               <button onClick={() => setActive(null)} className="absolute top-4 right-4 text-[#a1a1aa]"><X size={18} /></button>
               <h3 className="text-[#15171c] font-bold mb-1 pr-6">{active.name}</h3>
               <p className="text-[#52525b] text-sm mb-3">{active.address}</p>
-              <a href={`tel:${active.phone}`} className="flex items-center gap-2 text-[#D97706] font-semibold text-sm"><Phone size={13} /> {active.phone}</a>
+              <a href={`tel:${telHref(active.phone)}`} className="flex items-center gap-2 text-[#D97706] font-semibold text-sm"><Phone size={13} /> {active.phone}</a>
             </motion.div>
           </motion.div>
         )}

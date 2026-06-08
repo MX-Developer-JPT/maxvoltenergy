@@ -12,6 +12,7 @@ const productData = {
   category: "Electric Vehicle",
   color: "#FFA800",
   image: "/images/product/e-scooter-bike-lithium-battery-mpu.webp",
+  appImage: "/asset/scooter-with-battery.webp",
   galleryImages: [
     "/images/product/e-scooter-battery-48v-29ah-kac.webp",
     "/images/product/e-scooter-battery-63v-40ah-mre.webp",

@@ -50,3 +50,8 @@ ref/
 
 # Source catalogue PDFs (copied into public/catalogue)
 /Catalogue/
+
+# Source dealer spreadsheet (parsed into src/lib/dealers.ts) & raw asset PNGs
+# (optimized webp copies live in public/asset/ and are committed)
+/dealers/
+/asset/

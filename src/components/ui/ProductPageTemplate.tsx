@@ -49,6 +49,7 @@ interface ProductPageTemplateProps {
     color: string;
     category: string;
     image?: string;
+    appImage?: string;
     galleryImages?: string[];
     features: string[];
     benefits: { title: string; description: string }[];
@@ -261,6 +262,49 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
               {product.overview.map((p, i) => (
                 <p key={i} className="text-[#52525b] text-base leading-relaxed">{p}</p>
               ))}
+            </div>
+          </Reveal>
+        </section>
+      )}
+
+      {/* In real-world use — application image */}
+      {product.appImage && (
+        <section className="section-padding bg-white pt-0">
+          <Reveal className="container-custom">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center rounded-3xl overflow-hidden p-8 md:p-10"
+              style={{ background: `linear-gradient(135deg, ${product.color}0c 0%, transparent 70%)`, border: `1px solid ${product.color}1f` }}>
+              <div className="relative h-64 md:h-80 flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full blur-[90px] opacity-30 pointer-events-none" style={{ background: product.color }} />
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative w-full h-full"
+                >
+                  <Image src={product.appImage} alt={`${product.name} in real-world use`} fill className="object-contain drop-shadow-2xl" sizes="(max-width:1024px) 90vw, 520px" />
+                </motion.div>
+              </div>
+              <div>
+                <span className="inline-block text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1.5 rounded-full mb-4"
+                  style={{ color: product.color, border: `1px solid ${product.color}30`, backgroundColor: `${product.color}10` }}>
+                  In Real-World Use
+                </span>
+                <h2 className="text-3xl font-black text-[#15171c] mb-4 leading-tight">Built for the way India <span style={{ color: product.color }}>actually rides &amp; powers</span></h2>
+                <p className="text-[#52525b] text-sm leading-relaxed mb-6">
+                  Engineered, tested and field-proven for everyday duty cycles — the Maxvolt {product.name} delivers
+                  dependable range, fast turnaround and a long service life across real operating conditions.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Link href="/find-dealer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all" style={{ backgroundColor: product.color, color: "#000" }}>
+                    Find a Dealer <ArrowRight size={14} />
+                  </Link>
+                  <a href={`https://wa.me/${SITE_CONFIG.whatsapp.replace("+", "")}?text=Hi, I'm interested in ${product.name}`} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-black/10 text-[#3f3f46] hover:text-[#15171c] text-sm font-medium transition-all">
+                    <MessageCircle size={14} /> Enquire
+                  </a>
+                </div>
+              </div>
             </div>
           </Reveal>
         </section>

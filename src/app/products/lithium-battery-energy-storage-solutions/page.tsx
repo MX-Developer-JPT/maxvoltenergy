@@ -12,6 +12,7 @@ const productData = {
   category: "Energy Storage",
   color: "#7c3aed",
   image: "/images/product/lithium-battery-energy-storage-solutions-tjf.webp",
+  appImage: "/asset/inverter-with-battery.webp",
   galleryImages: [
     "/images/product/12-8v-100ah-inverter-battery-xgc.webp",
     "/images/product/48v-100ah-inverter-battery-bcg.webp",

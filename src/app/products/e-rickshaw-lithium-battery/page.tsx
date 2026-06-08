@@ -12,6 +12,7 @@ const productData = {
   category: "Electric Vehicle",
   color: "#FF8C00",
   image: "/images/product/e-rickshaw-lithium-battery-ohn.webp",
+  appImage: "/asset/rickshaw-with-battery.webp",
   galleryImages: [
     "/images/product/51-2v-100ah-e-rickshaw-battery-roc.webp",
     "/images/product/e-rickshaw-battery-51-2v-uif.webp",
