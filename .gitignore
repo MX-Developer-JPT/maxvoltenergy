@@ -47,3 +47,6 @@ next-env.d.ts
 # Local reference material (PPTX decks)
 ref/
 .scan*/
+
+# Source catalogue PDFs (copied into public/catalogue)
+/Catalogue/

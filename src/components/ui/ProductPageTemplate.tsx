@@ -7,7 +7,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle2, Download, MessageCircle, Battery, Zap, Shield, ArrowLeft,
   Bike, Truck, Sun, Home, Building2, Cctv, Router, Smartphone, HeartPulse, Wrench, Lightbulb, BatteryCharging, Boxes, type LucideIcon } from "lucide-react";
 import { PRODUCTS, SITE_CONFIG } from "@/lib/constants";
-import { downloadCatalogue } from "@/lib/download";
+import { downloadCatalogue, CATALOGUES } from "@/lib/download";
 import Reveal, { RevealStagger, RevealItem } from "@/components/ui/Reveal";
 
 function appIcon(label: string): LucideIcon {
@@ -166,7 +166,10 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
                 </a>
                 <button
                   type="button"
-                  onClick={() => downloadCatalogue(PRODUCTS.map((p) => ({ name: p.name, description: p.description, specs: p.specs })))}
+                  onClick={() => downloadCatalogue(
+                    /solar|energy storage/i.test(product.category) ? CATALOGUES.solar : CATALOGUES.ev,
+                    PRODUCTS.map((p) => ({ name: p.name, description: p.description, specs: p.specs })),
+                  )}
                   className="flex items-center gap-2 px-6 py-3 rounded-xl border border-black/8 hover:border-white/20 text-[#3f3f46] hover:text-[#15171c] text-sm font-medium transition-all active:scale-95"
                 >
                   <Download size={15} />

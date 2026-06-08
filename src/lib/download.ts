@@ -138,12 +138,31 @@ function buildCataloguePDF(products: CatProduct[]): Blob {
   return new Blob([pdf], { type: "application/pdf" });
 }
 
-export function downloadCatalogue(products: CatProduct[]) {
-  const blob = buildCataloguePDF(products);
+// Catalogue PDFs hosted in /public/catalogue
+export const CATALOGUES = {
+  ev: "/catalogue/maxvolt-ev-battery-catalogue.pdf",
+  solar: "/catalogue/maxvolt-solar-battery-catalogue.pdf",
+} as const;
+
+/**
+ * Downloads the real product catalogue PDF for `url`. Falls back to a generated
+ * catalogue from `fallbackProducts` only if the hosted file can't be fetched.
+ */
+export async function downloadCatalogue(url: string, fallbackProducts: CatProduct[] = []) {
+  let blob: Blob;
+  let filename = url.split("/").pop() || "maxvolt-catalogue.pdf";
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("not found");
+    blob = await res.blob();
+  } catch {
+    blob = buildCataloguePDF(fallbackProducts);
+    filename = "maxvolt-product-catalogue.pdf";
+  }
   const href = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = href;
-  a.download = "maxvolt-product-catalogue.pdf";
+  a.download = filename;
   document.body.appendChild(a);
   a.click();
   a.remove();
