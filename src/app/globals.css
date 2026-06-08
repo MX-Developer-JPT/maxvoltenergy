@@ -495,3 +495,103 @@ h1 { font-feature-settings: "kern", "ss01"; }
 .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
 .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(217,119,6,0.35); border-radius: 999px; }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(217,119,6,0.6); }
+
+/* ============================================================
+   ADMIN PORTAL THEME  (scoped to .admin-shell)
+   CSS-variable driven so one set of markup supports dark+light.
+   ============================================================ */
+.admin-shell {
+  --a-bg: #0a0c14;
+  --a-bg-grad: radial-gradient(1200px 600px at 80% -10%, rgba(99,102,241,0.10), transparent 60%), #0a0c14;
+  --a-sidebar: #0e111c;
+  --a-surface: #12152130;
+  --a-card: #11141f;
+  --a-card-2: #161a28;
+  --a-row: #0f1320;
+  --a-row-alt: #11151f;
+  --a-border: rgba(255,255,255,0.08);
+  --a-border-strong: rgba(255,255,255,0.14);
+  --a-text: #eef1f7;
+  --a-text-dim: #9aa1b2;
+  --a-text-mute: #646b7d;
+  --a-primary: #6d5dfc;
+  --a-primary-2: #8b5cf6;
+  --a-primary-fg: #ffffff;
+  --a-on: #6d5dfc;
+  --a-off: #3a3f52;
+  --a-green: #22c55e;
+  --a-amber: #f59e0b;
+  --a-red: #ef4444;
+  --a-link: #38bdf8;
+  color: var(--a-text);
+  background: var(--a-bg-grad);
+  min-height: 100vh;
+}
+.admin-shell[data-theme="light"] {
+  --a-bg: #f4f5f9;
+  --a-bg-grad: radial-gradient(1200px 600px at 80% -10%, rgba(99,102,241,0.08), transparent 60%), #f4f5f9;
+  --a-sidebar: #ffffff;
+  --a-surface: #ffffff;
+  --a-card: #ffffff;
+  --a-card-2: #f7f8fb;
+  --a-row: #ffffff;
+  --a-row-alt: #fafbfd;
+  --a-border: rgba(15,23,42,0.10);
+  --a-border-strong: rgba(15,23,42,0.16);
+  --a-text: #14172a;
+  --a-text-dim: #5b6273;
+  --a-text-mute: #8b93a6;
+  --a-primary: #6d5dfc;
+  --a-primary-2: #8b5cf6;
+  --a-primary-fg: #ffffff;
+  --a-on: #6d5dfc;
+  --a-off: #cbd0db;
+  --a-green: #16a34a;
+  --a-amber: #d97706;
+  --a-red: #dc2626;
+  --a-link: #2563eb;
+}
+
+.admin-card { background: var(--a-card); border: 1px solid var(--a-border); border-radius: 1rem; }
+.admin-input {
+  width: 100%; padding: 0.6rem 0.8rem; border-radius: 0.7rem;
+  background: var(--a-card-2); border: 1px solid var(--a-border);
+  color: var(--a-text); font-size: 0.875rem; outline: none; transition: border-color .15s;
+}
+.admin-input::placeholder { color: var(--a-text-mute); }
+.admin-input:focus { border-color: var(--a-primary); }
+select.admin-input option { background: #12152a; color: var(--a-text); }
+
+.admin-btn-primary {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .65rem 1.1rem; border-radius: .8rem; font-weight: 700; font-size: .875rem;
+  color: var(--a-primary-fg); background: linear-gradient(135deg, var(--a-primary), var(--a-primary-2));
+  box-shadow: 0 8px 22px -8px rgba(109,93,252,0.7); transition: filter .15s, transform .1s;
+}
+.admin-btn-primary:hover { filter: brightness(1.08); }
+.admin-btn-primary:active { transform: translateY(1px); }
+.admin-btn-ghost {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .55rem .9rem; border-radius: .7rem; font-weight: 600; font-size: .85rem;
+  color: var(--a-text-dim); border: 1px solid var(--a-border); background: transparent; transition: all .15s;
+}
+.admin-btn-ghost:hover { color: var(--a-text); border-color: var(--a-border-strong); }
+
+/* Toggle switch */
+.admin-toggle {
+  position: relative; width: 44px; height: 24px; border-radius: 999px;
+  background: var(--a-off); transition: background .2s; cursor: pointer; flex: none;
+  display: inline-flex; align-items: center;
+}
+.admin-toggle[data-on="true"] { background: var(--a-on); }
+.admin-toggle::after {
+  content: ""; position: absolute; left: 3px; top: 3px; width: 18px; height: 18px;
+  border-radius: 999px; background: #fff; transition: transform .2s;
+}
+.admin-toggle[data-on="true"]::after { transform: translateX(20px); }
+
+.admin-scroll { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent; }
+.admin-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.admin-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.16); border-radius: 999px; }
+.admin-shell[data-theme="light"] .admin-scroll { scrollbar-color: rgba(15,23,42,0.2) transparent; }
+.admin-shell[data-theme="light"] .admin-scroll::-webkit-scrollbar-thumb { background: rgba(15,23,42,0.18); }

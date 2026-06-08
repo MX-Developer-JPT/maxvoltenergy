@@ -15,9 +15,9 @@ export interface Enquiry {
 }
 
 const STATUS_META: Record<EnquiryStatus, { label: string; color: string; Icon: typeof Circle }> = {
-  new: { label: "New", color: "#D97706", Icon: Circle },
-  contacted: { label: "Contacted", color: "#2563eb", Icon: Clock },
-  closed: { label: "Closed", color: "#16a34a", Icon: CheckCircle2 },
+  new: { label: "New", color: "#f59e0b", Icon: Circle },
+  contacted: { label: "Contacted", color: "#38bdf8", Icon: Clock },
+  closed: { label: "Closed", color: "#22c55e", Icon: CheckCircle2 },
 };
 
 function toCSV(list: Enquiry[]): string {
@@ -95,61 +95,46 @@ export default function EnquiriesManager() {
     <div>
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <div>
-          <h2 className="text-xl font-black text-[#15171c]">Enquiries &amp; Leads</h2>
-          <p className="text-[#71717a] text-sm mt-0.5">Every contact-form and partnership lead, in real time.</p>
+          <h1 className="text-2xl font-black" style={{ color: "var(--a-text)" }}>Enquiries &amp; Leads</h1>
+          <p className="text-sm mt-0.5" style={{ color: "var(--a-text-dim)" }}>Every contact-form and partnership lead, in real time.</p>
         </div>
         <div className="flex items-center gap-3">
-          <button onClick={load} className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-black/10 text-[#52525b] hover:text-[#15171c] text-sm font-medium transition-all">
-            <RefreshCw size={14} /> Refresh
-          </button>
-          <button onClick={exportCSV} className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFA800] transition-all">
-            <Download size={14} /> Export CSV
-          </button>
+          <button onClick={load} className="admin-btn-ghost"><RefreshCw size={14} /> Refresh</button>
+          <button onClick={exportCSV} className="admin-btn-primary"><Download size={14} /> Export CSV</button>
         </div>
       </div>
 
       {/* Stat tiles */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
         {([
-          { key: "all" as const, label: "Total", value: counts.all, color: "#15171c" },
-          { key: "new" as const, label: "New", value: counts.new, color: "#D97706" },
-          { key: "contacted" as const, label: "Contacted", value: counts.contacted, color: "#2563eb" },
-          { key: "closed" as const, label: "Closed", value: counts.closed, color: "#16a34a" },
+          { key: "all" as const, label: "Total", value: counts.all, color: "var(--a-text)" },
+          { key: "new" as const, label: "New", value: counts.new, color: "#f59e0b" },
+          { key: "contacted" as const, label: "Contacted", value: counts.contacted, color: "#38bdf8" },
+          { key: "closed" as const, label: "Closed", value: counts.closed, color: "#22c55e" },
         ]).map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setFilter(t.key)}
-            className="p-4 rounded-2xl text-left transition-all"
-            style={filter === t.key
-              ? { background: "#fff", border: `2px solid ${t.color}`, boxShadow: "0 4px 16px rgba(0,0,0,0.06)" }
-              : { background: "#fff", border: "1px solid rgba(0,0,0,0.07)" }}
-          >
+          <button key={t.key} onClick={() => setFilter(t.key)} className="admin-card p-4 text-left transition-all"
+            style={filter === t.key ? { borderColor: "var(--a-primary)", boxShadow: "0 0 0 1px var(--a-primary)" } : undefined}>
             <div className="text-2xl font-black tabular-nums" style={{ color: t.color }}>{t.value}</div>
-            <div className="text-[#71717a] text-xs font-medium">{t.label}</div>
+            <div className="text-xs font-medium" style={{ color: "var(--a-text-dim)" }}>{t.label}</div>
           </button>
         ))}
       </div>
 
       <div className="relative mb-5">
-        <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#a1a1aa]" />
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search by name, email, or message…"
-          className="w-full pl-11 pr-4 py-3 rounded-xl bg-white border border-black/8 text-[#15171c] text-sm placeholder:text-[#a1a1aa] focus:outline-none focus:border-[#D97706]/50"
-        />
+        <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: "var(--a-text-mute)" }} />
+        <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search by name, email, or message…" className="admin-input pl-11" />
       </div>
 
       {loading ? (
         <div className="p-16 text-center">
-          <Loader2 size={28} className="text-[#D97706] mx-auto animate-spin" />
-          <p className="text-[#71717a] text-sm mt-3">Loading enquiries…</p>
+          <Loader2 size={28} className="mx-auto animate-spin" style={{ color: "var(--a-primary)" }} />
+          <p className="text-sm mt-3" style={{ color: "var(--a-text-dim)" }}>Loading enquiries…</p>
         </div>
       ) : filtered.length === 0 ? (
-        <div className="p-12 rounded-2xl frosted-card text-center">
-          <Inbox size={32} className="text-[#a1a1aa] mx-auto mb-3" />
-          <h3 className="text-[#15171c] font-bold mb-1">No enquiries {filter !== "all" ? `(${filter})` : "yet"}</h3>
-          <p className="text-[#71717a] text-sm">Enquiries from the contact form and calculator will appear here in real time.</p>
+        <div className="admin-card p-12 text-center">
+          <Inbox size={32} className="mx-auto mb-3" style={{ color: "var(--a-text-mute)" }} />
+          <h3 className="font-bold mb-1" style={{ color: "var(--a-text)" }}>No enquiries {filter !== "all" ? `(${filter})` : "yet"}</h3>
+          <p className="text-sm" style={{ color: "var(--a-text-dim)" }}>Enquiries from the contact form and calculator will appear here in real time.</p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -159,37 +144,33 @@ export default function EnquiriesManager() {
               return (
                 <motion.div layout key={e.id}
                   initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.97 }}
-                  className="p-5 rounded-2xl frosted-card">
+                  className="admin-card p-5">
                   <div className="flex flex-col md:flex-row md:items-start gap-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap mb-1.5">
-                        <span className="text-[#15171c] font-bold text-sm">{e.name}</span>
-                        <span className="text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full bg-[#FFD100]/15 text-[#D97706] border border-[#D97706]/20">{e.inquiryType}</span>
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold flex items-center gap-1" style={{ color: meta.color, background: `${meta.color}12`, border: `1px solid ${meta.color}25` }}>
+                        <span className="font-bold text-sm" style={{ color: "var(--a-text)" }}>{e.name}</span>
+                        <span className="text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full" style={{ background: "rgba(109,93,252,0.15)", color: "var(--a-primary-2)", border: "1px solid rgba(109,93,252,0.3)" }}>{e.inquiryType}</span>
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold flex items-center gap-1" style={{ color: meta.color, background: `${meta.color}1f`, border: `1px solid ${meta.color}40` }}>
                           <meta.Icon size={9} /> {meta.label}
                         </span>
                       </div>
-                      {e.subject && <div className="text-[#3f3f46] text-sm font-medium mb-1">{e.subject}</div>}
-                      <p className="text-[#52525b] text-sm leading-relaxed mb-2">{e.message}</p>
+                      {e.subject && <div className="text-sm font-medium mb-1" style={{ color: "var(--a-text)" }}>{e.subject}</div>}
+                      <p className="text-sm leading-relaxed mb-2" style={{ color: "var(--a-text-dim)" }}>{e.message}</p>
                       <div className="flex items-center gap-4 flex-wrap text-xs">
-                        <a href={`mailto:${e.email}`} className="flex items-center gap-1.5 text-[#D97706] font-medium hover:underline"><Mail size={11} /> {e.email}</a>
-                        {e.phone && <a href={`tel:${e.phone}`} className="flex items-center gap-1.5 text-[#52525b] hover:text-[#15171c]"><Phone size={11} /> {e.phone}</a>}
-                        <span className="text-[#a1a1aa]">{e.source}</span>
-                        <span className="text-[#a1a1aa]">{new Date(e.createdAt).toLocaleString()}</span>
-                        <span className="text-[#a1a1aa] font-mono">{e.id}</span>
+                        <a href={`mailto:${e.email}`} className="flex items-center gap-1.5 font-medium hover:underline" style={{ color: "var(--a-link)" }}><Mail size={11} /> {e.email}</a>
+                        {e.phone && <a href={`tel:${e.phone}`} className="flex items-center gap-1.5" style={{ color: "var(--a-text-dim)" }}><Phone size={11} /> {e.phone}</a>}
+                        <span style={{ color: "var(--a-text-mute)" }}>{e.source}</span>
+                        <span style={{ color: "var(--a-text-mute)" }}>{new Date(e.createdAt).toLocaleString()}</span>
+                        <span className="font-mono" style={{ color: "var(--a-text-mute)" }}>{e.id}</span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
-                      <select
-                        value={e.status}
-                        onChange={(ev) => setStatus(e.id, ev.target.value as EnquiryStatus)}
-                        className="px-3 py-2 rounded-lg bg-white border border-black/10 text-[#15171c] text-xs font-medium focus:outline-none focus:border-[#D97706]/50 cursor-pointer"
-                      >
+                      <select value={e.status} onChange={(ev) => setStatus(e.id, ev.target.value as EnquiryStatus)} className="admin-input w-auto py-2 cursor-pointer">
                         <option value="new">New</option>
                         <option value="contacted">Contacted</option>
                         <option value="closed">Closed</option>
                       </select>
-                      <button onClick={() => remove(e.id)} className="w-9 h-9 rounded-lg border border-black/10 flex items-center justify-center text-[#a1a1aa] hover:text-red-600 hover:border-red-200 transition-all">
+                      <button onClick={() => remove(e.id)} className="w-9 h-9 rounded-lg flex items-center justify-center transition-all" style={{ border: "1px solid var(--a-border)", color: "var(--a-red)" }}>
                         <Trash2 size={14} />
                       </button>
                     </div>

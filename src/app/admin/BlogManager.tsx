@@ -77,43 +77,41 @@ export default function BlogManager() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-lg font-black text-[#15171c]">Blog Posts</h2>
-          <p className="text-[#71717a] text-sm">Create, edit, publish and delete articles shown on the public blog.</p>
+          <h1 className="text-2xl font-black" style={{ color: "var(--a-text)" }}>Manage Blogs</h1>
+          <p className="text-sm mt-0.5" style={{ color: "var(--a-text-dim)" }}>Create, edit, publish and delete articles shown on the public blog.</p>
         </div>
-        <button onClick={openNew} className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFA800] transition-all">
-          <Plus size={15} /> New Post
-        </button>
+        <button onClick={openNew} className="admin-btn-primary"><Plus size={15} /> Add New Blog</button>
       </div>
 
       {loading ? (
-        <div className="p-16 text-center"><Loader2 size={26} className="text-[#D97706] mx-auto animate-spin" /></div>
+        <div className="p-16 text-center"><Loader2 size={26} className="mx-auto animate-spin" style={{ color: "var(--a-primary)" }} /></div>
       ) : posts.length === 0 ? (
-        <div className="p-12 rounded-2xl frosted-card text-center">
-          <FileText size={30} className="text-[#a1a1aa] mx-auto mb-3" />
-          <h3 className="text-[#15171c] font-bold mb-1">No posts yet</h3>
-          <p className="text-[#71717a] text-sm mb-5">Publish your first article — it appears instantly on /blog.</p>
-          <button onClick={openNew} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FFD100] text-black font-bold text-sm"><Plus size={14} /> New Post</button>
+        <div className="admin-card p-12 text-center">
+          <FileText size={30} className="mx-auto mb-3" style={{ color: "var(--a-text-mute)" }} />
+          <h3 className="font-bold mb-1" style={{ color: "var(--a-text)" }}>No posts yet</h3>
+          <p className="text-sm mb-5" style={{ color: "var(--a-text-dim)" }}>Publish your first article — it appears instantly on /blog.</p>
+          <button onClick={openNew} className="admin-btn-primary mx-auto"><Plus size={14} /> Add New Blog</button>
         </div>
       ) : (
         <div className="space-y-3">
           {posts.map((p) => (
-            <div key={p.id} className="p-5 rounded-2xl frosted-card flex flex-col md:flex-row md:items-center gap-4">
+            <div key={p.id} className="admin-card p-5 flex flex-col md:flex-row md:items-center gap-4">
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap mb-1">
-                  <span className="text-[#15171c] font-bold text-sm">{p.title}</span>
-                  <span className="text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full bg-[#FFD100]/15 text-[#D97706] border border-[#D97706]/20">{p.category}</span>
-                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${p.published ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
+                  <span className="font-bold text-sm" style={{ color: "var(--a-text)" }}>{p.title}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full" style={{ background: "rgba(109,93,252,0.15)", color: "var(--a-primary-2)", border: "1px solid rgba(109,93,252,0.3)" }}>{p.category}</span>
+                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={p.published ? { background: "rgba(34,197,94,0.15)", color: "var(--a-green)" } : { background: "var(--a-off)", color: "var(--a-text-mute)" }}>
                     {p.published ? "Published" : "Draft"}
                   </span>
                 </div>
-                <p className="text-[#52525b] text-sm line-clamp-1">{p.excerpt}</p>
-                <div className="text-[#a1a1aa] text-xs mt-1">/{p.slug} · {new Date(p.createdAt).toLocaleDateString()}</div>
+                <p className="text-sm line-clamp-1" style={{ color: "var(--a-text-dim)" }}>{p.excerpt}</p>
+                <div className="text-xs mt-1" style={{ color: "var(--a-text-mute)" }}>/{p.slug} · {new Date(p.createdAt).toLocaleDateString()}</div>
               </div>
               <div className="flex items-center gap-2 shrink-0">
-                <a href={`/blog/${p.slug}`} target="_blank" rel="noopener noreferrer" title="View" className="w-9 h-9 rounded-lg border border-black/10 flex items-center justify-center text-[#71717a] hover:text-[#15171c]"><ExternalLink size={14} /></a>
-                <button onClick={() => togglePublish(p)} title={p.published ? "Unpublish" : "Publish"} className="w-9 h-9 rounded-lg border border-black/10 flex items-center justify-center text-[#71717a] hover:text-[#D97706]">{p.published ? <Eye size={14} /> : <EyeOff size={14} />}</button>
-                <button onClick={() => openEdit(p)} title="Edit" className="w-9 h-9 rounded-lg border border-black/10 flex items-center justify-center text-[#71717a] hover:text-[#2563eb]"><Pencil size={14} /></button>
-                <button onClick={() => del(p)} title="Delete" className="w-9 h-9 rounded-lg border border-black/10 flex items-center justify-center text-[#a1a1aa] hover:text-red-600 hover:border-red-200"><Trash2 size={14} /></button>
+                <a href={`/blog/${p.slug}`} target="_blank" rel="noopener noreferrer" title="View" className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ border: "1px solid var(--a-border)", color: "var(--a-text-dim)" }}><ExternalLink size={14} /></a>
+                <button onClick={() => togglePublish(p)} title={p.published ? "Unpublish" : "Publish"} className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ border: "1px solid var(--a-border)", color: "var(--a-primary-2)" }}>{p.published ? <Eye size={14} /> : <EyeOff size={14} />}</button>
+                <button onClick={() => openEdit(p)} title="Edit" className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ border: "1px solid var(--a-border)", color: "var(--a-amber)" }}><Pencil size={14} /></button>
+                <button onClick={() => del(p)} title="Delete" className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ border: "1px solid var(--a-border)", color: "var(--a-red)" }}><Trash2 size={14} /></button>
               </div>
             </div>
           ))}
@@ -124,50 +122,50 @@ export default function BlogManager() {
       <AnimatePresence>
         {showForm && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[120] flex items-start justify-center bg-black/40 backdrop-blur-sm p-4 overflow-y-auto"
+            className="fixed inset-0 z-[120] flex items-start justify-center bg-black/55 backdrop-blur-sm p-4 overflow-y-auto"
             onClick={() => setShowForm(false)}>
             <motion.form
               initial={{ scale: 0.96, y: 16 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.96, y: 16 }}
               onClick={(e) => e.stopPropagation()} onSubmit={save}
-              className="bg-white rounded-2xl p-6 max-w-2xl w-full my-8 shadow-2xl max-h-[90vh] flex flex-col"
+              className="admin-card my-8 w-full max-w-2xl p-6 max-h-[90vh] flex flex-col"
             >
               <div className="flex items-center justify-between mb-5 shrink-0">
-                <h3 className="text-lg font-black text-[#15171c]">{editing ? "Edit Post" : "New Post"}</h3>
-                <button type="button" onClick={() => setShowForm(false)} className="text-[#a1a1aa] hover:text-[#15171c]"><X size={18} /></button>
+                <h3 className="text-lg font-black" style={{ color: "var(--a-text)" }}>{editing ? "Edit Post" : "New Post"}</h3>
+                <button type="button" onClick={() => setShowForm(false)} style={{ color: "var(--a-text-mute)" }}><X size={18} /></button>
               </div>
 
-              <div className="space-y-3 overflow-y-auto flex-1 pr-1 -mr-1">
+              <div className="space-y-3 overflow-y-auto admin-scroll flex-1 pr-1 -mr-1">
                 <Field label="Title *">
-                  <input required value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className={inputCls} placeholder="Article headline" />
+                  <input required value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className="admin-input" placeholder="Article headline" />
                 </Field>
                 <div className="grid grid-cols-2 gap-3">
                   <Field label="Category">
-                    <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} className={inputCls}>
+                    <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} className="admin-input">
                       {CATEGORIES.map((c) => <option key={c}>{c}</option>)}
                     </select>
                   </Field>
                   <Field label="Author">
-                    <input value={form.author} onChange={(e) => setForm({ ...form, author: e.target.value })} className={inputCls} />
+                    <input value={form.author} onChange={(e) => setForm({ ...form, author: e.target.value })} className="admin-input" />
                   </Field>
                 </div>
                 <Field label="Cover image URL (optional)">
-                  <input value={form.coverImage} onChange={(e) => setForm({ ...form, coverImage: e.target.value })} className={inputCls} placeholder="/images/blog/...webp or https://..." />
+                  <input value={form.coverImage} onChange={(e) => setForm({ ...form, coverImage: e.target.value })} className="admin-input" placeholder="/images/blog/...webp or https://..." />
                 </Field>
                 <Field label="Excerpt (short summary)">
-                  <textarea value={form.excerpt} onChange={(e) => setForm({ ...form, excerpt: e.target.value })} rows={2} className={inputCls} placeholder="One or two sentence summary shown on the blog list." />
+                  <textarea value={form.excerpt} onChange={(e) => setForm({ ...form, excerpt: e.target.value })} rows={2} className="admin-input resize-y" placeholder="One or two sentence summary shown on the blog list." />
                 </Field>
                 <Field label="Content">
-                  <textarea value={form.content} onChange={(e) => setForm({ ...form, content: e.target.value })} rows={8} className={inputCls} placeholder="Full article text. Use blank lines to separate paragraphs." />
+                  <textarea value={form.content} onChange={(e) => setForm({ ...form, content: e.target.value })} rows={8} className="admin-input resize-y" placeholder="Full article text. Use blank lines to separate paragraphs." />
                 </Field>
-                <label className="flex items-center gap-2 text-sm text-[#15171c] font-medium cursor-pointer">
-                  <input type="checkbox" checked={form.published} onChange={(e) => setForm({ ...form, published: e.target.checked })} className="accent-[#D97706] w-4 h-4" />
-                  Publish immediately (visible on /blog)
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <div className="admin-toggle" data-on={form.published} onClick={() => setForm({ ...form, published: !form.published })} role="switch" aria-checked={form.published} />
+                  <span className="text-sm font-medium" style={{ color: "var(--a-text)" }}>Publish immediately (visible on /blog)</span>
                 </label>
               </div>
 
-              <div className="flex items-center justify-end gap-3 mt-6 shrink-0 border-t border-black/5 pt-4">
-                <button type="button" onClick={() => setShowForm(false)} className="px-5 py-2.5 rounded-xl border border-black/10 text-[#52525b] text-sm font-medium">Cancel</button>
-                <button type="submit" disabled={saving} className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFA800] disabled:opacity-60">
+              <div className="flex items-center justify-end gap-3 mt-6 shrink-0 pt-4" style={{ borderTop: "1px solid var(--a-border)" }}>
+                <button type="button" onClick={() => setShowForm(false)} className="admin-btn-ghost">Cancel</button>
+                <button type="submit" disabled={saving} className="admin-btn-primary disabled:opacity-60">
                   {saving ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
                   {editing ? "Save Changes" : "Publish Post"}
                 </button>
@@ -180,12 +178,10 @@ export default function BlogManager() {
   );
 }
 
-const inputCls = "w-full px-3.5 py-2.5 rounded-xl bg-white border border-black/10 text-[#15171c] text-sm focus:outline-none focus:border-[#D97706]/50";
-
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="block text-[#52525b] text-xs font-semibold mb-1.5">{label}</label>
+      <label className="block text-xs font-semibold mb-1.5" style={{ color: "var(--a-text-dim)" }}>{label}</label>
       {children}
     </div>
   );
