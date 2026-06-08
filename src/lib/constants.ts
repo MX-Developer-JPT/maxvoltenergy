@@ -208,7 +208,7 @@ export const PRODUCTS = [
 
 export const STATS = [
   { value: "297+", label: "Crore Revenue", suffix: "₹" },
-  { value: "15,000+", label: "Monthly Production", suffix: "" },
+  { value: "25,000+", label: "Monthly Production", suffix: "" },
   { value: "950+", label: "Retail Dealers", suffix: "" },
   { value: "107", label: "OEM Partnerships", suffix: "" },
   { value: "350+", label: "Team Members", suffix: "" },
@@ -286,6 +286,16 @@ export const TIMELINE = [
       "Monthly capacity: 6,000+ battery packs",
     ],
   },
+  {
+    year: "2026",
+    title: "Scale & Expansion",
+    events: [
+      "New 55,000 sq ft Duhai manufacturing plant",
+      "Launched Maxvolt ReEarth recycling subsidiary",
+      "₹297+ Crore revenue · 950+ dealers · 107 OEM partners",
+      "350+ employees · 2.2 GWh annual capacity · 25,000 packs/month",
+    ],
+  },
 ];
 
 export const LEADERSHIP = [
@@ -308,6 +318,36 @@ export const LEADERSHIP = [
     experience: "4+ years in finance",
     focus: "Day-to-day operations, accounts, finance, and administration",
     image: "/images/our-team/bhuvneshwar-pal-singh-sxx.webp",
+  },
+  {
+    name: "Satendra Shukla",
+    role: "Chief Executive Officer",
+    designation: "CEO",
+    age: 0,
+    education: "Business leadership & operations",
+    experience: "10+ years in business leadership",
+    focus: "Overall business strategy, sales growth, dealer expansion and company operations",
+    image: "/images/our-team/satendra-shukla-shc.webp",
+  },
+  {
+    name: "Sachin Gupta",
+    role: "Chief Operating Officer",
+    designation: "COO",
+    age: 0,
+    education: "Operations & manufacturing management",
+    experience: "8+ years in operations",
+    focus: "Manufacturing operations, supply chain, production planning and quality",
+    image: "/images/our-team/sachin-gupta-lau.webp",
+  },
+  {
+    name: "Mukesh Gupta",
+    role: "Chief Marketing Officer & CHRO",
+    designation: "CMO & CHRO",
+    age: 0,
+    education: "Marketing & human resources",
+    experience: "8+ years in marketing & HR",
+    focus: "Brand, marketing strategy, dealer engagement and human resources",
+    image: "/images/our-team/mukesh-gupta-cva.webp",
   },
   {
     name: "Preet Kumar",

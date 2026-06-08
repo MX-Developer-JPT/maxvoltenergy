@@ -30,7 +30,7 @@ export default function CareerPage() {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { Icon: Zap, title: "Fast Growth", sub: "From 15 batteries/day in 2019 to 15,000+/month today — NSE listed.", color: "#FFD100" },
+              { Icon: Zap, title: "Fast Growth", sub: "From 15 batteries/day in 2019 to 25,000+/month today — NSE listed.", color: "#FFD100" },
               { Icon: Users, title: "Great Culture", sub: "A collaborative team of 350+ engineers, technicians, and sales professionals.", color: "#FFA800" },
               { Icon: TrendingUp, title: "Industry Impact", sub: "Every battery we build helps India reduce carbon emissions.", color: "#FF8C00" },
             ].map(({ Icon, title, sub, color }) => (

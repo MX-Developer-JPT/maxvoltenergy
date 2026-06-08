@@ -93,7 +93,7 @@ function AboutStory() {
             <p className="text-[#52525b] text-base leading-relaxed mb-8">
               In 2025, we achieved a landmark milestone — listing on the NSE SME Emerge platform — and
               have since scaled to revenue exceeding ₹297 Crore, a 350-member team, and monthly
-              production capacity of 15,000+ battery packs.
+              production capacity of 25,000+ battery packs.
             </p>
 
             <div className="grid grid-cols-2 gap-4 mb-8">
@@ -140,7 +140,7 @@ function AboutStory() {
             <div className="grid grid-cols-2 gap-4">
               {[
                 { value: "₹297+ Cr", label: "Revenue", color: "#FFD100" },
-                { value: "15,000+", label: "Units/Month", color: "#FFA800" },
+                { value: "25,000+", label: "Units/Month", color: "#FFA800" },
                 { value: "950+", label: "Dealer Network", color: "#FF8C00" },
                 { value: "350+", label: "Team Members", color: "#7c3aed" },
               ].map(({ value, label, color }) => (
@@ -332,7 +332,7 @@ function CompanyOverview() {
     { v: "2.2 GWh", l: "Annual Capacity" },
     { v: "950+", l: "Dealers" },
     { v: "107", l: "OEM Partners" },
-    { v: "15,000+", l: "Batteries / Month" },
+    { v: "25,000+", l: "Batteries / Month" },
     { v: "1100+", l: "Pincodes Served" },
     { v: "350+", l: "Employees" },
     { v: "10", l: "Warehouses" },
@@ -395,12 +395,12 @@ function ManufacturingSection() {
             </div>
             <h3 className="text-[#15171c] font-bold text-xl mb-3">Duhai Manufacturing Plant</h3>
             <p className="text-[#5f6470] text-sm leading-relaxed mb-6">
-              Our 55,000 sq ft advanced manufacturing facility in Duhai, Ghaziabad is built for the next phase of India&apos;s EV growth. The plant features AIS 156-compliant testing bays, automated cell-to-pack assembly lines, a dedicated R&amp;D lab, and stringent quality inspection systems — enabling a 3× increase in production capacity vs. our earlier facility, supporting 15,000+ battery packs per month.
+              Our 55,000 sq ft advanced manufacturing facility in Duhai, Ghaziabad is built for the next phase of India&apos;s EV growth. The plant features AIS 156-compliant testing bays, automated cell-to-pack assembly lines, a dedicated R&amp;D lab, and stringent quality inspection systems — enabling a 3× increase in production capacity vs. our earlier facility, supporting 25,000+ battery packs per month.
             </p>
             <div className="grid grid-cols-2 gap-3 mb-6">
               {[
                 { v: "55,000 sq ft", l: "Plant Area" },
-                { v: "15,000+/mo", l: "Pack Capacity" },
+                { v: "25,000+/mo", l: "Pack Capacity" },
                 { v: "3×", l: "Capacity vs. Previous" },
                 { v: "AIS 156", l: "Certified Testing" },
               ].map((s) => (

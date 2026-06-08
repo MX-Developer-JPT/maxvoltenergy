@@ -55,7 +55,7 @@ const PRODUCTS = [
 
 const STATS = [
   { value: "₹297Cr+", label: "Revenue" },
-  { value: "15,000+", label: "Units/Month" },
+  { value: "25,000+", label: "Units/Month" },
   { value: "950+", label: "Dealers" },
   { value: "NSE", label: "Listed" },
 ];
@@ -354,7 +354,7 @@ export default function HeroSection() {
               {[
                 { Icon: Shield, label: "AIS 156 Certified" },
                 { Icon: Award, label: "NSE Listed" },
-                { Icon: Zap, label: "15,000+ Units/Month" },
+                { Icon: Zap, label: "25,000+ Units/Month" },
               ].map(({ Icon, label }) => (
                 <motion.div key={label} className="flex items-center gap-2 text-[#71717a]" whileHover={{ color: "#FFD100", x: 2 }}>
                   <Icon size={13} className="text-[#D97706]" />

@@ -11,7 +11,7 @@ const REPORTS = [
     year: "FY 2024-25",
     title: "Maxvolt Annual Report FY 2024-25",
     description: "Latest annual report covering the NSE SME Emerge listing, ₹297+ Crore revenue and capacity expansion",
-    highlights: ["NSE SME Listed", "₹297+ Cr Revenue", "15,000+ Packs/Month", "Pan-India Network"],
+    highlights: ["NSE SME Listed", "₹297+ Cr Revenue", "25,000+ Packs/Month", "Pan-India Network"],
     color: "#D97706",
     file: "/assets/docs/policy/annual-report-fy2024-25-nnd.pdf",
   },

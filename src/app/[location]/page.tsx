@@ -154,7 +154,7 @@ export default async function LocationPage({ params }: { params: Promise<{ locat
               { Icon: ShieldCheck, t: "AIS 156 Certified", d: "Government-compliant safety standards on every EV battery pack we ship." },
               { Icon: Truck, t: loc.type === "city" ? `Fast Delivery in ${loc.name}` : "Pan-India Logistics", d: "Reliable dispatch through our network of 10 warehouses and 1,100+ pincodes." },
               { Icon: Headphones, t: "Local Service Support", d: "Responsive after-sales support and warranty service for total peace of mind." },
-              { Icon: Factory, t: "In-House Manufacturing", d: "Built at our 55,000 sq ft Duhai plant producing 15,000+ packs every month." },
+              { Icon: Factory, t: "In-House Manufacturing", d: "Built at our 55,000 sq ft Duhai plant producing 25,000+ packs every month." },
             ].map(({ Icon, t, d }) => (
               <RevealItem key={t} className="card-rise p-6 rounded-2xl frosted-card border border-black/6">
                 <div className="w-11 h-11 rounded-xl bg-[#FFD100]/12 border border-[#FFD100]/25 flex items-center justify-center mb-4">

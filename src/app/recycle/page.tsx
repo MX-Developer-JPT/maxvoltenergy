@@ -100,12 +100,12 @@ export default function RecyclePage() {
                 </div>
                 <h3 className="text-[#15171c] font-bold text-lg mb-2">Duhai Manufacturing Plant</h3>
                 <p className="text-[#5f6470] text-sm leading-relaxed mb-4">
-                  Maxvolt&apos;s state-of-the-art 55,000 sq ft production facility in Duhai, Ghaziabad is engineered for high-volume lithium battery pack assembly with advanced automation, AIS 156-compliant testing bays, and a dedicated R&amp;D wing. The plant delivers a 3× capacity increase over our earlier facility — enabling 15,000+ battery packs per month.
+                  Maxvolt&apos;s state-of-the-art 55,000 sq ft production facility in Duhai, Ghaziabad is engineered for high-volume lithium battery pack assembly with advanced automation, AIS 156-compliant testing bays, and a dedicated R&amp;D wing. The plant delivers a 3× capacity increase over our earlier facility — enabling 25,000+ battery packs per month.
                 </p>
                 <div className="grid grid-cols-2 gap-3 mb-5">
                   {[
                     { v: "55,000 sq ft", l: "Plant Area" },
-                    { v: "15,000+/mo", l: "Production Capacity" },
+                    { v: "25,000+/mo", l: "Production Capacity" },
                     { v: "3×", l: "Capacity Increase" },
                     { v: "AIS 156", l: "Certified Testing" },
                   ].map((s) => (

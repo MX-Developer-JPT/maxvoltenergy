@@ -96,7 +96,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.97 }}
                       transition={{ duration: 0.2, ease: "easeOut" }}
-                      className="absolute top-full left-0 mt-2 w-56 frosted-card rounded-xl overflow-hidden"
+                      className="absolute top-full left-0 mt-2 w-56 frosted-card rounded-xl overflow-y-auto overscroll-contain max-h-[min(70vh,520px)] custom-scrollbar"
                     >
                       <div className="p-2">
                         {item.children.map((child) => (

@@ -82,7 +82,7 @@ const KEY_HIGHLIGHTS = [
   { label: "NSE SME Emerge", value: "Listed", sub: "Stock Exchange Listing", color: "#FFD100" },
   { label: "Revenue", value: "₹297+ Cr", sub: "Annual Revenue", color: "#FFA800" },
   { label: "Team Size", value: "350+", sub: "Skilled Professionals", color: "#FF8C00" },
-  { label: "Monthly Capacity", value: "15,000+", sub: "Battery Packs", color: "#7c3aed" },
+  { label: "Monthly Capacity", value: "25,000+", sub: "Battery Packs", color: "#7c3aed" },
 ];
 
 export default function InvestorsContent() {

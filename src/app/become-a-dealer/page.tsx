@@ -22,7 +22,7 @@ const STATS = [
   { value: "107", label: "OEM Partners" },
   { value: "1100+", label: "Pincodes Served" },
   { value: "2.2 GWh", label: "Annual Capacity" },
-  { value: "15,000+", label: "Batteries / Month" },
+  { value: "25,000+", label: "Batteries / Month" },
   { value: "10", label: "Warehouses" },
 ];
 

@@ -80,7 +80,7 @@ export const PRESS_RELEASES: PressRelease[] = [
     body: [
       "Maxvolt Energy Industries Limited has surpassed the ₹100 crore revenue milestone, marking a defining moment in the company's journey from a 15-battery-per-day startup in 2019 to one of India's fastest-growing lithium-ion battery manufacturers.",
       "The achievement is driven by increasing demand for lithium-ion battery solutions across electric vehicles and energy-storage applications. Maxvolt continues to expand its manufacturing capabilities, innovation focus and market presence within India's clean-energy ecosystem.",
-      "The milestone reflects strong year-on-year growth, strategic expansion of the company's dealer and OEM network, and a deepening commitment to advancing sustainable energy solutions. Maxvolt now produces 15,000+ battery packs per month and serves customers across more than 1,100 pincodes.",
+      "The milestone reflects strong year-on-year growth, strategic expansion of the company's dealer and OEM network, and a deepening commitment to advancing sustainable energy solutions. Maxvolt now produces 25,000+ battery packs per month and serves customers across more than 1,100 pincodes.",
       "Industry observers, including Manufacturing Today India, have highlighted the company's trajectory as emblematic of the broader momentum in India's domestic battery-manufacturing sector.",
     ],
     source: { label: "Manufacturing Today India", url: "https://www.manufacturingtodayindia.com" },
