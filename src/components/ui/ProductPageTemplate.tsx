@@ -4,10 +4,30 @@ import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { ArrowRight, CheckCircle2, Download, MessageCircle, Battery, Zap, Shield, ArrowLeft } from "lucide-react";
+import { ArrowRight, CheckCircle2, Download, MessageCircle, Battery, Zap, Shield, ArrowLeft,
+  Bike, Truck, Sun, Home, Building2, Cctv, Router, Smartphone, HeartPulse, Wrench, Lightbulb, BatteryCharging, Boxes, type LucideIcon } from "lucide-react";
 import { PRODUCTS, SITE_CONFIG } from "@/lib/constants";
 import { downloadCatalogue } from "@/lib/download";
-import Reveal from "@/components/ui/Reveal";
+import Reveal, { RevealStagger, RevealItem } from "@/components/ui/Reveal";
+
+function appIcon(label: string): LucideIcon {
+  const l = label.toLowerCase();
+  if (/scooter|bike|two-?wheeler|motorcycle/.test(l)) return Bike;
+  if (/rickshaw|auto|cargo|three-?wheeler|loader/.test(l)) return Truck;
+  if (/cycle|bicycle|fitness/.test(l)) return Bike;
+  if (/solar|rooftop|off-?grid/.test(l)) return Sun;
+  if (/inverter|home|backup|residential|commute|leisure/.test(l)) return Home;
+  if (/grid|utility|industrial|commercial/.test(l)) return Building2;
+  if (/lantern|light|lamp|street|outdoor|emergency|flashlight|torch/.test(l)) return Lightbulb;
+  if (/cctv|surveillance|camera/.test(l)) return Cctv;
+  if (/router|iot|smart|ups/.test(l)) return Router;
+  if (/power bank|wearable|gadget|electronic|toy|device/.test(l)) return Smartphone;
+  if (/medical|ecg|bp|ultrasound|health|hospital/.test(l)) return HeartPulse;
+  if (/tool|power tool|drill|mechanical/.test(l)) return Wrench;
+  if (/storage|portable power|power unit|ess/.test(l)) return BatteryCharging;
+  if (/oem|custom|pack|industrial/.test(l)) return Boxes;
+  return Battery;
+}
 
 interface SpecRow {
   label: string;
@@ -340,13 +360,19 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
             {product.applications && (
               <div>
                 <h3 className="text-2xl font-bold text-[#15171c] mb-6">Applications</h3>
-                <div className="flex flex-wrap gap-3">
-                  {product.applications.map((app) => (
-                    <span key={app} className="px-4 py-2 rounded-xl border border-black/8 text-[#52525b] text-sm">
-                      {app}
-                    </span>
-                  ))}
-                </div>
+                <RevealStagger className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {product.applications.map((app) => {
+                    const Icon = appIcon(app);
+                    return (
+                      <RevealItem key={app} className="card-rise group p-4 rounded-xl bg-white border border-black/8 hover:border-[#FFD100]/40 flex flex-col items-start gap-3">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110" style={{ backgroundColor: `${product.color}14`, border: `1px solid ${product.color}30` }}>
+                          <Icon size={18} style={{ color: product.color }} />
+                        </div>
+                        <span className="text-[#15171c] font-semibold text-xs leading-snug">{app}</span>
+                      </RevealItem>
+                    );
+                  })}
+                </RevealStagger>
               </div>
             )}
             {product.certifications && (

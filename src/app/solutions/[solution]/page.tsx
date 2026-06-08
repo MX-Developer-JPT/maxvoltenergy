@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, CheckCircle2, Zap, Sun, Lightbulb, Cpu, Phone, MessageCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, Zap, Sun, Lightbulb, Cpu, Phone, MessageCircle,
+  Bike, Truck, Battery, BatteryCharging, Cctv, Router, Smartphone, HeartPulse, Wrench, Home, Building2, Boxes, type LucideIcon } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import FaqAccordion from "@/components/ui/FaqAccordion";
 import Reveal, { RevealStagger, RevealItem } from "@/components/ui/Reveal";
@@ -10,6 +11,26 @@ import { SOLUTIONS, getSolution } from "@/lib/solutions";
 import { SITE_CONFIG } from "@/lib/constants";
 
 const ICONS = { Zap, Sun, Lightbulb, Cpu };
+
+// Pick a representative icon for an application label by keyword.
+function appIcon(label: string): LucideIcon {
+  const l = label.toLowerCase();
+  if (/scooter|bike|two-?wheeler/.test(l)) return Bike;
+  if (/rickshaw|auto|cargo|three-?wheeler/.test(l)) return Truck;
+  if (/cycle/.test(l)) return Bike;
+  if (/solar|rooftop|off-?grid/.test(l)) return Sun;
+  if (/inverter|home|backup|commercial/.test(l)) return Home;
+  if (/grid|utility|industrial/.test(l)) return Building2;
+  if (/lantern|light|lamp|street|outdoor|emergency/.test(l)) return Lightbulb;
+  if (/cctv|surveillance|camera/.test(l)) return Cctv;
+  if (/router|iot|smart-?home|smart home/.test(l)) return Router;
+  if (/power bank|wearable|device|gadget|electronic/.test(l)) return Smartphone;
+  if (/medical|ecg|bp|ultrasound|health/.test(l)) return HeartPulse;
+  if (/tool|power tool|drill/.test(l)) return Wrench;
+  if (/storage|portable power|power unit/.test(l)) return BatteryCharging;
+  if (/oem|custom|pack/.test(l)) return Boxes;
+  return Battery;
+}
 
 export function generateStaticParams() {
   return SOLUTIONS.map((s) => ({ solution: s.slug }));
@@ -140,12 +161,23 @@ export default async function SolutionPage({ params }: { params: Promise<{ solut
       {/* Applications */}
       <section className="section-padding bg-white pt-0">
         <div className="container-custom">
-          <h2 className="text-2xl font-black text-[#15171c] mb-6">Applications</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {s.applications.map((a) => (
-              <div key={a} className="p-5 rounded-2xl bg-[#f7f7f5] border border-black/6 text-[#15171c] font-semibold text-sm">{a}</div>
-            ))}
-          </div>
+          <Reveal>
+            <h2 className="text-2xl md:text-3xl font-black text-[#15171c] mb-2">Applications We Power</h2>
+            <p className="text-[#52525b] text-sm mb-8 max-w-2xl">Real-world use cases where {s.title.toLowerCase()} solutions from Maxvolt deliver reliable, certified power.</p>
+          </Reveal>
+          <RevealStagger className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {s.applications.map((a) => {
+              const Icon = appIcon(a);
+              return (
+                <RevealItem key={a} className="card-rise group p-6 rounded-2xl bg-[#f7f7f5] border border-black/6 hover:border-[#FFD100]/30 flex flex-col items-start gap-4">
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110" style={{ backgroundColor: `${s.color}14`, border: `1px solid ${s.color}30` }}>
+                    <Icon size={22} style={{ color: s.color }} />
+                  </div>
+                  <span className="text-[#15171c] font-bold text-sm leading-snug">{a}</span>
+                </RevealItem>
+              );
+            })}
+          </RevealStagger>
         </div>
       </section>
 

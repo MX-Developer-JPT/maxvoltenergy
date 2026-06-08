@@ -61,7 +61,7 @@ export const NAV_ITEMS = [
       { label: "E-Cycle Batteries", href: "/products/e-cycle-lithium-battery" },
       { label: "E-Scooter / Bike Batteries", href: "/products/e-scooter-bike-lithium-battery" },
       { label: "E-Rickshaw Batteries", href: "/products/e-rickshaw-lithium-battery" },
-      { label: "Energy Storage Systems", href: "/products/lithium-battery-energy-storage-solutions" },
+      { label: "Energy Storage Solutions", href: "/products/lithium-battery-energy-storage-solutions" },
       { label: "Solar Batteries", href: "/products/lithium-battery-for-solar-application" },
       { label: "Customized Solutions", href: "/products/customized-battery-solution" },
     ],
@@ -158,7 +158,7 @@ export const PRODUCTS = [
   },
   {
     id: "lithium-battery-energy-storage-solutions",
-    name: "Energy Storage Systems",
+    name: "Energy Storage Solutions",
     shortName: "ESS",
     description: "Scalable lithium energy storage for residential, commercial, and grid applications.",
     image: "/images/product/lithium-battery-energy-storage-solutions-tjf.webp",
