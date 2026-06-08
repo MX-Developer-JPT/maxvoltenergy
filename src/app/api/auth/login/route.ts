@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { checkCredentials, createSession, SESSION_COOKIE } from "@/lib/auth";
+import { createSession, SESSION_COOKIE } from "@/lib/auth";
+import { verifyCredentials, getAdminUsername } from "@/lib/credentials.server";
+
+export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
   let body: { username?: string; password?: string };
@@ -14,11 +17,11 @@ export async function POST(req: NextRequest) {
   // small delay to slow brute-force
   await new Promise((r) => setTimeout(r, 400));
 
-  if (!checkCredentials(username, password)) {
+  if (!verifyCredentials(username, password)) {
     return NextResponse.json({ error: "Invalid username or password" }, { status: 401 });
   }
 
-  const token = await createSession(username);
+  const token = await createSession(getAdminUsername());
   const res = NextResponse.json({ ok: true });
   res.cookies.set(SESSION_COOKIE, token, {
     httpOnly: true,

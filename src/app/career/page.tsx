@@ -1,22 +1,26 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import { Briefcase, MapPin, ArrowRight, Zap, Users, TrendingUp } from "lucide-react";
+import { readPublished, type JobOpening } from "@/lib/careers-store.server";
+import { SEED_OPENINGS } from "@/lib/careers-seed";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Careers",
   description: "Join Maxvolt Energy – India's fastest-growing lithium battery manufacturer. 350+ team members. Openings in engineering, sales, manufacturing, and R&D.",
 };
 
-const OPENINGS = [
-  { title: "Battery Design Engineer", department: "R&D", location: "Ghaziabad, UP", type: "Full Time", color: "#FFD100" },
-  { title: "Sales Manager – EV Products", department: "Sales", location: "Delhi / Mumbai / Bangalore", type: "Full Time", color: "#FFA800" },
-  { title: "Manufacturing Supervisor", department: "Operations", location: "Ghaziabad, UP", type: "Full Time", color: "#FF8C00" },
-  { title: "BMS Firmware Engineer", department: "Engineering", location: "Ghaziabad, UP", type: "Full Time", color: "#7c3aed" },
-  { title: "Regional Dealer Development Manager", department: "Business Development", location: "Pan India", type: "Full Time", color: "#f97316" },
-  { title: "Quality Assurance Technician", department: "Quality", location: "Ghaziabad, UP", type: "Full Time", color: "#ec4899" },
-];
+export const dynamic = "force-dynamic";
 
 export default function CareerPage() {
+  // Merge admin-published openings with the curated defaults (dedupe by title).
+  const custom = readPublished();
+  const seen = new Set(custom.map((j) => j.title.toLowerCase().trim()));
+  const openings: JobOpening[] = [
+    ...custom,
+    ...SEED_OPENINGS.filter((j) => !seen.has(j.title.toLowerCase().trim())),
+  ];
+
   return (
     <>
       <PageHero
@@ -51,30 +55,42 @@ export default function CareerPage() {
       {/* Openings */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <h2 className="text-3xl font-bold text-[#15171c] mb-8">Current Openings</h2>
+          <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
+            <h2 className="text-3xl font-bold text-[#15171c]">Current Openings</h2>
+            <span className="text-[#71717a] text-sm">{openings.length} role{openings.length === 1 ? "" : "s"} open</span>
+          </div>
           <div className="space-y-3">
-            {OPENINGS.map(({ title, department, location, type, color }) => (
-              <div key={title} className="group flex flex-col md:flex-row md:items-center gap-4 p-5 rounded-2xl frosted-card border border-black/6 hover:border-black/8 transition-all cursor-pointer">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: `${color}12`, border: `1px solid ${color}25` }}>
-                  <Briefcase size={16} style={{ color }} />
-                </div>
-                <div className="flex-1">
-                  <div className="text-[#15171c] font-bold text-base">{title}</div>
-                  <div className="text-[#5f6470] text-xs">{department}</div>
-                </div>
-                <div className="flex items-center gap-3 text-sm">
-                  <span className="flex items-center gap-1 text-[#71717a] text-xs"><MapPin size={11} />{location}</span>
-                  <span className="px-2.5 py-1 rounded-full text-xs border" style={{ color, borderColor: `${color}30`, backgroundColor: `${color}08` }}>{type}</span>
-                </div>
-                <ArrowRight size={14} className="text-[#a1a1aa] group-hover:text-[#52525b] transition-colors shrink-0" />
-              </div>
-            ))}
+            {openings.map((job) => {
+              const { id, title, department, location, type, color, experience, description } = job;
+              const mailSubject = encodeURIComponent(`Application: ${title}`);
+              return (
+                <a
+                  key={id}
+                  href={`mailto:${SITE_CONFIG.careersEmail}?subject=${mailSubject}`}
+                  className="group flex flex-col md:flex-row md:items-center gap-4 p-5 rounded-2xl frosted-card border border-black/6 hover:border-[#FFD100]/30 hover:-translate-y-0.5 transition-all"
+                >
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: `${color}12`, border: `1px solid ${color}25` }}>
+                    <Briefcase size={16} style={{ color }} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[#15171c] font-bold text-base">{title}</div>
+                    <div className="text-[#5f6470] text-xs">{department}{experience ? ` · ${experience}` : ""}</div>
+                    {description && <p className="text-[#71717a] text-xs mt-1.5 leading-relaxed line-clamp-2">{description}</p>}
+                  </div>
+                  <div className="flex items-center gap-3 text-sm">
+                    <span className="flex items-center gap-1 text-[#71717a] text-xs"><MapPin size={11} />{location}</span>
+                    <span className="px-2.5 py-1 rounded-full text-xs border" style={{ color, borderColor: `${color}30`, backgroundColor: `${color}08` }}>{type}</span>
+                  </div>
+                  <ArrowRight size={14} className="text-[#a1a1aa] group-hover:text-[#D97706] group-hover:translate-x-1 transition-all shrink-0" />
+                </a>
+              );
+            })}
           </div>
 
           <div className="mt-10 p-8 rounded-2xl border border-[#FFD100]/10 bg-[#FFD100]/4 text-center">
             <h3 className="text-[#15171c] font-bold text-xl mb-3">Don&apos;t See Your Role?</h3>
             <p className="text-[#5f6470] text-sm mb-5">Send us your resume and we&apos;ll keep it on file for future opportunities.</p>
-            <a href="mailto:info@maxvoltenergy.com?subject=Career Inquiry" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFD100]/90 transition-all">
+            <a href={`mailto:${SITE_CONFIG.careersEmail}?subject=Career Inquiry`} className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFD100]/90 transition-all">
               Send Resume
               <ArrowRight size={14} />
             </a>

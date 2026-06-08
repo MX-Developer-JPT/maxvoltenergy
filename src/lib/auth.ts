@@ -24,9 +24,15 @@ export async function verifySession(token: string | undefined): Promise<boolean>
   }
 }
 
-export function checkCredentials(username: string, password: string): boolean {
-  const u = process.env.ADMIN_USERNAME || "admin";
-  const p = process.env.ADMIN_PASSWORD || "Maxvolt@2025!";
-  // constant-ish comparison
-  return username === u && password === p;
+/** Returns the decoded session payload (username/role) or null. Edge-safe. */
+export async function getSession(
+  token: string | undefined
+): Promise<{ username: string; role: string } | null> {
+  if (!token) return null;
+  try {
+    const { payload } = await jwtVerify(token, secret);
+    return { username: String(payload.username || ""), role: String(payload.role || "admin") };
+  } catch {
+    return null;
+  }
 }
