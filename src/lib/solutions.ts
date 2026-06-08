@@ -24,6 +24,8 @@ export interface Solution {
   applications: string[];
   color: string;
   image: string;
+  // Optional "Powered by Maxvolt hardware" showcase (real product imagery)
+  showcase?: { image: string; title: string; caption: string; fit?: "contain" | "cover"; icon?: "Lightbulb" | "Sun" | "Battery" };
   // Rich landing-page content (structure replicated from maxvoltenergy.com)
   intro: string[];
   sections: SolutionSection[];
@@ -102,6 +104,13 @@ export const SOLUTIONS: Solution[] = [
     applications: ["Rooftop solar storage", "Off-grid solar", "Commercial backup", "Solar + inverter hybrid"],
     color: "#f97316",
     image: "/images/category/solar-energy-storage-ewr.webp",
+    showcase: {
+      image: "/images/category/solar-energy-storage-ewr.webp",
+      title: "Solar Panels + Maxvolt Lithium Storage",
+      caption: "Pair your rooftop or ground-mount solar array with Maxvolt LiFePO4 storage to capture every unit of daytime generation and use it around the clock — with >95% round-trip efficiency and app-based monitoring.",
+      fit: "cover",
+      icon: "Sun",
+    },
     intro: [
       "Solar energy storage is the key to making renewable power dependable around the clock. Maxvolt Energy supplies high-efficiency lithium-ion solar batteries that capture excess solar electricity during the day and release it whenever sunlight is unavailable or the grid fails.",
       "Built on LiFePO4 chemistry with long cycle life and high round-trip efficiency, our solar storage systems maximize the return on any solar investment — from residential rooftops to large commercial installations.",
@@ -157,6 +166,13 @@ export const SOLUTIONS: Solution[] = [
     applications: ["Solar lanterns", "Emergency lights", "Street & outdoor lighting", "Portable power units"],
     color: "#FFA800",
     image: "/images/category/portable-lighting-bna.webp",
+    showcase: {
+      image: "/images/solutions/maxvolt-smart-inverter.png",
+      title: "Light Powered by the Maxvolt Smart Inverter",
+      caption: "From LED bulbs to floodlights, Maxvolt's smart lithium inverter and custom battery packs keep your lighting running through outages — clean, silent, maintenance-free power on demand.",
+      fit: "contain",
+      icon: "Lightbulb",
+    },
     intro: [
       "Portable lighting keeps work, life and safety moving wherever fixed power isn't available. Maxvolt Energy supplies long-runtime lithium-ion batteries that power solar lanterns, emergency lights, floodlights and outdoor illumination with dependable, maintenance-free performance.",
       "Lightweight, fast-charging and built to last, our lithium packs run far longer than conventional batteries — making them the reliable choice for homes, worksites and the field.",

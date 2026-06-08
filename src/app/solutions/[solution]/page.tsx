@@ -116,6 +116,42 @@ export default async function SolutionPage({ params }: { params: Promise<{ solut
         </div>
       </section>
 
+      {/* Powered-by-Maxvolt hardware showcase */}
+      {s.showcase && (() => {
+        const ShowIcon = s.showcase.icon === "Sun" ? Sun : s.showcase.icon === "Battery" ? Battery : Lightbulb;
+        return (
+          <section className="section-padding bg-[#0b0b0d] text-white pt-0">
+            <div className="container-custom grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              <Reveal direction="right">
+                <div className="img-zoom relative h-72 md:h-96 rounded-3xl overflow-hidden border border-white/10 flex items-center justify-center"
+                  style={{ background: `radial-gradient(circle at 50% 45%, ${s.color}26 0%, transparent 70%)` }}>
+                  {/* glow */}
+                  <div className="absolute w-56 h-56 rounded-full blur-[80px]" style={{ backgroundColor: `${s.color}40` }} />
+                  <Image
+                    src={s.showcase.image}
+                    alt={s.showcase.title}
+                    fill
+                    className={s.showcase.fit === "cover" ? "object-cover" : "object-contain p-8 relative z-10"}
+                    sizes="(max-width:1024px) 100vw, 600px"
+                  />
+                  <div className="absolute top-4 left-4 z-20 w-11 h-11 rounded-2xl flex items-center justify-center" style={{ backgroundColor: `${s.color}22`, border: `1px solid ${s.color}55` }}>
+                    <ShowIcon size={20} style={{ color: s.color }} />
+                  </div>
+                </div>
+              </Reveal>
+              <Reveal direction="left">
+                <span className="text-[11px] font-bold tracking-[0.22em] uppercase mb-3 block" style={{ color: s.color }}>Powered by Maxvolt</span>
+                <h2 className="text-2xl md:text-3xl font-black mb-4">{s.showcase.title}</h2>
+                <p className="text-white/65 text-base leading-relaxed mb-6">{s.showcase.caption}</p>
+                <Link href="/shop" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFA800] transition-all">
+                  Explore the Range <ArrowRight size={14} />
+                </Link>
+              </Reveal>
+            </div>
+          </section>
+        );
+      })()}
+
       {/* Contextual sections */}
       <section className="section-padding bg-[#f7f7f5] pt-0">
         <div className="container-custom max-w-4xl">
