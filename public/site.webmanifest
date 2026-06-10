@@ -1,21 +1,26 @@
 {
-  "name": "Maxvolt Energy",
+  "name": "Maxvolt Energy Industries Limited",
   "short_name": "Maxvolt",
+  "description": "India's leading lithium battery manufacturer — EV, solar and energy-storage batteries. AIS 156 certified, NSE SME Emerge listed.",
+  "id": "/",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#FFD100",
+  "background_color": "#0a0c14",
+  "lang": "en-IN",
+  "categories": ["business", "shopping", "utilities"],
   "icons": [
-    {
-      "src": "/https://max1.maxvolt-one.co.in/icon.svg/web-app-manifest-192x192.png?v=20260606",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/https://max1.maxvolt-one.co.in/icon.svg/web-app-manifest-512x512.png?v=20260606",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
+    { "src": "/web-app-manifest-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/web-app-manifest-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/web-app-manifest-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/web-app-manifest-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "shortcuts": [
+    { "name": "Find a Dealer", "short_name": "Dealers", "url": "/find-dealer", "description": "Locate your nearest Maxvolt dealer" },
+    { "name": "Products", "short_name": "Products", "url": "/products", "description": "Browse the battery range" },
+    { "name": "Battery Calculator", "short_name": "Calculator", "url": "/battery-calculator", "description": "Size your battery" },
+    { "name": "Contact", "short_name": "Contact", "url": "/contact-us", "description": "Talk to our team" }
+  ]
 }

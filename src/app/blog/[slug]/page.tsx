@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import { getBySlug } from "@/lib/blog-store.server";
 import { seedBySlug } from "@/lib/blog-seed";
+import { SITE_CONFIG } from "@/lib/constants";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 export const dynamic = "force-dynamic";
 
@@ -26,12 +28,39 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const paragraphs = post.content.split(/\n{2,}/).filter(Boolean);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt || post.title,
+    image: post.coverImage ? [`${SITE_CONFIG.url}${post.coverImage}`] : [`${SITE_CONFIG.url}/og`],
+    datePublished: new Date(post.createdAt).toISOString(),
+    dateModified: new Date(post.updatedAt || post.createdAt).toISOString(),
+    articleSection: post.category,
+    author: { "@type": "Organization", name: post.author || "Maxvolt Energy", url: SITE_CONFIG.url },
+    publisher: {
+      "@type": "Organization",
+      name: "Maxvolt Energy Industries Limited",
+      logo: { "@type": "ImageObject", url: `${SITE_CONFIG.url}/images/logo.webp` },
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_CONFIG.url}/blog/${post.slug}` },
+  };
+
   return (
     <article className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Hero */}
       <div className="relative pt-32 pb-12 overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-20" />
         <div className="container-custom relative z-10 max-w-3xl">
+          <Breadcrumbs
+            className="mb-5"
+            items={[
+              { name: "Home", href: "/" },
+              { name: "Blog", href: "/blog" },
+              { name: post.title, href: `/blog/${post.slug}` },
+            ]}
+          />
           <Link href="/blog" className="inline-flex items-center gap-2 text-[#71717a] hover:text-[#15171c] text-sm mb-6 transition-colors">
             <ArrowLeft size={14} /> All Articles
           </Link>

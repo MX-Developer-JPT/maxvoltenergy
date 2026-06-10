@@ -14,7 +14,7 @@ function buildPlaceholderPDF(title: string): Blob {
     "",
     "This is an official investor document placeholder.",
     "The signed PDF is available on request from",
-    "investor relations: info@maxvoltenergy.com",
+    "investor relations: info@maxvolt-one.co.in",
     "",
     "E 82, Bulandshahr Road Industrial Area,",
     "Ghaziabad (UP) 201009  |  +91 120 4291595",
@@ -82,7 +82,7 @@ function buildCataloguePDF(products: CatProduct[]): Blob {
     p.specs.forEach((s) => lines.push({ text: `   - ${s.label}: ${s.value}`, size: 9, gap: 13 }));
     lines.push({ text: "", size: 9, gap: 10 });
   });
-  lines.push({ text: "Enquiries: info@maxvoltenergy.com  |  +91 120 4291595", size: 9, gap: 14 });
+  lines.push({ text: "Enquiries: info@maxvolt-one.co.in  |  +91 120 4291595", size: 9, gap: 14 });
   lines.push({ text: "E 82, Bulandshahr Road Industrial Area, Ghaziabad (UP) 201009", size: 9, gap: 14 });
 
   // Split into pages

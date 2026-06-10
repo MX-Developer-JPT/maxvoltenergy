@@ -123,9 +123,9 @@ export default function ManagementContent() {
                     <Phone size={13} className="text-[#7c3aed]" />
                     +91 98188 89835
                   </a>
-                  <a href="mailto:bhuvneshwar@maxvoltenergy.com" className="flex items-center gap-2 text-[#52525b] hover:text-[#15171c] transition-colors">
+                  <a href="mailto:bhuvneshwar@maxvolt-one.co.in" className="flex items-center gap-2 text-[#52525b] hover:text-[#15171c] transition-colors">
                     <Mail size={13} className="text-[#7c3aed]" />
-                    bhuvneshwar@maxvoltenergy.com
+                    bhuvneshwar@maxvolt-one.co.in
                   </a>
                 </div>
               </div>

@@ -40,7 +40,7 @@ export default function PrivacyPolicyPage() {
               },
               {
                 title: "Contact Us",
-                content: "If you have questions about this privacy policy or your personal data, contact us at info@maxvoltenergy.com or at our Ghaziabad office: E 82, Bulandshahr Road Industrial Area, Ghaziabad (UP) 201009.",
+                content: "If you have questions about this privacy policy or your personal data, contact us at info@maxvolt-one.co.in or at our Ghaziabad office: E 82, Bulandshahr Road Industrial Area, Ghaziabad (UP) 201009.",
               },
             ].map(({ title, content }) => (
               <div key={title}>

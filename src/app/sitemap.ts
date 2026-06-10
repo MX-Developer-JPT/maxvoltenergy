@@ -79,6 +79,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: p === "" ? 1 : depth <= 1 ? 0.8 : 0.7,
+      // Video sitemap extension on the homepage (battery dissection clip).
+      ...(p === ""
+        ? {
+            videos: [
+              {
+                title: "Anatomy of a Maxvolt Lithium Battery Pack",
+                thumbnail_loc: `${BASE}/video/battery-explode-poster.webp`,
+                description: "A dissection of a Maxvolt lithium battery pack — cover, smart BMS, lithium cell pack and rugged housing.",
+                content_loc: `${BASE}/video/battery-explode.mp4`,
+              },
+            ],
+          }
+        : {}),
     };
   });
 
