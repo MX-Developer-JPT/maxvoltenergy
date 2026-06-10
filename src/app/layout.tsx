@@ -10,6 +10,8 @@ import CustomCursor from "@/components/ui/CustomCursor";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import StructuredData from "@/components/seo/StructuredData";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -112,6 +114,8 @@ export default function RootLayout({
           <Footer />
           <FloatingWhatsApp />
         </SmoothScrollProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

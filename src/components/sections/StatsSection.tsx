@@ -6,12 +6,12 @@ import { FadeUp, StaggerGroup, staggerItem } from "@/components/ui/AnimatedText"
 import TiltCard from "@/components/ui/TiltCard";
 
 const STATS = [
-  { prefix: "₹", value: 100, suffix: "+ Cr", label: "Annual Revenue", subLabel: "FY 2025", color: "#FFD100", arc: 85 },
-  { prefix: "", value: 6000, suffix: "+", label: "Monthly Production", subLabel: "Battery Packs", color: "#FFA800", arc: 92 },
-  { prefix: "", value: 58, suffix: "+", label: "Retail Dealers", subLabel: "Pan India", color: "#FF8C00", arc: 70 },
-  { prefix: "", value: 6, suffix: "+", label: "OEM Partners", subLabel: "Manufacturing", color: "#7c3aed", arc: 60 },
-  { prefix: "", value: 170, suffix: "+", label: "Team Members", subLabel: "Skilled Workforce", color: "#f97316", arc: 78 },
-  { prefix: "", value: 22, suffix: "+", label: "States Covered", subLabel: "Nationwide", color: "#ec4899", arc: 65 },
+  { prefix: "₹", value: 297, suffix: "+ Cr", label: "Annual Revenue", subLabel: "FY 2025-26", color: "#FFD100", arc: 90 },
+  { prefix: "", value: 25000, suffix: "+", label: "Monthly Production", subLabel: "Battery Packs", color: "#FFA800", arc: 94 },
+  { prefix: "", value: 950, suffix: "+", label: "Retail Dealers", subLabel: "Pan India", color: "#FF8C00", arc: 88 },
+  { prefix: "", value: 107, suffix: "+", label: "OEM Partners", subLabel: "Manufacturing", color: "#7c3aed", arc: 80 },
+  { prefix: "", value: 350, suffix: "+", label: "Team Members", subLabel: "Skilled Workforce", color: "#f97316", arc: 82 },
+  { prefix: "", value: 22, suffix: "+", label: "States Covered", subLabel: "Nationwide", color: "#ec4899", arc: 72 },
 ];
 
 function AnimatedCounter({ value, duration = 2000 }: { value: number; duration?: number }) {
