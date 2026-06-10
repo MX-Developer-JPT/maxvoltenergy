@@ -37,28 +37,24 @@ export default function WhyChooseSection() {
         </FadeUp>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          {/* Left: exploded pack visual + active feature card */}
+          {/* Left: advanced cell architecture visual + active feature card */}
           <div className="relative lg:sticky lg:top-28">
-            {/* Exploded Maxvolt pack — full interactive dissection lives in the Anatomy section above */}
-            <div className="img-zoom relative h-[26rem] md:h-[32rem] mx-auto max-w-md flex items-center justify-center rounded-3xl"
-              style={{ background: "radial-gradient(circle at 50% 42%, rgba(255,209,0,0.14) 0%, transparent 70%)" }}>
-              <motion.div
-                animate={{ y: [-8, 8, -8] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-full h-full"
-              >
-                <Image
-                  src="/images/product/maxvolt-pack-exploded.webp"
-                  alt="Exploded view of a Maxvolt lithium battery pack — cover, BMS, cells and housing"
-                  fill
-                  className="object-contain drop-shadow-2xl"
-                  sizes="460px"
-                />
-              </motion.div>
-            </div>
-            <p className="text-center text-[#a1a1aa] text-[11px] font-medium tracking-wide mt-1">
-              Cover · Smart BMS · Lithium cells · Rugged housing
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 26 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="img-zoom relative w-full aspect-[3/2] rounded-2xl overflow-hidden border border-black/6"
+              style={{ boxShadow: "0 26px 54px -20px rgba(16,18,23,0.28)" }}
+            >
+              <Image
+                src="/images/why-maxvolt-advanced-bms.webp"
+                alt="Maxvolt advanced cell architecture with intelligent BMS — for longer life, stable performance and enhanced safety"
+                fill
+                className="object-cover"
+                sizes="(max-width:1024px) 100vw, 600px"
+              />
+            </motion.div>
 
             {/* Secondary image */}
             <ClipReveal direction="right" delay={0.3}>
