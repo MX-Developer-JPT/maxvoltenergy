@@ -120,7 +120,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ solut
       {s.showcase && (() => {
         const ShowIcon = s.showcase.icon === "Sun" ? Sun : s.showcase.icon === "Battery" ? Battery : Lightbulb;
         return (
-          <section className="section-padding bg-[#0b0b0d] text-white pt-0">
+          <section className="section-padding bg-[#0b0b0d] section-dark text-white pt-0">
             <div className="container-custom grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <Reveal direction="right">
                 <div className="img-zoom relative h-72 md:h-96 rounded-3xl overflow-hidden border border-white/10 flex items-center justify-center"
@@ -218,7 +218,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ solut
       </section>
 
       {/* Dealer + contact CTA */}
-      <section className="py-16 bg-[#0b0b0d] text-white">
+      <section className="py-16 bg-[#0b0b0d] section-dark text-white">
         <div className="container-custom grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div>
             <h2 className="text-2xl md:text-3xl font-black mb-3">{s.dealerHeading}</h2>

@@ -63,7 +63,7 @@ export default function BecomeADealerPage() {
       </PageHero>
 
       {/* Scale stats */}
-      <section className="py-12 bg-[#0b0b0d] relative overflow-hidden">
+      <section className="py-12 bg-[#0b0b0d] section-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-[0.07]" />
         <div className="container-custom relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -151,7 +151,7 @@ export default function BecomeADealerPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-[#0b0b0d] relative overflow-hidden">
+      <section className="py-16 bg-[#0b0b0d] section-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-[0.07]" />
         <div className="container-custom relative z-10 text-center">
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">Ready to <span className="gradient-text">grow with Maxvolt?</span></h2>

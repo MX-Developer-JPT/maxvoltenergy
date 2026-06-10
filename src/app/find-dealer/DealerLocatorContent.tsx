@@ -98,7 +98,7 @@ export default function DealerLocatorContent() {
       />
 
       {/* Stats */}
-      <section className="py-10 bg-[#0b0b0d] relative overflow-hidden">
+      <section className="py-10 bg-[#0b0b0d] section-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-[0.07]" />
         <div className="container-custom relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

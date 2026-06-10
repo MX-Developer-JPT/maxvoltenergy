@@ -26,7 +26,7 @@ export default function CustomBatterySection() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="section-padding relative overflow-hidden bg-[#0b0b0d]">
+    <section ref={ref} className="section-padding relative overflow-hidden bg-[#0b0b0d] section-dark">
       <div className="absolute inset-0 grid-pattern opacity-[0.07]" />
       <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(255,209,0,0.08) 0%, transparent 60%)" }} />

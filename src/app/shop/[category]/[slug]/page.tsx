@@ -189,7 +189,7 @@ export default async function SkuPage({ params }: { params: Promise<{ category: 
       </section>
 
       {/* Dealer / price CTA */}
-      <section className="py-16 bg-[#0b0b0d] text-white">
+      <section className="py-16 bg-[#0b0b0d] section-dark text-white">
         <div className="container-custom flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
             <h2 className="text-2xl md:text-3xl font-black mb-2">Contact Us for {sku.name} Price &amp; Customization</h2>

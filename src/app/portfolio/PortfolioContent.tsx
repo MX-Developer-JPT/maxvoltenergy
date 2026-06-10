@@ -147,7 +147,7 @@ export default function PortfolioContent() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-[#0b0b0d] relative overflow-hidden">
+      <section className="py-16 bg-[#0b0b0d] section-dark relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-[0.07]" />
         <div className="container-custom relative z-10 text-center">
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">Don&apos;t see your <span className="gradient-text">exact requirement?</span></h2>

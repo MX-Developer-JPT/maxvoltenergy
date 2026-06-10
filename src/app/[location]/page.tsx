@@ -266,7 +266,7 @@ export default async function LocationPage({ params }: { params: Promise<{ locat
                 ))}
               </div>
             </div>
-            <div className="p-7 rounded-2xl bg-[#0b0b0d] text-white flex flex-col justify-center">
+            <div className="p-7 rounded-2xl bg-[#0b0b0d] section-dark text-white flex flex-col justify-center">
               <MapPin size={24} className="text-[#FFD100] mb-3" />
               <h3 className="font-bold text-xl mb-2">
                 {isSegment ? `Partner with Maxvolt` : `Become a Dealer ${here}`}

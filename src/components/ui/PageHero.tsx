@@ -34,6 +34,7 @@ export default function PageHero({ badge, title, description, className, childre
     <section ref={ref} className={cn("relative pt-32 pb-24 overflow-hidden", className)}>
       {/* Background */}
       <div className="absolute inset-0 bg-white" />
+      <div className="hero-aurora absolute inset-0 pointer-events-none" />
       <div className="absolute inset-0 grid-pattern opacity-25" />
 
       {/* Optional bg image */}
