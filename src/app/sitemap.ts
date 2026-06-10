@@ -1,4 +1,6 @@
 import type { MetadataRoute } from "next";
+import fs from "fs";
+import path from "path";
 import { PRODUCTS } from "@/lib/constants";
 import { SHOP_CATEGORIES, SKUS } from "@/lib/shop";
 import { SOLUTIONS } from "@/lib/solutions";
@@ -11,11 +13,48 @@ export const dynamic = "force-static";
 
 const BASE = "https://site.maxvolt-one.co.in";
 
+// Folders that must never appear in the public sitemap.
+const EXCLUDE_TOP = new Set(["admin", "api"]);
+
+/**
+ * Auto-discover every static (non-dynamic) page route by walking the app
+ * directory for `page.tsx|jsx|mdx` files. Guarantees the sitemap can never
+ * silently miss an SEO page when new pages are added. Dynamic ([param]) routes
+ * are handled separately by the data-driven generators below.
+ */
+function discoverStaticRoutes(): string[] {
+  const appDir = path.join(process.cwd(), "src", "app");
+  const routes = new Set<string>();
+
+  const walk = (dir: string, segments: string[]) => {
+    let entries: fs.Dirent[];
+    try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch { return; }
+
+    // Is this directory itself a page?
+    const hasPage = entries.some((e) => e.isFile() && /^page\.(tsx|jsx|mdx)$/.test(e.name));
+    if (hasPage) routes.add("/" + segments.join("/"));
+
+    for (const e of entries) {
+      if (!e.isDirectory()) continue;
+      const name = e.name;
+      // Skip dynamic segments, route groups, parallel/private folders, and excluded trees.
+      if (name.startsWith("[") || name.startsWith("(") || name.startsWith("@") || name.startsWith("_")) continue;
+      if (segments.length === 0 && EXCLUDE_TOP.has(name)) continue;
+      walk(path.join(dir, name), [...segments, name]);
+    }
+  };
+
+  walk(appDir, []);
+  // normalize root
+  const out = Array.from(routes).map((r) => (r === "/" ? "" : r));
+  return out;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  // Every public, indexable top-level page (admin + api are intentionally excluded).
-  const staticRoutes = [
+  // ── Static pages — auto-discovered, merged with an explicit safety list ──
+  const explicitStatic = [
     "",
     "/about-us", "/about-us/certificates",
     "/products", "/portfolio", "/shop", "/solutions",
@@ -30,12 +69,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/investors/financial", "/investors/notices", "/investors/material-contract",
     "/investors/material-document", "/investors/investors-contact",
     "/privacy-policy", "/terms-and-conditions",
-  ].map((path) => ({
-    url: `${BASE}${path}`,
-    lastModified: now,
-    changeFrequency: "weekly" as const,
-    priority: path === "" ? 1 : 0.8,
-  }));
+  ];
+
+  const allStatic = Array.from(new Set([...explicitStatic, ...discoverStaticRoutes()]));
+  const staticRoutes = allStatic.map((p) => {
+    const depth = p === "" ? 0 : p.split("/").filter(Boolean).length;
+    return {
+      url: `${BASE}${p}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: p === "" ? 1 : depth <= 1 ? 0.8 : 0.7,
+    };
+  });
 
   const productRoutes = PRODUCTS.map((p) => ({
     url: `${BASE}${p.href}`,
@@ -82,7 +127,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [
+  // Merge everything and de-duplicate by URL (first occurrence wins).
+  const all = [
     ...staticRoutes,
     ...productRoutes,
     ...solutionRoutes,
@@ -91,4 +137,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogRoutes,
     ...locationRoutes,
   ];
+  const byUrl = new Map<string, (typeof all)[number]>();
+  for (const entry of all) if (!byUrl.has(entry.url)) byUrl.set(entry.url, entry);
+  return Array.from(byUrl.values());
 }
