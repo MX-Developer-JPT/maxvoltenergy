@@ -169,7 +169,7 @@ export default function MediaPage() {
             <TrendingUp size={32} className="text-[#D97706] mx-auto mb-4" />
             <h3 className="text-[#15171c] font-bold text-xl mb-2">Press Inquiries</h3>
             <p className="text-[#5f6470] text-sm mb-4">For media interviews, press releases, or company information, contact us directly.</p>
-            <a href="mailto:info@maxvolt-one.co.in" className="text-[#D97706] font-semibold text-sm hover:underline">info@maxvolt-one.co.in</a>
+            <a href="mailto:info@maxvoltenergy.com" className="text-[#D97706] font-semibold text-sm hover:underline">info@maxvoltenergy.com</a>
           </div>
         </div>
       </section>

@@ -135,8 +135,8 @@ export default function EarningsContent() {
             <p>
               All documents are available to registered shareholders and the investing public in accordance with
               NSE SME Emerge disclosure requirements. For specific queries, contact our Compliance Officer at{" "}
-              <a href="mailto:info@maxvolt-one.co.in" className="text-[#D97706] hover:underline">
-                info@maxvolt-one.co.in
+              <a href="mailto:info@maxvoltenergy.com" className="text-[#D97706] hover:underline">
+                info@maxvoltenergy.com
               </a>
             </p>
           </div>

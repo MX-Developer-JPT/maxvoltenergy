@@ -20,7 +20,7 @@ export default function TermsPage() {
             {[
               {
                 title: "Acceptance of Terms",
-                content: "By accessing and using the Maxvolt Energy website (maxvolt-one.co.in), you accept and agree to be bound by these Terms and Conditions. If you do not agree, please do not use our website.",
+                content: "By accessing and using the Maxvolt Energy website (maxvoltenergy.com), you accept and agree to be bound by these Terms and Conditions. If you do not agree, please do not use our website.",
               },
               {
                 title: "Use of Website",
@@ -48,7 +48,7 @@ export default function TermsPage() {
               },
               {
                 title: "Contact",
-                content: "For questions about these terms, contact us at info@maxvolt-one.co.in or at E 82, Bulandshahr Road Industrial Area, Ghaziabad (UP) 201009.",
+                content: "For questions about these terms, contact us at info@maxvoltenergy.com or at E 82, Bulandshahr Road Industrial Area, Ghaziabad (UP) 201009.",
               },
             ].map(({ title, content }) => (
               <div key={title}>

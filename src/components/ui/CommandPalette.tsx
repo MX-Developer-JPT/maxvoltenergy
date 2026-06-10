@@ -18,6 +18,8 @@ const CORE: Entry[] = [
   { t: "All Products", h: "/products", g: "Pages" },
   { t: "Product Portfolio", h: "/portfolio", g: "Pages" },
   { t: "Shop All Batteries", h: "/shop", g: "Pages" },
+  { t: "Compare Batteries", h: "/compare", g: "Tools" },
+  { t: "Request a Quote", h: "/request-a-quote", g: "Tools" },
   { t: "Solutions", h: "/solutions", g: "Pages" },
   { t: "Find a Dealer", h: "/find-dealer", g: "Pages" },
   { t: "Become a Dealer", h: "/become-a-dealer", g: "Pages" },

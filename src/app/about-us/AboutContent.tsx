@@ -254,7 +254,7 @@ function LeadershipSection() {
           </div>
           <div className="ml-auto text-[#71717a] text-sm hidden md:block">
             <div>+91 98188 89835</div>
-            <div>bhuvneshwar@maxvolt-one.co.in</div>
+            <div>bhuvneshwar@maxvoltenergy.com</div>
           </div>
         </motion.div>
       </div>

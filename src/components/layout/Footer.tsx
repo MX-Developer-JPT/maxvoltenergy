@@ -8,6 +8,7 @@ import {
   MessageCircle, ArrowUpRight, ExternalLink,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
+import NewsletterSignup from "@/components/ui/NewsletterSignup";
 
 const FOOTER_LINKS = {
   "Quick Links": [
@@ -28,6 +29,7 @@ const FOOTER_LINKS = {
     { label: "Solar Batteries", href: "/products/lithium-battery-for-solar-application" },
     { label: "Customized Solutions", href: "/products/customized-battery-solution" },
     { label: "Product Portfolio", href: "/portfolio" },
+    { label: "Compare Batteries", href: "/compare" },
     { label: "Shop All Batteries", href: "/shop" },
   ],
   "Investors": [
@@ -41,6 +43,7 @@ const FOOTER_LINKS = {
   ],
   "Support": [
     { label: "Contact Us", href: "/contact-us" },
+    { label: "Request a Quote", href: "/request-a-quote" },
     { label: "Support", href: "/support" },
     { label: "FAQ", href: "/faq" },
     { label: "Press Releases", href: "/press-release" },
@@ -84,6 +87,17 @@ export default function Footer() {
                 <ArrowUpRight size={14} />
               </Link>
             </div>
+          </div>
+        </div>
+
+        {/* Newsletter */}
+        <div className="py-8 border-b border-black/6 flex flex-col md:flex-row md:items-center gap-5">
+          <div className="md:w-1/2">
+            <h3 className="text-[#15171c] font-bold text-lg mb-1">Stay charged with Maxvolt</h3>
+            <p className="text-[#5f6470] text-sm">Battery tech, EV trends and company news — straight to your inbox.</p>
+          </div>
+          <div className="md:w-1/2 md:max-w-md md:ml-auto w-full">
+            <NewsletterSignup />
           </div>
         </div>
 

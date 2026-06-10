@@ -62,7 +62,7 @@ export default function PoliciesNoticesPage() {
 
           <div className="mt-8 p-5 rounded-xl border border-black/6 bg-black/[0.02] text-xs text-[#71717a]">
             All policies are reviewed and updated regularly. For the most current version or queries, contact{" "}
-            <a href="mailto:info@maxvolt-one.co.in" className="text-[#D97706] hover:underline">info@maxvolt-one.co.in</a>
+            <a href="mailto:info@maxvoltenergy.com" className="text-[#D97706] hover:underline">info@maxvoltenergy.com</a>
           </div>
         </div>
       </section>

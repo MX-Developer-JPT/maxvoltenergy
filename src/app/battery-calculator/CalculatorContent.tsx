@@ -171,7 +171,99 @@ export default function CalculatorContent() {
           </div>
         </div>
       </section>
+
+      <TcoCalculator />
     </>
+  );
+}
+
+function TcoCalculator() {
+  const [years, setYears] = useState(5);
+  const [laPrice, setLaPrice] = useState(28000);   // lead-acid pack price
+  const [laLifeM, setLaLifeM] = useState(14);       // lead-acid life (months)
+  const [liPrice, setLiPrice] = useState(72000);   // lithium pack price
+  const [liLifeY, setLiLifeY] = useState(6);        // lithium life (years)
+
+  const r = useMemo(() => {
+    const laReplacements = Math.max(1, Math.ceil((years * 12) / laLifeM));
+    const liReplacements = Math.max(1, Math.ceil(years / liLifeY));
+    const laTotal = laReplacements * laPrice;
+    const liTotal = liReplacements * liPrice;
+    const savings = laTotal - liTotal;
+    const max = Math.max(laTotal, liTotal, 1);
+    return { laReplacements, liReplacements, laTotal, liTotal, savings, laPct: (laTotal / max) * 100, liPct: (liTotal / max) * 100 };
+  }, [years, laPrice, laLifeM, liPrice, liLifeY]);
+
+  const inr = (n: number) => "₹" + n.toLocaleString("en-IN");
+
+  return (
+    <section className="section-padding bg-white border-t border-black/6">
+      <div className="container-custom max-w-5xl">
+        <div className="text-center mb-10">
+          <span className="text-[#D97706] text-[11px] font-bold tracking-[0.25em] uppercase mb-3 block">Total Cost of Ownership</span>
+          <h2 className="text-3xl md:text-4xl font-black text-[#15171c]">Lithium vs <span className="gradient-text">Lead-Acid</span> Savings</h2>
+          <p className="text-[#5f6470] text-sm max-w-xl mx-auto mt-3">Lead-acid looks cheaper upfront — but it&apos;s replaced far more often. See the real cost over time.</p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* inputs */}
+          <div className="p-7 rounded-2xl frosted-card">
+            <SliderRow label="Ownership Period" Icon={Clock} value={years} min={1} max={10} step={1} unit="yrs" onChange={setYears} />
+            <div className="grid grid-cols-2 gap-4">
+              <NumRow label="Lead-acid pack price" value={laPrice} step={1000} unit="₹" onChange={setLaPrice} />
+              <NumRow label="Lead-acid life" value={laLifeM} step={1} unit="mo" onChange={setLaLifeM} />
+              <NumRow label="Maxvolt lithium price" value={liPrice} step={1000} unit="₹" onChange={setLiPrice} />
+              <NumRow label="Lithium life" value={liLifeY} step={1} unit="yrs" onChange={setLiLifeY} />
+            </div>
+          </div>
+
+          {/* result */}
+          <div className="p-7 rounded-2xl relative overflow-hidden" style={{ background: "linear-gradient(160deg,#fffdf5 0%,#ffffff 100%)", border: "1px solid rgba(217,119,6,0.2)" }}>
+            <div className="text-[#15171c] font-bold mb-5">{years}-year cost comparison</div>
+            <div className="space-y-4 mb-6">
+              <Bar label={`Lead-Acid (${r.laReplacements} packs)`} amount={inr(r.laTotal)} pct={r.laPct} color="#a1a1aa" />
+              <Bar label={`Maxvolt Lithium (${r.liReplacements} pack${r.liReplacements > 1 ? "s" : ""})`} amount={inr(r.liTotal)} pct={r.liPct} color="#D97706" />
+            </div>
+            <div className="p-4 rounded-xl bg-[#16a34a]/8 border border-[#16a34a]/20">
+              <div className="text-[#16a34a] text-[11px] font-bold uppercase tracking-wide mb-1">Estimated Savings with Maxvolt</div>
+              <div className="text-[#15171c] font-black text-3xl tabular-nums">{r.savings >= 0 ? inr(r.savings) : "—"}</div>
+              <p className="text-[#52525b] text-xs mt-1.5">Plus faster charging, longer range and far less downtime — savings that compound over the battery&apos;s life.</p>
+            </div>
+            <a href="/request-a-quote" className="mt-5 inline-flex items-center justify-center gap-2 w-full px-6 py-3 rounded-xl bg-[#FFD100] text-black font-bold text-sm hover:bg-[#FFA800] transition-all">
+              Get an Exact Quote <ArrowRight size={14} />
+            </a>
+          </div>
+        </div>
+        <p className="text-[#a1a1aa] text-[11px] mt-4 text-center">Indicative estimate — actual costs vary by usage, model and operating conditions.</p>
+      </div>
+    </section>
+  );
+}
+
+function NumRow({ label, value, step, unit, onChange }: { label: string; value: number; step: number; unit: string; onChange: (v: number) => void }) {
+  return (
+    <div>
+      <label className="block text-[#71717a] text-[11px] font-semibold mb-1.5">{label}</label>
+      <div className="flex items-center rounded-xl bg-black/[0.03] border border-black/8 overflow-hidden">
+        <span className="px-2.5 text-[#a1a1aa] text-xs">{unit}</span>
+        <input type="number" min={0} step={step} value={value} onChange={(e) => onChange(Math.max(0, Number(e.target.value)))}
+          className="w-full px-1 py-2.5 bg-transparent text-[#15171c] text-sm font-bold focus:outline-none tabular-nums" />
+      </div>
+    </div>
+  );
+}
+
+function Bar({ label, amount, pct, color }: { label: string; amount: string; pct: number; color: string }) {
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-1.5">
+        <span className="text-[#52525b] text-xs font-medium">{label}</span>
+        <span className="text-[#15171c] text-sm font-black tabular-nums">{amount}</span>
+      </div>
+      <div className="h-3 rounded-full bg-black/[0.05] overflow-hidden">
+        <motion.div className="h-full rounded-full" style={{ backgroundColor: color }} initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} />
+      </div>
+    </div>
   );
 }
 

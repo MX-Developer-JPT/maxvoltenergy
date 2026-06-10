@@ -268,7 +268,7 @@ export const SOLUTIONS: Solution[] = [
       { q: "Why are lithium-ion batteries preferred for these devices?", a: "They offer high energy density, faster charging and longer lifespan than traditional batteries, making them ideal for modern devices." },
       { q: "Does Maxvolt provide custom battery packs?", a: "Yes. We design and supply custom lithium-ion battery packs for various consumer-electronics applications, tailored to specific voltage and capacity needs." },
       { q: "Is Maxvolt a trusted lithium battery supplier in India?", a: "Absolutely. Maxvolt Energy is a trusted manufacturer and supplier of lithium-ion batteries in India, offering full warranty and after-sales support." },
-      { q: "How can I get a dealership or bulk order?", a: "Call us at 01204291595 or email info@maxvolt-one.co.in to discuss dealership opportunities and pricing for bulk lithium-ion battery requirements." },
+      { q: "How can I get a dealership or bulk order?", a: "Call us at 01204291595 or email info@maxvoltenergy.com to discuss dealership opportunities and pricing for bulk lithium-ion battery requirements." },
     ],
   },
 ];

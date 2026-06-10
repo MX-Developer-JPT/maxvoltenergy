@@ -278,9 +278,9 @@ export default function InvestorsContent() {
                 <Phone size={14} className="text-[#D97706]" />
                 +91 98188 89835
               </a>
-              <a href="mailto:info@maxvolt-one.co.in" className="flex items-center gap-2 text-[#52525b] hover:text-[#15171c] transition-colors">
+              <a href="mailto:info@maxvoltenergy.com" className="flex items-center gap-2 text-[#52525b] hover:text-[#15171c] transition-colors">
                 <Mail size={14} className="text-[#D97706]" />
-                info@maxvolt-one.co.in
+                info@maxvoltenergy.com
               </a>
             </div>
           </div>
