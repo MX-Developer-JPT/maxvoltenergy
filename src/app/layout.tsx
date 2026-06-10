@@ -12,6 +12,9 @@ import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvide
 import StructuredData from "@/components/seo/StructuredData";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import CommandPalette from "@/components/ui/CommandPalette";
+import CookieConsent from "@/components/ui/CookieConsent";
+import IntroReveal from "@/components/ui/IntroReveal";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -113,6 +116,9 @@ export default function RootLayout({
           </main>
           <Footer />
           <FloatingWhatsApp />
+          <CommandPalette />
+          <CookieConsent />
+          <IntroReveal />
         </SmoothScrollProvider>
         <Analytics />
         <SpeedInsights />
