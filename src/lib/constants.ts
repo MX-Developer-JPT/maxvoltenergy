@@ -9,6 +9,7 @@ export const SITE_CONFIG = {
   supportEmail: "customersupport@maxvoltenergy.com",
   supportPhone: "+91-9560718827",
   careersEmail: "maxvolt.india@gmail.com",
+  careersPortal: "https://maxvolt-one.co.in/PublicJobBoard",
   addresses: {
     corporate: "E 82, Bulandshahr Road Industrial Area, Ghaziabad (UP) 201009",
     plant: "Meerut Rd, Duhai, Basantpur Saitli, Uttar Pradesh 201206",
