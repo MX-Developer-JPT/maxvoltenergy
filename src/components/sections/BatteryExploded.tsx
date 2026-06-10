@@ -1,72 +1,74 @@
 "use client";
 
-import { useRef } from "react";
-import Image from "next/image";
-import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion, useScroll, useSpring, useTransform, useMotionValueEvent } from "framer-motion";
 
 /**
- * Scroll-driven EXPLODED battery using the real Maxvolt part renders.
- * White studio backgrounds are knocked out with mix-blend multiply on the white
- * section. Parts nest at rest and separate (lid → BMS → cells → housing) on scroll.
+ * Scroll-driven battery DISSECTION — a real Maxvolt pack that takes itself apart
+ * as you scroll. Driven by a frame-accurate, scroll-scrubbed video (background
+ * keyed out to full transparency). currentTime is eased toward the scroll target
+ * on a rAF loop so the scrub stays buttery regardless of seek latency.
  */
-const blend: React.CSSProperties = { mixBlendMode: "multiply" };
-
-interface Part {
-  src: string; label: string; side: "left" | "right";
-  // layout box (percent of stage)
-  top: number; height: number; width: number;
-  // explode offset (px) at full open
-  offset: number;
-}
-
-const PARTS: Part[] = [
-  { src: "/images/battery/lid.jpg",   label: "Protective Cover",  side: "right", top: 4,  height: 16, width: 64, offset: -150 },
-  { src: "/images/battery/bms.jpg",   label: "Smart BMS",         side: "left",  top: 24, height: 22, width: 78, offset: -86 },
-  { src: "/images/battery/cells.jpg", label: "Lithium Cell Pack", side: "right", top: 46, height: 24, width: 60, offset: -28 },
-  { src: "/images/battery/case.jpg",  label: "Rugged Housing",    side: "left",  top: 64, height: 34, width: 70, offset: 14 },
-];
-
-function PartLayer({ part, p, openAt }: { part: Part; p: MotionValue<number>; openAt: number }) {
-  const y = useTransform(p, [0.22, 0.7], [0, part.offset]);
-  const labelOpacity = useTransform(p, [openAt - 0.05, openAt + 0.08], [0, 1]);
-  const labelX = useTransform(p, [openAt - 0.05, openAt + 0.08], [part.side === "left" ? -14 : 14, 0]);
-
-  return (
-    <motion.div
-      className="absolute left-1/2 -translate-x-1/2"
-      style={{ top: `${part.top}%`, height: `${part.height}%`, width: `${part.width}%`, y }}
-    >
-      <Image src={part.src} alt={part.label} fill className="object-contain" style={blend} sizes="460px" />
-      {/* connector dot on the part */}
-      <motion.div
-        style={{ opacity: labelOpacity }}
-        className={`absolute top-1/2 -translate-y-1/2 flex items-center gap-1.5 ${part.side === "left" ? "left-0 -translate-x-[calc(100%+8px)] flex-row-reverse" : "right-0 translate-x-[calc(100%+8px)]"}`}
-      >
-        <motion.span style={{ x: labelX }} className="whitespace-nowrap text-[11px] font-bold text-[#15171c]">
-          {part.label}
-        </motion.span>
-        <span className="w-1.5 h-1.5 rounded-full bg-[#D97706]" />
-      </motion.div>
-    </motion.div>
-  );
-}
-
 export default function BatteryExploded() {
   const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const targetT = useRef(0);
+
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const p = useSpring(scrollYProgress, { stiffness: 70, damping: 26, mass: 0.5 });
-  const glow = useTransform(p, [0.3, 0.6], [0, 1]);
+  const p = useSpring(scrollYProgress, { stiffness: 80, damping: 28, mass: 0.4 });
+  const glow = useTransform(p, [0.2, 0.65], [0.15, 1]);
+
+  // Map the section's scroll pass [0.12 → 0.9] to the full clip [0 → 1].
+  useMotionValueEvent(p, "change", (v) => {
+    targetT.current = Math.min(1, Math.max(0, (v - 0.12) / 0.78));
+  });
+
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid) return;
+    // Prime the decoder (esp. iOS/Safari) so seeking renders frames.
+    const prime = () => { vid.play().then(() => vid.pause()).catch(() => {}); };
+    if (vid.readyState >= 1) prime();
+    else vid.addEventListener("loadedmetadata", prime, { once: true });
+
+    let raf = 0;
+    let cur = 0;
+    const tick = () => {
+      if (vid.duration) {
+        const want = targetT.current * vid.duration;
+        cur += (want - cur) * 0.15;            // ease toward target
+        if (Math.abs(want - cur) < 0.004) cur = want;
+        if (Math.abs(vid.currentTime - cur) > 0.01) {
+          try { vid.currentTime = cur; } catch { /* seek not ready */ }
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   return (
-    <div ref={ref} className="relative w-full h-full">
-      {/* soft brand glow that grows as it opens */}
+    <div ref={ref} className="relative w-full h-full flex items-center justify-center">
+      {/* brand glow that swells as the pack opens */}
       <motion.div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[75%] h-[75%] rounded-full blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(255,209,0,0.35) 0%, transparent 70%)", opacity: glow }}
+        aria-hidden
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[78%] h-[70%] rounded-full blur-3xl pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(255,209,0,0.40) 0%, transparent 70%)", opacity: glow }}
       />
-      {PARTS.map((part, i) => (
-        <PartLayer key={part.src} part={part} p={p} openAt={0.3 + i * 0.06} />
-      ))}
+      <video
+        ref={videoRef}
+        muted
+        playsInline
+        preload="auto"
+        poster="/video/battery-explode-poster.webp"
+        className="relative z-10 w-full h-full object-contain select-none pointer-events-none"
+        // a faint contact shadow grounds the floating battery
+        style={{ filter: "drop-shadow(0 26px 30px rgba(16,18,23,0.18))" }}
+      >
+        <source src="/video/battery-explode.webm" type="video/webm" />
+        <source src="/video/battery-explode.mp4" type="video/mp4" />
+      </video>
     </div>
   );
 }

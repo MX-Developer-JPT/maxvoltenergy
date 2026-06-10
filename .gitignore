@@ -55,3 +55,7 @@ ref/
 # (optimized webp copies live in public/asset/ and are committed)
 /dealers/
 /asset/
+
+# Source battery-explode video + extracted frames
+# (keyed/optimized webm+mp4 live in public/video/ and are committed)
+/batt_explode/
