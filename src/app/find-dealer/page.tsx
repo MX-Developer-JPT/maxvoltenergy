@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import DealerLocatorContent from "./DealerLocatorContent";
+import { DEALERS } from "@/lib/dealers";
 
 export const metadata: Metadata = {
   title: "Find a Dealer",
@@ -8,6 +9,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "/find-dealer" },
 };
 
+// Stats computed server-side (DEALERS stays out of the client bundle).
 export default function FindDealerPage() {
-  return <DealerLocatorContent />;
+  const stats = {
+    dealers: DEALERS.length,
+    states: new Set(DEALERS.map((d) => d.state)).size,
+    cities: new Set(DEALERS.map((d) => d.city)).size,
+    pincodes: new Set(DEALERS.map((d) => d.pincode).filter(Boolean)).size,
+  };
+  return <DealerLocatorContent stats={stats} />;
 }

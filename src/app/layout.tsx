@@ -15,6 +15,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import CommandPalette from "@/components/ui/CommandPalette";
 import CookieConsent from "@/components/ui/CookieConsent";
 import IntroReveal from "@/components/ui/IntroReveal";
+import PWARegister from "@/components/ui/PWARegister";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -107,11 +108,17 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body className="min-h-screen flex flex-col bg-white text-[#15171c] antialiased cursor-none lg:cursor-none">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[300] focus:px-4 focus:py-2.5 focus:rounded-xl focus:bg-[#FFD100] focus:text-black focus:font-bold focus:text-sm focus:shadow-lg"
+        >
+          Skip to content
+        </a>
         <SmoothScrollProvider>
           <ScrollProgress />
           <CustomCursor />
           <Navbar />
-          <main className="flex-1">
+          <main id="main-content" className="flex-1">
             <PageTransition>{children}</PageTransition>
           </main>
           <Footer />
@@ -119,6 +126,7 @@ export default function RootLayout({
           <CommandPalette />
           <CookieConsent />
           <IntroReveal />
+          <PWARegister />
         </SmoothScrollProvider>
         <Analytics />
         <SpeedInsights />

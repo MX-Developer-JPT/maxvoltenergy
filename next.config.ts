@@ -12,6 +12,8 @@ const csp = [
   "media-src 'self' blob:",
   "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
   "frame-src 'self' https://*.google.com https://maps.google.com",
+  "worker-src 'self'",
+  "manifest-src 'self'",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -44,6 +46,25 @@ const nextConfig: NextConfig = {
       // Long-cache the immutable, fingerprinted media assets.
       { source: "/video/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }] },
       { source: "/asset/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }] },
+    ];
+  },
+  // Preserve SEO equity from the legacy maxvoltenergy.com URL structure.
+  async redirects() {
+    return [
+      { source: "/home", destination: "/", permanent: true },
+      { source: "/index.html", destination: "/", permanent: true },
+      { source: "/customer-support", destination: "/support", permanent: true },
+      { source: "/sign-in", destination: "/contact-us", permanent: true },
+      { source: "/sign-up", destination: "/contact-us", permanent: true },
+      { source: "/careers", destination: "/career", permanent: true },
+      { source: "/e-shop", destination: "/shop", permanent: true },
+      { source: "/blogs", destination: "/blog", permanent: true },
+      { source: "/blogs/:slug", destination: "/blog/:slug", permanent: true },
+      { source: "/privacy", destination: "/privacy-policy", permanent: true },
+      { source: "/terms", destination: "/terms-and-conditions", permanent: true },
+      { source: "/manufacturers/:slug", destination: "/products/:slug", permanent: true },
+      { source: "/manufacturers", destination: "/products", permanent: true },
+      { source: "/press", destination: "/press-release", permanent: true },
     ];
   },
 };
