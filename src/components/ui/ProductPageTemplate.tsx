@@ -9,6 +9,7 @@ import { ArrowRight, CheckCircle2, Download, MessageCircle, Battery, Zap, Shield
 import { PRODUCTS, SITE_CONFIG } from "@/lib/constants";
 import { downloadCatalogue, CATALOGUES } from "@/lib/download";
 import Reveal, { RevealStagger, RevealItem } from "@/components/ui/Reveal";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 function appIcon(label: string): LucideIcon {
   const l = label.toLowerCase();
@@ -108,8 +109,29 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
 
   const relatedProducts = PRODUCTS.filter(p => p.id !== product.id).slice(0, 3);
 
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.longDescription || product.description,
+    category: product.category,
+    image: product.image ? [`${SITE_CONFIG.url}${product.image}`] : undefined,
+    brand: { "@type": "Brand", name: "Maxvolt Energy" },
+    manufacturer: { "@type": "Organization", name: "Maxvolt Energy Industries Limited" },
+    url: `${SITE_CONFIG.url}/products/${product.id}`,
+    offers: {
+      "@type": "Offer",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "INR",
+      url: `${SITE_CONFIG.url}/products/${product.id}`,
+      seller: { "@type": "Organization", name: "Maxvolt Energy Industries Limited" },
+    },
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
+
       {/* Hero */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-white">
         <div className="absolute inset-0 grid-pattern opacity-25" />
@@ -118,6 +140,14 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
           style={{ background: product.color }}
         />
         <div className="container-custom relative z-10">
+          <Breadcrumbs
+            className="mb-6"
+            items={[
+              { name: "Home", href: "/" },
+              { name: "Products", href: "/products" },
+              { name: product.name, href: `/products/${product.id}` },
+            ]}
+          />
           <Link href="/products" className="inline-flex items-center gap-2 text-[#71717a] hover:text-[#15171c] text-sm mb-8 transition-colors">
             <ArrowLeft size={14} />
             All Products

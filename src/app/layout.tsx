@@ -78,13 +78,13 @@ export const metadata: Metadata = {
     title: "Maxvolt Energy Industries Limited",
     description: "Powering India's Electric Future with industry-leading lithium battery technology.",
     siteName: "Maxvolt Energy",
-    images: [{ url: "/images/category/products-ygb.webp", width: 1200, height: 630, alt: "Maxvolt Energy lithium battery range" }],
+    images: [{ url: "/og", width: 1200, height: 630, alt: "Maxvolt Energy — Powering India's Electric Future" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Maxvolt Energy Industries Limited",
     description: "Powering India's Electric Future",
-    images: ["/images/category/products-ygb.webp"],
+    images: ["/og"],
   },
   robots: {
     index: true,

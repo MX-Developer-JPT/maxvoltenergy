@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Calendar, Tag, ExternalLink } from "lucide-react";
 import { PRESS_RELEASES, pressBySlug, pressSorted } from "@/lib/press";
 import { SITE_CONFIG } from "@/lib/constants";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 export function generateStaticParams() {
   return PRESS_RELEASES.map((p) => ({ slug: p.slug }));
@@ -68,6 +69,14 @@ export default async function PressReleaseDetail({ params }: { params: Promise<{
       <div className="relative pt-32 pb-12 overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-20" />
         <div className="container-custom relative z-10 max-w-3xl">
+          <Breadcrumbs
+            className="mb-5"
+            items={[
+              { name: "Home", href: "/" },
+              { name: "Press Releases", href: "/press-release" },
+              { name: pr.title, href: `/press-release/${pr.slug}` },
+            ]}
+          />
           <Link href="/press-release" className="inline-flex items-center gap-2 text-[#71717a] hover:text-[#15171c] text-sm mb-6 transition-colors">
             <ArrowLeft size={14} /> All Press Releases
           </Link>

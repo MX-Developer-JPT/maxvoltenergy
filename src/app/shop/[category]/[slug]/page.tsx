@@ -7,6 +7,7 @@ import { SKUS, getCategory, getSku, skusByCategory, skuImage, type Sku, type Sho
 import { SITE_CONFIG } from "@/lib/constants";
 import FaqAccordion from "@/components/ui/FaqAccordion";
 import Reveal, { RevealStagger, RevealItem } from "@/components/ui/Reveal";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 function skuFaqs(sku: Sku, c: ShopCategory) {
   return [
@@ -80,6 +81,15 @@ export default async function SkuPage({ params }: { params: Promise<{ category: 
       <section className="relative pt-32 pb-16 bg-white overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-25" />
         <div className="container-custom relative z-10">
+          <Breadcrumbs
+            className="mb-6"
+            items={[
+              { name: "Home", href: "/" },
+              { name: "Shop", href: "/shop" },
+              { name: c.name, href: `/shop/${c.key}` },
+              { name: sku.name, href: `/shop/${c.key}/${sku.slug}` },
+            ]}
+          />
           <Link href={`/shop/${c.key}`} className="inline-flex items-center gap-2 text-[#71717a] hover:text-[#15171c] text-sm mb-8 transition-colors">
             <ArrowLeft size={14} /> {c.name}
           </Link>

@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import PageHero from "@/components/ui/PageHero";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { SHOP_CATEGORIES, getCategory, skusByCategory, skuImage } from "@/lib/shop";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 export function generateStaticParams() {
   return SHOP_CATEGORIES.map((c) => ({ category: c.key }));
@@ -36,7 +37,17 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         </Link>
       </PageHero>
 
-      <section className="section-padding bg-[#f7f7f5]">
+      <div className="container-custom pt-5">
+        <Breadcrumbs
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Shop", href: "/shop" },
+            { name: c.name, href: `/shop/${c.key}` },
+          ]}
+        />
+      </div>
+
+      <section className="section-padding bg-[#f7f7f5] pt-8">
         <div className="container-custom">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {skus.map((s) => (

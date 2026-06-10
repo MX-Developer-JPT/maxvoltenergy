@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight, MapPin, CheckCircle2, Phone, MessageCircle, Truck, ShieldCheck, Headphones, Factory, Store } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import { RevealStagger, RevealItem } from "@/components/ui/Reveal";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import { LOCATIONS, getLocation, toSlug, type Location } from "@/lib/locations";
 import { PRODUCTS, SITE_CONFIG } from "@/lib/constants";
 import { DEALERS, type Dealer } from "@/lib/dealers";
@@ -160,8 +161,19 @@ export default async function LocationPage({ params }: { params: Promise<{ locat
         </div>
       </PageHero>
 
+      <div className="container-custom pt-5">
+        <Breadcrumbs
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Our Presence", href: "/our-presence" },
+            ...(loc.type === "city" && stateLink ? [{ name: stateLink.name, href: `/${stateLink.slug}` }] : []),
+            { name: loc.name, href: `/${loc.slug}` },
+          ]}
+        />
+      </div>
+
       {/* Product range */}
-      <section className="section-padding bg-[#f7f7f5]">
+      <section className="section-padding bg-[#f7f7f5] pt-8">
         <div className="container-custom">
           <h2 className="text-2xl md:text-3xl font-black text-[#15171c] mb-2">
             Our Battery Range {here}
