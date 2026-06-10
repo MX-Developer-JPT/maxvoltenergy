@@ -83,33 +83,30 @@ export default function BatteryAnatomy() {
   }, []);
 
   return (
-    <section ref={ref} className="relative bg-white" style={{ height: "320vh" }}>
+    <section ref={ref} className="relative bg-white" style={{ height: "300vh" }}>
       {/* Pinned stage */}
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
+      <div className="sticky top-0 h-screen overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-[0.12]" />
         <div className="hero-aurora absolute inset-0 pointer-events-none opacity-70" />
 
-        {/* Heading */}
-        <div className="container-custom relative z-10 pt-24 md:pt-28 text-center shrink-0">
-          <motion.span
-            initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-[#D97706] text-[11px] font-bold tracking-[0.28em] uppercase mb-3 block"
-          >
-            Anatomy of a Maxvolt Pack
-          </motion.span>
-          <h2 className="text-3xl md:text-5xl font-black text-[#15171c] leading-tight">
-            Engineered <span className="gradient-text">to the cell</span>
-          </h2>
-          <p className="text-[#5f6470] text-sm max-w-md mx-auto mt-3 hidden md:block">
-            Scroll to take the pack apart, layer by layer — every part built for safety, range and life.
-          </p>
-        </div>
+        <div className="container-custom relative z-10 h-full flex flex-col justify-center pt-[5.5rem] pb-8">
+          {/* Heading */}
+          <div className="text-center shrink-0 mb-4 md:mb-7">
+            <span className="text-[#D97706] text-[11px] font-bold tracking-[0.28em] uppercase mb-2 block">
+              Anatomy of a Maxvolt Pack
+            </span>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-[#15171c] leading-tight">
+              Engineered <span className="gradient-text">to the cell</span>
+            </h2>
+            <p className="text-[#5f6470] text-sm max-w-md mx-auto mt-2.5 hidden md:block">
+              Scroll to take the pack apart, layer by layer — every part built for safety, range and life.
+            </p>
+          </div>
 
-        {/* Stage: video + synced stepper */}
-        <div className="container-custom relative z-10 flex-1 min-h-0">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center h-full">
+          {/* Stage: video + synced stepper */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
             {/* Video */}
-            <div className="lg:col-span-7 relative h-[42vh] lg:h-[68vh] flex items-center justify-center order-1">
+            <div className="lg:col-span-7 relative h-[34vh] lg:h-[50vh] flex items-center justify-center order-1">
               <motion.div
                 aria-hidden
                 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[60%] rounded-full blur-3xl pointer-events-none"
@@ -130,7 +127,7 @@ export default function BatteryAnatomy() {
             </div>
 
             {/* Desktop stepper */}
-            <div className="hidden lg:flex lg:col-span-5 order-2 flex-col gap-2.5 relative pl-6">
+            <div className="hidden lg:flex lg:col-span-5 order-2 flex-col gap-2 relative pl-6">
               {/* progress rail */}
               <div className="absolute left-0 top-2 bottom-2 w-[3px] rounded-full bg-black/8 overflow-hidden">
                 <motion.div className="w-full origin-top rounded-full" style={{ scaleY: progressScaleX, background: "linear-gradient(180deg,#FFD100,#D97706)" }} />
@@ -142,7 +139,7 @@ export default function BatteryAnatomy() {
                     key={s.n}
                     animate={{ opacity: on ? 1 : 0.4, scale: on ? 1 : 0.985 }}
                     transition={{ duration: 0.35 }}
-                    className="rounded-2xl p-4 transition-colors"
+                    className="rounded-2xl p-3.5 transition-colors"
                     style={{ background: on ? "#fff" : "transparent", border: `1px solid ${on ? s.color + "55" : "transparent"}`, boxShadow: on ? "0 14px 36px -16px rgba(16,18,23,0.22)" : "none" }}
                   >
                     <div className="flex items-center gap-3">
