@@ -1,6 +1,7 @@
-// Location-based SEO landing pages — replicated from maxvoltenergy.com
-// The original publishes ~150 thin doorway pages (one per city/state). We
-// rebuild them as proper local-SEO landing pages with genuine, useful content.
+// Location-based SEO landing pages.
+// Curated city/state slugs from the original site, unioned with every city &
+// state where Maxvolt has an authorized dealer (derived from the dealer
+// directory) so each has a crawlable, indexable local landing page.
 
 export type LocationType = "city" | "state" | "segment";
 
@@ -10,41 +11,11 @@ export interface Location {
   type: LocationType;
 }
 
-// Indian states present on the original site
-const STATES = [
-  "andhra-pradesh", "arunachal-pradesh", "assam", "bihar", "chhattisgarh",
-  "goa", "gujarat", "haryana", "himachal-pradesh", "jharkhand", "karnataka",
-  "kerala", "madhya-pradesh", "maharashtra", "odisha", "punjab", "sikkim",
-  "tamil-nadu", "telangana", "uttar-pradesh", "uttarakhand", "west-bengal",
-];
+const SEGMENTS = ["india","exporters","manufacturers","suppliers"];
 
-// Special audience/segment landing pages
-const SEGMENTS = ["india", "exporters", "manufacturers", "suppliers"];
+const STATES = ["andhra-pradesh","arunachal-pradesh","assam","bihar","chhattisgarh","delhi","goa","gujarat","haryana","himachal-pradesh","jammu-and-kashmir","jharkhand","karnataka","kerala","madhya-pradesh","maharashtra","odisha","puducherry","punjab","rajasthan","sikkim","tamil-nadu","telangana","uttar-pradesh","uttarakhand","west-bengal"];
 
-// All cities present on the original site
-const CITIES = [
-  "agra", "ahmedabad", "ajmer", "aligarh", "allahabad", "ambala", "ambattur",
-  "amravati", "amritsar", "asansol", "aurangabad", "bangalore", "bareilly",
-  "belgaum", "bhagalpur", "bhavnagar", "bhilai-nagar", "bhiwandi", "bhopal",
-  "bhubaneswar", "bikaner", "bilaspur", "bokaro", "chandigarh", "chennai",
-  "coimbatore", "cuttack", "darbhanga", "darjeeling", "dehradun", "delhi",
-  "deoghar", "dhanbad", "dharamshala", "durgapur", "erode", "faridabad",
-  "firozabad", "gaya", "ghaziabad", "gorakhpur", "greater-noida", "gulbarga",
-  "guntur", "gurgaon", "guwahati", "gwalior", "haldwani", "haora", "haridwar",
-  "howrah", "hyderabad", "indore", "jabalpur", "jaipur", "jaisalmer",
-  "jalandhar", "jalgaon", "jammu", "jamnagar", "jamshedpur", "jhansi",
-  "jodhpur", "junagadh", "kalyan", "kanpur", "kapurthala", "kashipur", "kochi",
-  "kolapur", "kolhapur", "kolkata", "kota", "kozhikode", "lucknow", "ludhiana",
-  "madurai", "maheshtala", "mandi", "mangalore", "meerut", "mira-and-bhayander",
-  "moradabad", "mumbai", "mysore", "nagpur", "nanded-waghala", "nashik",
-  "navi-mumbai", "nellore", "noida", "panipat", "patiala", "patna",
-  "pimpri-and-chinchwad", "ponda", "pune", "puri", "raigarh", "raipur",
-  "rajkot", "ranchi", "rewari", "rishikesh", "roorkee", "saharanpur", "salem",
-  "sangli", "siliguri", "solan", "solapur", "sonipat", "srinagar", "surat",
-  "thane", "thiruvananthapuram", "tiruchirappalli", "tirupati", "udaipur",
-  "ujjain", "ulhasnagar", "vadodara", "varanasi", "vellore", "vijayawada",
-  "visakhapatnam", "warangal",
-];
+const CITIES = ["agar","agra","ahmedabad","ajmer","aligarh","allahabad","alwar","ambala","ambattur","amravati","amreli","amritsar","amroha","anantapur","araria","asansol","ashoknagar","aurangabad","ayodhya","azamgarh","badanpur-narwana","baghpat","balaghat","balasore","baleshwar","balrampur","banda","bangalore","banswara","bara-banki","baran","baraut","bardhaman","bareilly","barnala","barwani","basti","begusarai","belagavi","belgaum","betul","bhadohi","bhagalpur","bharatpur","bharuch","bhatapara","bhavnagar","bhilai-nagar","bhilwara","bhind","bhiwandi","bhiwani","bhojpur","bhopal","bhubaneswar","biaora","bijnor","bikaner","bilaspur","bokaro","budaun","bulandshahr","buldhana","buxar","champawat","chandauli","chandausi","chandigarh","chennai","chhatarpur","chhindwara","chittorgarh","churu","coimbatore","cuttack","dadri","damoh","dankaur","darbhanga","darjeeling","datia","dehradun","deogarh","deoghar","deoria","dewas","dhanbad","dhar","dharamshala","dhaulpur","dhule","durg","durgapur","east-champaran","east-delhi","erode","faridabad","fatehpur","fazilka","firozabad","ganjam","gautam-buddha-nagar","gaya","ghaziabad","ghazipur","gidhori","giridih","gola-lakhimpur","gopalganj","gorakhpur","greater-noida","gulbarga","guna","guntur","gurgaon","gurugram","guwahati","gwalior","haldwani","haora","hapur","harda","hardoi","haridwar","hazaribagh","hisar","hooghly-district","hoshangabad","hoshiarpur","howrah","hyderabad","indore","jabalpur","jaipur","jaisalmer","jalandhar","jalaun","jalgaon","jammu","jamnagar","jamshedpur","jaunpur","jhajjar","jhalawar","jhansi","jhunjhunu","jind","jodhpur","junagadh","kaimur-district","kaithal","kakinada","kalyan","kanker","kanpur","kanpur-dehat","kanpur-nagar","kapurthala","karnal","kasganj","kashipur","katni","kavali","kawardha","keshiapata","khalilabad","khandwa","khargone","kheda","kochi","kolapur","kolhapur","kolkata","korba","kota","kozhikode","kurukshetra","kushinagar","lakhimpur","lakhisarai","lucknow","ludhiana","madhepura","madhubani","madurai","maharajganj","maheshtala","mainpuri","malkajgiri","mandi","mandla","mandsaur","mangalore","mathura","mau","mayurbhanj","meerut","mira-and-bhayander","mirzapur","mohali","moradabad","mumbai","muzaffarpur","mysore","nadia-district","nagaur","nagpur","nalanda","nanded-waghala","narsimhapur","nashik","navi-mumbai","nawabganj-barabanki","neemuch","nellore","new-delhi","noida","north-24-parganas-district","north-delhi","north-east-delhi","north-west-delhi","nowgong","pali","palwal","panipat","panna","pashchim-champaran","patiala","patna","pimpri-and-chinchwad","pithampur-dhar","ponda","porbandar","pratapgarh","prayagraj","prayagraj-allahabad","pune","purba-medinipur-district","purbi-champaran","puri","purnia","purulia","raigarh","raipur","raisen","rajgarh","rajkot","rajnandgaon","rajsamand","ramgarh","rampur","ranchi","ratlam","remuna","rewari","rishikesh","rohini","rohtak","rohtas","roorkee","rourkela","sagar","saharanpur","saharsa","salem","salumbar","samastipur","sambhal","sangli","sangrur","saran","sarangarh","sarangpur","satna","sehore","shahjahanpur","shajapur","shivpuri","shujalpur","siddharthnagar","siddipet","sikar","siliguri","sirohi","sirsa","sitapur","siwan","solan","solapur","sonipat","south-24-parganas-district","south-delhi","south-west-delhi","srinagar","supaul","surat","surendranagar","surguja","tarn-taran-sahib","thane","thiruvananthapuram","tikamgarh","tiruchirappalli","tirupati","tonk","udaipur","ujjain","ulhasnagar","vadodara","vaishali","varanasi","vellore","vidisha","vijayawada","visakhapatnam","warangal","wardha","west-delhi"];
 
 const SEGMENT_NAMES: Record<string, string> = {
   india: "India",
@@ -52,6 +23,12 @@ const SEGMENT_NAMES: Record<string, string> = {
   manufacturers: "Manufacturers",
   suppliers: "Suppliers",
 };
+
+/** Convert a place name to its URL slug (inverse of slugToName). */
+export function toSlug(name: string): string {
+  return name.toLowerCase().replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "").replace(/-+/g, "-");
+}
 
 export function slugToName(slug: string): string {
   if (SEGMENT_NAMES[slug]) return SEGMENT_NAMES[slug];
@@ -61,11 +38,19 @@ export function slugToName(slug: string): string {
     .join(" ");
 }
 
-export const LOCATIONS: Location[] = [
-  ...SEGMENTS.map((slug) => ({ slug, name: slugToName(slug), type: "segment" as const })),
-  ...STATES.map((slug) => ({ slug, name: slugToName(slug), type: "state" as const })),
-  ...CITIES.map((slug) => ({ slug, name: slugToName(slug), type: "city" as const })),
-];
+export const LOCATIONS: Location[] = (() => {
+  const seen = new Set<string>();
+  const list: Location[] = [];
+  const add = (slug: string, type: LocationType) => {
+    if (!slug || seen.has(slug)) return;
+    seen.add(slug);
+    list.push({ slug, name: slugToName(slug), type });
+  };
+  SEGMENTS.forEach((s) => add(s, "segment"));
+  STATES.forEach((s) => add(s, "state"));
+  CITIES.forEach((s) => add(s, "city"));
+  return list;
+})();
 
 export function getLocation(slug: string): Location | undefined {
   return LOCATIONS.find((l) => l.slug === slug);

@@ -2,16 +2,44 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ArrowRight, MapPin, CheckCircle2, Phone, MessageCircle, Truck, ShieldCheck, Headphones, Factory } from "lucide-react";
+import { ArrowRight, MapPin, CheckCircle2, Phone, MessageCircle, Truck, ShieldCheck, Headphones, Factory, Store } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
-import Reveal, { RevealStagger, RevealItem } from "@/components/ui/Reveal";
-import { LOCATIONS, getLocation, type Location } from "@/lib/locations";
+import { RevealStagger, RevealItem } from "@/components/ui/Reveal";
+import { LOCATIONS, getLocation, toSlug, type Location } from "@/lib/locations";
 import { PRODUCTS, SITE_CONFIG } from "@/lib/constants";
+import { DEALERS, type Dealer } from "@/lib/dealers";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
   return LOCATIONS.map((l) => ({ location: l.slug }));
+}
+
+// ── Dealer lookups (built once at module load, reused across all pages) ──
+const byCity: Record<string, Dealer[]> = {};
+const byState: Record<string, Dealer[]> = {};
+const cityState: Record<string, string> = {};
+for (const d of DEALERS) {
+  const c = toSlug(d.city), s = toSlug(d.state);
+  (byCity[c] ||= []).push(d);
+  (byState[s] ||= []).push(d);
+  cityState[c] = d.state;
+}
+const citiesByState: Record<string, string[]> = {};
+for (const c of Object.keys(byCity)) {
+  const s = toSlug(cityState[c]);
+  (citiesByState[s] ||= []).push(c);
+}
+
+function dealersFor(loc: Location): Dealer[] {
+  if (loc.type === "city") return byCity[loc.slug] || [];
+  if (loc.type === "state") return byState[loc.slug] || [];
+  return [];
+}
+function telHref(phone: string) {
+  const m = phone.match(/\d[\d\s-]{6,}\d/);
+  const digits = (m ? m[0] : phone).replace(/\D/g, "");
+  return digits.length === 10 ? `+91${digits}` : `+${digits.replace(/^0+/, "")}`;
 }
 
 function phrase(loc: Location) {
@@ -43,9 +71,11 @@ export async function generateMetadata({ params }: { params: Promise<{ location:
     loc.type === "segment" && loc.slug !== "india"
       ? `Lithium Battery Supplier for ${loc.name}`
       : `Lithium Ion Battery Manufacturer & Supplier ${phrase(loc)}`;
+  const n = dealersFor(loc).length;
+  const description = lead(loc) + (n ? ` Maxvolt has ${n} authorized ${n === 1 ? "dealer" : "dealers"} in ${loc.name}.` : "");
   return {
     title,
-    description: lead(loc),
+    description,
     keywords: [
       `lithium battery ${loc.name}`,
       `lithium ion battery manufacturer ${loc.name}`,
@@ -66,6 +96,24 @@ export default async function LocationPage({ params }: { params: Promise<{ locat
 
   const isSegment = loc.type === "segment" && loc.slug !== "india";
   const here = loc.slug === "india" ? "across India" : isSegment ? "" : `in ${loc.name}`;
+
+  // Local dealers + cross-link mesh for crawlability / unique content.
+  const localDealers = dealersFor(loc);
+  let stateLink: { slug: string; name: string } | null = null;
+  let siblingCities: { slug: string; name: string }[] = [];
+  let childCities: { slug: string; name: string }[] = [];
+  const nameOf = (slug: string) =>
+    slug.split("-").map((w) => (w === "and" ? "&" : w.charAt(0).toUpperCase() + w.slice(1))).join(" ");
+  if (loc.type === "city") {
+    const stName = cityState[loc.slug];
+    if (stName) {
+      const ss = toSlug(stName);
+      stateLink = { slug: ss, name: stName };
+      siblingCities = (citiesByState[ss] || []).filter((c) => c !== loc.slug).slice(0, 11).map((s) => ({ slug: s, name: nameOf(s) }));
+    }
+  } else if (loc.type === "state") {
+    childCities = (citiesByState[loc.slug] || []).slice(0, 18).map((s) => ({ slug: s, name: nameOf(s) }));
+  }
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -143,6 +191,46 @@ export default async function LocationPage({ params }: { params: Promise<{ locat
         </div>
       </section>
 
+      {/* Authorized dealers in this location (unique, useful content) */}
+      {localDealers.length > 0 && (
+        <section className="section-padding bg-white pt-0">
+          <div className="container-custom">
+            <h2 className="text-2xl md:text-3xl font-black text-[#15171c] mb-2">
+              Authorized Maxvolt Dealers in {loc.name}
+            </h2>
+            <p className="text-[#52525b] text-sm mb-8 max-w-2xl">
+              {localDealers.length} verified Maxvolt {localDealers.length === 1 ? "dealer" : "dealers"} {here} — buy genuine
+              AIS 156-certified lithium batteries with local sales and after-sales support.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {localDealers.slice(0, 9).map((d, i) => {
+                const tel = telHref(d.phone);
+                return (
+                  <div key={`${d.name}-${i}`} className="p-5 rounded-2xl frosted-card border border-black/6">
+                    <div className="flex items-start gap-3">
+                      <div className="w-9 h-9 rounded-xl bg-[#FFD100]/15 border border-[#D97706]/20 flex items-center justify-center shrink-0">
+                        <Store size={15} className="text-[#D97706]" />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="text-[#15171c] font-bold text-sm leading-tight">{d.name}</h3>
+                        <p className="text-[#52525b] text-xs mt-1 leading-relaxed line-clamp-2">{d.address}</p>
+                        <div className="flex items-center gap-3 mt-2 flex-wrap">
+                          {tel && <a href={`tel:${tel}`} className="inline-flex items-center gap-1 text-[#D97706] text-xs font-semibold hover:underline"><Phone size={10} /> {d.phone}</a>}
+                          <span className="text-[#a1a1aa] text-[11px]">{d.city}{d.pincode ? ` · ${d.pincode}` : ""}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <Link href="/find-dealer" className="inline-flex items-center gap-1.5 text-[#D97706] text-sm font-semibold mt-6 hover:underline">
+              {localDealers.length > 9 ? `View all ${localDealers.length} dealers ${here}` : "Open the full dealer locator"} <ArrowRight size={13} />
+            </Link>
+          </div>
+        </section>
+      )}
+
       {/* Why Maxvolt here */}
       <section className="section-padding bg-white pt-0">
         <div className="container-custom">
@@ -198,6 +286,41 @@ export default async function LocationPage({ params }: { params: Promise<{ locat
           </div>
         </div>
       </section>
+
+      {/* Cross-links to nearby locations — internal crawl mesh */}
+      {(() => {
+        const links =
+          loc.type === "city" ? siblingCities :
+          loc.type === "state" ? childCities :
+          loc.slug === "india" ? Object.keys(byState).sort().map((s) => ({ slug: s, name: nameOf(s) })) : [];
+        const heading =
+          loc.type === "city" ? `Maxvolt Energy across ${stateLink?.name || "India"}` :
+          loc.type === "state" ? `Cities We Serve in ${loc.name}` :
+          loc.slug === "india" ? "States We Serve" : "";
+        if (links.length === 0 && !stateLink) return null;
+        return (
+          <section className="py-12 bg-[#f7f7f5] border-t border-black/6">
+            <div className="container-custom">
+              <h2 className="text-lg font-black text-[#15171c] mb-4">{heading}</h2>
+              <div className="flex flex-wrap gap-2">
+                {loc.type === "city" && stateLink && (
+                  <Link href={`/${stateLink.slug}`} className="px-3 py-1.5 rounded-full bg-white border border-[#D97706]/30 text-[#D97706] text-xs font-bold hover:bg-[#FFD100]/10 transition-all">
+                    All of {stateLink.name}
+                  </Link>
+                )}
+                {links.map((c) => (
+                  <Link key={c.slug} href={`/${c.slug}`} className="px-3 py-1.5 rounded-full bg-white border border-black/8 text-[#52525b] text-xs hover:border-[#D97706]/40 hover:text-[#D97706] transition-all">
+                    {c.name}
+                  </Link>
+                ))}
+              </div>
+              <Link href="/our-presence" className="inline-flex items-center gap-1.5 text-[#D97706] text-sm font-semibold mt-5 hover:underline">
+                Explore our full national presence <ArrowRight size={13} />
+              </Link>
+            </div>
+          </section>
+        );
+      })()}
     </>
   );
 }
