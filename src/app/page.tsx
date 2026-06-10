@@ -4,6 +4,7 @@ import FeaturedProductsShowcase from "@/components/sections/FeaturedProductsShow
 import StatsSection from "@/components/sections/StatsSection";
 import ProductsSection from "@/components/sections/ProductsSection";
 import CustomBatterySection from "@/components/sections/CustomBatterySection";
+import BatteryAnatomy from "@/components/sections/BatteryAnatomy";
 import WhyChooseSection from "@/components/sections/WhyChooseSection";
 import BrandsSection from "@/components/sections/BrandsSection";
 import TimelineSection from "@/components/sections/TimelineSection";
@@ -24,6 +25,7 @@ export default function HomePage() {
       <StatsSection />
       <ProductsSection />
       <CustomBatterySection />
+      <BatteryAnatomy />
       <WhyChooseSection />
       <BrandsSection />
       <TimelineSection />

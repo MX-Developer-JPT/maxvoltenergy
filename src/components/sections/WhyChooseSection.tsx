@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Zap, Shield, Globe, Users, FlaskConical, Award, ChevronRight } from "lucide-react";
 import { ClipReveal, FadeUp } from "@/components/ui/AnimatedText";
-import BatteryExploded from "@/components/sections/BatteryExploded";
 
 const FEATURES = [
   { Icon: Zap, title: "Advanced Technology", description: "Continuous innovation delivering higher efficiency, faster charging, and smarter performance through LiFePO4, NMC and Li-Ion cell technology.", color: "#FFD100", stat: "50%", statLabel: "Faster Charging" },
@@ -38,14 +37,27 @@ export default function WhyChooseSection() {
         </FadeUp>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          {/* Left: Scroll-driven battery + active feature card */}
+          {/* Left: exploded pack visual + active feature card */}
           <div className="relative lg:sticky lg:top-28">
-            {/* Scroll-driven exploded battery (real Maxvolt parts) */}
-            <div className="relative h-[30rem] md:h-[36rem] mx-auto max-w-md">
-              <BatteryExploded />
+            {/* Exploded Maxvolt pack — full interactive dissection lives in the Anatomy section above */}
+            <div className="img-zoom relative h-[26rem] md:h-[32rem] mx-auto max-w-md flex items-center justify-center rounded-3xl"
+              style={{ background: "radial-gradient(circle at 50% 42%, rgba(255,209,0,0.14) 0%, transparent 70%)" }}>
+              <motion.div
+                animate={{ y: [-8, 8, -8] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-full h-full"
+              >
+                <Image
+                  src="/images/product/maxvolt-pack-exploded.webp"
+                  alt="Exploded view of a Maxvolt lithium battery pack — cover, BMS, cells and housing"
+                  fill
+                  className="object-contain drop-shadow-2xl"
+                  sizes="460px"
+                />
+              </motion.div>
             </div>
-            <p className="text-center text-[#a1a1aa] text-[11px] font-medium tracking-wide -mt-2">
-              ↑ Scroll to explore the Maxvolt pack — cover, BMS, cells &amp; housing
+            <p className="text-center text-[#a1a1aa] text-[11px] font-medium tracking-wide mt-1">
+              Cover · Smart BMS · Lithium cells · Rugged housing
             </p>
 
             {/* Secondary image */}
