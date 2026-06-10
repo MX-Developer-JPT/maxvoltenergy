@@ -103,7 +103,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${geistMono.variable}`}>
+    <html lang="en-IN" className={`${inter.variable} ${spaceGrotesk.variable} ${geistMono.variable}`}>
       <head>
         <StructuredData />
       </head>
