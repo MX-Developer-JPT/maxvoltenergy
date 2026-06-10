@@ -664,3 +664,58 @@ body::before {
     radial-gradient(60% 80% at 50% -10%, rgba(255,209,0,0.10), transparent 60%),
     radial-gradient(50% 60% at 100% 100%, rgba(217,119,6,0.08), transparent 70%);
 }
+
+/* ============================================================
+   PUBLIC DARK MODE — opt-in via html.dark (brand amber preserved)
+   ============================================================ */
+html.dark { color-scheme: dark; }
+html.dark body { background: #0a0c14; color: #eef1f7; }
+
+/* surfaces */
+html.dark .bg-white { background-color: #12151f !important; }
+html.dark .bg-white\/90 { background-color: rgba(14,17,26,0.88) !important; }
+html.dark .bg-white\/80 { background-color: rgba(10,12,20,0.80) !important; }
+html.dark .bg-\[\#f7f7f5\] { background-color: #0c0f17 !important; }
+html.dark .bg-\[\#fcfcfb\] { background-color: #12151f !important; }
+html.dark .bg-black\/\[0\.02\] { background-color: rgba(255,255,255,0.03) !important; }
+html.dark .bg-black\/\[0\.03\] { background-color: rgba(255,255,255,0.04) !important; }
+html.dark .bg-black\/\[0\.04\] { background-color: rgba(255,255,255,0.05) !important; }
+
+/* text */
+html.dark .text-\[\#15171c\] { color: #eef1f7 !important; }
+html.dark .text-\[\#3f3f46\] { color: #ccd2dd !important; }
+html.dark .text-\[\#52525b\] { color: #aab0bd !important; }
+html.dark .text-\[\#5f6470\] { color: #9aa1b2 !important; }
+html.dark .text-\[\#71717a\] { color: #8b92a1 !important; }
+html.dark .text-\[\#8a8a93\] { color: #7c8390 !important; }
+html.dark .text-\[\#a1a1aa\] { color: #6b7280 !important; }
+html.dark .text-\[\#c4c4cc\] { color: #565d6b !important; }
+
+/* borders */
+html.dark .border-black\/5 { border-color: rgba(255,255,255,0.06) !important; }
+html.dark .border-black\/6 { border-color: rgba(255,255,255,0.08) !important; }
+html.dark .border-black\/8 { border-color: rgba(255,255,255,0.10) !important; }
+html.dark .border-black\/10 { border-color: rgba(255,255,255,0.12) !important; }
+
+/* component classes */
+html.dark .frosted-card {
+  background: linear-gradient(180deg,#12151f 0%,#0f121b 100%) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 14px 34px -12px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,0.04) !important;
+}
+html.dark .grid-pattern { background-image: linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px) !important; }
+html.dark .dot-pattern { background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px) !important; }
+html.dark .gradient-text-white { background: linear-gradient(135deg,#ffffff 0%,#9aa1b2 100%) !important; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+/* hero white fade → page-dark fade */
+html.dark .from-white { --tw-gradient-from: #0a0c14 var(--tw-gradient-from-position) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important; }
+/* film-grain a touch lighter on dark */
+html.dark body::before { opacity: 0.06; }
+
+/* subtle theme transition */
+html.dark, html.dark body { transition: background-color .35s ease, color .35s ease; }
+
+/* dark: navbar + glass opacities */
+html.dark .bg-white\/85 { background-color: rgba(14,17,26,0.85) !important; }
+html.dark .bg-white\/40 { background-color: rgba(10,12,20,0.55) !important; }
+html.dark .bg-white\/96 { background-color: rgba(14,17,26,0.96) !important; }
+html.dark .glass { background: rgba(18,21,31,0.7) !important; border-color: rgba(255,255,255,0.08) !important; }

@@ -106,6 +106,11 @@ export default function RootLayout({
     <html lang="en-IN" className={`${inter.variable} ${spaceGrotesk.variable} ${geistMono.variable}`}>
       <head>
         <StructuredData />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem('mv-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}`,
+          }}
+        />
       </head>
       <body className="min-h-screen flex flex-col bg-white text-[#15171c] antialiased cursor-none lg:cursor-none">
         <a

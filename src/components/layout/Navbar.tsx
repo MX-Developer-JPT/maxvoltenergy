@@ -8,6 +8,7 @@ import { Menu, X, ChevronDown, Phone, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import { NAV_ITEMS, SITE_CONFIG } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -124,6 +125,7 @@ export default function Navbar() {
 
           {/* CTA buttons */}
           <div className="hidden lg:flex items-center gap-3">
+            <ThemeToggle />
             <a
               href={`tel:${SITE_CONFIG.phone}`}
               className="flex items-center gap-2 px-4 py-2 text-sm text-[#52525b] hover:text-[#15171c] transition-colors"
