@@ -91,7 +91,7 @@ export default function InvestorsContent() {
 
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/investors-xup.webp"
         badge="Investor Relations"
         title={<>Transparent Growth.<br /><span className="gradient-text">Investor Confidence.</span></>}
         description="Maxvolt Energy Industries Limited is listed on NSE SME Emerge. Access earnings calls, annual reports, corporate governance documents, and regulatory filings for informed investment decisions."

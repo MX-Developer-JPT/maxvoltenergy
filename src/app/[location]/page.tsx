@@ -139,7 +139,7 @@ export default async function LocationPage({ params }: { params: Promise<{ locat
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <PageHero
+      <PageHero image="/images/overview/pan-india-presence.png"
         badge={loc.type === "segment" ? "Maxvolt Energy" : `Serving ${loc.name}`}
         title={
           isSegment ? (

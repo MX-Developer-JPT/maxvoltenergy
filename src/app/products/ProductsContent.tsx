@@ -96,7 +96,7 @@ export default function ProductsContent() {
 
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/products-ygb.webp"
         badge="Product Range"
         title={<>Advanced <span className="gradient-text">Lithium Battery</span> Solutions</>}
         description="Seven specialized product lines engineered for India's electric mobility revolution — from e-cycles to grid-scale energy storage systems."

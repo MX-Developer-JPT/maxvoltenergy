@@ -23,7 +23,7 @@ export default function CareerPage() {
 
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/career-aeu.webp"
         badge="Join Our Team"
         title={<>Power the <span className="gradient-text">EV Revolution</span></>}
         description="Maxvolt Energy is a 350+ member team on a mission to build India's best lithium batteries. We're always looking for talented engineers, sales leaders, and operations experts."

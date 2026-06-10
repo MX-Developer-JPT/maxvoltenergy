@@ -42,7 +42,7 @@ export default function EarningsContent() {
 
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/earnings-call-udw.webp"
         badge="Earnings Call"
         title={<>Financial Progress.<br /><span className="gradient-text">Operational Growth.</span></>}
         description="Our earnings calls provide a clear view of Maxvolt Energy's financial performance, production output, demand across electric mobility and energy storage sectors, R&D progress, and market conditions."

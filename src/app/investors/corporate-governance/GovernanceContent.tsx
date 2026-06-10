@@ -36,7 +36,7 @@ const GOVERNANCE_PILLARS = [
 export default function GovernanceContent() {
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/corporate-governance-jig.webp"
         badge="Corporate Governance"
         title={<>Governance Beyond<br /><span className="gradient-text">Compliance</span></>}
         description="Maxvolt Energy's corporate governance framework ensures integrity, accountability, and ethical conduct at every level. We believe governance should satisfy the spirit of regulations — not merely their technical requirements."

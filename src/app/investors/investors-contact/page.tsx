@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function InvestorsContactPage() {
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/investors-contact-puv.webp"
         badge="Investors Contact"
         title={<>Investor <span className="gradient-text">Relations</span></>}
         description="For investor queries, grievances and statutory communications, reach the Maxvolt Energy investor relations team using the details below."

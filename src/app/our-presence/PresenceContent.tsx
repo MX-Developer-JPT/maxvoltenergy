@@ -46,7 +46,7 @@ export default function PresenceContent() {
 
   return (
     <>
-      <PageHero
+      <PageHero image="/images/overview/pan-india-presence.png"
         badge="Our Presence"
         title={<>Pan India <span className="gradient-text">Network</span></>}
         description="Maxvolt Energy operates across 22+ states and 150+ cities — with retail dealers, authorized service centers, and OEM partners spanning the entire Indian subcontinent."

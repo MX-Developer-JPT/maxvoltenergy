@@ -47,7 +47,7 @@ export default function CalculatorContent() {
 
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/powered-with-new-gen-technology-enj.webp"
         badge="Smart Tool"
         title={<>Battery Capacity <span className="gradient-text">Calculator</span></>}
         description="Estimate the ideal Maxvolt lithium battery capacity for your application. Adjust your load, runtime, and usage to get a recommended Ah/Wh rating instantly."

@@ -52,7 +52,7 @@ const STEPS = [
 export default function BecomeADealerPage() {
   return (
     <>
-      <PageHero
+      <PageHero image="/images/overview/oem-partnership.png"
         badge="Dealer & OEM Partnership"
         title={<>Grow Your Business with <span className="gradient-text">Maxvolt</span></>}
         description="Join 950+ dealers and 107 OEM partners across India. Maxvolt's OEM Policy & Partnership Approach is built around dedicated management, technical backing, marketing support and dependable after-sales service."

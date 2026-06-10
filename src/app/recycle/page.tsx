@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function RecyclePage() {
   return (
     <>
-      <PageHero
+      <PageHero image="/images/overview/reearth-recycling.png"
         badge="Battery Recycling"
         title={<>Closing the Loop with <span className="gradient-text">Maxvolt ReEarth</span></>}
         description="Maxvolt ReEarth is our dedicated subsidiary researching and implementing sustainable lithium-ion battery recycling technologies — ensuring every battery we make has a responsible end of life."

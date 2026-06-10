@@ -113,7 +113,7 @@ const PRESS_ITEMS = [
 export default function MediaPage() {
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/corporate-announcement-eqn.webp"
         badge="Media Coverage"
         title={<>Maxvolt in the <span className="gradient-text">News</span></>}
         description="Press coverage and citations from leading business and financial news channels featuring Maxvolt Energy Industries Limited."

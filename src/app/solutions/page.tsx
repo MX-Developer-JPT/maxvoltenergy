@@ -46,7 +46,7 @@ const SOLUTIONS = [
 export default function SolutionsPage() {
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/solutions-xdb.webp"
         badge="Solutions"
         title={<>Powering Every <span className="gradient-text">Application</span></>}
         description="From electric rickshaws to solar homes and consumer devices — Maxvolt Energy delivers lithium battery solutions across four key application domains."

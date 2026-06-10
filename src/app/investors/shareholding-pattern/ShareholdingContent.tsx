@@ -42,7 +42,7 @@ const SHAREHOLDER_CATEGORIES = [
 export default function ShareholdingContent() {
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/shareholding-pattern-dvd.webp"
         badge="Shareholding Pattern"
         title={<>Ownership <span className="gradient-text">Transparency</span></>}
         description="Maxvolt Energy's shareholding structure includes promoter holdings, institutional investors, and public shareholders — with regular updates ensuring full transparency for all stakeholders."

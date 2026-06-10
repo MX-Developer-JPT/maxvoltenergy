@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function SupportPage() {
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/customer-support-vkz.webp"
         badge="Customer Support"
         title={<>We&apos;re Here <span className="gradient-text">to Help</span></>}
         description="Maxvolt's dedicated support team is available to assist with technical queries, warranty claims, battery troubleshooting, and service center locator."

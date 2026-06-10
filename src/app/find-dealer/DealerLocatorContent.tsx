@@ -91,7 +91,7 @@ export default function DealerLocatorContent() {
 
   return (
     <>
-      <PageHero
+      <PageHero image="/images/overview/pan-india-presence.png"
         badge="Dealer Locator"
         title={<>Find a Maxvolt <span className="gradient-text">Dealer Near You</span></>}
         description="Our growing network of authorized dealers spans 20 states across India. Explore the interactive map or search by city, state or pincode to find your nearest Maxvolt Energy point of sale and support."

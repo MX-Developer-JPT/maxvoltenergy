@@ -29,7 +29,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/banners-section-pch.webp"
         badge="Our Blog"
         title={<>Latest <span className="gradient-text">News & Insights</span></>}
         description="Stay updated on EV industry trends, battery technology innovations, and Maxvolt Energy's latest developments."

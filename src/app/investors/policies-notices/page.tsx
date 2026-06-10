@@ -32,7 +32,7 @@ const POLICY_DOCS = [
 export default function PoliciesNoticesPage() {
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/policies-xax.webp"
         badge="Policies & Notices"
         title={<>Governance <span className="gradient-text">Documents</span></>}
         description="Maxvolt Energy's corporate policies, statutory notices, and governance documents ensuring transparency and regulatory compliance."

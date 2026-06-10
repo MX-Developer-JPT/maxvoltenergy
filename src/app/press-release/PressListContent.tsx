@@ -29,7 +29,7 @@ export default function PressListContent({ items }: { items: PressRelease[] }) {
 
   return (
     <>
-      <PageHero
+      <PageHero image="/images/press/union-budget-2026-gst-reforms-infrastructure.webp"
         badge="Newsroom"
         title={<>Press Releases &amp; <span className="gradient-text">Company News</span></>}
         description="Official announcements, product launches, financial milestones and industry commentary from Maxvolt Energy Industries Limited."

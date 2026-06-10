@@ -47,7 +47,7 @@ export default function GalleryContent() {
 
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/gallery-ina.webp"
         badge="Gallery"
         title={<>Inside <span className="gradient-text">Maxvolt</span></>}
         description="A window into our manufacturing facility, products, team, and the culture powering India's lithium battery revolution."

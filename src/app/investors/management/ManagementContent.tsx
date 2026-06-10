@@ -20,7 +20,7 @@ export default function ManagementContent() {
 
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/management-hmh.webp"
         badge="Management"
         title={<>Board of <span className="gradient-text">Directors</span></>}
         description="Maxvolt Energy's Board comprises experienced professionals overseeing lithium battery systems development, operations, and strategic expansion into electric mobility, energy storage, and medical applications."

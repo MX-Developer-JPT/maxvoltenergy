@@ -137,7 +137,7 @@ function ContactForm() {
 export default function ContactContent() {
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/customer-support-vkz.webp"
         badge="Contact Us"
         title={<>Let&apos;s Build the <span className="gradient-text">Electric Future</span> Together</>}
         description="Whether you're a dealer, OEM partner, investor, or individual customer — our team is ready to assist with product inquiries, technical support, and partnership opportunities."

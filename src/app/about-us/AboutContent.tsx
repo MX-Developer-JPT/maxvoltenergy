@@ -538,7 +538,7 @@ function JourneySection() {
 export default function AboutContent() {
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/about-us-eej.webp"
         badge="About Maxvolt Energy"
         title={<>India&apos;s Premier <span className="gradient-text">Lithium Battery</span> Manufacturer</>}
         description="Founded in 2019, Maxvolt Energy Industries Limited has grown from a 15-battery-per-day startup to a NSE-listed company with ₹297+ Crore revenue and 350+ team members powering India's electric revolution."

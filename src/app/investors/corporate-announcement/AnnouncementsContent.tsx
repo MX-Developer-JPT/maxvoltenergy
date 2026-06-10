@@ -42,7 +42,7 @@ export default function AnnouncementsContent() {
 
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/corporate-announcement-eqn.webp"
         badge="Corporate Announcements"
         title={<>Regulatory <span className="gradient-text">Disclosures</span></>}
         description="Maxvolt Energy releases official corporate announcements only when information is clear, verified, and relevant to customers, partners, and investors — in full compliance with NSE SME Emerge regulations."

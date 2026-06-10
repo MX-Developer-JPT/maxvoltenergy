@@ -55,7 +55,7 @@ const FINANCIALS: { label: string; file: string }[] = [
 export default function AnnualReportsContent() {
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/annual-report-gwe.webp"
         badge="Annual Reports"
         title={<>Full <span className="gradient-text">Financial Transparency</span></>}
         description="Maxvolt Energy's annual reports provide comprehensive coverage of financial performance, operational achievements, R&D progress, and strategic outlook for shareholders and stakeholders."

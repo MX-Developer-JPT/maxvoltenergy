@@ -64,7 +64,7 @@ export default function FaqPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
-      <PageHero
+      <PageHero image="/images/category/why-choose-us-wrn.webp"
         badge="Help Center"
         title={<>Frequently Asked <span className="gradient-text">Questions</span></>}
         description="Everything you need to know about Maxvolt lithium batteries — technology, applications, sustainability, warranty and dealer support."

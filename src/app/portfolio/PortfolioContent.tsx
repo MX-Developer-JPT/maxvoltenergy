@@ -132,7 +132,7 @@ function ProductBlock({ product, index }: { product: (typeof PRODUCTS)[number]; 
 export default function PortfolioContent() {
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/products-ygb.webp"
         badge="Product Portfolio"
         title={<>The Complete <span className="gradient-text">Maxvolt Range</span></>}
         description="Every lithium battery solution we build — from electric mobility to solar storage and fully customized application-specific packs. Explore detailed specifications, chemistries and use cases."

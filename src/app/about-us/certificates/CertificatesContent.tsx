@@ -27,7 +27,7 @@ export default function CertificatesContent() {
 
   return (
     <>
-      <PageHero
+      <PageHero image="/images/category/about-us-rja.webp"
         badge="Certifications"
         title={<>Safety You Can <span className="gradient-text">Trust</span></>}
         description="Maxvolt Energy's batteries are certified to the highest Indian and international safety standards. Every battery undergoes multi-stage testing before leaving our Ghaziabad facility."
