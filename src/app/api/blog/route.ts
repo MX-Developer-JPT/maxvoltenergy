@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { create, readAll, readPublished } from "@/lib/blog-store.server";
 import { verifySession, SESSION_COOKIE } from "@/lib/auth";
+import { pingIndexNow } from "@/lib/indexnow";
 
 // GET: public → published posts. Admin (with valid session) → all posts.
 export async function GET(req: NextRequest) {
@@ -16,5 +17,9 @@ export async function POST(req: NextRequest) {
   const body = await req.json();
   if (!body.title) return NextResponse.json({ error: "Title required" }, { status: 400 });
   const post = create(body);
+  // Notify IndexNow so Bing/Yandex pick up the new post immediately.
+  if (post.published) {
+    void pingIndexNow([`/blog/${post.slug}`, "/blog", "/sitemap.xml"]);
+  }
   return NextResponse.json({ ok: true, post });
 }
