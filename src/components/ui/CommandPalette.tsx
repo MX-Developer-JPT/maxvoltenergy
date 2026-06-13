@@ -4,51 +4,7 @@ import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, CornerDownLeft, ArrowUp, ArrowDown, X } from "lucide-react";
-import { PRODUCTS } from "@/lib/constants";
-import { SOLUTIONS } from "@/lib/solutions";
-import { SHOP_CATEGORIES } from "@/lib/shop";
-import { STATE_LOCATIONS } from "@/lib/locations";
-
-interface Entry { t: string; h: string; g: string }
-
-const CORE: Entry[] = [
-  { t: "Home", h: "/", g: "Pages" },
-  { t: "About Us", h: "/about-us", g: "Pages" },
-  { t: "Certificates", h: "/about-us/certificates", g: "Pages" },
-  { t: "All Products", h: "/products", g: "Pages" },
-  { t: "Product Portfolio", h: "/portfolio", g: "Pages" },
-  { t: "Shop All Batteries", h: "/shop", g: "Pages" },
-  { t: "Compare Batteries", h: "/compare", g: "Tools" },
-  { t: "Request a Quote", h: "/request-a-quote", g: "Tools" },
-  { t: "Solutions", h: "/solutions", g: "Pages" },
-  { t: "Find a Dealer", h: "/find-dealer", g: "Pages" },
-  { t: "Become a Dealer", h: "/become-a-dealer", g: "Pages" },
-  { t: "Our Presence", h: "/our-presence", g: "Pages" },
-  { t: "Battery Calculator", h: "/battery-calculator", g: "Tools" },
-  { t: "Blog", h: "/blog", g: "Pages" },
-  { t: "Press Releases", h: "/press-release", g: "Pages" },
-  { t: "Media Coverage", h: "/media", g: "Pages" },
-  { t: "Gallery", h: "/gallery", g: "Pages" },
-  { t: "Careers", h: "/career", g: "Pages" },
-  { t: "Recycle · Maxvolt ReEarth", h: "/recycle", g: "Pages" },
-  { t: "Support", h: "/support", g: "Pages" },
-  { t: "FAQ", h: "/faq", g: "Pages" },
-  { t: "Contact Us", h: "/contact-us", g: "Pages" },
-  { t: "Investors", h: "/investors", g: "Investors" },
-  { t: "Earnings Call", h: "/investors/earnings-call", g: "Investors" },
-  { t: "Annual Reports", h: "/investors/annual-reports", g: "Investors" },
-  { t: "Corporate Governance", h: "/investors/corporate-governance", g: "Investors" },
-  { t: "Shareholding Pattern", h: "/investors/shareholding-pattern", g: "Investors" },
-  { t: "CSR", h: "/investors/csr", g: "Investors" },
-];
-
-const INDEX: Entry[] = [
-  ...CORE,
-  ...PRODUCTS.map((p) => ({ t: p.name, h: p.href, g: "Products" })),
-  ...SOLUTIONS.map((s) => ({ t: s.title, h: `/solutions/${s.slug}`, g: "Solutions" })),
-  ...SHOP_CATEGORIES.map((c) => ({ t: c.name, h: `/shop/${c.key}`, g: "Shop" })),
-  ...STATE_LOCATIONS.map((l) => ({ t: `${l.name} — dealers & batteries`, h: `/${l.slug}`, g: "Locations" })),
-];
+import { searchSite } from "@/lib/search-index";
 
 export default function CommandPalette() {
   const router = useRouter();
@@ -58,11 +14,7 @@ export default function CommandPalette() {
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
-  const results = useMemo(() => {
-    const s = q.toLowerCase().trim();
-    if (!s) return INDEX.filter((e) => e.g === "Pages" || e.g === "Products" || e.g === "Tools").slice(0, 8);
-    return INDEX.filter((e) => e.t.toLowerCase().includes(s) || e.h.toLowerCase().includes(s)).slice(0, 24);
-  }, [q]);
+  const results = useMemo(() => searchSite(q).slice(0, 24), [q]);
 
   useEffect(() => { setSel(0); }, [q]);
 

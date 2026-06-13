@@ -4,20 +4,38 @@ import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import { ArrowRight } from "lucide-react";
 import { SHOP_CATEGORIES, skusByCategory } from "@/lib/shop";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Shop Lithium Batteries",
   description:
     "Browse Maxvolt's full lithium battery catalogue — e-scooter, e-rickshaw, inverter, solar storage and medical device batteries across every voltage and capacity.",
+  alternates: { canonical: "/shop" },
   keywords: [
     "buy lithium battery", "e-scooter battery price", "e-rickshaw battery",
     "inverter lithium battery", "solar battery storage", "medical device battery",
   ],
 };
 
+// ItemList of shop categories for richer search-result understanding.
+const itemListLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Maxvolt Lithium Battery Shop Categories",
+  numberOfItems: SHOP_CATEGORIES.length,
+  itemListElement: SHOP_CATEGORIES.map((c, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: c.name,
+    url: `${SITE_CONFIG.url}/shop/${c.key}`,
+    image: `${SITE_CONFIG.url}${c.image}`,
+  })),
+};
+
 export default function ShopPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
       <PageHero
         badge="E-Shop"
         title={<>Shop the Full <span className="gradient-text">Maxvolt Range</span></>}

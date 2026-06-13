@@ -27,6 +27,23 @@ export default function StructuredData() {
         foundingDate: "2019",
         email: SITE_CONFIG.email,
         telephone: "+91-120-4291595",
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            telephone: "+91-120-4291595",
+            contactType: "sales",
+            email: SITE_CONFIG.email,
+            areaServed: "IN",
+            availableLanguage: ["en", "hi"],
+          },
+          {
+            "@type": "ContactPoint",
+            contactType: "customer support",
+            email: SITE_CONFIG.supportEmail,
+            areaServed: "IN",
+            availableLanguage: ["en", "hi"],
+          },
+        ],
         sameAs: [
           SITE_CONFIG.social.facebook,
           SITE_CONFIG.social.instagram,
@@ -74,6 +91,14 @@ export default function StructuredData() {
         url: SITE_CONFIG.url,
         name: "Maxvolt Energy",
         publisher: { "@id": `${SITE_CONFIG.url}/#organization` },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${SITE_CONFIG.url}/search?q={search_term_string}`,
+          },
+          "query-input": "required name=search_term_string",
+        },
       },
     ],
   };

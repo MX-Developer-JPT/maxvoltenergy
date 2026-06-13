@@ -93,8 +93,23 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true },
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
+  verification: {
+    // Set NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION in the environment to verify the
+    // Search Console property via meta tag.
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : {},
+  },
+  category: "Lithium Battery Manufacturing",
 };
 
 export default function RootLayout({

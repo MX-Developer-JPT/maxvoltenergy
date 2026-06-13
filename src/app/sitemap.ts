@@ -14,7 +14,8 @@ export const dynamic = "force-static";
 const BASE = "https://site.maxvolt-one.co.in";
 
 // Folders that must never appear in the public sitemap.
-const EXCLUDE_TOP = new Set(["admin", "api"]);
+// `search` is a noindex, query-driven results page — keep it out of the sitemap.
+const EXCLUDE_TOP = new Set(["admin", "api", "search"]);
 
 /**
  * Auto-discover every static (non-dynamic) page route by walking the app
